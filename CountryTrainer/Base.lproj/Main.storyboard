@@ -1,25 +1,180 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qY4-y0-Acp">
+                                <frame key="frameInset" minX="20" minY="20" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="c9t-1Q-fp5"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k66-Ow-bZX">
+                                <frame key="frameInset" minX="33" minY="162" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="H4O-6A-ZFD" kind="show" id="nle-hM-XCo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiW-JO-YJD">
+                                <frame key="frameInset" minX="62" minY="249" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Answered correctly"/>
+                                <connections>
+                                    <action selector="correctAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Wp-CE-98x"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qY4-y0-Acp" secondAttribute="bottom" constant="452" id="VN1-wJ-9Iy"/>
+                            <constraint firstItem="qY4-y0-Acp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="er0-os-t90"/>
+                            <constraint firstItem="qY4-y0-Acp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="iC9-HB-YAS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="flagImage" destination="qY4-y0-Acp" id="IdM-O0-tov"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="204"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="g4p-xg-R3Y">
+            <objects>
+                <viewController id="H4O-6A-ZFD" customClass="TableViewController" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fI8-Q9-2cI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y56-aD-j66"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nLF-Lf-AlL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="1125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-Q5-cFH">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="1125" id="oxp-Uz-7Ru" customClass="GameCell" customModule="CountryTrainer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="1125"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oxp-Uz-7Ru" id="7Ae-jJ-N1y">
+                                            <frame key="frameInset" width="375" height="1125"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-x5-Z9d">
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lb" translatesAutoresizingMaskIntoConstraints="NO" id="gHY-6n-bz0">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="200" id="gDU-sx-F1S"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvV-Qs-eHB">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="vKc-GE-pZL"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-5t-DGN">
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-D6-8nQ">
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLa-nR-9UV" customClass="AnsweredCorrectlyButton" customModule="CountryTrainer" customModuleProvider="target">
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="110" id="qHE-cc-ks6"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                                            <state key="normal" title="Correct">
+                                                                                <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </state>
+                                                                            <connections>
+                                                                                <action selector="answeredCorrectly:" destination="oxp-Uz-7Ru" eventType="touchUpInside" id="RCa-cH-xit"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNH-a9-erk" customClass="AnsweredIncorrectlyButton" customModule="CountryTrainer" customModuleProvider="target">
+                                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                                            <state key="normal" title="Doh!">
+                                                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            </state>
+                                                                            <connections>
+                                                                                <action selector="answeredIncorrectly:" destination="oxp-Uz-7Ru" eventType="touchUpInside" id="7g2-2V-DT6"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="rLa-nR-9UV" firstAttribute="width" secondItem="wNH-a9-erk" secondAttribute="width" id="Zdc-GH-kYB"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="fXa-fh-VU5"/>
+                                                                    </constraints>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="9Rt-D6-8nQ" firstAttribute="centerX" secondItem="b6N-5t-DGN" secondAttribute="centerX" id="2u5-JE-o0Z"/>
+                                                                <constraint firstAttribute="height" constant="35" id="4b5-xB-FuG"/>
+                                                                <constraint firstAttribute="bottom" secondItem="9Rt-D6-8nQ" secondAttribute="bottom" id="kyq-Yx-reL"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JWj-x5-Z9d" firstAttribute="trailing" secondItem="7Ae-jJ-N1y" secondAttribute="trailingMargin" id="hDD-Hg-Pge"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JWj-x5-Z9d" secondAttribute="bottom" id="mj7-uV-Cwo"/>
+                                                <constraint firstItem="JWj-x5-Z9d" firstAttribute="leading" secondItem="7Ae-jJ-N1y" secondAttribute="leadingMargin" id="nf4-GL-wJq"/>
+                                                <constraint firstItem="JWj-x5-Z9d" firstAttribute="top" secondItem="7Ae-jJ-N1y" secondAttribute="topMargin" id="xZ8-p3-1cT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="countryName" destination="lvV-Qs-eHB" id="1aI-nt-vaU"/>
+                                            <outlet property="flagImage" destination="gHY-6n-bz0" id="aZH-OA-lyQ"/>
+                                            <outlet property="stackView" destination="JWj-x5-Z9d" id="CZA-F1-vcq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="H4O-6A-ZFD" id="eOa-I9-lcJ"/>
+                                    <outlet property="delegate" destination="H4O-6A-ZFD" id="Nog-Ox-Vev"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7nh-Q5-cFH" firstAttribute="top" secondItem="nLF-Lf-AlL" secondAttribute="top" id="0Iu-Ph-TnQ"/>
+                            <constraint firstItem="Y56-aD-j66" firstAttribute="top" secondItem="7nh-Q5-cFH" secondAttribute="bottom" id="GkP-t7-q0s"/>
+                            <constraint firstItem="7nh-Q5-cFH" firstAttribute="leading" secondItem="nLF-Lf-AlL" secondAttribute="leading" id="aJI-ZR-lb6"/>
+                            <constraint firstAttribute="trailing" secondItem="7nh-Q5-cFH" secondAttribute="trailing" id="fWh-MZ-bJU"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1200"/>
+                    <connections>
+                        <outlet property="tableView" destination="7nh-Q5-cFH" id="Hn3-ls-uEd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5II-WB-QIc" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="876" y="203.29835082458771"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lb" width="1000" height="667"/>
+    </resources>
 </document>

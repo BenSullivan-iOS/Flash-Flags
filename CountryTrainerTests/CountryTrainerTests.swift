@@ -10,27 +10,41 @@ import XCTest
 @testable import CountryTrainer
 
 class CountryTrainerTests: XCTestCase {
+  
+  override func setUp() {
+    super.setUp()
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+  }
+  
+  override func tearDown() {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    super.tearDown()
+  }
+  
+  func testDataService() {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    let vc = ViewController()
+    XCTAssertNotNil(vc.createCountries())
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    let i = 0
+    i.distance(to: 2)
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+  }
+  
+  func testCountry() {
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    let country = Country(name: "England", currency: "GBP", flag: "UK", continent: Continent.Europe)
     
+    XCTAssert(country.name == "England")
+    XCTAssert(country.currency == "GBP")
+    XCTAssert(country.flag == "UK")
+    XCTAssert(country.cont == Continent.Europe)
+    
+  }
+  
+  func testGame() {
+    
+//    let i = Game
+    
+  }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B54179E11D67583600B70864 /* AnswerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54179E01D67583600B70864 /* AnswerButtons.swift */; };
 		B549C48C1D5C7DA5000409B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C48B1D5C7DA5000409B3 /* AppDelegate.swift */; };
 		B549C48E1D5C7DA5000409B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C48D1D5C7DA5000409B3 /* ViewController.swift */; };
 		B549C4911D5C7DA5000409B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B549C48F1D5C7DA5000409B3 /* Main.storyboard */; };
@@ -15,6 +16,28 @@
 		B549C4991D5C7DA5000409B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B549C4971D5C7DA5000409B3 /* LaunchScreen.storyboard */; };
 		B549C4A41D5C7DA5000409B3 /* CountryTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4A31D5C7DA5000409B3 /* CountryTrainerTests.swift */; };
 		B549C4AF1D5C7DA5000409B3 /* CountryTrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4AE1D5C7DA5000409B3 /* CountryTrainerUITests.swift */; };
+		B549C4BE1D5C7E63000409B3 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = B549C4BD1D5C7E63000409B3 /* countries.json */; };
+		B549C4C31D6207CD000409B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C21D6207CD000409B3 /* DataService.swift */; };
+		B549C4C41D6207CD000409B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C21D6207CD000409B3 /* DataService.swift */; };
+		B549C4C51D6208B5000409B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C21D6207CD000409B3 /* DataService.swift */; };
+		B549C4C71D659F13000409B3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C61D659F13000409B3 /* Country.swift */; };
+		B549C4CA1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */; };
+		B549C4CB1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */; };
+		B549C4CC1D65AD27000409B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C48D1D5C7DA5000409B3 /* ViewController.swift */; };
+		B549C4CE1D65B249000409B3 /* RemovedCountries in Resources */ = {isa = PBXBuildFile; fileRef = B549C4CD1D65B249000409B3 /* RemovedCountries */; };
+		B549C4D21D65ED8B000409B3 /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D11D65ED8A000409B3 /* Continent.swift */; };
+		B549C4D31D65EDCF000409B3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C61D659F13000409B3 /* Country.swift */; };
+		B549C4D41D65EDCF000409B3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C61D659F13000409B3 /* Country.swift */; };
+		B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D11D65ED8A000409B3 /* Continent.swift */; };
+		B549C4D71D65FA08000409B3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D61D65FA08000409B3 /* TableViewController.swift */; };
+		B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D81D65FA63000409B3 /* GameCell.swift */; };
+		B549C4DA1D65FA63000409B3 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D81D65FA63000409B3 /* GameCell.swift */; };
+		B549C4DB1D6603B2000409B3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D61D65FA08000409B3 /* TableViewController.swift */; };
+		B549C4DC1D6603BF000409B3 /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D11D65ED8A000409B3 /* Continent.swift */; };
+		B549C4DE1D660E94000409B3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4DD1D660E94000409B3 /* Game.swift */; };
+		B549C4DF1D660E94000409B3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4DD1D660E94000409B3 /* Game.swift */; };
+		B549C4E11D66306D000409B3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4E01D66306D000409B3 /* GameType.swift */; };
+		B549C4E21D66306D000409B3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4E01D66306D000409B3 /* GameType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B54179E01D67583600B70864 /* AnswerButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerButtons.swift; sourceTree = "<group>"; };
 		B549C4881D5C7DA5000409B3 /* CountryTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B549C48B1D5C7DA5000409B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B549C48D1D5C7DA5000409B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +73,16 @@
 		B549C4AA1D5C7DA5000409B3 /* CountryTrainerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryTrainerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B549C4AE1D5C7DA5000409B3 /* CountryTrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTrainerUITests.swift; sourceTree = "<group>"; };
 		B549C4B01D5C7DA5000409B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B549C4BD1D5C7E63000409B3 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		B549C4C21D6207CD000409B3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		B549C4C61D659F13000409B3 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlagAssets.xcassets; sourceTree = "<group>"; };
+		B549C4CD1D65B249000409B3 /* RemovedCountries */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RemovedCountries; sourceTree = "<group>"; };
+		B549C4D11D65ED8A000409B3 /* Continent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Continent.swift; sourceTree = "<group>"; };
+		B549C4D61D65FA08000409B3 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B549C4D81D65FA63000409B3 /* GameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		B549C4DD1D660E94000409B3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		B549C4E01D66306D000409B3 /* GameType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +113,7 @@
 		B549C47F1D5C7DA5000409B3 = {
 			isa = PBXGroup;
 			children = (
+				B549C4BC1D5C7E48000409B3 /* Resources */,
 				B549C48A1D5C7DA5000409B3 /* CountryTrainer */,
 				B549C4A21D5C7DA5000409B3 /* CountryTrainerTests */,
 				B549C4AD1D5C7DA5000409B3 /* CountryTrainerUITests */,
@@ -99,11 +134,12 @@
 		B549C48A1D5C7DA5000409B3 /* CountryTrainer */ = {
 			isa = PBXGroup;
 			children = (
+				B549C4C01D620780000409B3 /* Model */,
+				B549C4C11D620785000409B3 /* View */,
+				B549C4BF1D620779000409B3 /* Controller */,
 				B549C48B1D5C7DA5000409B3 /* AppDelegate.swift */,
-				B549C48D1D5C7DA5000409B3 /* ViewController.swift */,
-				B549C48F1D5C7DA5000409B3 /* Main.storyboard */,
 				B549C4951D5C7DA5000409B3 /* Assets.xcassets */,
-				B549C4971D5C7DA5000409B3 /* LaunchScreen.storyboard */,
+				B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */,
 				B549C49A1D5C7DA5000409B3 /* Info.plist */,
 				B549C4921D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld */,
 			);
@@ -126,6 +162,47 @@
 				B549C4B01D5C7DA5000409B3 /* Info.plist */,
 			);
 			path = CountryTrainerUITests;
+			sourceTree = "<group>";
+		};
+		B549C4BC1D5C7E48000409B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B549C4BD1D5C7E63000409B3 /* countries.json */,
+				B549C4CD1D65B249000409B3 /* RemovedCountries */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B549C4BF1D620779000409B3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B549C48D1D5C7DA5000409B3 /* ViewController.swift */,
+				B549C4D61D65FA08000409B3 /* TableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		B549C4C01D620780000409B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B549C4C21D6207CD000409B3 /* DataService.swift */,
+				B549C4C61D659F13000409B3 /* Country.swift */,
+				B549C4D11D65ED8A000409B3 /* Continent.swift */,
+				B549C4DD1D660E94000409B3 /* Game.swift */,
+				B549C4E01D66306D000409B3 /* GameType.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B549C4C11D620785000409B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B549C4971D5C7DA5000409B3 /* LaunchScreen.storyboard */,
+				B549C48F1D5C7DA5000409B3 /* Main.storyboard */,
+				B549C4D81D65FA63000409B3 /* GameCell.swift */,
+				B54179E01D67583600B70864 /* AnswerButtons.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,18 +268,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Ben Sullivan";
 				TargetAttributes = {
 					B549C4871D5C7DA5000409B3 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					B549C49E1D5C7DA5000409B3 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = B549C4871D5C7DA5000409B3;
 					};
 					B549C4A91D5C7DA5000409B3 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = B549C4871D5C7DA5000409B3;
 					};
 				};
@@ -233,7 +313,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B549C4991D5C7DA5000409B3 /* LaunchScreen.storyboard in Resources */,
+				B549C4CA1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */,
+				B549C4CE1D65B249000409B3 /* RemovedCountries in Resources */,
 				B549C4961D5C7DA5000409B3 /* Assets.xcassets in Resources */,
+				B549C4BE1D5C7E63000409B3 /* countries.json in Resources */,
 				B549C4911D5C7DA5000409B3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B549C4CB1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,8 +344,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B549C48E1D5C7DA5000409B3 /* ViewController.swift in Sources */,
+				B549C4DE1D660E94000409B3 /* Game.swift in Sources */,
+				B549C4D71D65FA08000409B3 /* TableViewController.swift in Sources */,
+				B549C4E11D66306D000409B3 /* GameType.swift in Sources */,
+				B54179E11D67583600B70864 /* AnswerButtons.swift in Sources */,
 				B549C4941D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld in Sources */,
+				B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */,
+				B549C4D21D65ED8B000409B3 /* Continent.swift in Sources */,
 				B549C48C1D5C7DA5000409B3 /* AppDelegate.swift in Sources */,
+				B549C4C71D659F13000409B3 /* Country.swift in Sources */,
+				B549C4C31D6207CD000409B3 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +361,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B549C4D31D65EDCF000409B3 /* Country.swift in Sources */,
+				B549C4DB1D6603B2000409B3 /* TableViewController.swift in Sources */,
+				B549C4E21D66306D000409B3 /* GameType.swift in Sources */,
+				B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */,
 				B549C4A41D5C7DA5000409B3 /* CountryTrainerTests.swift in Sources */,
+				B549C4CC1D65AD27000409B3 /* ViewController.swift in Sources */,
+				B549C4C41D6207CD000409B3 /* DataService.swift in Sources */,
+				B549C4DA1D65FA63000409B3 /* GameCell.swift in Sources */,
+				B549C4DF1D660E94000409B3 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +377,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B549C4DC1D6603BF000409B3 /* Continent.swift in Sources */,
 				B549C4AF1D5C7DA5000409B3 /* CountryTrainerUITests.swift in Sources */,
+				B549C4D41D65EDCF000409B3 /* Country.swift in Sources */,
+				B549C4C51D6208B5000409B3 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,8 +433,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -376,8 +481,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -396,6 +503,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -409,6 +517,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -420,6 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -431,6 +541,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CountryTrainer.app/CountryTrainer";
 			};
 			name = Debug;
@@ -443,6 +554,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CountryTrainer.app/CountryTrainer";
 			};
 			name = Release;
@@ -454,6 +566,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CountryTrainer;
 			};
 			name = Debug;
@@ -465,6 +578,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CountryTrainer;
 			};
 			name = Release;
@@ -488,6 +602,7 @@
 				B549C4B51D5C7DA5000409B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B549C4B61D5C7DA5000409B3 /* Build configuration list for PBXNativeTarget "CountryTrainerTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +611,7 @@
 				B549C4B81D5C7DA5000409B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B549C4B91D5C7DA5000409B3 /* Build configuration list for PBXNativeTarget "CountryTrainerUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +620,7 @@
 				B549C4BB1D5C7DA5000409B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
