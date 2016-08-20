@@ -9,19 +9,19 @@
 struct Game: GameType {
   
   fileprivate var _countries: [Country]
-  fileprivate var _tracker = [String : Bool]()
   
-  var cellTracker = [String : Bool]()
-  
-  var tracker: [String : Bool] {
+  var progress: String {
+
+    var score = 0
     
-    get {
-      return _tracker
+    for i in self.tracker.answerTracker where i.value == true {
+      score += 1
     }
-    set {
-      _tracker = newValue
-    }
+    
+    return "\(score)/\(_countries.count)"
   }
+  
+  var tracker: Tracker
   
   var countries: [Country] {
     return _countries
@@ -31,11 +31,9 @@ struct Game: GameType {
     return countries.count
   }
   
-  var count = 0
-  
   init(countries: [Country]) {
     self._countries = countries
-    loadTracker()
-    cellTracker = tracker
+    self.tracker = Tracker(countries: countries)
+//    self.score = 0
   }
 }

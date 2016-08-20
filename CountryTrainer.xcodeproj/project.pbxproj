@@ -38,6 +38,10 @@
 		B549C4DF1D660E94000409B3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4DD1D660E94000409B3 /* Game.swift */; };
 		B549C4E11D66306D000409B3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4E01D66306D000409B3 /* GameType.swift */; };
 		B549C4E21D66306D000409B3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4E01D66306D000409B3 /* GameType.swift */; };
+		B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B471D6855040023DC7A /* GameTracker.swift */; };
+		B55A6B491D6855040023DC7A /* GameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B471D6855040023DC7A /* GameTracker.swift */; };
+		B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
+		B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,8 @@
 		B549C4D81D65FA63000409B3 /* GameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		B549C4DD1D660E94000409B3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B549C4E01D66306D000409B3 /* GameType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
+		B55A6B471D6855040023DC7A /* GameTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTracker.swift; sourceTree = "<group>"; };
+		B55A6B4A1D6874470023DC7A /* FlagImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,11 +191,10 @@
 		B549C4C01D620780000409B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B55A6B461D6854F00023DC7A /* Game */,
 				B549C4C21D6207CD000409B3 /* DataService.swift */,
 				B549C4C61D659F13000409B3 /* Country.swift */,
 				B549C4D11D65ED8A000409B3 /* Continent.swift */,
-				B549C4DD1D660E94000409B3 /* Game.swift */,
-				B549C4E01D66306D000409B3 /* GameType.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -201,8 +206,19 @@
 				B549C48F1D5C7DA5000409B3 /* Main.storyboard */,
 				B549C4D81D65FA63000409B3 /* GameCell.swift */,
 				B54179E01D67583600B70864 /* AnswerButtons.swift */,
+				B55A6B4A1D6874470023DC7A /* FlagImageView.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		B55A6B461D6854F00023DC7A /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				B549C4DD1D660E94000409B3 /* Game.swift */,
+				B549C4E01D66306D000409B3 /* GameType.swift */,
+				B55A6B471D6855040023DC7A /* GameTracker.swift */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +289,7 @@
 				TargetAttributes = {
 					B549C4871D5C7DA5000409B3 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 2KVYSWMVXX;
 						LastSwiftMigration = 0800;
 					};
 					B549C49E1D5C7DA5000409B3 = {
@@ -353,6 +370,8 @@
 				B549C4D21D65ED8B000409B3 /* Continent.swift in Sources */,
 				B549C48C1D5C7DA5000409B3 /* AppDelegate.swift in Sources */,
 				B549C4C71D659F13000409B3 /* Country.swift in Sources */,
+				B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */,
+				B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */,
 				B549C4C31D6207CD000409B3 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,11 +384,13 @@
 				B549C4DB1D6603B2000409B3 /* TableViewController.swift in Sources */,
 				B549C4E21D66306D000409B3 /* GameType.swift in Sources */,
 				B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */,
+				B55A6B491D6855040023DC7A /* GameTracker.swift in Sources */,
 				B549C4A41D5C7DA5000409B3 /* CountryTrainerTests.swift in Sources */,
 				B549C4CC1D65AD27000409B3 /* ViewController.swift in Sources */,
 				B549C4C41D6207CD000409B3 /* DataService.swift in Sources */,
 				B549C4DA1D65FA63000409B3 /* GameCell.swift in Sources */,
 				B549C4DF1D660E94000409B3 /* Game.swift in Sources */,
+				B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2KVYSWMVXX;
 				INFOPLIST_FILE = CountryTrainer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
@@ -525,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2KVYSWMVXX;
 				INFOPLIST_FILE = CountryTrainer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";

@@ -14,30 +14,50 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
   
   var game: Game?
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    tableView.estimatedRowHeight = 250
+    tableView.rowHeight = UITableViewAutomaticDimension
+    
+    self.title = "yo bro"
+  }
+  
   func answered(country: String, result: Bool) {
     print("answered!", result)
     
-    game?.updateTracker(country, result: result)
+    game?.tracker.updateTracker(country, result: result)
     
-    for i in (game?.cellTracker)! where i.0 == country {
+    for i in (game?.tracker.remainingCells)! where i.0 == country {
       
-      _ = game?.cellTracker.removeValue(forKey: country)
-      print(game?.cellTracker)
-      tableView.beginUpdates()
-      tableView.endUpdates()
+      _ = game?.tracker.removeRemainingCell(country: country)
+      
+      print(game?.tracker.remainingCells)
+      
     }
+    
+    for a in (game?.tracker.remainingCountries.indices)! where game?.tracker.remainingCountries[a].name == country {
+      game?.tracker.removeRemainingCountry(at: a)
+      break
+    }
+    
+    
+    tableView.deleteRows(at: [selectedRow!], with: UITableViewRowAnimation.fade)
+    
+    print(game?.progress)
+    
+    self.title = game?.progress
+    
+    
   }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-      tableView.estimatedRowHeight = 250
-      tableView.rowHeight = UITableViewAutomaticDimension
 
-    }
+  
+  var selectedRow: IndexPath? = nil
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
+    selectedRow = indexPath
     let cell = tableView.cellForRow(at: indexPath) as! GameCell
     DispatchQueue.main.async {
 
@@ -89,7 +109,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
       
       guard let game = game else { return 0 }
       
-        return game.cellTracker.count
+        return game.tracker.remainingCells.count
     }
 
   
@@ -97,7 +117,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameCell
 
         cell.delegate = self
-        cell.configureCell((game?.countries[(indexPath as NSIndexPath).row])!)
+        cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
       
         return cell
     }
@@ -108,18 +128,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
     }
     */
 

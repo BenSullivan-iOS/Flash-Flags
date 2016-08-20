@@ -39,6 +39,7 @@ class GameCell: UITableViewCell {
     countryName.text = country.name
     
   }
+  
   override func prepareForReuse() {
     self.stackView.arrangedSubviews[1].isHidden = true
     self.stackView.arrangedSubviews.last?.isHidden = true
@@ -47,6 +48,13 @@ class GameCell: UITableViewCell {
   func changeCellStatus(selected: Bool) {
     
     if selected == true {
+      
+      self.stackView.arrangedSubviews.last?.alpha = 0
+
+      UIView.animate(withDuration: 0.5, animations: {
+        
+        self.stackView.arrangedSubviews.last?.alpha = 1
+      })
       
       self.stackView.arrangedSubviews[1].isHidden = !selected
       self.stackView.arrangedSubviews.last?.isHidden = !selected

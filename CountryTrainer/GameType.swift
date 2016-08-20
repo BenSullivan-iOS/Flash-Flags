@@ -9,39 +9,7 @@
 protocol GameType {
   
   var countries: [Country] { get }
-  var tracker: [String: Bool] { get set }
   var numberOfFlags: Int { get }
-  var count: Int { get set }
-  mutating func loadTracker()
-  mutating func updateTracker(_ country: String, result: Bool)
+  var tracker: Tracker { get set }
   
-}
-
-extension GameType {
-  
-  mutating func loadTracker() {
-    
-    countries.forEach {
-      
-      tracker[$0.name] = false
-    }
-  }
-  
-  mutating func updateTracker(_ country: String, result: Bool) {
-    
-    if count == countries.count {
-      print(count)
-      print(tracker)
-      print(numberOfFlags)
-      print("Game completed")
-      
-    } else {
-      
-      count += 1
-      
-      tracker[country] = result
-      
-      print(tracker)
-    }
-  }
 }

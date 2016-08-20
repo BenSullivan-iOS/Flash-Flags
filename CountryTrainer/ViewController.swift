@@ -16,6 +16,8 @@ class ViewController: UIViewController, DataService {
   fileprivate var chosenOnes = [Country]()
   fileprivate var newGame: Game? = nil
   
+  private let numberOfFlagsSelected = 5
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -29,9 +31,7 @@ class ViewController: UIViewController, DataService {
     
     if let dest = segue.destination as? TableViewController {
       
-//      dest.countries = chosenOnes
       dest.game = newGame!
-      
     }
   }
   
@@ -45,10 +45,19 @@ class ViewController: UIViewController, DataService {
   
   func startNewGame() {
     
-    let numberOfFlagsSelected = 5
+    var chosenNumbers = Set<Int>()
     
     for _ in 1...numberOfFlagsSelected {
-      chosenOnes.append(countries[Int(arc4random_uniform(236))])
+      
+      chosenNumbers.insert(Int(arc4random_uniform(236)))
+      
+      print(chosenNumbers)
+      
+    }
+    
+    for i in chosenNumbers {
+      
+      chosenOnes.append(countries[i])
       
       print(chosenOnes.count)
       
@@ -59,26 +68,10 @@ class ViewController: UIViewController, DataService {
   }
   
   @IBAction func correctAnswer(_ sender: UIButton) {
-    print(countries.count)
-    print(countries)
-      newGame?.updateTracker(chosenOnes[Int(arc4random_uniform(5))].name, result: true)
+//    print(countries.count)
+//    print(countries)
+//    
+//    newGame?.tracker.updateTracker(chosenOnes[Int(arc4random_uniform(UInt32(numberOfFlagsSelected)))].name, result: true)
     
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }
