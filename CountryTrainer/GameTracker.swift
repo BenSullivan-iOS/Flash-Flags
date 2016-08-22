@@ -9,25 +9,20 @@
 protocol GameTracker {
   var remainingCells: [String : Bool] { get }
   var remainingCountries: [Country] { get }
-  var answerTracker: [String : Bool] { get set }
-  var _answers: [String : Bool] { get set }
-}
+  var answers: [String : Bool] { get }
+  init(countries: [Country])
 
-extension GameTracker {
-  
-  mutating func loadTracker() {
-    
-    remainingCountries.forEach {
-      
-      _answers[$0.name] = false
-    }
-  }
 }
 
 struct Tracker: GameTracker {
   
   fileprivate var _remainingCountries = [Country]()
   fileprivate var _remainingCells = [String : Bool]()
+  fileprivate var _answers = [String : Bool]()
+  
+  internal var answers: [String : Bool] {
+    return _answers
+  }
 
   internal var remainingCountries: [Country] {
     return _remainingCountries
@@ -36,14 +31,17 @@ struct Tracker: GameTracker {
   internal var remainingCells: [String : Bool] {
     return _remainingCells
   }
-  internal var _answers = [String : Bool]()
   
   init(countries: [Country]) {
     
     _remainingCountries = countries
-    _remainingCells = answerTracker
-    loadTracker()
     
+    remainingCountries.forEach {
+      
+      _answers[$0.name] = false
+    }
+    
+    _remainingCells = _answers
   }
   
   mutating func removeRemainingCountry(at index: Int) {
@@ -53,19 +51,9 @@ struct Tracker: GameTracker {
     _remainingCells.removeValue(forKey: country)
   }
   
-  var answerTracker: [String : Bool] {
-    
-    get {
-      return _answers
-    }
-    set {
-      _answers = newValue
-    }
-  }
-  
   mutating func updateTracker(_ country: String, result: Bool) {
     
-    answerTracker[country] = result
+    _answers[country] = result
     
     if remainingCountries.count == 1 {
       

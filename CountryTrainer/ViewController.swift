@@ -58,9 +58,7 @@ class ViewController: UIViewController, DataService {
     for i in chosenNumbers {
       
       chosenOnes.append(countries[i])
-      
-      print(chosenOnes.count)
-      
+      print(countries[i])
     }
     
     newGame = Game(countries: chosenOnes)

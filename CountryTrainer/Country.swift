@@ -6,6 +6,14 @@
 //  Copyright © 2016 Ben Sullivan. All rights reserved.
 //
 
+extension Country {
+  
+  static func ==(lhs: Country, rhs: Country) -> Bool {
+    
+    return lhs.cont == rhs.cont && lhs.currency == rhs.currency && lhs.flag == rhs.flag && lhs.name == rhs.name
+  }
+}
+
 struct Country {
   
   fileprivate let _name: String!

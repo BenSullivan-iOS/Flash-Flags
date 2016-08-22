@@ -108,6 +108,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // #warning Incomplete implementation, return the number of rows
       
       guard let game = game else { return 0 }
+      print(game.tracker.remainingCells)
+      
       
         return game.tracker.remainingCells.count
     }
@@ -116,6 +118,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameCell
 
+      print(game?.tracker.remainingCountries)
+      
+      
         cell.delegate = self
         cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
       
