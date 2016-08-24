@@ -41,56 +41,95 @@ class CustomTransitionViewController: UIViewController, UIViewControllerTransiti
   }
   
   func present(sender: AnyObject) {
-    var modalViewController = ModalViewController()
-    modalViewController.transitioningDelegate = self
-    modalViewController.modalPresentationStyle = UIModalPresentationStyle.custom
+    
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "result") as! ModalViewController
+//    self.present(vc, animated: true, completion: nil)
+//    var modalViewController = ModalViewController()
+    vc.transitioningDelegate = self
+    vc.modalPresentationStyle = UIModalPresentationStyle.custom
     
     
 //    present(modalViewController, animated: true, completion: nil)
-    self.navigationController!.present(modalViewController, animated: true, completion: nil)
+    self.navigationController!.present(vc, animated: true, completion: nil)
   }
   
 }
 
 class ModalViewController: UIViewController {
   
+  var circleView: CircleView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    view.backgroundColor = .yellow
+    
     view.layer.cornerRadius = 8.0
-//    view.backgroundColor = customBlueColor
+    
+    view.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
+
     addDismissButton()
     
-    self.view.backgroundColor = .white
-    self.addCircleView()
-    self.addSlider()
+    addCircleView()
+    addSlider()
   }
-  // MARK: - Private Instance methods
   
+  var dismissButton = UIButton(type: .system)
+
   func addDismissButton() {
-    var dismissButton = UIButton(type: .system)
+    
     dismissButton.translatesAutoresizingMaskIntoConstraints = false
     dismissButton.tintColor = .white
     dismissButton.titleLabel?.font = UIFont(name: "Avenir", size: 20)
     dismissButton.setTitle("Dismiss", for: .normal)
+    dismissButton.contentMode = .center
     dismissButton.addTarget(self, action: #selector(self.dismiss(sender:)), for: .touchUpInside)
+   
     self.view!.addSubview(dismissButton)
     self.view!.addConstraint(NSLayoutConstraint(item: dismissButton, attribute: .centerX, relatedBy: .equal, toItem: self.view!, attribute: .centerX, multiplier: 1.0, constant: 0.0))
     self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[dismissButton]-|", options: [], metrics: nil, views: ["dismissButton" : dismissButton]))
+    
+    print(dismissButton.bounds)
   }
   
   func dismiss(sender: AnyObject) {
     self.dismiss(animated: true, completion: { _ in })
   }
   
-  var circleView: CircleView!
-  
   func addCircleView() {
-    let frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+    
+    let frame = CGRect(origin: dismissButton.center, size: CGSize(width: 100, height: 100))
+    
     self.circleView = CircleView(frame: frame)
     self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
-    self.circleView.center = self.view.center
+    
+    let screenSize = UIScreen.main.bounds
+    
+    let screenWidth = screenSize.width
+    let screenHeight = screenSize.height
+    
+    let screenCenterWidth = screenSize.width * 0.5
+    let screenCenterHeight = screenSize.height * 0.5
+
+    self.circleView.center = dismissButton.center//CGPoint(x: screenCenterWidth, y: screenCenterHeight)
     self.view!.addSubview(self.circleView)
+
+    self.view.addConstraint(NSLayoutConstraint(item: circleView,
+                                               attribute: .centerX,
+                                               relatedBy: .equal,
+                                               toItem: self.view!,
+                                               attribute: .centerX,
+                                               multiplier: 1.0,
+                                               constant: 0.0))
+    
+    self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[circleView]-|",
+                                                             options: [],
+                                                             metrics: nil,
+                                                             views: ["circleView" : circleView]))
+
+    print(circleView.bounds)
+    
   }
   
   @IBAction func animateCircle(_ sender: UIButton) {
@@ -104,7 +143,6 @@ class ModalViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     
     let value: CGFloat = 0.75
-    
     self.circleView.setStrokeEnd(strokeEnd: value, animated: true)
   }
   
@@ -126,6 +164,11 @@ class ModalViewController: UIViewController {
     self.circleView.setStrokeEnd(strokeEnd: CGFloat(slider.value), animated: true)
   }
 }
+
+
+
+
+
 
 class CircleViewController: UIViewController {
   

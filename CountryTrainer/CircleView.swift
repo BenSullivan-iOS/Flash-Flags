@@ -42,7 +42,7 @@ class CircleView: UIView {
     
     let lineWidth: CGFloat = 4.0
     let radius: CGFloat = self.bounds.width / 2 - lineWidth / 2
-    self.circleLayer = CAShapeLayer() //was .layer
+    self.circleLayer = CAShapeLayer()
     let rect = CGRect(x: lineWidth / 2, y: lineWidth / 2, width: radius * 2, height: radius * 2)
     self.circleLayer.path = UIBezierPath(roundedRect: rect, cornerRadius: radius).cgPath
     self.circleLayer.strokeColor = self.tintColor.cgColor

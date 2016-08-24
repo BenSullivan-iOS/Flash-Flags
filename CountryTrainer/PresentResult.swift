@@ -18,6 +18,7 @@ class PresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
   }
   
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    
     let fromView = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!.view!
     fromView.tintAdjustmentMode = .dimmed
     fromView.isUserInteractionEnabled = false
