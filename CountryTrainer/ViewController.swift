@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 class ViewController: UIViewController, DataService {
   
@@ -16,10 +17,11 @@ class ViewController: UIViewController, DataService {
   fileprivate var chosenOnes = [Country]()
   fileprivate var newGame: Game? = nil
   
-  private let numberOfFlagsSelected = 5
+  private let numberOfFlagsSelected = 25
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     
     guard let countryArray = createCountries() else { print("json error"); return }
     

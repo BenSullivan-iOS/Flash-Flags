@@ -12,31 +12,26 @@ protocol GameDelegate {
   func answered(country: String, result: Bool)
 }
 
+//@IBDesignable
 class GameCell: UITableViewCell {
   
   @IBOutlet fileprivate weak var stackView: UIStackView!
-  @IBOutlet weak var flagImage: UIImageView!
+  @IBOutlet weak var flagImage: FlagImageView!
   @IBOutlet weak var countryName: UILabel!
   
   var delegate: GameDelegate? = nil
   
   @IBAction func answeredCorrectly(_ sender: UIButton) {
-    
     delegate?.answered(country: countryName.text!, result: true)
   }
   
   @IBAction func answeredIncorrectly(_ sender: UIButton) {
     delegate?.answered(country: countryName.text!, result: false)
   }
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     stackView.arrangedSubviews.last?.isHidden = true
-  }
-  
-  func configureCell(_ country: Country) {
-    
-    flagImage.image = UIImage(named: country.flag)
-    countryName.text = country.name
     
   }
   
@@ -45,7 +40,18 @@ class GameCell: UITableViewCell {
     self.stackView.arrangedSubviews.last?.isHidden = true
   }
   
+  func configureCell(_ country: Country) {
+    
+    flagImage.image = UIImage(named: country.flag)
+    countryName.text = country.name
+    flagImage.animate()
+  }
+  
+
+  
   func changeCellStatus(selected: Bool) {
+    
+//    let i = AnimationEngine(constraints: [NSLayoutConstraint])
     
     if selected == true {
       

@@ -25,10 +25,6 @@ class CountryTrainerTests: XCTestCase {
     
     let vc = ViewController()
     XCTAssertNotNil(vc.createCountries())
-    
-    let i = 0
-    i.distance(to: 2)
-    
   }
   
   func testGame() {
@@ -90,5 +86,16 @@ class CountryTrainerTests: XCTestCase {
     XCTAssert(country.flag == "UK")
     XCTAssert(country.cont == Continent.Europe)
     
+  }
+  
+  func testContinent() {
+    
+    XCTAssert(Continent.Oceania.rawValue == "Oceania")
+    XCTAssert(Continent.Africa.rawValue == "Africa")
+    XCTAssert(Continent.Asia.rawValue == "Asia")
+    XCTAssert(Continent.Americas.rawValue == "Americas")
+    XCTAssert(Continent.Europe.rawValue == "Europe")
+    XCTAssert(Continent.None.rawValue == "")
+
   }
 }
