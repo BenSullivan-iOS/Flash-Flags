@@ -58,39 +58,46 @@ class CustomTransitionViewController: UIViewController, UIViewControllerTransiti
 
 class ModalViewController: UIViewController {
   
+  @IBOutlet weak var menuButton: ResultButton!
+  @IBOutlet weak var retryButton: ResultButton!
+  @IBOutlet weak var percentageLabel: UILabel!
+  
   var circleView: CircleView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .yellow
-    
+    percentageLabel.alpha = 0
     view.layer.cornerRadius = 8.0
     
-    view.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
-
-    addDismissButton()
+    menuButton.alpha = 0
+    retryButton.alpha = 0
     
     addCircleView()
-    addSlider()
+    
+    self.circleView.setStrokeEnd(strokeEnd: 0.0, animated: false)
+
   }
   
-  var dismissButton = UIButton(type: .system)
-
-  func addDismissButton() {
+  override func viewDidAppear(_ animated: Bool) {
     
-    dismissButton.translatesAutoresizingMaskIntoConstraints = false
-    dismissButton.tintColor = .white
-    dismissButton.titleLabel?.font = UIFont(name: "Avenir", size: 20)
-    dismissButton.setTitle("Dismiss", for: .normal)
-    dismissButton.contentMode = .center
-    dismissButton.addTarget(self, action: #selector(self.dismiss(sender:)), for: .touchUpInside)
-   
-    self.view!.addSubview(dismissButton)
-    self.view!.addConstraint(NSLayoutConstraint(item: dismissButton, attribute: .centerX, relatedBy: .equal, toItem: self.view!, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-    self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[dismissButton]-|", options: [], metrics: nil, views: ["dismissButton" : dismissButton]))
+    let value: CGFloat = 0.75
+    self.circleView.setStrokeEnd(strokeEnd: value, animated: true)
     
-    print(dismissButton.bounds)
+    Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.unhideButtons), userInfo: nil, repeats: false)
+    
+    
+      self.percentageLabel.alpha = 1
+    
+    let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+    scaleAnim?.velocity = NSValue(cgSize: CGSize(width: 5.0, height: 5.0))
+    scaleAnim?.toValue = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
+    scaleAnim?.springBounciness = 18
+    percentageLabel.layer.pop_add(scaleAnim, forKey: "layerScaleSpringAnimation")
+  }
+  
+  @IBAction func menuButton(_ sender: AnyObject) {
+    dismiss(sender: sender)
   }
   
   func dismiss(sender: AnyObject) {
@@ -99,36 +106,27 @@ class ModalViewController: UIViewController {
   
   func addCircleView() {
     
-    let frame = CGRect(origin: dismissButton.center, size: CGSize(width: 100, height: 100))
-    
-    self.circleView = CircleView(frame: frame)
-    self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
-    
     let screenSize = UIScreen.main.bounds
     
     let screenWidth = screenSize.width
     let screenHeight = screenSize.height
     
-    let screenCenterWidth = screenSize.width * 0.5
-    let screenCenterHeight = screenSize.height * 0.5
-
-    self.circleView.center = dismissButton.center//CGPoint(x: screenCenterWidth, y: screenCenterHeight)
-    self.view!.addSubview(self.circleView)
-
-    self.view.addConstraint(NSLayoutConstraint(item: circleView,
-                                               attribute: .centerX,
-                                               relatedBy: .equal,
-                                               toItem: self.view!,
-                                               attribute: .centerX,
-                                               multiplier: 1.0,
-                                               constant: 0.0))
+    let screenCenterWidth = screenSize.width * 0.5 - 50
+//    let screenCenterHeight = screenSize.height * 0.5 - 150
+    let screenCenterHeight = screenSize.height * 0.5 - 170
     
-    self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[circleView]-|",
-                                                             options: [],
-                                                             metrics: nil,
-                                                             views: ["circleView" : circleView]))
-
-    print(circleView.bounds)
+    let center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
+    
+    let frame = CGRect(origin: center, size: CGSize(width: screenSize.width / 2 , height: screenSize.width / 2))
+    
+    self.circleView = CircleView(frame: frame)
+    self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
+    
+    circleView.contentMode = .center
+    
+    self.circleView.center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
+    
+    self.view!.addSubview(self.circleView)
     
   }
   
@@ -140,29 +138,70 @@ class ModalViewController: UIViewController {
     
   }
   
-  override func viewDidAppear(_ animated: Bool) {
+
+  
+  func unhideButtons() {
     
-    let value: CGFloat = 0.75
-    self.circleView.setStrokeEnd(strokeEnd: value, animated: true)
+    retryButton.alpha = 1
+    
+    let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+    scaleAnim?.velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
+    scaleAnim?.toValue = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
+    scaleAnim?.springBounciness = 18
+    retryButton.layer.pop_add(scaleAnim, forKey: "layerScaleSpringAnimation")
+    
+    Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.unhideMenuButton), userInfo: nil, repeats: false)
+
   }
   
-  func addSlider() {
-    var slider = UISlider()
-    slider.value = 0.0
-    slider.tintColor = UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1)
-    slider.translatesAutoresizingMaskIntoConstraints = false
-    slider.addTarget(self, action: #selector(self.sliderChanged), for: .valueChanged)
-    self.view!.addSubview(slider)
-    let views = ["slider" : slider, "_circleView" : circleView] as [String : Any]
-    //NSDictionaryOfVariableBindings(slider!, circleView)
-    self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[_circleView]-(40)-[slider]", options: [], metrics: nil, views: views))
-    self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[slider]-|", options: [], metrics: nil, views: views))
-    self.circleView.setStrokeEnd(strokeEnd: CGFloat(slider.value), animated: false)
+  func unhideMenuButton() {
+    
+    menuButton.alpha = 1
+
+    
+    let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+    scaleAnim?.velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
+    scaleAnim?.toValue = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
+    scaleAnim?.springBounciness = 18
+    menuButton.layer.pop_add(scaleAnim, forKey: "layerScaleSpringAnimation")
   }
   
-  func sliderChanged(slider: UISlider) {
-    self.circleView.setStrokeEnd(strokeEnd: CGFloat(slider.value), animated: true)
-  }
+//  func addSlider() {
+//    var slider = UISlider()
+//    slider.value = 0.0
+//    slider.tintColor = UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1)
+//    slider.translatesAutoresizingMaskIntoConstraints = false
+//    slider.addTarget(self, action: #selector(self.sliderChanged), for: .valueChanged)
+//    self.view!.addSubview(slider)
+//    let views = ["slider" : slider, "_circleView" : circleView] as [String : Any]
+//    //NSDictionaryOfVariableBindings(slider!, circleView)
+//    self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[_circleView]-(40)-[slider]", options: [], metrics: nil, views: views))
+//    self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[slider]-|", options: [], metrics: nil, views: views))
+//    self.circleView.setStrokeEnd(strokeEnd: CGFloat(slider.value), animated: false)
+//  }
+//  
+//  func sliderChanged(slider: UISlider) {
+//    self.circleView.setStrokeEnd(strokeEnd: CGFloat(slider.value), animated: true)
+//  }
+//  
+//  var dismissButton = UIButton(type: .system)
+//  
+//  func addDismissButton() {
+//    
+//    dismissButton.translatesAutoresizingMaskIntoConstraints = false
+//    dismissButton.tintColor = .white
+//    dismissButton.titleLabel?.font = UIFont(name: "Avenir", size: 20)
+//    dismissButton.setTitle("Dismiss", for: .normal)
+//    dismissButton.contentMode = .center
+//    dismissButton.addTarget(self, action: #selector(self.dismiss(sender:)), for: .touchUpInside)
+//    
+//    self.view!.addSubview(dismissButton)
+//    self.view!.addConstraint(NSLayoutConstraint(item: dismissButton, attribute: .centerX, relatedBy: .equal, toItem: self.view!, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+//    self.view!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[dismissButton]-|", options: [], metrics: nil, views: ["dismissButton" : dismissButton]))
+//    
+//    print(dismissButton.bounds)
+//  }
+
 }
 
 
@@ -175,9 +214,9 @@ class CircleViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.view.backgroundColor = .white
+    self.view.backgroundColor = .blue
     self.addCircleView()
-    self.addSlider()
+//    self.addSlider()
   }
   var circleView: CircleView!
   
@@ -213,4 +252,6 @@ class CircleViewController: UIViewController {
   func sliderChanged(slider: UISlider) {
     self.circleView.setStrokeEnd(strokeEnd: CGFloat(slider.value), animated: true)
   }
+  
+  
 }

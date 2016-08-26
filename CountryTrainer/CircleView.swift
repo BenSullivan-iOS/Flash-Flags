@@ -40,7 +40,7 @@ class CircleView: UIView {
   
   func addCircleLayer() {
     
-    let lineWidth: CGFloat = 4.0
+    let lineWidth: CGFloat = 6.0
     let radius: CGFloat = self.bounds.width / 2 - lineWidth / 2
     self.circleLayer = CAShapeLayer()
     let rect = CGRect(x: lineWidth / 2, y: lineWidth / 2, width: radius * 2, height: radius * 2)

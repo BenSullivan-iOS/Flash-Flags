@@ -53,6 +53,9 @@
 		B5BB5CAB1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */; };
 		B5BB5CAE1D6DB67D008CABC4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */; };
+		B5F2604D1D704C93002A20B5 /* ResultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F2604C1D704C93002A20B5 /* ResultButton.swift */; };
+		B5F2604E1D704C93002A20B5 /* ResultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F2604C1D704C93002A20B5 /* ResultButton.swift */; };
+		B5F2604F1D705DA6002A20B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B549C48F1D5C7DA5000409B3 /* Main.storyboard */; };
 		DDC4EC6C5D01B99125ED1403 /* Pods_CountryTrainerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14150EA0EB58B5F45459EBDD /* Pods_CountryTrainerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +115,7 @@
 		B55A6B4A1D6874470023DC7A /* FlagImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagImageView.swift; sourceTree = "<group>"; };
 		B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultVC.swift; sourceTree = "<group>"; };
 		B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		B5F2604C1D704C93002A20B5 /* ResultButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultButton.swift; sourceTree = "<group>"; };
 		BF5DEC03638E58453938D111 /* Pods-CountryTrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainer/Pods-CountryTrainer.debug.xcconfig"; sourceTree = "<group>"; };
 		E5835CBE86E5889831712297 /* Pods_CountryTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA264C50CD192506225245E /* Pods-CountryTrainerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerTests/Pods-CountryTrainerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				B54179E01D67583600B70864 /* AnswerButtons.swift */,
 				B55A6B4A1D6874470023DC7A /* FlagImageView.swift */,
 				B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */,
+				B5F2604C1D704C93002A20B5 /* ResultButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B549C4CB1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */,
+				B5F2604F1D705DA6002A20B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +584,7 @@
 				B549C4941D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld in Sources */,
 				B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */,
 				B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */,
+				B5F2604D1D704C93002A20B5 /* ResultButton.swift in Sources */,
 				B549C4D21D65ED8B000409B3 /* Continent.swift in Sources */,
 				B549C48C1D5C7DA5000409B3 /* AppDelegate.swift in Sources */,
 				B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */,
@@ -601,6 +608,7 @@
 				B53BA2751D6DBE04007A542E /* DismissResult.swift in Sources */,
 				B55A6B491D6855040023DC7A /* GameTracker.swift in Sources */,
 				B549C4A41D5C7DA5000409B3 /* CountryTrainerTests.swift in Sources */,
+				B5F2604E1D704C93002A20B5 /* ResultButton.swift in Sources */,
 				B549C4CC1D65AD27000409B3 /* ViewController.swift in Sources */,
 				B5BB5CAE1D6DB67D008CABC4 /* CircleView.swift in Sources */,
 				B549C4C41D6207CD000409B3 /* DataService.swift in Sources */,
