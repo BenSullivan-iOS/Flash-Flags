@@ -75,6 +75,19 @@ struct AnimationEngine {
     moveAnim?.completionBlock = completion
     view.pop_add(moveAnim, forKey: "moveToPosition")
   }
+  
+  static func popView(view: UIView, velocity: NSValue) {
+    
+    let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+    scaleAnim?.velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
+    scaleAnim?.toValue = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
+    scaleAnim?.springBounciness = 18
+    view.layer.pop_add(scaleAnim, forKey: "layerScaleSpringAnimation")
+
+    
+    
+    
+  }
 }
 
 

@@ -86,14 +86,11 @@ class ModalViewController: UIViewController {
     
     Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.unhideButtons), userInfo: nil, repeats: false)
     
+    self.percentageLabel.alpha = 1
     
-      self.percentageLabel.alpha = 1
+    let velocity = NSValue(cgSize: CGSize(width: 5.0, height: 5.0))
     
-    let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
-    scaleAnim?.velocity = NSValue(cgSize: CGSize(width: 5.0, height: 5.0))
-    scaleAnim?.toValue = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
-    scaleAnim?.springBounciness = 18
-    percentageLabel.layer.pop_add(scaleAnim, forKey: "layerScaleSpringAnimation")
+    AnimationEngine.popView(view: percentageLabel, velocity: velocity)
   }
   
   @IBAction func menuButton(_ sender: AnyObject) {
@@ -142,13 +139,10 @@ class ModalViewController: UIViewController {
   
   func unhideButtons() {
     
+    let velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
+
     retryButton.alpha = 1
-    
-    let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
-    scaleAnim?.velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
-    scaleAnim?.toValue = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
-    scaleAnim?.springBounciness = 18
-    retryButton.layer.pop_add(scaleAnim, forKey: "layerScaleSpringAnimation")
+    AnimationEngine.popView(view: retryButton, velocity: velocity)
     
     Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.unhideMenuButton), userInfo: nil, repeats: false)
 
@@ -156,14 +150,10 @@ class ModalViewController: UIViewController {
   
   func unhideMenuButton() {
     
-    menuButton.alpha = 1
+    let velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
 
-    
-    let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
-    scaleAnim?.velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
-    scaleAnim?.toValue = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
-    scaleAnim?.springBounciness = 18
-    menuButton.layer.pop_add(scaleAnim, forKey: "layerScaleSpringAnimation")
+    menuButton.alpha = 1
+    AnimationEngine.popView(view: menuButton, velocity: velocity)
   }
   
 //  func addSlider() {
