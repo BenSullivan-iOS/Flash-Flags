@@ -17,7 +17,7 @@ class ViewController: UIViewController, DataService {
   fileprivate var chosenOnes = [Country]()
   fileprivate var newGame: Game? = nil
   
-  private let numberOfFlagsSelected = 25
+  private let numberOfFlagsSelected = 5
 
   override func viewDidLoad() {
     super.viewDidLoad()

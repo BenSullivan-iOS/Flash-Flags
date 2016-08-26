@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GameDelegate {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, GameDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -21,6 +21,24 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     tableView.rowHeight = UITableViewAutomaticDimension
     
     self.title = "yo bro"
+  }
+  
+  func present(scoreString: String, scoreInt: Int) {
+    
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "result") as! ModalViewController
+    
+    //    self.present(vc, animated: true, completion: nil)
+    //    var modalViewController = ModalViewController()
+    vc.transitioningDelegate = self
+    vc.modalPresentationStyle = UIModalPresentationStyle.custom
+    
+    vc.gameScoreString = scoreString
+    vc.gameScoreInt = scoreInt
+    
+    
+    //    present(modalViewController, animated: true, completion: nil)
+    self.navigationController!.present(vc, animated: true, completion: nil)
   }
   
   func answered(country: String, result: Bool) {
@@ -48,7 +66,15 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     self.title = game?.progress
     
-    
+    if game?.tracker.remainingCountries.count == 0 {
+      
+      if let game = game {
+      
+      let percentageString = " \(game.resultPercentage)%"
+      let percentInt = game.resultPercentage
+        present(scoreString: percentageString, scoreInt: percentInt)
+      }
+    }
   }
 
 
@@ -126,6 +152,19 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
       
         return cell
     }
+  
+  //MARK: TRANSITION DELEGATE
+  
+  
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+    return PresentingAnimator()
+    
+  }
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    return DismissingAnimator()
+    
+  }
  
 
     /*

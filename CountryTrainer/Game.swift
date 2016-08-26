@@ -21,6 +21,24 @@ struct Game: GameType {
     return "\(score)/\(_countries.count)"
   }
   
+  var resultPercentage: Int {
+    
+    var correct = 0.0
+    var totalFlags = Double(_countries.count)
+    
+    for i in self.tracker.answers where i.value == true {
+      correct += 1
+    }
+    
+    let diff = totalFlags - correct
+    
+    print(diff)
+    print(totalFlags)
+    print(correct)
+    print(correct / totalFlags * 100)
+        
+    return Int(correct / totalFlags * 100)
+  }
   var tracker: Tracker
   
   var countries: [Country] {

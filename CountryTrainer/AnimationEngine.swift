@@ -83,9 +83,6 @@ struct AnimationEngine {
     scaleAnim?.toValue = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
     scaleAnim?.springBounciness = 18
     view.layer.pop_add(scaleAnim, forKey: "layerScaleSpringAnimation")
-
-    
-    
     
   }
 }
