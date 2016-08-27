@@ -19,40 +19,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qY4-y0-Acp">
-                                <frame key="frameInset" minX="20" minY="20" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gb" translatesAutoresizingMaskIntoConstraints="NO" id="qY4-y0-Acp"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k66-Ow-bZX">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="c9t-1Q-fp5"/>
+                                    <constraint firstAttribute="height" constant="30" id="kTB-dn-h9T"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k66-Ow-bZX">
-                                <frame key="frameInset" minX="33" minY="162" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Start New Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="newGameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jHq-iL-J3A"/>
-                                    <segue destination="H4O-6A-ZFD" kind="show" identifier="startGame" id="Qtr-eB-nkW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiW-JO-YJD">
-                                <frame key="frameInset" minX="62" minY="249" width="133" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Answered correctly"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiW-JO-YJD">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="c7G-d7-KwW"/>
+                                </constraints>
+                                <state key="normal" title="Answered correctly">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="correctAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Wp-CE-98x"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.10980392160000001" green="0.62352941179999999" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qY4-y0-Acp" secondAttribute="bottom" constant="452" id="VN1-wJ-9Iy"/>
-                            <constraint firstItem="qY4-y0-Acp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="er0-os-t90"/>
-                            <constraint firstItem="qY4-y0-Acp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="iC9-HB-YAS"/>
+                            <constraint firstItem="xiW-JO-YJD" firstAttribute="top" secondItem="qY4-y0-Acp" secondAttribute="bottom" constant="51" id="2ec-d2-8op"/>
+                            <constraint firstAttribute="trailing" secondItem="qY4-y0-Acp" secondAttribute="trailing" id="Qg4-Ol-7g9"/>
+                            <constraint firstItem="qY4-y0-Acp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cEf-2s-Bkf"/>
+                            <constraint firstItem="qY4-y0-Acp" firstAttribute="top" secondItem="k66-Ow-bZX" secondAttribute="bottom" constant="50" id="g5F-kh-NEv"/>
+                            <constraint firstItem="k66-Ow-bZX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gmR-ts-wk5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xiW-JO-YJD" secondAttribute="bottom" constant="131" id="nfs-20-kQ1"/>
+                            <constraint firstItem="qY4-y0-Acp" firstAttribute="centerX" secondItem="xiW-JO-YJD" secondAttribute="centerX" id="qgC-u0-iON"/>
+                            <constraint firstItem="k66-Ow-bZX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="56" id="s8n-uM-oaf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MKy-gU-LI7"/>
                     <connections>
                         <outlet property="flagImage" destination="qY4-y0-Acp" id="IdM-O0-tov"/>
+                        <outlet property="newGameButton" destination="k66-Ow-bZX" id="uap-du-raE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -75,7 +82,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="1125" id="oxp-Uz-7Ru" customClass="GameCell" customModule="CountryTrainer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="1125"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="1125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oxp-Uz-7Ru" id="7Ae-jJ-N1y">
                                             <frame key="frameInset" width="375" height="1125"/>
@@ -184,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5II-WB-QIc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="490"/>
+            <point key="canvasLocation" x="1834" y="443"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bq4-Dj-dHQ">
@@ -346,6 +353,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gb" width="1000" height="500"/>
         <image name="lb" width="1000" height="667"/>
     </resources>
 </document>

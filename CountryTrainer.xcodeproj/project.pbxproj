@@ -52,6 +52,9 @@
 		B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */; };
 		B5ACDE0A1D71841800C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */; };
 		B5ACDE0B1D71841800C4CA72 /* UIView+Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */; };
+		B5ACDE0C1D718CF900C4CA72 /* AAPTransactionDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */; };
+		B5ACDE0D1D718CFC00C4CA72 /* UIView+Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */; };
+		B5ACDE0E1D718CFF00C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */; };
 		B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAB1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */; };
@@ -624,10 +627,13 @@
 				B5BB5CAB1D6D95A8008CABC4 /* ResultVC.swift in Sources */,
 				B549C4DB1D6603B2000409B3 /* TableViewController.swift in Sources */,
 				B549C4E21D66306D000409B3 /* GameType.swift in Sources */,
+				B5ACDE0E1D718CFF00C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */,
 				B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */,
 				B53BA2751D6DBE04007A542E /* DismissResult.swift in Sources */,
 				B55A6B491D6855040023DC7A /* GameTracker.swift in Sources */,
 				B549C4A41D5C7DA5000409B3 /* CountryTrainerTests.swift in Sources */,
+				B5ACDE0C1D718CF900C4CA72 /* AAPTransactionDirector.swift in Sources */,
+				B5ACDE0D1D718CFC00C4CA72 /* UIView+Radial.swift in Sources */,
 				B5F2604E1D704C93002A20B5 /* ResultButton.swift in Sources */,
 				B549C4CC1D65AD27000409B3 /* ViewController.swift in Sources */,
 				B5BB5CAE1D6DB67D008CABC4 /* CircleView.swift in Sources */,

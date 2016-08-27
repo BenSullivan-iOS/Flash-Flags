@@ -27,9 +27,19 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
   
   var game: Game?
   
+  func radialPop() {
+    
+    navigationController?.radialPopViewController()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationItem.leftBarButtonItem?.action = #selector(self.radialPop)
+      
+//      UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.radialPop))
+    
+    navigationController?.enableRadialSwipe()
     tableView.estimatedRowHeight = 250
     tableView.rowHeight = UITableViewAutomaticDimension
     

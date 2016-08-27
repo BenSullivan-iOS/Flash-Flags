@@ -7,26 +7,29 @@
 //
 
 import UIKit
-let abc=AAPTransactionDirector()
 
-var defaultRadialDuration:CGFloat = 0.5
+let abc = AAPTransactionDirector()
+
+var defaultRadialDuration: CGFloat = 0.5
 
 extension UINavigationController {
   
   func getLeftRect()->CGRect{
     
     return CGRect.zero
-    
   }
+  
   //MARK: PUSH
   /**
    * radial pushing view controller
    *
    * @param startFrame where circle start
    */
-  func radialPushViewController(viewController: UIViewController, duration: CGFloat = 0.33 ,startFrame:CGRect = CGRect.null, transitionCompletion: (() -> Void)? = nil ) {
+  
+  func radialPushViewController(viewController: UIViewController, duration: CGFloat = 0.33 ,startFrame: CGRect = CGRect.null, transitionCompletion: (() -> Void)? = nil ) {
     
     var rect = startFrame
+    
     if rect == CGRect.null {
       
       if let vvc = self.visibleViewController?.view.frame.size {
@@ -35,12 +38,12 @@ extension UINavigationController {
       }
     }
     
-    var animatorDirector:AAPTransactionDirector?=AAPTransactionDirector()
-    animatorDirector?.duration=duration
-    
+    let animatorDirector: AAPTransactionDirector? = AAPTransactionDirector()
+    animatorDirector?.duration = duration
     
     self.delegate = animatorDirector
-    animatorDirector?.animationBlock = {(transactionContext: UIViewControllerContextTransitioning, animationTime: CGFloat ,completion: @escaping () -> Void ) -> Void in
+    
+    animatorDirector?.animationBlock = {(transactionContext: UIViewControllerContextTransitioning, animationTime: CGFloat, completion: @escaping () -> Void ) -> Void in
       
       let toViewController = transactionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
       let fromViewController = transactionContext.viewController(forKey: UITransitionContextViewControllerKey.from)
@@ -53,25 +56,24 @@ extension UINavigationController {
         completion()
         
         transitionCompletion?()
-        
-        
       })
       
     }
+    
     self.pushViewController(viewController, animated: true)
-    
-    
     
     self.delegate = nil
     
   }
+  
   //MARK: POP
   /**
    * radial pop view controller
    *
    * @param startFrame where circle start
    */
-  func radialPopViewController(duration: CGFloat = 0.33, startFrame: CGRect = CGRect.null, transitionCompletion: (() -> Void)? = nil ){
+  
+  func radialPopViewController(duration: CGFloat = 0.33, startFrame: CGRect = CGRect.null, transitionCompletion: (() -> Void)? = nil ) {
     
     var rect = startFrame
     
@@ -83,11 +85,10 @@ extension UINavigationController {
       }
     }
     
-    
-    var animatorDirector=AAPTransactionDirector()
+    let animatorDirector = AAPTransactionDirector()
     animatorDirector.duration = duration
     self.delegate=animatorDirector
-    animatorDirector.animationBlock={(transactionContext:UIViewControllerContextTransitioning, animationTime: CGFloat ,completion:@escaping ()->Void)->Void in
+    animatorDirector.animationBlock = {(transactionContext:UIViewControllerContextTransitioning, animationTime: CGFloat ,completion:@escaping ()->Void )-> Void in
       
       let toViewController = transactionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
       let fromViewController = transactionContext.viewController(forKey: UITransitionContextViewControllerKey.from)
@@ -96,9 +97,9 @@ extension UINavigationController {
       containerView.insertSubview(toViewController!.view, aboveSubview: fromViewController!.view)
       
       toViewController?.view .radialAppireanceWithStartFrame(startFrame: rect, duration: animationTime, complitBlock: { () -> Void in
+        
         completion()
         transitionCompletion?()
-        
         
       })
       
@@ -111,17 +112,13 @@ extension UINavigationController {
   
   //MARK: Swipe
   
-  func enableRadialSwipe(){
-    
-    
-    
+  func enableRadialSwipe() {
     
     self.enableGesture(enabled: true)
     
-    
-    
   }
-  func disableRadialSwipe(){
+  
+  func disableRadialSwipe() {
     self.enableGesture(enabled: false)
     
   }
@@ -130,7 +127,7 @@ extension UINavigationController {
    * enabling swipe back gesture. NOTE interactivePopGestureRecognizer will be disabled
    *
    */
-  private func enableGesture(enabled:Bool){
+  private func enableGesture(enabled:Bool) {
     
     struct StaticStruct {
       
@@ -152,9 +149,7 @@ extension UINavigationController {
       
       StaticStruct.recognizerData[self.description] = panGesture
       
-      
-      
-    }else {
+    } else {
       
       self.view.removeGestureRecognizer(StaticStruct.recognizerData[self.description]!)
       StaticStruct.recognizerData[self.description] = nil
@@ -162,11 +157,9 @@ extension UINavigationController {
     }
   }
   
-  func screenPan(sender: AnyObject){
-    
+  func screenPan(sender: AnyObject) {
     
     let pan: UIPanGestureRecognizer = sender as! UIPanGestureRecognizer
-    
     
     let state: UIGestureRecognizerState = pan.state
     
@@ -177,8 +170,7 @@ extension UINavigationController {
       static var d:CGFloat = 0
       static var animDirector:AAPTransactionDirector? = nil
       
-      
-      static  func clean(){
+      static func clean(){
         
         d = 0
         firstTouch = CGPoint.zero
@@ -191,18 +183,19 @@ extension UINavigationController {
       
     case UIGestureRecognizerState.began:
       
-      if (self.viewControllers.count<2) {
+      if self.viewControllers.count < 2 {
+        
         StaticStruct.clean()
         return
       }
       
       StaticStruct.animDirector = AAPTransactionDirector()
-      StaticStruct.animDirector?.isInteractive=true
+      StaticStruct.animDirector?.isInteractive = true
       StaticStruct.animDirector?.duration = defaultRadialDuration
       self.delegate=StaticStruct.animDirector
       
       self.popViewController(animated: true)
-      self.delegate=nil
+      self.delegate = nil
       
       if let vvc = self.visibleViewController?.view.frame.size {
         
@@ -210,7 +203,6 @@ extension UINavigationController {
         StaticStruct.firstTouch = location
         
         StaticStruct.animDirector?.animationBlock={(transactionContext:UIViewControllerContextTransitioning, animationTime: CGFloat ,completion:()->Void)->Void in
-          
           
           let toViewController = transactionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
           let fromViewController = transactionContext.viewController(forKey: UITransitionContextViewControllerKey.from)
@@ -231,8 +223,6 @@ extension UINavigationController {
       
     case UIGestureRecognizerState.changed:
       
-      
-      
       StaticStruct.animDirector?.interactiveUpdateBlock = {(transactionContext:UIViewControllerContextTransitioning, percent: CGFloat)->Void in
         
         let maskLayer:CAShapeLayer = transactionContext.viewController(forKey: UITransitionContextViewControllerKey.to)?.view.layer.mask as! CAShapeLayer
@@ -243,22 +233,20 @@ extension UINavigationController {
         
         let path = CGPath(ellipseIn: maskRect, transform: nil)
         
-        
-        maskLayer.path=path
+        maskLayer.path = path
         
       }
       
-      let mainD = location.x*StaticStruct.d/self.view.frame.size.width
+      let mainD = location.x * StaticStruct.d / self.view.frame.size.width
       
       
-      StaticStruct.animDirector?.precent=mainD/StaticStruct.d
+      StaticStruct.animDirector?.precent = mainD / StaticStruct.d
       
     default:
       
+      let mainD  =  location.x * StaticStruct.d / self.view.frame.size.width
       
-      let mainD  =  location.x*StaticStruct.d/self.view.frame.size.width
-      
-      let canceled = mainD>StaticStruct.d*0.5 ? false : true
+      let canceled = mainD > StaticStruct.d * 0.5 ? false : true
       
       StaticStruct.animDirector?.endInteractiveTranscation(canceled: canceled, endBlock: { () -> Void in
         StaticStruct.clean()
@@ -266,9 +254,3 @@ extension UINavigationController {
     }
   }
 }
-
-
-
-
-
-

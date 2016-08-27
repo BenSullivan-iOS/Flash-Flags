@@ -36,12 +36,12 @@ class LayerAnimator: NSObject, CAAnimationDelegate {
 
 extension  UIView {
   
-  func radialAppireanceWithStartFrame(startFrame:CGRect, duration: CGFloat, complitBlock:@escaping () -> Void) {
+  func radialAppireanceWithStartFrame(startFrame: CGRect, duration: CGFloat, complitBlock: @escaping () -> Void) {
     
     let maskLayer = CAShapeLayer()
     let maskRect = startFrame
     let path = CGPath(ellipseIn: maskRect, transform: nil)
-    maskLayer.path=path
+    maskLayer.path = path
     
     let d = sqrt(pow(self.frame.size.width, 2)+pow(self.frame.size.height, 2) ) * 2
     
@@ -59,30 +59,25 @@ extension  UIView {
     
     revealAnimation.duration =  CFTimeInterval(duration)
     
-    
     maskLayer.path=newPath
     
     let animator:LayerAnimator = LayerAnimator(layer: maskLayer, animation: revealAnimation)
     
     animator.startAnimationWithBlock { () -> Void in
       
-      
       complitBlock()
-      
     }
   }
   
-  func radialDissmisWithStartFrame(startFrame:CGRect,duration: CGFloat,complitBlock:@escaping ()->Void ){
-    
+  func radialDissmisWithStartFrame(startFrame: CGRect, duration: CGFloat, complitBlock: @escaping () -> Void ) {
     
     let maskLayer = CAShapeLayer()
     let maskRect = startFrame
     let path = CGPath(ellipseIn: maskRect, transform: nil)
-    maskLayer.path=path
+    maskLayer.path = path
     
-    let d = sqrt(pow(self.frame.size.width, 2)+pow(self.frame.size.height, 2) )*2
+    let d = sqrt(pow(self.frame.size.width, 2)+pow(self.frame.size.height, 2) ) * 2
     
-//    let newRect = CGRectMake(self.frame.size.width/2-d/2, maskRect.origin.y-d/2, d, d)
     let newRect = CGRect(x: self.frame.size.width / 2 - d / 2, y: maskRect.origin.y - d / 2, width: d, height: d)
 
     let newPath = CGPath(ellipseIn: newRect, transform: nil)

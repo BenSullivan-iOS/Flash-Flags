@@ -16,6 +16,7 @@ class ViewController: UIViewController, DataService {
   fileprivate var countries = [Country]()
   fileprivate var chosenOnes = [Country]()
   fileprivate var newGame: Game? = nil
+  @IBOutlet weak var newGameButton: UIButton!
   
   private let numberOfFlagsSelected = 5
   
@@ -53,12 +54,11 @@ class ViewController: UIViewController, DataService {
   
   @IBAction func newGameButtonPressed(_ sender: AnyObject) {
     
-    let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "gameVC")
+    let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! TableViewController
     
-    self.navigationController?
-    //    self.navigationController?.radialPushViewController(SecondViewController(nibName: "SecondViewController", bundle: nil),startFrame: CGRectMake(self.view.frame.size.width, 0, 0, 0),duration:0.9,transitionCompletion: { () -> Void in
-    //
-    //    })
+    gameVC.game = newGame!
+    
+    self.navigationController?.radialPushViewController(viewController: gameVC, duration: 0.5, startFrame: newGameButton.frame, transitionCompletion: nil)
   }
   
   
