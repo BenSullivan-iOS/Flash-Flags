@@ -8,6 +8,19 @@
 
 import UIKit
 
+extension UITableView {
+  
+  func setOffsetToBottom(animated: Bool) {
+    self.setContentOffset(CGPoint(x: 0, y: contentSize.height - frame.size.height), animated: true)
+  }
+  
+  func scrollToLastRow(animated: Bool) {
+    if self.numberOfRows(inSection: 0) > 0 {
+      self.scrollToRow(at: IndexPath(row: self.numberOfRows(inSection: 0), section: 0), at: .bottom, animated: animated)
+    }
+  }
+}
+
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, GameDelegate {
   
   @IBOutlet weak var tableView: UITableView!
@@ -21,7 +34,36 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     tableView.rowHeight = UITableViewAutomaticDimension
     
     self.title = "yo bro"
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(self.retryGame), name: NSNotification.Name(rawValue: "retryGame"), object: nil)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(self.endGame), name: NSNotification.Name(rawValue: "endGame"), object: nil)
+
+    
   }
+  
+  func endGame() {
+    //SAVE TO CORE DATA
+    print("Save game to Core Data")
+    game = nil
+    navigationController?.popViewController(animated: true)
+    
+  }
+  
+  func retryGame() {
+    
+    if let originalGame = game {
+      
+      let newGame = Game(countries: originalGame.countries)
+      
+      game = newGame
+      
+      tableView.reloadData()
+      
+    }
+  }
+  
+  
   
   func present(scoreString: String, scoreInt: Int) {
     
@@ -69,28 +111,38 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     if game?.tracker.remainingCountries.count == 0 {
       
       if let game = game {
-      
-      let percentageString = " \(game.resultPercentage)%"
-      let percentInt = game.resultPercentage
+        
+        let percentageString = " \(game.resultPercentage)%"
+        let percentInt = game.resultPercentage
         present(scoreString: percentageString, scoreInt: percentInt)
       }
     }
   }
-
-
+  
+  
   
   var selectedRow: IndexPath? = nil
-
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    print(indexPath.row)
+//    print(game?.countries.count - 1)
+    
+
+    
     
     selectedRow = indexPath
     let cell = tableView.cellForRow(at: indexPath) as! GameCell
+    
     DispatchQueue.main.async {
-
-    cell.changeCellStatus(selected: true)
-    tableView.beginUpdates()
-    tableView.endUpdates()
+      
+      cell.changeCellStatus(selected: true)
+      tableView.beginUpdates()
+      tableView.endUpdates()
     }
+    
+//    tableView.setContentOffset(CGPoint(x: CGFloat(0.0), y: tableView.contentSize.height - tableView.frame.size.height), animated: true)
+
   }
   
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -99,11 +151,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
       
       if let cell = tableView.cellForRow(at: indexPath) as? GameCell {
         DispatchQueue.main.async {
-
-        tableView.beginUpdates()
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-        cell.changeCellStatus(selected: false)
-        tableView.endUpdates()
+          
+          tableView.beginUpdates()
+          tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+          cell.changeCellStatus(selected: false)
+          tableView.endUpdates()
         }
       }
       
@@ -123,35 +175,35 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.changeCellStatus(selected: false)
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
-
+        
       }
     }
   }
   
-    // MARK: - Table view data source
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-      
-      guard let game = game else { return 0 }
-      print(game.tracker.remainingCells)
-      
-      
-        return game.tracker.remainingCells.count
-    }
-
+  // MARK: - Table view data source
   
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameCell
-
-      print(game?.tracker.remainingCountries)
-      
-      
-        cell.delegate = self
-        cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
-      
-        return cell
-    }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // #warning Incomplete implementation, return the number of rows
+    
+    guard let game = game else { return 0 }
+    print(game.tracker.remainingCells)
+    
+    
+    return game.tracker.remainingCells.count
+  }
+  
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameCell
+    
+    print(game?.tracker.remainingCountries)
+    
+    
+    cell.delegate = self
+    cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
+    
+    return cell
+  }
   
   //MARK: TRANSITION DELEGATE
   
@@ -165,39 +217,39 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     return DismissingAnimator()
     
   }
- 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
+  
+  /*
+   // Override to support conditional editing of the table view.
+   override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+   // Return false if you do not want the specified item to be editable.
+   return true
+   }
+   */
+  
+  /*
+   // Override to support rearranging the table view.
+   override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+   
+   }
+   */
+  
+  /*
+   // Override to support conditional rearranging of the table view.
+   override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+   // Return false if you do not want the item to be re-orderable.
+   return true
+   }
+   */
+  
+  /*
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   // Get the new view controller using segue.destinationViewController.
+   // Pass the selected object to the new view controller.
+   }
+   */
+  
 }

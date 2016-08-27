@@ -30,7 +30,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="H4O-6A-ZFD" kind="show" id="nle-hM-XCo"/>
+                                    <action selector="newGameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jHq-iL-J3A"/>
+                                    <segue destination="H4O-6A-ZFD" kind="show" identifier="startGame" id="Qtr-eB-nkW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiW-JO-YJD">
@@ -61,7 +62,7 @@
         <!--Table View Controller-->
         <scene sceneID="g4p-xg-R3Y">
             <objects>
-                <viewController id="H4O-6A-ZFD" customClass="TableViewController" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameVC" id="H4O-6A-ZFD" customClass="TableViewController" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fI8-Q9-2cI"/>
                         <viewControllerLayoutGuide type="bottom" id="Y56-aD-j66"/>
@@ -74,10 +75,10 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="1125" id="oxp-Uz-7Ru" customClass="GameCell" customModule="CountryTrainer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="1000" height="1125"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="1125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oxp-Uz-7Ru" id="7Ae-jJ-N1y">
-                                            <frame key="frameInset" width="1000" height="1125"/>
+                                            <frame key="frameInset" width="375" height="1125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-x5-Z9d">
@@ -183,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5II-WB-QIc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3266" y="301"/>
+            <point key="canvasLocation" x="1641" y="490"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bq4-Dj-dHQ">
@@ -284,6 +285,9 @@
                                         <state key="normal" title="RETRY">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="retryButton:" destination="PmV-J9-vhH" eventType="touchUpInside" id="yHI-OI-ZN4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TE7-Rl-cpW" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -298,7 +302,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98051329440000001" green="0.87188603629999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="s1V-7n-NeC" firstAttribute="centerX" secondItem="2xN-O7-bg4" secondAttribute="centerX" id="JgT-6R-ASY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s1V-7n-NeC" secondAttribute="trailing" id="NIM-mU-zNu"/>

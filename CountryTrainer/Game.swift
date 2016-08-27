@@ -30,13 +30,6 @@ struct Game: GameType {
       correct += 1
     }
     
-    let diff = totalFlags - correct
-    
-    print(diff)
-    print(totalFlags)
-    print(correct)
-    print(correct / totalFlags * 100)
-        
     return Int(correct / totalFlags * 100)
   }
   var tracker: Tracker

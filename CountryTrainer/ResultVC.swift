@@ -112,6 +112,12 @@ class ModalViewController: UIViewController {
   
   @IBAction func menuButton(_ sender: AnyObject) {
     dismiss(sender: sender)
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "endGame"), object: nil)
+  }
+  
+  @IBAction func retryButton(_ sender: ResultButton) {
+    dismiss(animated: true, completion: nil)
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retryGame"), object: nil)
   }
   
   func dismiss(sender: AnyObject) {

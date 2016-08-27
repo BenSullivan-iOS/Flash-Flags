@@ -18,15 +18,21 @@ class ViewController: UIViewController, DataService {
   fileprivate var newGame: Game? = nil
   
   private let numberOfFlagsSelected = 5
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    
+    countries.removeAll()
+    chosenOnes.removeAll()
+    newGame = nil
     
     guard let countryArray = createCountries() else { print("json error"); return }
     
     countries = countryArray
-    
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,6 +50,17 @@ class ViewController: UIViewController, DataService {
     startNewGame()
     
   }
+  
+  @IBAction func newGameButtonPressed(_ sender: AnyObject) {
+    
+    let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "gameVC")
+    
+    self.navigationController?
+    //    self.navigationController?.radialPushViewController(SecondViewController(nibName: "SecondViewController", bundle: nil),startFrame: CGRectMake(self.view.frame.size.width, 0, 0, 0),duration:0.9,transitionCompletion: { () -> Void in
+    //
+    //    })
+  }
+  
   
   func startNewGame() {
     
@@ -64,14 +81,14 @@ class ViewController: UIViewController, DataService {
     }
     
     newGame = Game(countries: chosenOnes)
-
+    
   }
   
   @IBAction func correctAnswer(_ sender: UIButton) {
-//    print(countries.count)
-//    print(countries)
-//    
-//    newGame?.tracker.updateTracker(chosenOnes[Int(arc4random_uniform(UInt32(numberOfFlagsSelected)))].name, result: true)
+    //    print(countries.count)
+    //    print(countries)
+    //
+    //    newGame?.tracker.updateTracker(chosenOnes[Int(arc4random_uniform(UInt32(numberOfFlagsSelected)))].name, result: true)
     
   }
 }

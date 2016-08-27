@@ -49,6 +49,9 @@
 		B55A6B491D6855040023DC7A /* GameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B471D6855040023DC7A /* GameTracker.swift */; };
 		B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 		B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
+		B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */; };
+		B5ACDE0A1D71841800C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */; };
+		B5ACDE0B1D71841800C4CA72 /* UIView+Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */; };
 		B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAB1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */; };
@@ -113,6 +116,9 @@
 		B557A27F1D6C4463006C3A85 /* CountryTrainer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CountryTrainer-Bridging-Header.h"; sourceTree = "<group>"; };
 		B55A6B471D6855040023DC7A /* GameTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTracker.swift; sourceTree = "<group>"; };
 		B55A6B4A1D6874470023DC7A /* FlagImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagImageView.swift; sourceTree = "<group>"; };
+		B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPTransactionDirector.swift; sourceTree = "<group>"; };
+		B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RadialTransaction.swift"; sourceTree = "<group>"; };
+		B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Radial.swift"; sourceTree = "<group>"; };
 		B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultVC.swift; sourceTree = "<group>"; };
 		B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		B5F2604C1D704C93002A20B5 /* ResultButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultButton.swift; sourceTree = "<group>"; };
@@ -269,6 +275,7 @@
 		B557A27E1D6C42C1006C3A85 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				B5ACDE051D71840100C4CA72 /* RadialTransitions */,
 				B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */,
 			);
 			name = Util;
@@ -282,6 +289,16 @@
 				B55A6B471D6855040023DC7A /* GameTracker.swift */,
 			);
 			name = Game;
+			sourceTree = "<group>";
+		};
+		B5ACDE051D71840100C4CA72 /* RadialTransitions */ = {
+			isa = PBXGroup;
+			children = (
+				B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */,
+				B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */,
+				B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */,
+			);
+			name = RadialTransitions;
 			sourceTree = "<group>";
 		};
 		B5BB5CAF1D6DBDA1008CABC4 /* CustomSegues */ = {
@@ -581,6 +598,7 @@
 				B549C4E11D66306D000409B3 /* GameType.swift in Sources */,
 				B54179E11D67583600B70864 /* AnswerButtons.swift in Sources */,
 				B53BA2711D6DBDF3007A542E /* PresentResult.swift in Sources */,
+				B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */,
 				B549C4941D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld in Sources */,
 				B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */,
 				B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */,
@@ -592,6 +610,8 @@
 				B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */,
 				B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */,
 				B549C4C31D6207CD000409B3 /* DataService.swift in Sources */,
+				B5ACDE0B1D71841800C4CA72 /* UIView+Radial.swift in Sources */,
+				B5ACDE0A1D71841800C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */,
 				B53BA2741D6DBE04007A542E /* DismissResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
