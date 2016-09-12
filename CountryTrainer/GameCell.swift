@@ -13,7 +13,6 @@ protocol GameDelegate {
   func answered(country: String, result: Bool)
 }
 
-//@IBDesignable
 class GameCell: UITableViewCell {
   
   @IBOutlet fileprivate weak var stackView: UIStackView!

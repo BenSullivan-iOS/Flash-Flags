@@ -1,4 +1,4 @@
-//
+ //
 //  DismissResult.swift
 //  CountryTrainer
 //
@@ -16,24 +16,23 @@ class DismissingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
   }
   
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-    var toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+    
+    let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
     toVC.view.tintAdjustmentMode = .normal
     toVC.view.isUserInteractionEnabled = true
-    var fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+    let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
     var dimmingView: UIView?
     
-    
-    for (index, value) in transitionContext.containerView.subviews.enumerated() {
+    for (_, value) in transitionContext.containerView.subviews.enumerated() {
       
       if value.layer.opacity < 1.0 {
         dimmingView = value
-        //        stop = true
       }
     }
     
-    var opacityAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
+    let opacityAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
     opacityAnimation?.toValue = 0.0
-    var offscreenAnimation = POPBasicAnimation(propertyNamed: kPOPLayerPositionY)
+    let offscreenAnimation = POPBasicAnimation(propertyNamed: kPOPLayerPositionY)
     offscreenAnimation?.toValue = -fromVC.view.layer.position.y
     offscreenAnimation!.completionBlock = {(anim: POPAnimation?, finished: Bool) -> Void in
       transitionContext.completeTransition(true)

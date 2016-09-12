@@ -22,7 +22,6 @@ class CircleView: UIView {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  // MARK: - Instance Methods
   
   func setStrokeEnd(strokeEnd: CGFloat, animated: Bool) {
     if animated {
@@ -31,12 +30,10 @@ class CircleView: UIView {
     }
     self.circleLayer.strokeEnd = strokeEnd
   }
-  // MARK: - Property Setters
   
   func setStrokeColor(strokeColor: UIColor) {
     self.circleLayer.strokeColor = strokeColor.cgColor
   }
-  // MARK: - Private Instance methods
   
   func addCircleLayer() {
     
@@ -54,7 +51,7 @@ class CircleView: UIView {
   }
   
   func animateToStrokeEnd(strokeEnd: CGFloat) {
-    var strokeAnimation = POPSpringAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+    let strokeAnimation = POPSpringAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
     strokeAnimation?.toValue = strokeEnd
     //    strokeAnimation?.springBounciness = 15
     strokeAnimation?.dynamicsFriction = 200

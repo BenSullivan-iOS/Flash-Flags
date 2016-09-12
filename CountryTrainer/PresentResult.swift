@@ -17,35 +17,77 @@ class PresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     return 0.5
   }
   
-  func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+  func animateTransition(using trans: UIViewControllerContextTransitioning) {
     
-    let fromView = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!.view!
-    fromView.tintAdjustmentMode = .dimmed
-    fromView.isUserInteractionEnabled = false
-    let dimmingView = UIView(frame: fromView.bounds)
-    dimmingView.backgroundColor = .gray
-    dimmingView.layer.opacity = 0.0
+    let fromView = createFromView(trans)
+    let dimmingView = createDimmingView(fromView)
     
-    let toView = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!.view!
-    toView.frame = CGRect(x: 0, y: 0, width: transitionContext.containerView.bounds.width - 104.0, height: transitionContext.containerView.bounds.height - 288.0)
-    toView.center = CGPoint(x: transitionContext.containerView.center.x, y: -transitionContext.containerView.center.y)
+    let toView = createToView(trans)
     
-    transitionContext.containerView.addSubview(dimmingView)
-    transitionContext.containerView.addSubview(toView)
+    trans.containerView.addSubview(dimmingView)
+    trans.containerView.addSubview(toView)
     
-    let positionAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
-    positionAnimation?.toValue = transitionContext.containerView.center.y
-    positionAnimation?.springBounciness = 10
-    positionAnimation!.completionBlock = {(anim: POPAnimation?, finished: Bool) -> Void in
-      transitionContext.completeTransition(true)
-    }
+    toView.layer.pop_add(positionAnimation(trans), forKey: "positionAnimation")
+    toView.layer.pop_add(scaleAnimation(), forKey: "scaleAnimation")
+    
+    dimmingView.layer.pop_add(opacityAnimation(), forKey: "opacityAnimation")
+  }
+  
+  func opacityAnimation() -> POPBasicAnimation {
+    
+    let opacityAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
+    opacityAnimation?.toValue = 0.2
+    
+    return opacityAnimation!
+  }
+
+  
+  func scaleAnimation() -> POPSpringAnimation {
+    
     let scaleAnimation = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
     scaleAnimation?.springBounciness = 20
     scaleAnimation?.fromValue = NSValue(cgPoint: CGPoint(x: 1.2, y: 1.4))
-    let opacityAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
-    opacityAnimation?.toValue = 0.2
-    toView.layer.pop_add(positionAnimation!, forKey: "positionAnimation")
-    toView.layer.pop_add(scaleAnimation!, forKey: "scaleAnimation")
-    dimmingView.layer.pop_add(opacityAnimation!, forKey: "opacityAnimation")
+
+    return scaleAnimation!
   }
+
+  
+  func positionAnimation(_ trans: UIViewControllerContextTransitioning) -> POPSpringAnimation {
+    
+    let positionAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+    positionAnimation?.toValue = trans.containerView.center.y
+    positionAnimation?.springBounciness = 10
+    positionAnimation!.completionBlock = {(anim: POPAnimation?, finished: Bool) -> Void in
+      trans.completeTransition(true)
+    }
+    return positionAnimation!
+  }
+  
+  func createToView(_ trans: UIViewControllerContextTransitioning) -> UIView {
+    
+    let toView = trans.viewController(forKey: .to)!.view!
+    toView.frame = CGRect(x: 0, y: 0, width: trans.containerView.bounds.width - 104.0, height: trans.containerView.bounds.height - 288.0)
+    toView.center = CGPoint(x: trans.containerView.center.x, y: -trans.containerView.center.y)
+    
+    return toView
+  }
+  
+  func createDimmingView(_ fromView: UIView) -> UIView {
+    
+    let dimView = UIView(frame: fromView.bounds)
+    dimView.backgroundColor = .gray
+    dimView.layer.opacity = 0.0
+    
+    return dimView
+  }
+  
+  func createFromView(_ trans: UIViewControllerContextTransitioning) -> UIView {
+    
+    let fromView = trans.viewController(forKey: UITransitionContextViewControllerKey.from)!.view!
+    fromView.tintAdjustmentMode = .dimmed
+    fromView.isUserInteractionEnabled = false
+    
+    return fromView
+  }
+  
 }

@@ -10,8 +10,8 @@ import UIKit
 
 class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
-  var addPresenter : GameVC?
-  var presentedViewController : UIViewController?
+  var addPresenter: GameVC?
+  var presentedViewController: UIViewController?
   
   func presentGameInterfaceFromViewController(viewController: UIViewController, withGame game: Game) {
     
