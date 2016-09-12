@@ -8,23 +8,12 @@
 
 import UIKit
 
-extension UITableView {
-  
-  func setOffsetToBottom(animated: Bool) {
-    self.setContentOffset(CGPoint(x: 0, y: contentSize.height - frame.size.height), animated: true)
-  }
-  
-  func scrollToLastRow(animated: Bool) {
-    if self.numberOfRows(inSection: 0) > 0 {
-      self.scrollToRow(at: IndexPath(row: self.numberOfRows(inSection: 0), section: 0), at: .bottom, animated: animated)
-    }
-  }
-}
-
 class GameVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, GameDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
+  var gameWireframe: GameWireframe?
+  var gameInteractorInterface: GameInteractorInterface?
   var selectedRow: IndexPath? = nil
   var game: Game?
   
@@ -80,60 +69,21 @@ class GameVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIVi
     }
   }
   
-  
-  
-  func present(scoreString: String, scoreInt: Int) {
-    
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let vc = storyboard.instantiateViewController(withIdentifier: "result") as! ModalViewController
-    
-    //    self.present(vc, animated: true, completion: nil)
-    //    var modalViewController = ModalViewController()
-    vc.transitioningDelegate = self
-    vc.modalPresentationStyle = UIModalPresentationStyle.custom
-    
-    vc.gameScoreString = scoreString
-    vc.gameScoreInt = scoreInt
-    
-    
-    //    present(modalViewController, animated: true, completion: nil)
-    self.navigationController!.present(vc, animated: true, completion: nil)
-  }
-  
   func answered(country: String, result: Bool) {
-    print("answered!", result)
+
+    game = gameInteractorInterface?.answered(game: game!, country: country, result: result)
     
-    game?.tracker.updateTracker(country, result: result)
-    
-    for i in (game?.tracker.remainingCells)! where i.0 == country {
-      
-      _ = game?.tracker.removeRemainingCell(country: country)
-      
-      print(game?.tracker.remainingCells)
-      
-    }
-    
-    for a in (game?.tracker.remainingCountries.indices)! where game?.tracker.remainingCountries[a].name == country {
-      game?.tracker.removeRemainingCountry(at: a)
-      break
-    }
-    
-    
+    //Update UI
+    self.title = game!.progress
     tableView.deleteRows(at: [selectedRow!], with: UITableViewRowAnimation.fade)
     
-    print(game?.progress)
-    
-    self.title = game?.progress
-    
-    if game?.tracker.remainingCountries.count == 0 {
-      
-      if let game = game {
-        
-        let percentageString = " \(game.resultPercentage)%"
-        let percentInt = game.resultPercentage
-        present(scoreString: percentageString, scoreInt: percentInt)
+    //Display resultVC if all questions have answers
+    if game!.tracker.remainingCountries.count == 0 {
+
+        let percentageString = " \(game!.resultPercentage)%"
+        let percentInt = game!.resultPercentage
+        gameWireframe?.presentResultInterfaceFrom(viewController: self, scoreInt: percentInt, scoreString: percentageString)
       }
-    }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -211,52 +161,5 @@ class GameVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIVi
     
     return cell
   }
-  
-  //MARK: TRANSITION DELEGATE
-  
-  
-  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    
-    return PresentingAnimator()
-    
-  }
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return DismissingAnimator()
-    
-  }
-  
-  
-  /*
-   // Override to support conditional editing of the table view.
-   override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-   // Return false if you do not want the specified item to be editable.
-   return true
-   }
-   */
-  
-  /*
-   // Override to support rearranging the table view.
-   override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-   
-   }
-   */
-  
-  /*
-   // Override to support conditional rearranging of the table view.
-   override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-   // Return false if you do not want the item to be re-orderable.
-   return true
-   }
-   */
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
   
 }

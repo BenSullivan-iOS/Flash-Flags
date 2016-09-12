@@ -16,33 +16,12 @@ class MainVC: UIViewController, MainVCInterface {
   
   var mainInteractor: MainInteractorInterface?
   var mainWireframe: MainWireframe?
-
-  func prepareGameData(game: Game) {
-    
-    mainWireframe?.presentGameInterface(withGame: game)
-    
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    
-    flagImage.contentMode = .scaleAspectFit
-    
-  }
   
   @IBAction func newGameButtonPressed(_ sender: AnyObject) {
-    
     mainInteractor?.getNewGameData()
-    
   }
-  
+
+  func prepareGameData(game: Game) {
+    mainWireframe?.presentGameInterface(withGame: game)
+  }
 }
-
-
-//  @IBAction func correctAnswer(_ sender: UIButton) {
-//    //    print(countries.count)
-//    //    print(countries)
-//    //
-//    //    newGame?.tracker.updateTracker(chosenOnes[Int(arc4random_uniform(UInt32(numberOfFlagsSelected)))].name, result: true)
-//
-//  }
-

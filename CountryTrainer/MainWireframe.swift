@@ -20,6 +20,7 @@ class MainWireframe {
   }
 
   func presentMainVCInterfaceFromWindow(window: UIWindow) {
+    
     let viewController = mainVCFromStoryboard()
 
     //configure local variables

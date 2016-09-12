@@ -75,33 +75,25 @@
                         <viewControllerLayoutGuide type="bottom" id="Y56-aD-j66"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nLF-Lf-AlL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="1125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-Q5-cFH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="294" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-Q5-cFH">
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="1125" id="oxp-Uz-7Ru" customClass="GameCell" customModule="CountryTrainer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="1125"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="294" id="oxp-Uz-7Ru" customClass="GameCell" customModule="CountryTrainer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="294"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oxp-Uz-7Ru" id="7Ae-jJ-N1y">
-                                            <frame key="frameInset" width="375" height="1125"/>
+                                            <frame key="frameInset" width="375" height="294"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-x5-Z9d">
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-x5-Z9d">
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lb" translatesAutoresizingMaskIntoConstraints="NO" id="gHY-6n-bz0" customClass="FlagImageView" customModule="CountryTrainer" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-fH-Ocx" customClass="FlagImageView" customModule="CountryTrainer" customModuleProvider="target">
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="200" id="gDU-sx-F1S"/>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="BgS-Wj-wXG"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                    <real key="value" value="0.80000000000000004"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                    <real key="value" value="3"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvV-Qs-eHB">
                                                             <constraints>
@@ -173,8 +165,8 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JWj-x5-Z9d" secondAttribute="bottom" constant="13" id="Eln-KE-yC1"/>
                                                 <constraint firstItem="JWj-x5-Z9d" firstAttribute="trailing" secondItem="7Ae-jJ-N1y" secondAttribute="trailingMargin" id="hDD-Hg-Pge"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="JWj-x5-Z9d" secondAttribute="bottom" id="mj7-uV-Cwo"/>
                                                 <constraint firstItem="JWj-x5-Z9d" firstAttribute="leading" secondItem="7Ae-jJ-N1y" secondAttribute="leadingMargin" id="nf4-GL-wJq"/>
                                                 <constraint firstItem="JWj-x5-Z9d" firstAttribute="top" secondItem="7Ae-jJ-N1y" secondAttribute="topMargin" id="xZ8-p3-1cT"/>
                                             </constraints>
@@ -183,7 +175,7 @@
                                         <connections>
                                             <outlet property="correctButton" destination="rLa-nR-9UV" id="d3B-Ow-0CB"/>
                                             <outlet property="countryName" destination="lvV-Qs-eHB" id="1aI-nt-vaU"/>
-                                            <outlet property="flagImage" destination="gHY-6n-bz0" id="aZH-OA-lyQ"/>
+                                            <outlet property="flagImage" destination="ICw-fH-Ocx" id="eDc-qi-9lx"/>
                                             <outlet property="nopeButton" destination="wNH-a9-erk" id="92Y-0M-dkD"/>
                                             <outlet property="stackView" destination="JWj-x5-Z9d" id="CZA-F1-vcq"/>
                                         </connections>
@@ -204,14 +196,14 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1200"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="tableView" destination="7nh-Q5-cFH" id="Hn3-ls-uEd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5II-WB-QIc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832.8" y="442.5787106446777"/>
+            <point key="canvasLocation" x="1773.5999999999999" y="80.50974512743629"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bq4-Dj-dHQ">
@@ -265,10 +257,10 @@
             </objects>
             <point key="canvasLocation" x="452" y="855"/>
         </scene>
-        <!--Custom Transition View Controller-->
+        <!--View Controller-->
         <scene sceneID="ikr-QG-EUn">
             <objects>
-                <viewController id="nQE-jC-j7D" customClass="CustomTransitionViewController" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nQE-jC-j7D" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pdp-I1-FaD"/>
                         <viewControllerLayoutGuide type="bottom" id="Cx1-CV-e92"/>
@@ -282,12 +274,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tcg-jB-YD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2623" y="572"/>
+            <point key="canvasLocation" x="2341" y="913"/>
         </scene>
-        <!--Modal View Controller-->
+        <!--ResultVC-->
         <scene sceneID="XTf-JT-UT9">
             <objects>
-                <viewController storyboardIdentifier="result" id="PmV-J9-vhH" customClass="ModalViewController" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resultVC" id="PmV-J9-vhH" customClass="ResultVC" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gov-rD-LTt"/>
                         <viewControllerLayoutGuide type="bottom" id="wnL-YP-iA1"/>
@@ -348,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYM-6s-vy7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2579" y="805"/>
+            <point key="canvasLocation" x="2156" y="81"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AB6-Hn-Z1H">
@@ -371,6 +363,5 @@
     </scenes>
     <resources>
         <image name="gb" width="1000" height="500"/>
-        <image name="lb" width="1000" height="667"/>
     </resources>
 </document>

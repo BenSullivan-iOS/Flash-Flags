@@ -44,10 +44,11 @@ struct Tracker: GameTracker {
     _remainingCells = _answers
   }
   
-  mutating func removeRemainingCountry(at index: Int) {
+  private mutating func removeRemainingCountry(at index: Int) {
     _remainingCountries.remove(at: index)
   }
-  mutating func removeRemainingCell(country: String) {
+  
+  private mutating func removeRemainingCell(country: String) {
     _remainingCells.removeValue(forKey: country)
   }
   
@@ -60,5 +61,19 @@ struct Tracker: GameTracker {
       print("Game completed")
       
     }
+    
+    for i in remainingCells where i.0 == country {
+      
+      _ = removeRemainingCell(country: country)
+      
+      print(remainingCells)
+      
+    }
+    
+    for a in remainingCountries.indices where remainingCountries[a].name == country {
+      removeRemainingCountry(at: a)
+      break
+    }
+
   }
 }

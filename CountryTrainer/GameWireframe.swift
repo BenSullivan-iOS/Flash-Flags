@@ -15,27 +15,37 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   func presentGameInterfaceFromViewController(viewController: UIViewController, withGame game: Game) {
     
-    let newViewController = gameViewController()
-//    newViewController.eventHandler = addPresenter
-//    newViewController.modalPresentationStyle = .Custom
-    newViewController.transitioningDelegate = self
-    newViewController.game = game
+    let gameInteractor = GameInteractor()
     
-//    addPresenter?.configureUserInterfaceForPresentation(newViewController)
+    let newVC = gameViewController()
+    newVC.transitioningDelegate = self
+    newVC.game = game
+    newVC.gameWireframe = self
     
-    //    let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! GameVC
+    newVC.gameInteractorInterface = gameInteractor
     
-    //    gameVC.game = game
-    
-//        newViewController.navigationController.radialPushViewController(viewController: gameVC, duration: 0.5, startFrame: newGameButton.frame, transitionCompletion: nil)
-    
-    viewController.navigationController?.radialPushViewController(viewController: newViewController)
-    
-//    viewController.present(newViewController, animated: true, completion: nil)
-    
-    presentedViewController = newViewController
+    viewController.navigationController?.radialPushViewController(viewController: newVC)
+    presentedViewController = newVC
 
   }
+  
+  func presentResultInterfaceFrom(viewController: UIViewController, scoreInt: Int, scoreString: String) {
+    
+    let newVC = resultVC()
+    newVC.transitioningDelegate = self
+    newVC.modalPresentationStyle = UIModalPresentationStyle.custom
+    newVC.gameScoreInt = scoreInt
+    newVC.gameScoreString = scoreString
+    
+    viewController.navigationController!.present(newVC, animated: true, completion: nil)
+  }
+  
+  func resultVC() -> ResultVC {
+    let storyboard = mainStoryboard()
+    let gameVC: ResultVC = storyboard.instantiateViewController(withIdentifier: "resultVC") as! ResultVC
+    return gameVC
+  }
+
   
   func gameViewController() -> GameVC {
     let storyboard = mainStoryboard()
@@ -46,5 +56,17 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   func mainStoryboard() -> UIStoryboard {
     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     return storyboard
+  }
+  
+  //MARK: TRANSITION DELEGATE
+  
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+    return PresentingAnimator()
+    
+  }
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    return DismissingAnimator()
+    
   }
 }
