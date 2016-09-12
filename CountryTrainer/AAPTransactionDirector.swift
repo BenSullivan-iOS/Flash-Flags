@@ -67,7 +67,7 @@ class AAPTransactionDirector: NSObject, UIViewControllerAnimatedTransitioning, U
    *
    */
   
-  func endInteractiveTranscation(canceled: Bool , endBlock: ( () -> Void) ) {
+  func endInteractiveTranscation(canceled: Bool, endBlock: @escaping () -> Void ) {
     
     self.interactiveEndBlock = endBlock
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 protocol GameDelegate {
   func answered(country: String, result: Bool)
@@ -18,6 +19,8 @@ class GameCell: UITableViewCell {
   @IBOutlet fileprivate weak var stackView: UIStackView!
   @IBOutlet weak var flagImage: FlagImageView!
   @IBOutlet weak var countryName: UILabel!
+  @IBOutlet weak var correctButton: ResultButton!
+  @IBOutlet weak var nopeButton: ResultButton!
   
   var delegate: GameDelegate? = nil
   
@@ -47,8 +50,6 @@ class GameCell: UITableViewCell {
     flagImage.animate()
   }
   
-
-  
   func changeCellStatus(selected: Bool) {
     
 //    let i = AnimationEngine(constraints: [NSLayoutConstraint])
@@ -64,12 +65,16 @@ class GameCell: UITableViewCell {
       
       self.stackView.arrangedSubviews[1].isHidden = !selected
       self.stackView.arrangedSubviews.last?.isHidden = !selected
+      
+      let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
+
+      AnimationEngine.popView(view: correctButton, velocity: velocity)
+      AnimationEngine.popView(view: nopeButton, velocity: velocity)
 
    } else {
       
       self.stackView.arrangedSubviews[1].isHidden = !selected
       self.stackView.arrangedSubviews.last?.isHidden = !selected
-   
     }
   }
 

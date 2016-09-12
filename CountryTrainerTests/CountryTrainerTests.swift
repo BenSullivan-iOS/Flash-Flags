@@ -23,8 +23,8 @@ class CountryTrainerTests: XCTestCase {
   
   func testDataService() {
     
-    let vc = ViewController()
-    XCTAssertNotNil(vc.createCountries())
+//    let vc = MainVC()
+//    XCTAssertNotNil(vc.createCountries())
   }
   
   func testGame() {

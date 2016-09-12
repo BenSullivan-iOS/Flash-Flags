@@ -20,7 +20,7 @@ class LayerAnimator: NSObject, CAAnimationDelegate {
     self.animLayer = layer
   }
   
-  func startAnimationWithBlock(block: ( () -> Void) ) {
+  func startAnimationWithBlock(block: @escaping ( () -> Void) ) {
     self.caAnimation?.delegate = self
     self.completionBlock = block
     

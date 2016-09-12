@@ -21,10 +21,11 @@ extension UITableView {
   }
 }
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, GameDelegate {
+class GameVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, GameDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
+  var selectedRow: IndexPath? = nil
   var game: Game?
   
   func radialPop() {
@@ -35,8 +36,14 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.leftBarButtonItem?.action = #selector(self.radialPop)
-      
+//    navigationItem.backBarButtonItem?.action = #selector(self.radialPop)
+    navigationItem.backBarButtonItem?.responds(to: #selector(self.radialPop))
+//    navigationItem.backBarButtonItem.
+
+//    navigationItem.leftBarButtonItem?.responds(to: #selector(self.radialPop))
+    
+//    navigationItem.leftBarButtonItem?.action = #selector(self.radialPop)
+    
 //      UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.radialPop))
     
     navigationController?.enableRadialSwipe()
@@ -129,17 +136,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
   }
   
-  
-  
-  var selectedRow: IndexPath? = nil
-  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     print(indexPath.row)
-//    print(game?.countries.count - 1)
-    
-
-    
     
     selectedRow = indexPath
     let cell = tableView.cellForRow(at: indexPath) as! GameCell
@@ -193,11 +192,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
   // MARK: - Table view data source
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
     
     guard let game = game else { return 0 }
     print(game.tracker.remainingCells)
-    
     
     return game.tracker.remainingCells.count
   }
