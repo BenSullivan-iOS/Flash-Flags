@@ -17,7 +17,6 @@ class ResultVC: UIViewController {
   
   var gameScoreString = String()
   var gameScoreInt = Int()
-  
   var circleView: CircleView!
   
   override func viewDidLoad() {
@@ -41,7 +40,11 @@ class ResultVC: UIViewController {
     
     animateCircle()
     
-    Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.unhideButtons), userInfo: nil, repeats: false)
+    Timer.scheduledTimer(timeInterval: 0.4,
+                         target: self,
+                         selector: #selector(self.unhideButtons),
+                         userInfo: nil,
+                         repeats: false)
     
     self.percentageLabel.alpha = 1
     
@@ -52,13 +55,8 @@ class ResultVC: UIViewController {
   
   func animateCircle() {
     
-    let percent: Double = Double(gameScoreInt) / 100
-    
-    let value: CGFloat = CGFloat(percent)
-    
-    print(gameScoreInt)
-    print(value)
-    
+    let percent = Double(gameScoreInt) / 100
+    let value = CGFloat(percent)
     
     self.circleView.setStrokeEnd(strokeEnd: value, animated: true)
   }
@@ -81,16 +79,12 @@ class ResultVC: UIViewController {
     
     let screenSize = UIScreen.main.bounds
     
-    let screenWidth = screenSize.width
-    let screenHeight = screenSize.height
-    
     let screenCenterWidth = screenSize.width * 0.5 - 50
-//    let screenCenterHeight = screenSize.height * 0.5 - 150
     let screenCenterHeight = screenSize.height * 0.5 - 170
     
     let center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
     
-    let frame = CGRect(origin: center, size: CGSize(width: screenSize.width / 2 , height: screenSize.width / 2))
+    let frame = CGRect(origin: center, size: CGSize(width: screenSize.width / 2, height: screenSize.width / 2))
     
     self.circleView = CircleView(frame: frame)
     self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
@@ -103,16 +97,6 @@ class ResultVC: UIViewController {
     
   }
   
-  @IBAction func animateCircle(_ sender: UIButton) {
-    
-    let value = CGFloat(gameScoreInt / 100)
-    
-    self.circleView.setStrokeEnd(strokeEnd: value, animated: true)
-    
-  }
-  
-
-  
   func unhideButtons() {
     
     let velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
@@ -120,8 +104,11 @@ class ResultVC: UIViewController {
     retryButton.alpha = 1
     AnimationEngine.popView(view: retryButton, velocity: velocity)
     
-    Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.unhideMenuButton), userInfo: nil, repeats: false)
-
+    Timer.scheduledTimer(timeInterval: 0.4,
+                         target: self,
+                         selector: #selector(self.unhideMenuButton),
+                         userInfo: nil,
+                         repeats: false)
   }
   
   func unhideMenuButton() {

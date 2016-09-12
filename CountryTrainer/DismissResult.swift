@@ -20,6 +20,7 @@ class DismissingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
     toVC.view.tintAdjustmentMode = .normal
     toVC.view.isUserInteractionEnabled = true
+    
     let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
     var dimmingView: UIView?
     
@@ -32,11 +33,13 @@ class DismissingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     let opacityAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
     opacityAnimation?.toValue = 0.0
+    
     let offscreenAnimation = POPBasicAnimation(propertyNamed: kPOPLayerPositionY)
     offscreenAnimation?.toValue = -fromVC.view.layer.position.y
     offscreenAnimation!.completionBlock = {(anim: POPAnimation?, finished: Bool) -> Void in
       transitionContext.completeTransition(true)
     }
+    
     fromVC.view.layer.pop_add(offscreenAnimation!, forKey: "offscreenAnimation")
     dimmingView?.layer.pop_add(opacityAnimation!, forKey: "opacityAnimation")
   }

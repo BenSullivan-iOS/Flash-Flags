@@ -7,6 +7,7 @@
 //
 
 protocol GameTracker {
+  
   var remainingCells: [String : Bool] { get }
   var remainingCountries: [Country] { get }
   var answers: [String : Bool] { get }

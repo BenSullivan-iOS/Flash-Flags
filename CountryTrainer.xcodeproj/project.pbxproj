@@ -192,6 +192,39 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B53A79D41D8707D9008C3D68 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B5ACDE051D71840100C4CA72 /* RadialTransitions */,
+			);
+			name = Wireframe;
+			sourceTree = "<group>";
+		};
+		B53A79D51D87080E008C3D68 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				B549C4D61D65FA08000409B3 /* GameVC.swift */,
+				B53CFC9F1D86F23500152EDD /* GameVCTableExt.swift */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		B53A79D61D870814008C3D68 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */,
+			);
+			name = Result;
+			sourceTree = "<group>";
+		};
+		B53CFCA11D8702B500152EDD /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B5BB5CAF1D6DBDA1008CABC4 /* CustomSegues */,
+			);
+			name = Wireframe;
+			sourceTree = "<group>";
+		};
 		B549C47F1D5C7DA5000409B3 = {
 			isa = PBXGroup;
 			children = (
@@ -221,8 +254,6 @@
 				B58A00801D84049F00B8BD7D /* Common */,
 				B58A00821D8404B400B8BD7D /* Modules */,
 				B58A00701D83FE4200B8BD7D /* Game */,
-				B557A27E1D6C42C1006C3A85 /* Util */,
-				B549C4C01D620780000409B3 /* Entities */,
 				B549C4BF1D620779000409B3 /* GameResult */,
 				B549C48B1D5C7DA5000409B3 /* AppDelegate.swift */,
 				B5ED08BA1D84142200A7A3D0 /* AppDependencies.swift */,
@@ -265,7 +296,6 @@
 		B549C4BF1D620779000409B3 /* GameResult */ = {
 			isa = PBXGroup;
 			children = (
-				B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */,
 			);
 			name = GameResult;
 			sourceTree = "<group>";
@@ -281,22 +311,12 @@
 		B549C4C11D620785000409B3 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				B5BB5CAF1D6DBDA1008CABC4 /* CustomSegues */,
 				B54179E01D67583600B70864 /* AnswerButtons.swift */,
 				B55A6B4A1D6874470023DC7A /* FlagImageView.swift */,
 				B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */,
 				B5F2604C1D704C93002A20B5 /* ResultButton.swift */,
 			);
 			name = CustomViews;
-			sourceTree = "<group>";
-		};
-		B557A27E1D6C42C1006C3A85 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				B5ACDE051D71840100C4CA72 /* RadialTransitions */,
-				B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */,
-			);
-			name = Util;
 			sourceTree = "<group>";
 		};
 		B55A6B461D6854F00023DC7A /* Game */ = {
@@ -323,8 +343,8 @@
 		B58A00711D83FEA300B8BD7D /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				B549C4D61D65FA08000409B3 /* GameVC.swift */,
-				B53CFC9F1D86F23500152EDD /* GameVCTableExt.swift */,
+				B53A79D51D87080E008C3D68 /* Game */,
+				B53A79D61D870814008C3D68 /* Result */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -420,7 +440,10 @@
 		B58A00801D84049F00B8BD7D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B53A79D41D8707D9008C3D68 /* Wireframe */,
+				B53CFCA11D8702B500152EDD /* Wireframe */,
 				B58A00811D8404A400B8BD7D /* View */,
+				B549C4C01D620780000409B3 /* Entities */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -429,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				B549C4C11D620785000409B3 /* CustomViews */,
+				B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */,
 				B549C48F1D5C7DA5000409B3 /* Main.storyboard */,
 				B549C4971D5C7DA5000409B3 /* LaunchScreen.storyboard */,
 				B53CFC971D86A3A300152EDD /* RootWireframe.swift */,

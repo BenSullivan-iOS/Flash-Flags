@@ -8,7 +8,14 @@
 
 struct Game: GameType {
   
+  init(countries: [Country]) {
+    self._countries = countries
+    self.tracker = Tracker(countries: countries)
+  }
+  
   fileprivate var _countries: [Country]
+  
+  var tracker: Tracker
   
   var progress: String {
     
@@ -24,7 +31,7 @@ struct Game: GameType {
   var resultPercentage: Int {
     
     var correct = 0.0
-    var totalFlags = Double(_countries.count)
+    let totalFlags = Double(_countries.count)
     
     for i in self.tracker.answers where i.value == true {
       correct += 1
@@ -32,7 +39,6 @@ struct Game: GameType {
     
     return Int(correct / totalFlags * 100)
   }
-  var tracker: Tracker
   
   var countries: [Country] {
     return _countries
@@ -42,8 +48,5 @@ struct Game: GameType {
     return countries.count
   }
   
-  init(countries: [Country]) {
-    self._countries = countries
-    self.tracker = Tracker(countries: countries)
-  }
+
 }

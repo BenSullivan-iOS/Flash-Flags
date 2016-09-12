@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, GameDelegate {
+class GameVC: UIViewController, UIViewControllerTransitioningDelegate, GameDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -52,7 +52,7 @@ class GameVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIVi
     //SAVE TO CORE DATA
     print("Save game to Core Data")
     game = nil
-    navigationController?.popViewController(animated: true)
+//    navigationController?.popViewController(animated: true)
     
   }
   
@@ -70,96 +70,35 @@ class GameVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIVi
   }
   
   func answered(country: String, result: Bool) {
-
-    game = gameInteractorInterface?.answered(game: game!, country: country, result: result)
     
-    //Update UI
-    self.title = game!.progress
-    tableView.deleteRows(at: [selectedRow!], with: UITableViewRowAnimation.fade)
-    
-    //Display resultVC if all questions have answers
-    if game!.tracker.remainingCountries.count == 0 {
-
-        let percentageString = " \(game!.resultPercentage)%"
-        let percentInt = game!.resultPercentage
-        gameWireframe?.presentResultInterfaceFrom(viewController: self, scoreInt: percentInt, scoreString: percentageString)
-      }
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-    print(indexPath.row)
-    
-    selectedRow = indexPath
-    let cell = tableView.cellForRow(at: indexPath) as! GameCell
-    
-    DispatchQueue.main.async {
+    if game != nil {
       
-      cell.changeCellStatus(selected: true)
-      tableView.beginUpdates()
-      tableView.endUpdates()
-    }
-    
-//    tableView.setContentOffset(CGPoint(x: CGFloat(0.0), y: tableView.contentSize.height - tableView.frame.size.height), animated: true)
-
-  }
-  
-  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    
-    if let selectedIndex = tableView.indexPathForSelectedRow, selectedIndex == indexPath as IndexPath {
+      game = gameInteractorInterface?.answered(
+        game: game!,
+        country: country,
+        result: result)
       
-      if let cell = tableView.cellForRow(at: indexPath) as? GameCell {
-        DispatchQueue.main.async {
-          
-          tableView.beginUpdates()
-          tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-          cell.changeCellStatus(selected: false)
-          tableView.endUpdates()
-        }
-      }
+      self.title = game!.progress
       
-      return nil
-    }
-    
-    return indexPath
-    
-  }
-  
-  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    
-    if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? GameCell {
+      tableView.deleteRows(
+        at: [selectedRow!],
+        with: UITableViewRowAnimation.fade)
       
-      DispatchQueue.main.async {
-        
-        cell.changeCellStatus(selected: false)
-        self.tableView.beginUpdates()
-        self.tableView.endUpdates()
-        
-      }
+      checkForGameCompleted(game: game!)
     }
   }
   
-  // MARK: - Table view data source
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func checkForGameCompleted(game: Game) {
     
-    guard let game = game else { return 0 }
-    print(game.tracker.remainingCells)
-    
-    return game.tracker.remainingCells.count
+    if game.tracker.remainingCountries.count == 0 {
+      
+      let percentageString = " \(game.resultPercentage)%"
+      let percentInt = game.resultPercentage
+      
+      gameWireframe?.presentResultInterfaceFrom(
+        viewController: self,
+        scoreInt: percentInt,
+        scoreString: percentageString)
+    }
   }
-  
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameCell
-    
-    print(game?.tracker.remainingCountries)
-    
-    
-    cell.delegate = self
-    cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
-    
-    return cell
-  }
-  
 }

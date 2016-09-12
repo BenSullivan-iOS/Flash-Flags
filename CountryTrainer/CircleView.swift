@@ -15,6 +15,7 @@ class CircleView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    
     assert(frame.size.width == frame.size.height, "A circle must have the same height and width.")
     self.addCircleLayer()
   }
