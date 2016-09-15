@@ -20,10 +20,11 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
     presentedViewController?.navigationController?.popViewController(animated: true)
   }
   
-  func dismissResultVCToEndGame() {
+  func dismissResultVCToEndGame(game: Game) {
     
     presentedViewController?.dismiss(animated: true, completion: nil)
     dismissGameInterface()
+    mainWireframe?.gameCompleted(game: game)
   }
   
   func dismissResultVCToRetry(game: Game) {

@@ -65,7 +65,9 @@ class ResultVC: UIViewController {
   }
   
   @IBAction func menuButton(_ sender: AnyObject) {
-    gameWireframe?.dismissResultVCToEndGame()
+    
+    let game = gameInteractorInterface?.retryGame() //FIXME: needs to be renamed
+    gameWireframe?.dismissResultVCToEndGame(game: game!)
   }
   
   @IBAction func retryButton(_ sender: ResultButton) {

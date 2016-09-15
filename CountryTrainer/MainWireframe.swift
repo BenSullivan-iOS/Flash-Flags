@@ -15,6 +15,10 @@ class MainWireframe {
   var gameWireframe: GameWireframe?
   var rootWireframe: RootWireframe?
   
+  func gameCompleted(game: Game) {
+    mainVC?.populateGames(game: game)
+  }
+  
   func presentGameInterface(withGame game: Game) {
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }

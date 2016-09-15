@@ -24,9 +24,12 @@ class AppDependencies {
   func configureDependencies() {
     
     let rootWireframe = RootWireframe()
+    let gameWireframe = GameWireframe()
     
     mainWireframe.rootWireframe = rootWireframe
-    mainWireframe.gameWireframe = GameWireframe()
+    mainWireframe.gameWireframe = gameWireframe
+    
+    gameWireframe.mainWireframe = mainWireframe
     
     print("Configure dependencies")
   }

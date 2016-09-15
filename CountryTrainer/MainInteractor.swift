@@ -9,6 +9,10 @@
 import Foundation
 
 class MainInteractor: MainInteractorInterface, DataService {
+  internal func populateGames(game: Game) {
+    //fixme: delete this
+  }
+
   
   fileprivate let numberOfFlagsSelected = 1
   fileprivate var chosenOnes = [Country]()
