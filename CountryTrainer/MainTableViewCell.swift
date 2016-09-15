@@ -16,6 +16,11 @@ class MainTableViewCell: UITableViewCell {
   @IBOutlet weak var blurView: UIView!
   @IBOutlet weak var blueEffect: UIVisualEffectView!
   
+  @IBOutlet weak var percentage: UILabel!
+  @IBOutlet weak var attempts: UILabel!
+  @IBOutlet weak var daysAgo: UILabel!
+  @IBOutlet weak var flags: UILabel!
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     bgLabel.layer.borderColor = UIColor.lightGray.cgColor
@@ -32,14 +37,29 @@ class MainTableViewCell: UITableViewCell {
 //    circleView.animateToStrokeEnd(strokeEnd: 0.75)
     
     addCircleView()
-    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false)
+    
 
-    self.circleView.setStrokeEnd(strokeEnd: 0.75, animated: true)
 
   }
-  override func prepareForReuse() {
+  
+  func configureCell(game: Game) {
+    
+    self.attempts.text = String(game.attempts)
+    self.percentage.text = "\(game.resultPercentage)%"
+    self.daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
+    self.flags.text = String(game.numberOfFlags)
     self.circleView.setStrokeEnd(strokeEnd: 0, animated: false)
     
+    let percent = Float(game.resultPercentage) / 100.0
+    print(percent)
+    
+    self.circleView.setStrokeEnd(strokeEnd: CGFloat(percent), animated: true)
+    
+  }
+  
+  override func prepareForReuse() {
+    
+    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false)
     self.circleView.setStrokeEnd(strokeEnd: 0.75, animated: true)
     
   }

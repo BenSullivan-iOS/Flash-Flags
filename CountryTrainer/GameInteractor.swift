@@ -15,19 +15,22 @@ class GameInteractor: GameInteractorInterface {
   func answered(game: Game, country: String, result: Bool) -> Game {
     
     currentGame = game
-    
     currentGame?.tracker.updateTracker(country, result: result)
     
     return currentGame!
+  }
+  
+  func getCurrentGame() -> Game {
     
+    currentGame?.gameRetried()
+    
+    return currentGame!
   }
   
   func retryGame() -> Game {
     
     let game = currentGame!
-    
     currentGame = Game(countries: game.countries, attempts: game.attempts)
-    
     currentGame?.gameRetried()
     
     return currentGame!

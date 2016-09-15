@@ -9,4 +9,5 @@
 protocol GameInteractorInterface {
   func answered(game: Game, country: String, result: Bool) -> Game
   func retryGame() -> Game
+  func getCurrentGame() -> Game
 }

@@ -14,4 +14,7 @@ enum Continent: String {
   case Americas = "Americas"
   case Europe = "Europe"
   case None = ""
+  
+  static let all = ["Oceania","Africa","Asia","Americas","Europe"]
+
 }

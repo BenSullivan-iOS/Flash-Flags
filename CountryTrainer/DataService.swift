@@ -10,7 +10,7 @@ import Foundation
 
 protocol DataService {
   func createCountries() -> [Country]?
-  func populateGames(game: Game)
+//  func getNewGameData(numberOfFlags: Int?, continent: String?)
 }
 
 extension DataService {

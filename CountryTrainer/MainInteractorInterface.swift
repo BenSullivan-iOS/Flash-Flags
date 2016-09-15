@@ -10,5 +10,5 @@ import Foundation
 
 protocol MainInteractorInterface {
   func clearCurrentGameData()
-  func getNewGameData()
+  func getNewGameData(numberOfFlags: Int, continent: String?)
 }
