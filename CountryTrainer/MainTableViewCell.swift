@@ -1,0 +1,86 @@
+//
+//  MainTableCell.swift
+//  CountryTrainer
+//
+//  Created by Ben Sullivan on 13/09/2016.
+//  Copyright © 2016 Ben Sullivan. All rights reserved.
+//
+
+import UIKit
+
+class MainTableViewCell: UITableViewCell {
+  
+  var circleView: CircleView!
+
+  @IBOutlet weak var bgLabel: UILabel!
+  @IBOutlet weak var blurView: UIView!
+  @IBOutlet weak var blueEffect: UIVisualEffectView!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    bgLabel.layer.borderColor = UIColor.lightGray.cgColor
+    bgLabel.layer.borderWidth = 1.0
+    bgLabel.layer.cornerRadius = 5.0
+    
+    
+//    button?.backgroundColor = UIColor.randomColor()
+//    backgroundColor = .clear
+//    button?.layer.cornerRadius = 5.0
+////    self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
+//    circleView.contentMode = .center
+//
+//    circleView.animateToStrokeEnd(strokeEnd: 0.75)
+    
+    addCircleView()
+    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false)
+
+    self.circleView.setStrokeEnd(strokeEnd: 0.75, animated: true)
+
+  }
+  override func prepareForReuse() {
+    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false)
+    
+    self.circleView.setStrokeEnd(strokeEnd: 0.75, animated: true)
+    
+  }
+  
+  func addCircleView() {
+    
+//    let screenSize = UIScreen.main.bounds
+//    
+//    let screenCenterWidth = screenSize.width * 0.5 - 50
+//    let screenCenterHeight = screenSize.height * 0.5 - 170
+//    
+//    let center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
+//    
+////    let frame = CGRect(origin: center, size: CGSize(width: screenSize.width / 2, height: screenSize.width / 2))
+    
+//    let frame = CGRect(origin: center, size: CGSize(width: screenSize.width / 2, height: screenSize.width / 2))
+//
+//    
+//    self.circleView = CircleView(frame: frame)
+//    self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
+//    
+//    circleView.contentMode = .center
+//    
+//    self.circleView.center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
+    
+    circleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
+
+    self.addSubview(self.circleView)
+    
+  }
+}
+
+// MARK: Random Color
+
+extension UIColor {
+  
+  static func randomColor() -> UIColor {
+    let randomRed: CGFloat = CGFloat(drand48())
+    let randomGreen: CGFloat = CGFloat(drand48())
+    let randomBlue: CGFloat = CGFloat(drand48())
+    
+    return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+  }
+}

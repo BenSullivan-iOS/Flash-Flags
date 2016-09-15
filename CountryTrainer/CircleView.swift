@@ -12,13 +12,24 @@ import pop
 class CircleView: UIView {
   
   var circleLayer: CAShapeLayer!
+  var lineWidth: CGFloat = 6.0
   
-  override init(frame: CGRect) {
+  init(frame: CGRect, lineWidth: CGFloat = 6.0) {
+    
+    self.lineWidth = lineWidth
+    
     super.init(frame: frame)
     
-    assert(frame.size.width == frame.size.height, "A circle must have the same height and width.")
     self.addCircleLayer()
+    
   }
+  
+//  override init(frame: CGRect) {
+//    super.init(frame: frame)
+//    
+//    assert(frame.size.width == frame.size.height, "A circle must have the same height and width.")
+//    self.addCircleLayer()
+//  }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -38,7 +49,6 @@ class CircleView: UIView {
   
   func addCircleLayer() {
     
-    let lineWidth: CGFloat = 6.0
     let radius: CGFloat = self.bounds.width / 2 - lineWidth / 2
     self.circleLayer = CAShapeLayer()
     let rect = CGRect(x: lineWidth / 2, y: lineWidth / 2, width: radius * 2, height: radius * 2)

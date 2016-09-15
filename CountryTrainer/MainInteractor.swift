@@ -10,10 +10,10 @@ import Foundation
 
 class MainInteractor: MainInteractorInterface, DataService {
   
-  let numberOfFlagsSelected = 5
-  var chosenOnes = [Country]()
-  var countries = [Country]()
-  var newGame: Game? = nil
+  fileprivate let numberOfFlagsSelected = 1
+  fileprivate var chosenOnes = [Country]()
+  fileprivate var countries = [Country]()
+  fileprivate var newGame: Game? = nil
   
   init() {
     
@@ -25,7 +25,8 @@ class MainInteractor: MainInteractorInterface, DataService {
   var mainVCInterface: MainVCInterface?
   
   func getNewGameData() {
-    print(countries.count)
+    
+    clearCurrentGameData()
     
     var chosenNumbers = Set<Int>()
     
@@ -40,19 +41,18 @@ class MainInteractor: MainInteractorInterface, DataService {
     for i in chosenNumbers {
       
       chosenOnes.append(countries[i])
-      print(countries[i])
+      print(chosenOnes)
     }
     
-    let game = Game(countries: chosenOnes)
+    let game = Game(countries: chosenOnes, attempts: 0)
     
     mainVCInterface?.prepareGameData(game: game)
     
   }
   
   func clearCurrentGameData() {
+    chosenOnes.removeAll()
+    newGame = nil
     print("Cleared current game data")
   }
-  
-  
-  
 }

@@ -11,6 +11,7 @@ import pop
 
 protocol GameDelegate {
   func answered(country: String, result: Bool)
+  func retryGame(game: Game)
 }
 
 class GameCell: UITableViewCell {

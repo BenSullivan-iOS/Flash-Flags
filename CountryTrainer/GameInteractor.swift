@@ -17,9 +17,20 @@ class GameInteractor: GameInteractorInterface {
     currentGame = game
     
     currentGame?.tracker.updateTracker(country, result: result)
-
+    
     return currentGame!
     
   }
-
+  
+  func retryGame() -> Game {
+    
+    let game = currentGame!
+    
+    currentGame = Game(countries: game.countries, attempts: game.attempts)
+    
+    currentGame?.gameRetried()
+    
+    return currentGame!
+  }
+  
 }

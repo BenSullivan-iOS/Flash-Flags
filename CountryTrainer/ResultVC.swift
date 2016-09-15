@@ -13,8 +13,11 @@ class ResultVC: UIViewController {
   
   @IBOutlet weak var menuButton: ResultButton!
   @IBOutlet weak var retryButton: ResultButton!
+  var gameInteractorInterface: GameInteractorInterface?
+
   @IBOutlet weak var percentageLabel: UILabel!
   
+  var gameWireframe: GameWireframe?
   var gameScoreString = String()
   var gameScoreInt = Int()
   var circleView: CircleView!
@@ -62,13 +65,16 @@ class ResultVC: UIViewController {
   }
   
   @IBAction func menuButton(_ sender: AnyObject) {
-    dismiss(sender: sender)
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "endGame"), object: nil)
+    gameWireframe?.dismissResultVCToEndGame()
   }
   
   @IBAction func retryButton(_ sender: ResultButton) {
-    dismiss(animated: true, completion: nil)
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retryGame"), object: nil)
+    
+    let newGame = gameInteractorInterface?.retryGame()
+    gameWireframe?.dismissResultVCToRetry(game: newGame!)
+    
+//    dismiss(animated: true, completion: nil)
+//    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retryGame"), object: nil)
   }
   
   func dismiss(sender: AnyObject) {
@@ -86,7 +92,7 @@ class ResultVC: UIViewController {
     
     let frame = CGRect(origin: center, size: CGSize(width: screenSize.width / 2, height: screenSize.width / 2))
     
-    self.circleView = CircleView(frame: frame)
+    self.circleView = CircleView(frame: frame, lineWidth: 6.0)
     self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
     
     circleView.contentMode = .center

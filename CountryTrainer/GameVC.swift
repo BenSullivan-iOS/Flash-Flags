@@ -25,15 +25,7 @@ class GameVC: UIViewController, UIViewControllerTransitioningDelegate, GameDeleg
   override func viewDidLoad() {
     super.viewDidLoad()
     
-//    navigationItem.backBarButtonItem?.action = #selector(self.radialPop)
     navigationItem.backBarButtonItem?.responds(to: #selector(self.radialPop))
-//    navigationItem.backBarButtonItem.
-
-//    navigationItem.leftBarButtonItem?.responds(to: #selector(self.radialPop))
-    
-//    navigationItem.leftBarButtonItem?.action = #selector(self.radialPop)
-    
-//      UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.radialPop))
     
     navigationController?.enableRadialSwipe()
     tableView.estimatedRowHeight = 250
@@ -41,32 +33,13 @@ class GameVC: UIViewController, UIViewControllerTransitioningDelegate, GameDeleg
     
     self.title = "yo bro"
     
-    NotificationCenter.default.addObserver(self, selector: #selector(self.retryGame), name: NSNotification.Name(rawValue: "retryGame"), object: nil)
-
-    NotificationCenter.default.addObserver(self, selector: #selector(self.endGame), name: NSNotification.Name(rawValue: "endGame"), object: nil)
-
-    
   }
   
-  func endGame() {
-    //SAVE TO CORE DATA
-    print("Save game to Core Data")
-    game = nil
-//    navigationController?.popViewController(animated: true)
+  func retryGame(game: Game) {
     
-  }
-  
-  func retryGame() {
+    self.game = game
     
-    if let originalGame = game {
-      
-      let newGame = Game(countries: originalGame.countries)
-      
-      game = newGame
-      
-      tableView.reloadData()
-      
-    }
+    tableView.reloadData()
   }
   
   func answered(country: String, result: Bool) {

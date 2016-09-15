@@ -6,14 +6,20 @@
 //  Copyright © 2016 Ben Sullivan. All rights reserved.
 //
 
+import Foundation
+
 struct Game: GameType {
   
-  init(countries: [Country]) {
+  init(countries: [Country], attempts: Int) {
     self._countries = countries
     self.tracker = Tracker(countries: countries)
+    self._attempts = attempts
+    self._dateLastCompleted = Date()
   }
   
   fileprivate var _countries: [Country]
+  fileprivate var _dateLastCompleted: Date
+  fileprivate var _attempts: Int
   
   var tracker: Tracker
   
@@ -46,6 +52,19 @@ struct Game: GameType {
   
   var numberOfFlags: Int {
     return countries.count
+  }
+  
+  var dateLastCompleted: Date {
+    return _dateLastCompleted
+  }
+  
+  var attempts: Int {
+    return _attempts
+  }
+  
+  mutating func gameRetried() {
+    _dateLastCompleted = Date()
+    _attempts += 1
   }
   
 

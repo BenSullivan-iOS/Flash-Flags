@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 extension GameVC: UITableViewDelegate, UITableViewDataSource {
   
   // MARK: - TABLE VIEW
@@ -33,7 +34,7 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource {
           tableView.endUpdates()
         }
       }
-      
+            
       return nil
     }
     
@@ -43,6 +44,9 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     print(indexPath.row)
+    
+
+
     
     selectedRow = indexPath
     let cell = tableView.cellForRow(at: indexPath) as! GameCell

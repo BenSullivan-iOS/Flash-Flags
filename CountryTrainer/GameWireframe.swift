@@ -12,10 +12,32 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   var addPresenter: GameVC?
   var presentedViewController: UIViewController?
+  var mainWireframe: MainWireframe?
+  var gameInteractor: GameInteractor?
+  var gameVC: GameVC?
+  
+  func dismissGameInterface() {
+    presentedViewController?.navigationController?.popViewController(animated: true)
+  }
+  
+  func dismissResultVCToEndGame() {
+    
+    presentedViewController?.dismiss(animated: true, completion: nil)
+    dismissGameInterface()
+  }
+  
+  func dismissResultVCToRetry(game: Game) {
+    
+    presentedViewController?.dismiss(animated: true, completion: nil)
+    
+    gameVC?.retryGame(game: game)
+        
+//    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retryGame"), object: nil)
+  }
   
   func presentGameInterfaceFromViewController(viewController: UIViewController, withGame game: Game) {
     
-    let gameInteractor = GameInteractor()
+    gameInteractor = GameInteractor()
     
     let newVC = gameViewController()
     newVC.transitioningDelegate = self
@@ -23,6 +45,8 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
     newVC.gameWireframe = self
     
     newVC.gameInteractorInterface = gameInteractor
+    
+    gameVC = newVC
     
     viewController.navigationController?.radialPushViewController(viewController: newVC)
     presentedViewController = newVC
@@ -36,6 +60,8 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
     newVC.modalPresentationStyle = UIModalPresentationStyle.custom
     newVC.gameScoreInt = scoreInt
     newVC.gameScoreString = scoreString
+    newVC.gameWireframe = self
+    newVC.gameInteractorInterface = gameInteractor
     
     viewController.navigationController!.present(newVC, animated: true, completion: nil)
   }
