@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-map_of_the_world" translatesAutoresizingMaskIntoConstraints="NO" id="Yf4-2a-2Id"/>
@@ -31,10 +31,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" rowHeight="80" id="5km-SM-aQ2" customClass="MenuTableViewCell" customModule="CountryTrainer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5km-SM-aQ2" id="ezV-xo-2L6">
-                                            <frame key="frameInset" width="375" height="80"/>
+                                            <frame key="frameInset" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjx-gc-D5U">
@@ -63,10 +63,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="92" id="f5H-yn-pA7" customClass="MainTableViewCell" customModule="CountryTrainer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="108" width="375" height="92"/>
+                                        <rect key="frame" x="0.0" y="108" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f5H-yn-pA7" id="HQH-Zn-TMr">
-                                            <frame key="frameInset" width="375" height="92"/>
+                                            <frame key="frameInset" width="414" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ap3-Um-On9">
@@ -169,10 +169,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeholderCell" rowHeight="92" id="TL3-mt-gyH">
-                                        <rect key="frame" x="0.0" y="200" width="375" height="92"/>
+                                        <rect key="frame" x="0.0" y="200" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TL3-mt-gyH" id="4Dd-OD-OqL">
-                                            <frame key="frameInset" width="375" height="92"/>
+                                            <frame key="frameInset" width="414" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
@@ -266,6 +266,20 @@
                                                         </label>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-5t-DGN">
                                                             <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="T8V-YG-OqE">
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMh-c0-zVu">
+                                                                            <connections>
+                                                                                <action selector="answeredCorrectly:" destination="oxp-Uz-7Ru" eventType="touchUpInside" id="JbC-q3-vll"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An1-Cm-a9K">
+                                                                            <connections>
+                                                                                <action selector="answeredIncorrectly:" destination="oxp-Uz-7Ru" eventType="touchUpInside" id="XSZ-oM-gaG"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-D6-8nQ">
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLa-nR-9UV" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
@@ -297,28 +311,16 @@
                                                                         <constraint firstAttribute="height" constant="30" id="fXa-fh-VU5"/>
                                                                     </constraints>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="T8V-YG-OqE">
-                                                                    <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMh-c0-zVu">
-                                                                            <connections>
-                                                                                <action selector="answeredCorrectly:" destination="oxp-Uz-7Ru" eventType="touchUpInside" id="JbC-q3-vll"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="An1-Cm-a9K">
-                                                                            <connections>
-                                                                                <action selector="answeredIncorrectly:" destination="oxp-Uz-7Ru" eventType="touchUpInside" id="XSZ-oM-gaG"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                    </subviews>
-                                                                </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="9Rt-D6-8nQ" firstAttribute="centerX" secondItem="b6N-5t-DGN" secondAttribute="centerX" id="2u5-JE-o0Z"/>
                                                                 <constraint firstAttribute="height" constant="35" id="4b5-xB-FuG"/>
+                                                                <constraint firstItem="9Rt-D6-8nQ" firstAttribute="leading" secondItem="b6N-5t-DGN" secondAttribute="leading" id="6fR-SK-Fpi"/>
+                                                                <constraint firstItem="9Rt-D6-8nQ" firstAttribute="top" secondItem="b6N-5t-DGN" secondAttribute="top" constant="2" id="HZo-qr-Rtp"/>
                                                                 <constraint firstAttribute="trailing" secondItem="T8V-YG-OqE" secondAttribute="trailing" id="JNW-Gi-42j"/>
                                                                 <constraint firstItem="T8V-YG-OqE" firstAttribute="leading" secondItem="b6N-5t-DGN" secondAttribute="leading" id="e8K-Vv-21V"/>
+                                                                <constraint firstAttribute="trailing" secondItem="9Rt-D6-8nQ" secondAttribute="trailing" id="i2u-ga-aoi"/>
                                                                 <constraint firstItem="T8V-YG-OqE" firstAttribute="top" secondItem="b6N-5t-DGN" secondAttribute="top" id="jUn-2C-WBb"/>
-                                                                <constraint firstAttribute="bottom" secondItem="9Rt-D6-8nQ" secondAttribute="bottom" id="kyq-Yx-reL"/>
+                                                                <constraint firstAttribute="bottom" secondItem="9Rt-D6-8nQ" secondAttribute="bottom" constant="3" id="lTm-wz-kt2"/>
                                                                 <constraint firstAttribute="bottom" secondItem="T8V-YG-OqE" secondAttribute="bottom" id="zGj-Dg-18v"/>
                                                             </constraints>
                                                         </view>
@@ -326,10 +328,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="JWj-x5-Z9d" secondAttribute="bottom" constant="13" id="7TJ-t5-2Tt"/>
-                                                <constraint firstItem="JWj-x5-Z9d" firstAttribute="leading" secondItem="7Ae-jJ-N1y" secondAttribute="leadingMargin" id="YIQ-Fs-Xdr"/>
-                                                <constraint firstItem="JWj-x5-Z9d" firstAttribute="top" secondItem="7Ae-jJ-N1y" secondAttribute="topMargin" id="lWZ-JI-xSM"/>
-                                                <constraint firstItem="JWj-x5-Z9d" firstAttribute="trailing" secondItem="7Ae-jJ-N1y" secondAttribute="trailingMargin" id="yF2-7n-PYN"/>
+                                                <constraint firstItem="JWj-x5-Z9d" firstAttribute="top" secondItem="7Ae-jJ-N1y" secondAttribute="topMargin" id="FQg-jH-31V"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JWj-x5-Z9d" secondAttribute="bottom" constant="13" id="WQ4-GH-Hue"/>
+                                                <constraint firstItem="JWj-x5-Z9d" firstAttribute="leading" secondItem="7Ae-jJ-N1y" secondAttribute="leadingMargin" id="ZfL-0n-5IT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JWj-x5-Z9d" secondAttribute="trailing" id="n0C-4f-dyg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -390,7 +392,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xjq-QJ-GPz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wor-Y2-sud">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cA-Hb-XXf">
@@ -427,7 +429,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Cx1-CV-e92"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tdn-dH-GWF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.95115725569999998" blue="0.83839027399999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
