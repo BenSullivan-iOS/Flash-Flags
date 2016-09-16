@@ -10,7 +10,6 @@ import Foundation
 
 protocol DataService {
   func createCountries() -> [Country]?
-//  func getNewGameData(numberOfFlags: Int?, continent: String?)
 }
 
 extension DataService {
@@ -72,7 +71,7 @@ extension DataService {
         return countries
         
       } catch {
-        print("POPULATE ARRAYS ERROR")
+        print("POPULATE COUNTRY JSON ERROR")
         print(error)
         
         return nil

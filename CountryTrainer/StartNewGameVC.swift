@@ -16,28 +16,35 @@ class StartNewGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
   
   var mainInteractor: MainInteractorInterface?
   
-  var continents = [String]()
-  var numberOfFlags = [Int]()
+  //Settings for a default game
+
+  fileprivate var continents = ["Select Continent", "All"]
+  fileprivate var numberOfFlags = [Int]()
   
-  var selectedContinent = String()
-  var selectedNumOfFlags = Int()
+  fileprivate var selectedContinent = "All"
+  fileprivate var selectedNumOfFlags = 5
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    if let contData = mainInteractor?.prepareContinentsForPicker(),
+      let flagData = mainInteractor?.prepareNumberOfFlagsForPicker() {
+      
+      continents += contData
+      numberOfFlags += flagData
+    }
     
     numberOfFlagsPicker.selectRow(5, inComponent: 0, animated: false)
     
     view.layer.cornerRadius = 8.0
-    continents = Continent.all
-    continents.sort()
-    continents.insert("Select Continent", at: 0)
-    continents.insert("All", at: 1)
-    
-    for i in 1...236 {
-      numberOfFlags.append(i)
-    }
   }
+  
+  @IBAction func startGameButtonPressed(_ sender: UIButton) {
+    
+    mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent)
+  }
+
+  //MARK: PICKER DELEGATE / DATASOURCE
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     
@@ -47,22 +54,11 @@ class StartNewGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     if pickerView == continentPicker {
-      print(continents.count)
-      print(row)
+
       selectedContinent = continents[row]
     }
-
-    
   }
-
-  
-  @IBAction func startGameButtonPressed(_ sender: UIButton) {
-    
-    let selectedRow = numberOfFlagsPicker.selectedRow(inComponent: 0)
-    
-    mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent)
-  }
-
+ 
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }

@@ -1,4 +1,12 @@
 //
+//  PresentStartNewGame.swift
+//  CountryTrainer
+//
+//  Created by Ben Sullivan on 16/09/2016.
+//  Copyright © 2016 Ben Sullivan. All rights reserved.
+//
+
+//
 //  PresentResult.swift
 //  CountryTrainer
 //
@@ -9,9 +17,7 @@
 import UIKit
 import pop
 
-let customBlueColor = UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1)
-
-class PresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class PresentStartNewGame: NSObject, UIViewControllerAnimatedTransitioning {
   
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return 0.5
@@ -40,17 +46,17 @@ class PresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     return opacityAnimation!
   }
-
+  
   
   func scaleAnimation() -> POPSpringAnimation {
     
     let scaleAnimation = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
     scaleAnimation?.springBounciness = 20
     scaleAnimation?.fromValue = NSValue(cgPoint: CGPoint(x: 1.2, y: 1.4))
-
+    
     return scaleAnimation!
   }
-
+  
   
   func positionAnimation(_ trans: UIViewControllerContextTransitioning) -> POPSpringAnimation {
     
@@ -66,8 +72,8 @@ class PresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
   func createToView(_ trans: UIViewControllerContextTransitioning) -> UIView {
     
     let toView = trans.viewController(forKey: .to)!.view!
-    toView.frame = CGRect(x: 0, y: 0, width: trans.containerView.bounds.width - 104.0, height: trans.containerView.bounds.height - 288.0)
-
+    toView.frame = CGRect(x: 0, y: 0, width: trans.containerView.bounds.width - 20, height: trans.containerView.bounds.height - 300.0)
+    
     toView.center = CGPoint(x: trans.containerView.center.x, y: -trans.containerView.center.y)
     
     return toView

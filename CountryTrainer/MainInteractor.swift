@@ -20,7 +20,6 @@ class MainInteractor: MainInteractorInterface, DataService {
   fileprivate var newGame: Game? = nil
   
   var mainVCInterface: MainVCInterface?
-
   
   init() {
     
@@ -29,47 +28,34 @@ class MainInteractor: MainInteractorInterface, DataService {
     countries = countryArray
   }
   
-  
-  
-  
   func getNewGameData(numberOfFlags: Int, continent: String?) {
+    
+    print(numberOfFlags, continent)
     
     clearCurrentGameData()
     
     numberOfFlagsSelected = numberOfFlags
     
-    print(continent!, Continent.Africa.rawValue)
-    
+    //Filters out countires based on the continent provided
     var filteredCountries = countries
     
-    if continent != nil {
+    if continent != nil && continent != "All" && continent != "Select Continent" {
       
       filteredCountries = countries.filter { country -> Bool in
         
         return country.cont.rawValue == continent
       }
-      
-      filteredCountries.forEach { cont in
-        
-        print(cont.cont.rawValue)
-      }
-      print(continent)
     }
     
+    //Set prevents duplicate flags being selected
     var chosenNumbers = Set<Int>()
     
     for _ in 1...numberOfFlagsSelected {
       chosenNumbers.insert(Int(arc4random_uniform(UInt32(filteredCountries.count))))
-      
-      print(chosenNumbers)
-      
     }
     
     for i in chosenNumbers {
-      print(filteredCountries)
-      
       chosenOnes.append(filteredCountries[i])
-      print(chosenOnes)
     }
     
     let game = Game(countries: chosenOnes, attempts: 0)
@@ -83,4 +69,53 @@ class MainInteractor: MainInteractorInterface, DataService {
     newGame = nil
     print("Cleared current game data")
   }
+  
+  func prepareContinentsForPicker() -> [String] {
+    var continents = [String]()
+    
+    continents = Continent.all
+    
+    continents.sort()
+
+    return continents
+    
+  }
+  
+  func prepareNumberOfFlagsForPicker() -> [Int] {
+    
+    var numberOfFlags = [Int]()
+    
+    numberOfFlags.append(5)
+    
+    for i in 1...236 {
+      numberOfFlags.append(i)
+    }
+    return numberOfFlags
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

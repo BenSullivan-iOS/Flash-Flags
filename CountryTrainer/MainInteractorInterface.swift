@@ -9,6 +9,11 @@
 import Foundation
 
 protocol MainInteractorInterface {
+  
   func clearCurrentGameData()
   func getNewGameData(numberOfFlags: Int, continent: String?)
+  
+  func prepareContinentsForPicker() -> [String]
+  func prepareNumberOfFlagsForPicker() -> [Int]
+  
 }

@@ -12,11 +12,22 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource {
   
   // MARK: - TABLE VIEW
   
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameCell
     
-    cell.delegate = self
-    cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
+    if indexPath.section == 0 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameCell
+      
+      cell.delegate = self
+      cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
+      
+      return cell
+      
+    }
+    let cell = tableView.dequeueReusableCell(withIdentifier: "gamePlaceholderCell", for: indexPath)
     
     return cell
   }
@@ -34,7 +45,7 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource {
           tableView.endUpdates()
         }
       }
-            
+      
       return nil
     }
     
@@ -43,19 +54,16 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-    print(indexPath.row)
-    
-
-
-    
-    selectedRow = indexPath
-    let cell = tableView.cellForRow(at: indexPath) as! GameCell
-    
-    DispatchQueue.main.async {
+    if indexPath.section == 0 {
+      selectedRow = indexPath
+      let cell = tableView.cellForRow(at: indexPath) as! GameCell
       
-      cell.changeCellStatus(selected: true)
-      tableView.beginUpdates()
-      tableView.endUpdates()
+      DispatchQueue.main.async {
+        
+        cell.changeCellStatus(selected: true)
+        tableView.beginUpdates()
+        tableView.endUpdates()
+      }
     }
   }
   
@@ -75,9 +83,12 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    guard let game = game else { return 0 }
-    
-    return game.tracker.remainingCells.count
+    if section == 0 {
+      guard let game = game else { return 0 }
+      
+      return game.tracker.remainingCells.count
+    }
+    return 1
   }
   
 }
