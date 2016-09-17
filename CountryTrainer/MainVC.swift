@@ -63,13 +63,13 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
 
   override func viewDidAppear(_ animated: Bool) {
 
-    self.flagBg.center = CGPoint(x: self.flagBg.center.x - 500, y: self.flagBg.center.y)
+//    self.flagBg.center = CGPoint(x: self.flagBg.center.x - 500, y: self.flagBg.center.y)
 
-    UIView.animate(withDuration: 150) {
-
-      self.flagBg.center = CGPoint(x: self.flagBg.center.x + 2000, y: self.flagBg.center.y)
-      //      self.flagBg.frame = CGRect(x: self.flagBg.center.x, y: self.flagBg.center.y + 2000, width: self.flagBg.frame.width, height: self.flagBg.frame.height)
-    }
+//    UIView.animate(withDuration: 150) {
+//
+//      self.flagBg.center = CGPoint(x: self.flagBg.center.x + 2000, y: self.flagBg.center.y)
+//      //      self.flagBg.frame = CGRect(x: self.flagBg.center.x, y: self.flagBg.center.y + 2000, width: self.flagBg.frame.width, height: self.flagBg.frame.height)
+//    }
 
     //    var indexPath = IndexPath(row: 5, section: 0)
     //
@@ -82,7 +82,11 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
 
         tableView.selectRow(at: indexPath2, animated: true, scrollPosition: UITableViewScrollPosition.top)
   }
-
+  
+//  override var preferredStatusBarStyle: UIStatusBarStyle = UIStatusBarStyle.lightContent
+//  override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//    return .lightContent
+//  }
   func numberOfSections(in tableView: UITableView) -> Int {
     return 3
   }

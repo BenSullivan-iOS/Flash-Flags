@@ -20,22 +20,21 @@ class MenuTableViewCell: UITableViewCell {
     button.layer.cornerRadius = 5.0
   }
   @IBAction func buttonPressed(_ sender: UIButton) {
-//    
-//    switch sender.titleLabel?.text {
-//      
-////    case
-//    }
     
-    if sender.titleLabel?.text == "START NEW GAME" {
+    guard let title = sender.titleLabel?.text else { return }
+    
+    switch title {
       
-      mainWireframe?.presentStartNewGameVCFromMainVC()
-    }
-    
-    if sender.titleLabel?.text == "QUICK START" {
-          mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil)
-    }
-    
+    case MenuItems.quickStart.rawValue:
+      mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil)
 
+    case MenuItems.startNewGame.rawValue:
+      mainWireframe?.presentStartNewGameVCFromMainVC()
+      
+    default: break
+    }
+    
+  
   }
   
   func configureCell(title: String) {

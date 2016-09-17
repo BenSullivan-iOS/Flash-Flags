@@ -70,6 +70,10 @@
 		B5AD691C1D8BF09300F2331A /* PresentStartNewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD691B1D8BF09300F2331A /* PresentStartNewGame.swift */; };
 		B5AD691E1D8C07BC00F2331A /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD691D1D8C07BC00F2331A /* MenuItems.swift */; };
 		B5AD69201D8C094200F2331A /* MainVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD691F1D8C094200F2331A /* MainVC2.swift */; };
+		B5AD69231D8C35DE00F2331A /* FilterFlagsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD69221D8C35DE00F2331A /* FilterFlagsWireframe.swift */; };
+		B5AD69271D8C35FA00F2331A /* FilterFlagsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD69261D8C35FA00F2331A /* FilterFlagsPresenter.swift */; };
+		B5AD692A1D8C360B00F2331A /* FilterFlagsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD69291D8C360B00F2331A /* FilterFlagsInteractor.swift */; };
+		B5AD692D1D8C3D3F00F2331A /* FilterFlagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD692C1D8C3D3F00F2331A /* FilterFlagsCollectionViewCell.swift */; };
 		B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAB1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */; };
@@ -77,7 +81,6 @@
 		B5ED08BB1D84142200A7A3D0 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08BA1D84142200A7A3D0 /* AppDependencies.swift */; };
 		B5F2604D1D704C93002A20B5 /* ResultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F2604C1D704C93002A20B5 /* ResultButton.swift */; };
 		B5F2604E1D704C93002A20B5 /* ResultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F2604C1D704C93002A20B5 /* ResultButton.swift */; };
-		B5F2604F1D705DA6002A20B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B549C48F1D5C7DA5000409B3 /* Main.storyboard */; };
 		DDC4EC6C5D01B99125ED1403 /* Pods_CountryTrainerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14150EA0EB58B5F45459EBDD /* Pods_CountryTrainerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +158,10 @@
 		B5AD691B1D8BF09300F2331A /* PresentStartNewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentStartNewGame.swift; sourceTree = "<group>"; };
 		B5AD691D1D8C07BC00F2331A /* MenuItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItems.swift; sourceTree = "<group>"; };
 		B5AD691F1D8C094200F2331A /* MainVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC2.swift; sourceTree = "<group>"; };
+		B5AD69221D8C35DE00F2331A /* FilterFlagsWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsWireframe.swift; sourceTree = "<group>"; };
+		B5AD69261D8C35FA00F2331A /* FilterFlagsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsPresenter.swift; sourceTree = "<group>"; };
+		B5AD69291D8C360B00F2331A /* FilterFlagsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsInteractor.swift; sourceTree = "<group>"; };
+		B5AD692C1D8C3D3F00F2331A /* FilterFlagsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ResultVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		B5ED08BA1D84142200A7A3D0 /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
@@ -475,6 +482,7 @@
 		B58A00821D8404B400B8BD7D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B5AD69211D8C35BD00F2331A /* FilterFlags */,
 				B58A00741D83FEF500B8BD7D /* Main */,
 				B58A00701D83FE4200B8BD7D /* Game */,
 			);
@@ -489,6 +497,49 @@
 				B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */,
 			);
 			name = RadialTransitions;
+			sourceTree = "<group>";
+		};
+		B5AD69211D8C35BD00F2331A /* FilterFlags */ = {
+			isa = PBXGroup;
+			children = (
+				B5AD692B1D8C3D2A00F2331A /* View */,
+				B5AD69281D8C35FD00F2331A /* Interactor */,
+				B5AD69251D8C35EC00F2331A /* Presenter */,
+				B5AD69241D8C35E400F2331A /* Wireframe */,
+			);
+			name = FilterFlags;
+			sourceTree = "<group>";
+		};
+		B5AD69241D8C35E400F2331A /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B5AD69221D8C35DE00F2331A /* FilterFlagsWireframe.swift */,
+			);
+			name = Wireframe;
+			sourceTree = "<group>";
+		};
+		B5AD69251D8C35EC00F2331A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B5AD69261D8C35FA00F2331A /* FilterFlagsPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		B5AD69281D8C35FD00F2331A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B5AD69291D8C360B00F2331A /* FilterFlagsInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		B5AD692B1D8C3D2A00F2331A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B5AD692C1D8C3D3F00F2331A /* FilterFlagsCollectionViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		B5BB5CAF1D6DBDA1008CABC4 /* CustomSegues */ = {
@@ -642,7 +693,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B549C4CB1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */,
-				B5F2604F1D705DA6002A20B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +860,8 @@
 				B53AAA741D8AD41500ED644E /* DateExtensions.swift in Sources */,
 				B549C48C1D5C7DA5000409B3 /* AppDelegate.swift in Sources */,
 				B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */,
+				B5AD69271D8C35FA00F2331A /* FilterFlagsPresenter.swift in Sources */,
+				B5AD692A1D8C360B00F2331A /* FilterFlagsInteractor.swift in Sources */,
 				B58A007F1D8402AC00B8BD7D /* MainVCInterface.swift in Sources */,
 				B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */,
 				B549C4C71D659F13000409B3 /* Country.swift in Sources */,
@@ -817,11 +869,13 @@
 				B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */,
 				B53CFC9A1D86A8E300152EDD /* GameWireframe.swift in Sources */,
 				B53CFCA01D86F23500152EDD /* GameVCTableExt.swift in Sources */,
+				B5AD69231D8C35DE00F2331A /* FilterFlagsWireframe.swift in Sources */,
 				B5AD691E1D8C07BC00F2331A /* MenuItems.swift in Sources */,
 				B549C4C31D6207CD000409B3 /* DataService.swift in Sources */,
 				B5ACDE0B1D71841800C4CA72 /* UIView+Radial.swift in Sources */,
 				B5ACDE0A1D71841800C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */,
 				B53BA2741D6DBE04007A542E /* DismissResult.swift in Sources */,
+				B5AD692D1D8C3D3F00F2331A /* FilterFlagsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
