@@ -9,17 +9,20 @@
 import UIKit
 import pop
 
-class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableViewDataSource, DataService {
-  internal func getNewGameData(numberOfFlags: Int?, continent: String?) {
-    //FIXME: delete this
-  }
+class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableViewDataSource, MenuTableViewCellDelegate {
+//  internal func getNewGameData(numberOfFlags: Int?, continent: String?) {
+//    //FIXME: delete this
+//  }
   //data service for testing
 
   @IBOutlet weak var flagImage: UIImageView!
   @IBOutlet weak var newGameButton: UIButton!
   @IBOutlet weak var tableView: COBezierTableView!
-
   @IBOutlet weak var flagBg: UIImageView!
+  
+  var mainInteractor: MainInteractorInterface?
+  var mainWireframe: MainWireframe?
+  
   var games = [Game]()
 
   func populateGames(game: Game) {
@@ -30,7 +33,6 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     tableView.reloadData()
   }
 
-
   var menuTitles = [
     MenuItems.about.rawValue,
     MenuItems.tutorial.rawValue,
@@ -39,14 +41,13 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     MenuItems.quickStart.rawValue
   ]
 
-  var countries = [Country]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    guard let countryArray = createCountries() else { print("json error"); return }
-
-    countries = countryArray
+//    guard let countryArray = createCountries() else { print("json error"); return }
+//
+//    countries = countryArray
 
     let rect = view.bounds
 
@@ -83,6 +84,17 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
         tableView.selectRow(at: indexPath2, animated: true, scrollPosition: UITableViewScrollPosition.top)
   }
   
+  
+  func presentFilterFlags() {
+    
+    mainWireframe?.presentFilterFlagsInterface(withCountries: (mainInteractor?.countries)!)
+  }
+  
+  func updateCountriesAfterFilter(countries: [Country]) {
+    
+    mainInteractor?.updateCountries(countries: countries)
+  }
+  
 //  override var preferredStatusBarStyle: UIStatusBarStyle = UIStatusBarStyle.lightContent
 //  override func preferredStatusBarStyle() -> UIStatusBarStyle {
 //    return .lightContent
@@ -116,6 +128,7 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
 
       let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as! MenuTableViewCell
 
+      cell.menuTableViewCellDelegate = self
       cell.configureCell(title: menuTitles[indexPath.row])
       cell.mainInteractor = mainInteractor
       cell.mainWireframe = mainWireframe
@@ -126,6 +139,7 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
 
       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MainTableViewCell
 
+      
       cell.configureCell(game: games[indexPath.row])
 
       //      cell.button?.setImage(UIImage(named: countries[indexPath.row].flag), for: .normal)
@@ -139,8 +153,7 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
 
   }
 
-  var mainInteractor: MainInteractorInterface?
-  var mainWireframe: MainWireframe?
+
 
   @IBAction func newGameButtonPressed(_ sender: AnyObject) {
     mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil)

@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol MenuTableViewCellDelegate: class {
+  func presentFilterFlags()
+}
+
 class MenuTableViewCell: UITableViewCell {
   
   @IBOutlet weak var button: UIButton!
+  
+  weak var menuTableViewCellDelegate: MenuTableViewCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -31,6 +37,8 @@ class MenuTableViewCell: UITableViewCell {
     case MenuItems.startNewGame.rawValue:
       mainWireframe?.presentStartNewGameVCFromMainVC()
       
+    case MenuItems.filterFlags.rawValue:
+        menuTableViewCellDelegate?.presentFilterFlags()
     default: break
     }
     

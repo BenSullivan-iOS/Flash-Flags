@@ -14,7 +14,17 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   var mainInteractor: MainInteractor?
   var gameWireframe: GameWireframe?
   var rootWireframe: RootWireframe?
+  var filterFlagsWireframe: FilterFlagsWireframe?
   var startNewGameVC: StartNewGameVC?
+  
+  func updateFilteredCountries(countries: [Country]) {
+    mainVC?.updateCountriesAfterFilter(countries: countries)
+  }
+  
+  func presentFilterFlagsInterface(withCountries countries: [Country]) {
+    
+    filterFlagsWireframe?.presentFilterFlagsInterfaceFromViewController(viewController: mainVC!, countries: countries)
+  }
   
   func presentStartNewGameVCFromMainVC() {
     
@@ -31,6 +41,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   }
   
   func presentGameInterface(withGame game: Game) {
+    
     mainVC?.dismiss(animated: true, completion: nil)
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }
@@ -60,7 +71,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   func startNewGameViewController() -> StartNewGameVC {
     let storyboard = mainStoryboard()
-    let startNewGameVC: StartNewGameVC = storyboard.instantiateViewController(withIdentifier: "startNewGameVC") as! StartNewGameVC
+    let startNewGameVC = storyboard.instantiateViewController(withIdentifier: "startNewGameVC") as! StartNewGameVC
     return startNewGameVC
   }
   

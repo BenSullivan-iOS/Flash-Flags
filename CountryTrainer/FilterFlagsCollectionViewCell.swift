@@ -28,7 +28,10 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
     
     let SHADOW_COLOR: CGFloat = 157.0 / 255.0
 
-    flagImage.layer.shadowColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.5).cgColor
+    flagImage.layer.shadowColor = UIColor(red: SHADOW_COLOR,
+                                          green: SHADOW_COLOR,
+                                          blue: SHADOW_COLOR,
+                                          alpha: 0.5).cgColor
     flagImage.layer.shadowOpacity = 0.8
     flagImage.layer.shadowRadius = 5.0
     flagImage.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -44,8 +47,7 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
   func configureView(country: Country) {
     
     self.country = country
-    
-    flagImage.image = UIImage(named: country.flag)
+    flagImage.image = UIImage(named: country.flagSmall) ?? UIImage(named: country.flag)
     countryName.text = country.name
   }
 }

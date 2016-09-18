@@ -37,9 +37,6 @@ class MainTableViewCell: UITableViewCell {
 //    circleView.animateToStrokeEnd(strokeEnd: 0.75)
     
     addCircleView()
-    
-
-
   }
   
   func configureCell(game: Game) {

@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="united_earth_flag_2_by_lordnarunh-d8uoq7m" translatesAutoresizingMaskIntoConstraints="NO" id="Yf4-2a-2Id"/>
@@ -177,15 +177,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="BLp-LD-7Te"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wja-n1-VBx">
-                                <frame key="frameInset" minX="33" minY="6" width="184" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Y2A-zY-5j4" kind="show" id="SqE-H3-ciE"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -219,7 +210,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Y56-aD-j66"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nLF-Lf-AlL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="united_earth_flag_2_by_lordnarunh-d8uoq7m" translatesAutoresizingMaskIntoConstraints="NO" id="1P6-ne-Gfx">
@@ -398,7 +389,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xjq-QJ-GPz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wor-Y2-sud">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cA-Hb-XXf">
@@ -435,7 +426,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Cx1-CV-e92"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tdn-dH-GWF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.95115725569999998" blue="0.83839027399999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -514,13 +505,13 @@
         <!--Filter FlagsVC-->
         <scene sceneID="Zgg-4r-W5j">
             <objects>
-                <viewController id="Y2A-zY-5j4" customClass="FilterFlagsVC" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="filterFlags" id="Y2A-zY-5j4" customClass="FilterFlagsVC" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aMg-bK-kYi"/>
                         <viewControllerLayoutGuide type="bottom" id="qiO-KU-bQz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yaX-vI-Gei">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="united_earth_flag_2_by_lordnarunh-d8uoq7m" translatesAutoresizingMaskIntoConstraints="NO" id="Nil-zQ-OkW">
@@ -532,13 +523,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cQp-Gf-GX0">
                                     <size key="itemSize" width="136" height="136"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="71"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="filterFlagsCell" id="5qU-dr-HSX" customClass="FilterFlagsCollectionViewCell" customModule="CountryTrainer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="136" height="136"/>
+                                        <rect key="frame" x="0.0" y="71" width="136" height="136"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="136" height="136"/>
@@ -572,8 +563,8 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koE-bY-CYV">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="cT9-Nb-2ZX"/>
-                                                        <constraint firstAttribute="height" constant="40" id="uYD-7r-i6u"/>
+                                                        <constraint firstAttribute="width" constant="70" id="cT9-Nb-2ZX"/>
+                                                        <constraint firstAttribute="height" constant="70" id="uYD-7r-i6u"/>
                                                     </constraints>
                                                     <connections>
                                                         <action selector="removeButtonPressed:" destination="5qU-dr-HSX" eventType="touchUpInside" id="Ke1-ZL-erk"/>
@@ -600,11 +591,33 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oM7-h4-tir">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="71"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="Y2A-zY-5j4" id="G9d-KO-WNw"/>
                                     <outlet property="delegate" destination="Y2A-zY-5j4" id="ukc-p9-VNi"/>
                                 </connections>
                             </collectionView>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z4Q-uk-PQu">
+                                <frame key="frameInset" width="414" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9w-l7-EAQ">
+                                        <frame key="frameInset" minX="8" minY="8" width="49" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="Y2A-zY-5j4" eventType="touchUpInside" id="zF9-FN-4RU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -613,7 +626,7 @@
                             <constraint firstItem="Z4f-Oh-vQi" firstAttribute="bottom" secondItem="qiO-KU-bQz" secondAttribute="top" id="ZR3-Pg-kCI"/>
                             <constraint firstItem="Nil-zQ-OkW" firstAttribute="top" secondItem="yaX-vI-Gei" secondAttribute="top" id="csq-RB-Jkx"/>
                             <constraint firstItem="Z4f-Oh-vQi" firstAttribute="leading" secondItem="yaX-vI-Gei" secondAttribute="leadingMargin" id="inF-Nb-dRb"/>
-                            <constraint firstItem="Z4f-Oh-vQi" firstAttribute="top" secondItem="aMg-bK-kYi" secondAttribute="bottom" id="lYa-Qc-Cg3"/>
+                            <constraint firstItem="Z4f-Oh-vQi" firstAttribute="top" secondItem="aMg-bK-kYi" secondAttribute="bottom" constant="-20" id="lYa-Qc-Cg3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -622,7 +635,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBk-a1-cjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3166.875" y="94.014084507042256"/>
+            <point key="canvasLocation" x="3166.666666666667" y="93.750000000000014"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AB6-Hn-Z1H">

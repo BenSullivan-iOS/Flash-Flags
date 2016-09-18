@@ -8,34 +8,30 @@
 
 import UIKit
 
-class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DataService, FilterFlagDelegate {
-  
-  var countries = [Country]()
+class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FilterFlagDelegate {
   
   @IBOutlet weak var collectionView: UICollectionView!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    guard let countryArray = createCountries() else { print("json error"); return }
-    
-    countries = countryArray
+  var countries: [Country] {
+    return filterFlagsInteractor?.countries ?? [Country]()
+  }
+  
+  var filterFlagsWireframe: FilterFlagsWireframe?
+  var filterFlagsInteractor: FilterFlagsInteractorInterface?
+  
+  @IBAction func backButtonPressed(_ sender: UIButton) {
+    filterFlagsWireframe?.dismissFilterFlagsVCToMainVC(withCountries: countries)
   }
   
   func removeFlagButtonPressed(country: Country) {
     
-    for i in countries.indices {
+    if let rowToDelete = filterFlagsInteractor?.removeFlag(country: country) {
       
-      if countries[i] == country {
-        
-        countries.remove(at: i)
-        collectionView.deleteItems(at: [IndexPath(row: i, section: 0)])
-        break
-        
-      }
+      collectionView.deleteItems(at: [rowToDelete])
     }
+    
   }
-
+  
   
   
   func numberOfSections(in collectionView: UICollectionView) -> Int {

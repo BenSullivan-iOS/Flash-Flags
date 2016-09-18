@@ -19,6 +19,7 @@ struct Country {
   fileprivate let _name: String!
   fileprivate let _currency: String!
   fileprivate let _flag: String!
+  fileprivate let _flagSmall: String!
   fileprivate let _cont: Continent
   
   var name: String! {
@@ -30,6 +31,9 @@ struct Country {
   var flag: String! {
     return _flag
   }
+  var flagSmall : String {
+    return _flag + "-1"
+  }
   var cont: Continent {
     return _cont
   }
@@ -39,6 +43,7 @@ struct Country {
     self._currency = currency
     self._flag = flag
     self._cont = continent
+    self._flagSmall = _flag + "-1"
   }
 
 }

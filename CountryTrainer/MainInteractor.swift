@@ -16,8 +16,12 @@ class MainInteractor: MainInteractorInterface, DataService {
   
   fileprivate var numberOfFlagsSelected = Int()
   fileprivate var chosenOnes = [Country]()
-  fileprivate var countries = [Country]()
+  fileprivate var _countries = [Country]()
   fileprivate var newGame: Game? = nil
+  
+  var countries: [Country] {
+    return _countries
+  }
   
   var mainVCInterface: MainVCInterface?
   
@@ -25,7 +29,12 @@ class MainInteractor: MainInteractorInterface, DataService {
     
     guard let countryArray = createCountries() else { print("json error"); return }
     
-    countries = countryArray
+    _countries = countryArray
+    
+  }
+  
+  func updateCountries(countries: [Country]) {
+    _countries = countries
   }
   
   func getNewGameData(numberOfFlags: Int, continent: String?) {
@@ -37,11 +46,11 @@ class MainInteractor: MainInteractorInterface, DataService {
     numberOfFlagsSelected = numberOfFlags
     
     //Filters out countires based on the continent provided
-    var filteredCountries = countries
+    var filteredCountries = _countries
     
     if continent != nil && continent != "All" && continent != "Select Continent" {
       
-      filteredCountries = countries.filter { country -> Bool in
+      filteredCountries = _countries.filter { country -> Bool in
         
         return country.cont.rawValue == continent
       }

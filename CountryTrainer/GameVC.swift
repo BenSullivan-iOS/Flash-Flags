@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameVC: UIViewController, UIViewControllerTransitioningDelegate, GameDelegate {
+class GameVC: UIViewController, GameDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
