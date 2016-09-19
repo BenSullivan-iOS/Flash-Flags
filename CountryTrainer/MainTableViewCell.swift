@@ -8,6 +8,16 @@
 
 import UIKit
 
+class CurvedLabel: UILabel {
+  
+  override func awakeFromNib() {
+    layer.cornerRadius = 5.0
+//    layer.borderColor = UIColor.lightGray.cgColor
+//    layer.borderWidth = 1.0
+    backgroundColor = UIColor.blue
+  }
+}
+
 class MainTableViewCell: UITableViewCell {
   
   var circleView: CircleView!
@@ -23,9 +33,10 @@ class MainTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    bgLabel.layer.borderColor = UIColor.lightGray.cgColor
-    bgLabel.layer.borderWidth = 1.0
-    bgLabel.layer.cornerRadius = 5.0
+    
+//    bgLabel.layer.borderColor = UIColor.lightGray.cgColor
+//    bgLabel.layer.borderWidth = 1.0
+//    bgLabel.layer.cornerRadius = 5.0
     
     
 //    button?.backgroundColor = UIColor.randomColor()
@@ -62,25 +73,6 @@ class MainTableViewCell: UITableViewCell {
   }
   
   func addCircleView() {
-    
-//    let screenSize = UIScreen.main.bounds
-//    
-//    let screenCenterWidth = screenSize.width * 0.5 - 50
-//    let screenCenterHeight = screenSize.height * 0.5 - 170
-//    
-//    let center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
-//    
-////    let frame = CGRect(origin: center, size: CGSize(width: screenSize.width / 2, height: screenSize.width / 2))
-    
-//    let frame = CGRect(origin: center, size: CGSize(width: screenSize.width / 2, height: screenSize.width / 2))
-//
-//    
-//    self.circleView = CircleView(frame: frame)
-//    self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
-//    
-//    circleView.contentMode = .center
-//    
-//    self.circleView.center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
     
     circleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
 

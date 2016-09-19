@@ -46,7 +46,6 @@
 		B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D11D65ED8A000409B3 /* Continent.swift */; };
 		B549C4D71D65FA08000409B3 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D61D65FA08000409B3 /* GameVC.swift */; };
 		B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D81D65FA63000409B3 /* GameCell.swift */; };
-		B549C4DA1D65FA63000409B3 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D81D65FA63000409B3 /* GameCell.swift */; };
 		B549C4DC1D6603BF000409B3 /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D11D65ED8A000409B3 /* Continent.swift */; };
 		B549C4DE1D660E94000409B3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4DD1D660E94000409B3 /* Game.swift */; };
 		B549C4DF1D660E94000409B3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4DD1D660E94000409B3 /* Game.swift */; };
@@ -92,6 +91,7 @@
 		B5AD69541D8FDC4200F2331A /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5AD69421D8FDC4200F2331A /* Lato-SemiboldItalic.ttf */; };
 		B5AD69551D8FDC4200F2331A /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5AD69431D8FDC4200F2331A /* Lato-Thin.ttf */; };
 		B5AD69561D8FDC4200F2331A /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5AD69441D8FDC4200F2331A /* Lato-ThinItalic.ttf */; };
+		B5AD69581D8FF78C00F2331A /* StartNewGameVCPickerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD69571D8FF78C00F2331A /* StartNewGameVCPickerExt.swift */; };
 		B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAB1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */; };
@@ -198,6 +198,7 @@
 		B5AD69421D8FDC4200F2331A /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		B5AD69431D8FDC4200F2331A /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		B5AD69441D8FDC4200F2331A /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		B5AD69571D8FF78C00F2331A /* StartNewGameVCPickerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartNewGameVCPickerExt.swift; sourceTree = "<group>"; };
 		B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ResultVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		B5ED08BA1D84142200A7A3D0 /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
@@ -446,6 +447,7 @@
 				B549C48D1D5C7DA5000409B3 /* MainVC.swift */,
 				B58A007E1D8402AC00B8BD7D /* MainVCInterface.swift */,
 				B53AAA751D8AF39A00ED644E /* StartNewGameVC.swift */,
+				B5AD69571D8FF78C00F2331A /* StartNewGameVCPickerExt.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -947,6 +949,7 @@
 				B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */,
 				B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */,
 				B53CFC9A1D86A8E300152EDD /* GameWireframe.swift in Sources */,
+				B5AD69581D8FF78C00F2331A /* StartNewGameVCPickerExt.swift in Sources */,
 				B53CFCA01D86F23500152EDD /* GameVCTableExt.swift in Sources */,
 				B5AD69231D8C35DE00F2331A /* FilterFlagsWireframe.swift in Sources */,
 				B5AD692F1D8EC7B800F2331A /* FilterFlagsInteractorInterface.swift in Sources */,
@@ -976,7 +979,6 @@
 				B5F2604E1D704C93002A20B5 /* ResultButton.swift in Sources */,
 				B5BB5CAE1D6DB67D008CABC4 /* CircleView.swift in Sources */,
 				B549C4C41D6207CD000409B3 /* DataService.swift in Sources */,
-				B549C4DA1D65FA63000409B3 /* GameCell.swift in Sources */,
 				B549C4DF1D660E94000409B3 /* Game.swift in Sources */,
 				B53BA2721D6DBDF3007A542E /* PresentResult.swift in Sources */,
 				B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */,
@@ -1127,6 +1129,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2KVYSWMVXX;
 				INFOPLIST_FILE = CountryTrainer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1144,6 +1147,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2KVYSWMVXX;
 				INFOPLIST_FILE = CountryTrainer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
 				PRODUCT_NAME = "$(TARGET_NAME)";

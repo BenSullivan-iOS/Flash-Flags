@@ -17,6 +17,10 @@ class GameVC: UIViewController, GameDelegate {
   var selectedRow: IndexPath? = nil
   var game: Game?
   
+  var imageCache = NSCache<NSString, UIImage>()
+  
+  var prefetchTest: UITableViewDataSourcePrefetching?
+  
   func radialPop() {
     
     navigationController?.radialPopViewController()

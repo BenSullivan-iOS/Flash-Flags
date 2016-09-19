@@ -45,7 +45,9 @@ class GameCell: UITableViewCell {
   
   func configureCell(_ country: Country) {
     
-    flagImage.image = UIImage(named: country.flag)
+    if flagImage.image == nil {
+     flagImage.image = UIImage(named: country.flag)
+    }
     countryName.text = country.name
     flagImage.animate()
   }

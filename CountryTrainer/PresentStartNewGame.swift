@@ -72,7 +72,7 @@ class PresentStartNewGame: NSObject, UIViewControllerAnimatedTransitioning {
   func createToView(_ trans: UIViewControllerContextTransitioning) -> UIView {
     
     let toView = trans.viewController(forKey: .to)!.view!
-    toView.frame = CGRect(x: 0, y: 0, width: trans.containerView.bounds.width - 20, height: trans.containerView.bounds.height - 300.0)
+    toView.frame = CGRect(x: 0, y: 0, width: trans.containerView.bounds.width - 40, height: trans.containerView.bounds.height - 250.0)
     
     toView.center = CGPoint(x: trans.containerView.center.x, y: -trans.containerView.center.y)
     

@@ -11,15 +11,6 @@ import pop
 
 class FlagImageView: UIImageView {
   
-  override func awakeFromNib() {
-    
-    let SHADOW_COLOR: CGFloat = 157.0 / 255.0
-    
-    layer.shadowColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.5).cgColor
-    layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-    
-  }
-  
   func animate() {
     let scaleAnim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
     scaleAnim?.velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))

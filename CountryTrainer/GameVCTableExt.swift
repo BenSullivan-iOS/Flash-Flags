@@ -8,11 +8,47 @@
 
 import UIKit
 
-extension GameVC: UITableViewDelegate, UITableViewDataSource {
+extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
   
+  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    
+    let scale = newWidth / image.size.width
+    let newHeight = image.size.height * scale
+    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return newImage!
+  }
   // MARK: - TABLE VIEW
   
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    
+    print(indexPaths)
+    
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      for i in indexPaths {
+        
+        let imageStr = self.game?.tracker.remainingCountries[i.row].flag
+        
+        let image = UIImage(named: imageStr!)
+        let smallImage = self.resizeImage(image: image!, newWidth: 500)
+        
+        self.imageCache.setObject(smallImage, forKey: imageStr! as NSString)
+      }
+    }
+  }
+  
   func numberOfSections(in tableView: UITableView) -> Int {
+    
+    if #available(iOS 10.0, *) {
+      tableView.prefetchDataSource = self
+    } else {
+      // Fallback on earlier versions
+    }
+    
     return 2
   }
   
@@ -22,6 +58,14 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameCell
       
       cell.delegate = self
+      
+      var nsstring = game?.tracker.remainingCountries[indexPath.row].flag as! NSString
+      
+      if let image = imageCache.object(forKey: nsstring) {
+        
+        cell.flagImage.image = image
+      }
+      
       cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
       
       return cell
