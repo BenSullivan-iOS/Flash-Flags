@@ -6,8 +6,6 @@
 //  Copyright © 2016 Ben Sullivan. All rights reserved.
 //
 
-import Foundation
-
 enum MenuItems: String {
   
   case quickStart = "QUICK START"

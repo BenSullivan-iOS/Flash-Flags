@@ -20,11 +20,6 @@ extension UINavigationController {
   }
   
   //MARK: PUSH
-  /**
-   * radial pushing view controller
-   *
-   * @param startFrame where circle start
-   */
   
   func radialPushViewController(viewController: UIViewController, duration: CGFloat = 0.33 ,startFrame: CGRect = CGRect.null, transitionCompletion: (() -> Void)? = nil ) {
     
@@ -67,11 +62,6 @@ extension UINavigationController {
   }
   
   //MARK: POP
-  /**
-   * radial pop view controller
-   *
-   * @param startFrame where circle start
-   */
   
   func radialPopViewController(duration: CGFloat = 0.33, startFrame: CGRect = CGRect.null, transitionCompletion: (() -> Void)? = nil ) {
     
@@ -123,10 +113,6 @@ extension UINavigationController {
     
   }
   
-  /**
-   * enabling swipe back gesture. NOTE interactivePopGestureRecognizer will be disabled
-   *
-   */
   private func enableGesture(enabled:Bool) {
     
     struct StaticStruct {

@@ -12,40 +12,26 @@ class CurvedLabel: UILabel {
   
   override func awakeFromNib() {
     layer.cornerRadius = 5.0
-//    layer.borderColor = UIColor.lightGray.cgColor
+//    layer.borderColor = UIColor.black.cgColor
 //    layer.borderWidth = 1.0
-    backgroundColor = UIColor.blue
+    layer.masksToBounds = true
+    backgroundColor = UIColor.white
+    alpha = 0.95
   }
 }
 
 class MainTableViewCell: UITableViewCell {
   
-  var circleView: CircleView!
-
   @IBOutlet weak var bgLabel: UILabel!
-  @IBOutlet weak var blurView: UIView!
-  @IBOutlet weak var blueEffect: UIVisualEffectView!
-  
   @IBOutlet weak var percentage: UILabel!
   @IBOutlet weak var attempts: UILabel!
   @IBOutlet weak var daysAgo: UILabel!
   @IBOutlet weak var flags: UILabel!
   
+  var circleView: CircleView!
+  
   override func awakeFromNib() {
     super.awakeFromNib()
-    
-//    bgLabel.layer.borderColor = UIColor.lightGray.cgColor
-//    bgLabel.layer.borderWidth = 1.0
-//    bgLabel.layer.cornerRadius = 5.0
-    
-    
-//    button?.backgroundColor = UIColor.randomColor()
-//    backgroundColor = .clear
-//    button?.layer.cornerRadius = 5.0
-////    self.circleView.setStrokeColor(strokeColor: UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1))
-//    circleView.contentMode = .center
-//
-//    circleView.animateToStrokeEnd(strokeEnd: 0.75)
     
     addCircleView()
   }

@@ -15,12 +15,14 @@ extension UISegmentedControl{
   }
 }
 
-class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FilterFlagDelegate {
+class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDataSourcePrefetching, FilterFlagDelegate {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var progressBar: UIProgressView!
   @IBOutlet weak var numberOfMemorisedFlags: UILabel!
+  
+  var imageCache = NSCache<NSString, UIImage>()
 
   var isRemainingCountry = true
   
@@ -41,6 +43,10 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    if #available(iOS 10.0, *) {
+      collectionView.prefetchDataSource = self
+    }
     
     setProgressBar()
     
@@ -102,6 +108,41 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   
   //MARK: - COLLECTION VIEW DELEGATE
   
+  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    
+    let scale = newWidth / image.size.width
+    let newHeight = image.size.height * scale
+    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return newImage!
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+
+    print(indexPaths)
+    
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      for i in indexPaths {
+        
+        let flag = self.remainingCountries[i.row].flagSmall as! NSString
+        
+        if self.imageCache.object(forKey: flag) == nil {
+          
+          let imageStr = self.remainingCountries[i.row].flagSmall
+          
+          let image = UIImage(named: imageStr) ?? UIImage(named: self.remainingCountries[i.row].flag)
+          let smallImage = self.resizeImage(image: image!, newWidth: 200)
+          
+          self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+        }
+      }
+    }
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return currentCountries.count
   }
@@ -109,6 +150,13 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterFlagsCell", for: indexPath) as! FilterFlagsCollectionViewCell
+    
+    let nsstring = remainingCountries[indexPath.row].flagSmall as! NSString
+    
+    if let image = imageCache.object(forKey: nsstring) {
+      
+      cell.flagImage.image = image
+    }
   
     cell.filterFlagDelegate = self
     cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry)

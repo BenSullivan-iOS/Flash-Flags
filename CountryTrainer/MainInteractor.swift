@@ -10,10 +10,6 @@ import UIKit
 
 class MainInteractor: MainInteractorInterface, DataService {
   
-  internal func populateGames(game: Game) {
-    //fixme: delete this
-  }
-  
   fileprivate var numberOfFlagsSelected = Int()
   fileprivate var chosenOnes = [Country]()
   fileprivate var _countries = [Country]()
@@ -59,7 +55,8 @@ class MainInteractor: MainInteractorInterface, DataService {
     //Set prevents duplicate flags being selected
     var chosenNumbers = Set<Int>()
     
-    for _ in 1...numberOfFlagsSelected {
+    while chosenNumbers.count < numberOfFlagsSelected {
+      
       chosenNumbers.insert(Int(arc4random_uniform(UInt32(filteredCountries.count))))
     }
     
@@ -102,29 +99,3 @@ class MainInteractor: MainInteractorInterface, DataService {
     return numberOfFlags
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

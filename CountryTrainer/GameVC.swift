@@ -29,6 +29,10 @@ class GameVC: UIViewController, GameDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+//    self.preferredStatusBarStyle.rawValue = UIStatusBarStyle.lightContent
+    
+    var status = preferredStatusBarStyle
+    
     navigationItem.backBarButtonItem?.responds(to: #selector(self.radialPop))
     
     navigationController?.enableRadialSwipe()
@@ -36,7 +40,6 @@ class GameVC: UIViewController, GameDelegate {
     tableView.rowHeight = UITableViewAutomaticDimension
     
     self.title = "yo bro"
-    
   }
   
   func retryGame(game: Game) {

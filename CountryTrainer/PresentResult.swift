@@ -9,8 +9,6 @@
 import UIKit
 import pop
 
-let customBlueColor = UIColor(colorLiteralRed: 52/255, green: 152/255, blue: 219/255, alpha: 1)
-
 class PresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning {
   
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {

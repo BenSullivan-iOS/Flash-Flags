@@ -36,6 +36,10 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
   
   func configureView(country: Country, isRemainingCountry: Bool) {
     
+    if flagImage.image == nil {
+      flagImage.image = UIImage(named: country.flagSmall) ?? UIImage(named: country.flag)
+    }
+    
     addRemoveImage.image = isRemainingCountry ? #imageLiteral(resourceName: "filterFlagDeletebutton") : #imageLiteral(resourceName: "filterFlagAddButton")
     
     self.country = country

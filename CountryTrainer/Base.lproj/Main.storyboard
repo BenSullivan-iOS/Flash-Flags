@@ -48,7 +48,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjx-gc-D5U">
-                                                    <color key="backgroundColor" red="0.0" green="0.56781989228913554" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="253" id="NaR-q5-jNt"/>
                                                     </constraints>
@@ -147,7 +147,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45.5" id="fJg-pK-UGd"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -158,12 +158,12 @@
                                                 <constraint firstItem="Ap3-Um-On9" firstAttribute="top" secondItem="HQH-Zn-TMr" secondAttribute="top" constant="13" id="FDp-O7-rOp"/>
                                                 <constraint firstAttribute="bottom" secondItem="bGE-c6-JdM" secondAttribute="bottom" constant="8" id="Hkd-fY-au2"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ap3-Um-On9" secondAttribute="bottom" constant="13" id="JPw-xv-GwZ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Dzi-by-jqE" secondAttribute="trailing" constant="67" id="MAB-PQ-rI5"/>
                                                 <constraint firstItem="Ap3-Um-On9" firstAttribute="leading" secondItem="HQH-Zn-TMr" secondAttribute="leading" constant="6" id="MpK-FK-DJi"/>
                                                 <constraint firstAttribute="trailing" secondItem="bGE-c6-JdM" secondAttribute="trailing" constant="58" id="O1o-ew-PpH"/>
                                                 <constraint firstAttribute="bottom" secondItem="pYK-jO-ili" secondAttribute="bottom" constant="15" id="b3R-D9-VGC"/>
                                                 <constraint firstItem="Dzi-by-jqE" firstAttribute="leading" secondItem="pYK-jO-ili" secondAttribute="trailing" constant="2.5" id="bHn-Fo-cU2"/>
                                                 <constraint firstItem="Dzi-by-jqE" firstAttribute="top" secondItem="HQH-Zn-TMr" secondAttribute="topMargin" constant="8" id="bO3-c5-7lF"/>
+                                                <constraint firstItem="Dzi-by-jqE" firstAttribute="trailing" secondItem="bGE-c6-JdM" secondAttribute="trailing" id="jHd-sZ-gLs"/>
                                                 <constraint firstItem="bGE-c6-JdM" firstAttribute="leading" secondItem="HQH-Zn-TMr" secondAttribute="leading" id="sgQ-KQ-HR6"/>
                                                 <constraint firstItem="pYK-jO-ili" firstAttribute="leading" secondItem="HQH-Zn-TMr" secondAttribute="leading" constant="8" id="wMQ-f1-xOp"/>
                                                 <constraint firstItem="bGE-c6-JdM" firstAttribute="top" secondItem="HQH-Zn-TMr" secondAttribute="top" constant="8" id="yKd-kN-aac"/>
@@ -387,7 +387,7 @@
         <!--Navigation Controller-->
         <scene sceneID="bq4-Dj-dHQ">
             <objects>
-                <navigationController storyboardIdentifier="RootNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="gBR-vk-lau" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="gBR-vk-lau" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Bn-NL-h6f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -706,7 +706,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jK1-pK-x4P" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GAI-Gs-W4b"/>
                                 </constraints>

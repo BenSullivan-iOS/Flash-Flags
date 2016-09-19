@@ -36,6 +36,9 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.navigationController?.navigationBar.barStyle = UIBarStyle.black
+    self.navigationController?.isNavigationBarHidden = true
+    
     configureTablePath()
     setInitialTableRow()
 

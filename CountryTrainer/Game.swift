@@ -23,6 +23,22 @@ struct Game: GameType {
   
   var tracker: Tracker
   
+  var countries: [Country] {
+    return _countries
+  }
+  
+  var numberOfFlags: Int {
+    return countries.count
+  }
+  
+  var dateLastCompleted: Date {
+    return _dateLastCompleted
+  }
+  
+  var attempts: Int {
+    return _attempts
+  }
+  
   var progress: String {
     
     var score = 0
@@ -44,22 +60,6 @@ struct Game: GameType {
     }
     
     return Int(correct / totalFlags * 100)
-  }
-  
-  var countries: [Country] {
-    return _countries
-  }
-  
-  var numberOfFlags: Int {
-    return countries.count
-  }
-  
-  var dateLastCompleted: Date {
-    return _dateLastCompleted
-  }
-  
-  var attempts: Int {
-    return _attempts
   }
   
   mutating func gameRetried() {

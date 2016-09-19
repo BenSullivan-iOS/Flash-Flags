@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootWireframe : NSObject {
+class RootWireframe: NSObject {
   
   func showRootViewController(viewController: UIViewController, inWindow: UIWindow) {
     

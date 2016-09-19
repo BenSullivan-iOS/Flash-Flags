@@ -20,10 +20,10 @@ class MenuTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
-//    MenuItems.quickStart.rawValue
-    
+        
     button.layer.cornerRadius = 5.0
+//    button.layer.borderColor = UIColor.black.cgColor
+//    button.layer.borderWidth = 1.0
   }
   @IBAction func buttonPressed(_ sender: UIButton) {
     

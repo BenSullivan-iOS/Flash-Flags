@@ -21,32 +21,39 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
     
     return newImage!
   }
+  
   // MARK: - TABLE VIEW
   
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
     
     print(indexPaths)
     
-    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-      
-      for i in indexPaths {
+      DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
         
-        let imageStr = self.game?.tracker.remainingCountries[i.row].flag
-        
-        let image = UIImage(named: imageStr!)
-        let smallImage = self.resizeImage(image: image!, newWidth: 500)
-        
-        self.imageCache.setObject(smallImage, forKey: imageStr! as NSString)
+        for i in indexPaths {
+          
+          print(i.row)
+          print(self.game?.tracker.remainingCountries.count)
+          
+          let flag = self.game?.tracker.remainingCountries[i.row].flag as! NSString
+          
+          if self.imageCache.object(forKey: flag) == nil {
+            
+            let imageStr = self.game?.tracker.remainingCountries[i.row].flag
+            
+            let image = UIImage(named: imageStr!)
+            let smallImage = self.resizeImage(image: image!, newWidth: 500)
+            
+            self.imageCache.setObject(smallImage, forKey: imageStr! as NSString)
+          }
+        }
       }
     }
-  }
   
   func numberOfSections(in tableView: UITableView) -> Int {
     
     if #available(iOS 10.0, *) {
       tableView.prefetchDataSource = self
-    } else {
-      // Fallback on earlier versions
     }
     
     return 2
@@ -59,7 +66,7 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
       
       cell.delegate = self
       
-      var nsstring = game?.tracker.remainingCountries[indexPath.row].flag as! NSString
+      let nsstring = game?.tracker.remainingCountries[indexPath.row].flag as! NSString
       
       if let image = imageCache.object(forKey: nsstring) {
         

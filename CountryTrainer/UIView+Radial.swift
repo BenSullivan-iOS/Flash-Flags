@@ -33,8 +33,7 @@ class LayerAnimator: NSObject, CAAnimationDelegate {
   }
 }
 
-
-extension  UIView {
+extension UIView {
   
   func radialAppireanceWithStartFrame(startFrame: CGRect, duration: CGFloat, complitBlock: @escaping () -> Void) {
     
