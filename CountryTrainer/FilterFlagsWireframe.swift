@@ -20,10 +20,8 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
     
     self.countries = countries
     
-    filterFlagInteractor = FilterFlagsInteractor()
-    
-    filterFlagInteractor?.setCountries(countryArray: countries)
-    
+    filterFlagInteractor = FilterFlagsInteractor(countries: countries)
+        
     let newVC = filterFlagsViewController()
     newVC.transitioningDelegate = self
     newVC.filterFlagsWireframe = self

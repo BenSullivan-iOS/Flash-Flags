@@ -34,8 +34,6 @@ class StartNewGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
       numberOfFlags += flagData
     }
     
-    numberOfFlagsPicker.selectRow(5, inComponent: 0, animated: false)
-    
     view.layer.cornerRadius = 8.0
   }
   
