@@ -1,0 +1,15 @@
+PODS:
+  - COBezierTableView (0.1.6)
+  - pop (1.0.9)
+
+DEPENDENCIES:
+  - COBezierTableView (~> 0.1)
+  - pop (~> 1.0)
+
+SPEC CHECKSUMS:
+  COBezierTableView: e8fa8ac961f213fe0c4b3e8e9708478df04930de
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+
+PODFILE CHECKSUM: b9118d50dc599460edb9fe3594562596b0405edd
+
+COCOAPODS: 1.0.0
