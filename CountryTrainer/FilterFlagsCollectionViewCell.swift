@@ -34,16 +34,31 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
   }
   
   
+  
+  
   func configureView(country: Country, isRemainingCountry: Bool) {
     
     if flagImage.image == nil {
-      flagImage.image = UIImage(named: country.flagSmall) ?? UIImage(named: country.flag)
+      //still loses a few frames on initial scroll
+      let image = UIImage(named: country.flagSmall) ?? UIImage(named: country.flag)
+      flagImage.image = resizeImage(image: image!, newWidth: 200)
     }
     
     addRemoveImage.image = isRemainingCountry ? #imageLiteral(resourceName: "filterFlagDeletebutton") : #imageLiteral(resourceName: "filterFlagAddButton")
     
     self.country = country
-    flagImage.image = UIImage(named: country.flagSmall) ?? UIImage(named: country.flag)
     countryName.text = country.name
+  }
+  
+  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    
+    let scale = newWidth / image.size.width
+    let newHeight = image.size.height * scale
+    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return newImage!
   }
 }

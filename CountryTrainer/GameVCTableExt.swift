@@ -59,6 +59,19 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
     return 2
   }
   
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    if section == 0 {
+      return 80
+    }
+    return 0
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    
+    let newView = view as! UITableViewHeaderFooterView
+    newView.alpha = 0
+  }
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     if indexPath.section == 0 {

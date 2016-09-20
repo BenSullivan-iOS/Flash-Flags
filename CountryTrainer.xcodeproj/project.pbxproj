@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		09B3F076AB15327533479F18 /* Pods_CountryTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5835CBE86E5889831712297 /* Pods_CountryTrainer.framework */; };
 		420CCE0F7B029A4C3A385020 /* Pods_CountryTrainerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7010D886B92DEDDBB99C9F /* Pods_CountryTrainerTests.framework */; };
+		B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */; };
+		B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */; };
+		B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF61D91538600EF8CC2 /* GameProgressView.swift */; };
 		B53A79D81D882180008C3D68 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D71D882180008C3D68 /* MainTableViewCell.swift */; };
 		B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */; };
 		B53AAA6F1D8ABDD900ED644E /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = B53AAA6E1D8ABDD900ED644E /* Notes */; };
@@ -92,7 +95,6 @@
 		B5AD69561D8FDC4200F2331A /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5AD69441D8FDC4200F2331A /* Lato-ThinItalic.ttf */; };
 		B5AD69581D8FF78C00F2331A /* StartNewGameVCPickerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD69571D8FF78C00F2331A /* StartNewGameVCPickerExt.swift */; };
 		B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
-		B5BB5CAB1D6D95A8008CABC4 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */; };
 		B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */; };
 		B5BB5CAE1D6DB67D008CABC4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5CAC1D6DA511008CABC4 /* CircleView.swift */; };
 		B5ED08BB1D84142200A7A3D0 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08BA1D84142200A7A3D0 /* AppDependencies.swift */; };
@@ -124,6 +126,9 @@
 		500B1804BA607D0E35837A8A /* Pods-CountryTrainerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7EF960315DF9C014816323FF /* Pods-CountryTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainer/Pods-CountryTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		8C8F8C9D0779CF3FF116FCA4 /* Pods-CountryTrainerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagBGView.swift; sourceTree = "<group>"; };
+		B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsNavBarView.swift; sourceTree = "<group>"; };
+		B503FBF61D91538600EF8CC2 /* GameProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
 		B53A79D71D882180008C3D68 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		B53AAA6E1D8ABDD900ED644E /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
@@ -405,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				B549C4D81D65FA63000409B3 /* GameCell.swift */,
+				B503FBF61D91538600EF8CC2 /* GameProgressView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -574,6 +580,8 @@
 			isa = PBXGroup;
 			children = (
 				B5AD692C1D8C3D3F00F2331A /* FilterFlagsCollectionViewCell.swift */,
+				B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */,
+				B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -915,6 +923,7 @@
 				B557A27D1D6C42BD006C3A85 /* AnimationEngine.swift in Sources */,
 				B549C48E1D5C7DA5000409B3 /* MainVC.swift in Sources */,
 				B58A007D1D84020B00B8BD7D /* MainWireframe.swift in Sources */,
+				B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */,
 				B5AD691C1D8BF09300F2331A /* PresentStartNewGame.swift in Sources */,
 				B58A008A1D84092800B8BD7D /* MainInteractorInterface.swift in Sources */,
 				B549C4DE1D660E94000409B3 /* Game.swift in Sources */,
@@ -931,6 +940,7 @@
 				B549C4941D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld in Sources */,
 				B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */,
 				B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */,
+				B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */,
 				B5F2604D1D704C93002A20B5 /* ResultButton.swift in Sources */,
 				B53CFC981D86A3A300152EDD /* RootWireframe.swift in Sources */,
 				B549C4D21D65ED8B000409B3 /* Continent.swift in Sources */,
@@ -941,6 +951,7 @@
 				B5AD692A1D8C360B00F2331A /* FilterFlagsInteractor.swift in Sources */,
 				B58A007F1D8402AC00B8BD7D /* MainVCInterface.swift in Sources */,
 				B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */,
+				B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */,
 				B549C4C71D659F13000409B3 /* Country.swift in Sources */,
 				B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */,
 				B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */,
@@ -963,7 +974,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B549C4D31D65EDCF000409B3 /* Country.swift in Sources */,
-				B5BB5CAB1D6D95A8008CABC4 /* ResultVC.swift in Sources */,
 				B549C4E21D66306D000409B3 /* GameType.swift in Sources */,
 				B5ACDE0E1D718CFF00C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */,
 				B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */,

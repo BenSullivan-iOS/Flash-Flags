@@ -131,13 +131,28 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         let flag = self.remainingCountries[i.row].flagSmall as! NSString
         
         if self.imageCache.object(forKey: flag) == nil {
+
+          var image = UIImage()
+          var imageStr = String()
           
-          let imageStr = self.remainingCountries[i.row].flagSmall
+        if self.isRemainingCountry {
           
-          let image = UIImage(named: imageStr) ?? UIImage(named: self.remainingCountries[i.row].flag)
-          let smallImage = self.resizeImage(image: image!, newWidth: 200)
+          imageStr = self.remainingCountries[i.row].flagSmall
+          
+          image = UIImage(named: imageStr) ?? UIImage(named: self.remainingCountries[i.row].flag)!
+
+          
+        } else {
+          
+          imageStr = self.memorisedCountries[i.row].flagSmall
+          
+          image = UIImage(named: imageStr) ?? UIImage(named: self.memorisedCountries[i.row].flag)!
+          }
+          
+          let smallImage = self.resizeImage(image: image, newWidth: 200)
           
           self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+          
         }
       }
     }
@@ -151,7 +166,9 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterFlagsCell", for: indexPath) as! FilterFlagsCollectionViewCell
     
-    let nsstring = remainingCountries[indexPath.row].flagSmall as! NSString
+    let nsstring = isRemainingCountry
+      ? remainingCountries[indexPath.row].flagSmall as! NSString
+      : memorisedCountries [indexPath.row].flagSmall as! NSString
     
     if let image = imageCache.object(forKey: nsstring) {
       

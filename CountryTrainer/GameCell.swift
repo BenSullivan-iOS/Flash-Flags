@@ -16,9 +16,17 @@ protocol GameDelegate {
 
 class GameCell: UITableViewCell {
   
-  @IBOutlet fileprivate weak var stackView: UIStackView!
+//  @IBOutlet fileprivate weak var stackView: UIStackView!
+//  @IBOutlet weak var flagImage: FlagImageView!
+//  @IBOutlet weak var countryName: UILabel!
+//  @IBOutlet weak var correctButton: ResultButton!
+//  @IBOutlet weak var nopeButton: ResultButton!
+  
   @IBOutlet weak var flagImage: FlagImageView!
+  
   @IBOutlet weak var countryName: UILabel!
+  @IBOutlet weak var stackView: UIStackView!
+  
   @IBOutlet weak var correctButton: ResultButton!
   @IBOutlet weak var nopeButton: ResultButton!
   
