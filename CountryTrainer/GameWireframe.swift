@@ -27,26 +27,23 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
     mainWireframe?.gameCompleted(game: game)
   }
   
-  func dismissResultVCToRetry(game: Game) {
+  func dismissResultVCToRetry() {
     
     presentedViewController?.dismiss(animated: true, completion: nil)
     
-    gameVC?.retryGame(game: game)
+    gameVC?.retryGame()
         
 //    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retryGame"), object: nil)
   }
   
   func presentGameInterfaceFromViewController(viewController: UIViewController, withGame game: Game) {
     
-    gameInteractor = GameInteractor()
+    gameInteractor = GameInteractor(game: game)
     
     let newVC = gameViewController()
     newVC.transitioningDelegate = self
-    newVC.game = game
     newVC.gameWireframe = self
-    
     newVC.gameInteractorInterface = gameInteractor
-    
     gameVC = newVC
     
     viewController.navigationController?.radialPushViewController(viewController: newVC)

@@ -22,8 +22,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   @IBOutlet weak var progressBar: UIProgressView!
   @IBOutlet weak var numberOfMemorisedFlags: UILabel!
   
-  var imageCache = NSCache<NSString, UIImage>()
-
+  //True = Viewing remaining countries. False = Viewing memorised countries
   var isRemainingCountry = true
   
   var filterFlagsWireframe: FilterFlagsWireframe?
@@ -41,6 +40,10 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     return filterFlagsInteractor?.countries ?? [Country]()
   }
   
+  var imageCache: NSCache<NSString, UIImage> {
+    return filterFlagsInteractor?.imageCache ?? NSCache<NSString, UIImage>()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -54,7 +57,13 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     segmentedControl.changeTitleFont(newFontName: "Lato-Light", newFontSize: 14)
   }
-
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    filterFlagsInteractor?.populateCurrentCoutntriesCache(isRemainingCountry: isRemainingCountry)
+  }
+  
   @IBAction func backButtonPressed(_ sender: UIButton) {
     filterFlagsWireframe?.dismissFilterFlagsVCToMainVC(withCountries: currentCountries)
   }
@@ -75,7 +84,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     collectionView.reloadData()
   }
-  
+
   func removeFlagButtonPressed(country: Country) {
     
     if isRemainingCountry {
@@ -108,54 +117,9 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   
   //MARK: - COLLECTION VIEW DELEGATE
   
-  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-    
-    let scale = newWidth / image.size.width
-    let newHeight = image.size.height * scale
-    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-    let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    return newImage!
-  }
-  
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-
-    print(indexPaths)
     
-    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-      
-      for i in indexPaths {
-        
-        let flag = self.remainingCountries[i.row].flagSmall as! NSString
-        
-        if self.imageCache.object(forKey: flag) == nil {
-
-          var image = UIImage()
-          var imageStr = String()
-          
-        if self.isRemainingCountry {
-          
-          imageStr = self.remainingCountries[i.row].flagSmall
-          
-          image = UIImage(named: imageStr) ?? UIImage(named: self.remainingCountries[i.row].flag)!
-
-          
-        } else {
-          
-          imageStr = self.memorisedCountries[i.row].flagSmall
-          
-          image = UIImage(named: imageStr) ?? UIImage(named: self.memorisedCountries[i.row].flag)!
-          }
-          
-          let smallImage = self.resizeImage(image: image, newWidth: 200)
-          
-          self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
-          
-        }
-      }
-    }
+    filterFlagsInteractor?.populateCacheFromPrefetch(isRemainingCountry: isRemainingCountry, indexPaths: indexPaths)
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -166,17 +130,16 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterFlagsCell", for: indexPath) as! FilterFlagsCollectionViewCell
     
-    let nsstring = isRemainingCountry
+    print(remainingCountries[indexPath.row])
+    
+    let flagObjectKey = isRemainingCountry
       ? remainingCountries[indexPath.row].flagSmall as! NSString
       : memorisedCountries [indexPath.row].flagSmall as! NSString
     
-    if let image = imageCache.object(forKey: nsstring) {
-      
-      cell.flagImage.image = image
-    }
-  
+    let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
     cell.filterFlagDelegate = self
-    cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry)
+    
+    cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
     
     return cell
   }

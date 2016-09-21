@@ -20,6 +20,7 @@ class MainInteractor: MainInteractorInterface, DataService {
   }
   
   var mainVCInterface: MainVCInterface?
+  var startNewGameVCInterface: StartNewGameVCInterface?
   
   init() {
     
@@ -39,7 +40,8 @@ class MainInteractor: MainInteractorInterface, DataService {
     
     clearCurrentGameData()
     
-    numberOfFlagsSelected = numberOfFlags
+
+    
     
     //Filters out countires based on the continent provided
     var filteredCountries = _countries
@@ -52,21 +54,41 @@ class MainInteractor: MainInteractorInterface, DataService {
       }
     }
     
+    if filteredCountries.count == 0 {
+      startNewGameVCInterface?.displayAlert(title: "WOW!", message: "There are no more remaining flags in \(continent!)")
+      return
+    }
+    
+    //If countries are filtered
+    if countries.count < numberOfFlags {
+      print(countries.count)
+      
+      numberOfFlagsSelected = countries.count
+    } else {
+      numberOfFlagsSelected = numberOfFlags
+    }
+    
     //Set prevents duplicate flags being selected
     var chosenNumbers = Set<Int>()
     
     while chosenNumbers.count < numberOfFlagsSelected {
       
       chosenNumbers.insert(Int(arc4random_uniform(UInt32(filteredCountries.count))))
+      print("chosen numbers", chosenNumbers, chosenNumbers.count)
+      print(numberOfFlagsSelected)
     }
     
     for i in chosenNumbers {
       chosenOnes.append(filteredCountries[i])
+      print("i = ",i)
     }
     
     let game = Game(countries: chosenOnes, attempts: 0)
     
     mainVCInterface?.prepareGameData(game: game)
+    print(game)
+    print(chosenNumbers)
+    print(filteredCountries)
     
   }
   

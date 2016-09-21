@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StartNewGameVC: UIViewController {
+class StartNewGameVC: UIViewController, StartNewGameVCInterface {
   
   @IBOutlet weak var continentPicker: UIPickerView!
   @IBOutlet weak var numberOfFlagsPicker: UIPickerView!
@@ -36,7 +36,14 @@ class StartNewGameVC: UIViewController {
   }
   
   @IBAction func startGameButtonPressed(_ sender: UIButton) {
-    
     mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent)
+  }
+  
+  func displayAlert(title: String, message: String) {
+    
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Thanks! 😍", style: .default, handler: nil))
+    
+    present(alert, animated: true, completion: nil)
   }
 }

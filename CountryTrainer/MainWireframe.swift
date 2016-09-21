@@ -32,6 +32,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     startNewGameVC?.transitioningDelegate = self
     startNewGameVC?.modalPresentationStyle = UIModalPresentationStyle.custom
     startNewGameVC?.mainInteractor = mainInteractor
+    mainInteractor?.startNewGameVCInterface = startNewGameVC
     
     mainVC!.navigationController!.present(startNewGameVC!, animated: true, completion: nil)
   }

@@ -7,7 +7,10 @@
 //
 
 protocol GameInteractorInterface {
-  func answered(game: Game, country: String, result: Bool) -> Game
-  func retryGame() -> Game
-  func getCurrentGame() -> Game
+  func populateCurrentCoutntriesCache(indexPaths: [IndexPath])
+  func populateCache()
+  func answered(country: String, result: Bool)
+  func retryGame()
+  var currentGame: Game { get }
+  var imageCache: NSCache<NSString, UIImage> { get }
 }

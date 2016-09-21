@@ -11,7 +11,7 @@ import pop
 
 protocol GameDelegate {
   func answered(country: String, result: Bool)
-  func retryGame(game: Game)
+  func retryGame()
 }
 
 class GameCell: UITableViewCell {
@@ -51,18 +51,15 @@ class GameCell: UITableViewCell {
     self.stackView.arrangedSubviews.last?.isHidden = true
   }
   
-  func configureCell(_ country: Country) {
+  func configureCell(_ country: Country, cachedImage: UIImage?) {
     
-    if flagImage.image == nil {
-     flagImage.image = UIImage(named: country.flag)
-    }
+    flagImage.image = cachedImage ?? UIImage(named: country.flag)
+
     countryName.text = country.name
     flagImage.animate()
   }
   
   func changeCellStatus(selected: Bool) {
-    
-//    let i = AnimationEngine(constraints: [NSLayoutConstraint])
     
     if selected == true {
       

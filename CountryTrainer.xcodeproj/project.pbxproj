@@ -12,6 +12,7 @@
 		B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */; };
 		B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */; };
 		B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF61D91538600EF8CC2 /* GameProgressView.swift */; };
+		B503FBF91D92BF0000EF8CC2 /* StartNewGameVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF81D92BF0000EF8CC2 /* StartNewGameVCInterface.swift */; };
 		B53A79D81D882180008C3D68 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D71D882180008C3D68 /* MainTableViewCell.swift */; };
 		B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */; };
 		B53AAA6F1D8ABDD900ED644E /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = B53AAA6E1D8ABDD900ED644E /* Notes */; };
@@ -129,6 +130,7 @@
 		B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagBGView.swift; sourceTree = "<group>"; };
 		B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsNavBarView.swift; sourceTree = "<group>"; };
 		B503FBF61D91538600EF8CC2 /* GameProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
+		B503FBF81D92BF0000EF8CC2 /* StartNewGameVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartNewGameVCInterface.swift; sourceTree = "<group>"; };
 		B53A79D71D882180008C3D68 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		B53AAA6E1D8ABDD900ED644E /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				B58A007E1D8402AC00B8BD7D /* MainVCInterface.swift */,
 				B53AAA751D8AF39A00ED644E /* StartNewGameVC.swift */,
 				B5AD69571D8FF78C00F2331A /* StartNewGameVCPickerExt.swift */,
+				B503FBF81D92BF0000EF8CC2 /* StartNewGameVCInterface.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				B5AD691C1D8BF09300F2331A /* PresentStartNewGame.swift in Sources */,
 				B58A008A1D84092800B8BD7D /* MainInteractorInterface.swift in Sources */,
 				B549C4DE1D660E94000409B3 /* Game.swift in Sources */,
+				B503FBF91D92BF0000EF8CC2 /* StartNewGameVCInterface.swift in Sources */,
 				B53CFC9E1D86CB2E00152EDD /* GameInteractorInterface.swift in Sources */,
 				B549C4D71D65FA08000409B3 /* GameVC.swift in Sources */,
 				B53CFC9C1D86CB0D00152EDD /* GameInteractor.swift in Sources */,

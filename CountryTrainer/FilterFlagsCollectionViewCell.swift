@@ -36,18 +36,16 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
   
   
   
-  func configureView(country: Country, isRemainingCountry: Bool) {
+  func configureView(country: Country, isRemainingCountry: Bool, cachedImage: UIImage?) {
     
-    if flagImage.image == nil {
-      //still loses a few frames on initial scroll
-      let image = UIImage(named: country.flagSmall) ?? UIImage(named: country.flag)
-      flagImage.image = resizeImage(image: image!, newWidth: 200)
-    }
+    flagImage.image = cachedImage ?? UIImage(named: country.flagSmall)
     
     addRemoveImage.image = isRemainingCountry ? #imageLiteral(resourceName: "filterFlagDeletebutton") : #imageLiteral(resourceName: "filterFlagAddButton")
     
     self.country = country
     countryName.text = country.name
+    print(country.name)
+    
   }
   
   func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {

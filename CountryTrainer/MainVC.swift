@@ -10,10 +10,6 @@ import UIKit
 import pop
 
 class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableViewDataSource, MenuTableViewCellDelegate {
-  //  internal func getNewGameData(numberOfFlags: Int?, continent: String?) {
-  //    //FIXME: delete this
-  //  }
-  //data service for testing
   
   @IBOutlet weak var flagImage: UIImageView!
   @IBOutlet weak var newGameButton: UIButton!
@@ -119,8 +115,8 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
   }
   
   func prepareGameData(game: Game) {
-    
     mainWireframe?.presentGameInterface(withGame: game)
+    
   }
   
   func configureTablePath() {

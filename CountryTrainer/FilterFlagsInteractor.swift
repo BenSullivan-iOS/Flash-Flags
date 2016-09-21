@@ -11,8 +11,22 @@ import UIKit
 class FilterFlagsInteractor: FilterFlagsInteractorInterface {
   
   fileprivate var _countries = [Country]()
-  fileprivate var _remainingCountries = [Country]()
-  fileprivate var _memorisedCountries = [Country]()
+  fileprivate var _remainingCountries = [Country]() {
+    didSet {
+      didUpdateCountries = true
+    }
+  }
+  fileprivate var _memorisedCountries = [Country]() {
+    didSet {
+      didUpdateCountries = true
+    }
+  }
+  
+  fileprivate var _imageCache = NSCache<NSString, UIImage>()
+  
+  var imageCache: NSCache<NSString, UIImage> {
+    return _imageCache
+  }
   
   var remainingCountries: [Country] {
     return _remainingCountries
@@ -35,12 +49,14 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface {
     _countries = countryArray
   }
   
+  var didUpdateCountries = false
+  
   func addFlag(country: Country) -> IndexPath? {
     
     for i in _memorisedCountries.indices {
       
       if _memorisedCountries[i] == country {
-        
+        didUpdateCountries = true
         _countries.remove(at: i)
         _remainingCountries.insert(country, at: 0)
         _memorisedCountries.remove(at: i)
@@ -51,7 +67,7 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface {
       }
     }
     return nil
-
+    
   }
   
   func removeFlag(country: Country) -> IndexPath? {
@@ -60,6 +76,7 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface {
       
       if _countries[i] == country {
         
+        didUpdateCountries = true
         _countries.remove(at: i)
         _remainingCountries.remove(at: i)
         _memorisedCountries.insert(country, at: 0)
@@ -71,5 +88,90 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface {
     }
     return nil
   }
+
+  func populateCurrentCoutntriesCache(isRemainingCountry: Bool) {
+   
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      for i in self.countries.indices {
+        
+        if self.didUpdateCountries {
+          self.didUpdateCountries = false
+          self.populateCurrentCoutntriesCache(isRemainingCountry: isRemainingCountry)
+          return
+        }
+        
+        let flag = self.countries[i].flag as! NSString
+        
+        if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
+          
+          var image = UIImage()
+          var imageStr = String()
+          
+          if isRemainingCountry {
+            
+            imageStr = self.remainingCountries[i].flagSmall
+            
+            image = UIImage(named: imageStr) ?? UIImage(named: self.remainingCountries[i].flag)!
+            
+          } else {
+            
+            imageStr = self.memorisedCountries[i].flagSmall
+            
+            image = UIImage(named: imageStr) ?? UIImage(named: self.memorisedCountries[i].flag)!
+          }
+          
+          let smallImage = self.resizeImage(image: image, newWidth: 200)
+          self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+          print(i)
+        }
+      }
+    }
+  }
   
+  func populateCacheFromPrefetch(isRemainingCountry: Bool, indexPaths: [IndexPath]) {
+    
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      for i in indexPaths {
+        
+        let flag = self.remainingCountries[i.row].flag as! NSString
+        
+        if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
+          
+          var image = UIImage()
+          var imageStr = String()
+          
+          if isRemainingCountry {
+            
+            imageStr = self.remainingCountries[i.row].flagSmall
+            
+            image = UIImage(named: imageStr) ?? UIImage(named: self.remainingCountries[i.row].flag)!
+            
+          } else {
+            
+            imageStr = self.memorisedCountries[i.row].flagSmall
+            
+            image = UIImage(named: imageStr) ?? UIImage(named: self.memorisedCountries[i.row].flag)!
+          }
+          
+          let smallImage = self.resizeImage(image: image, newWidth: 200)
+          self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+          print(i)
+        }
+      }
+    }
+  }
+  
+  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    
+    let scale = newWidth / image.size.width
+    let newHeight = image.size.height * scale
+    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return newImage!
+  }
 }

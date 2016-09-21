@@ -10,30 +10,95 @@ import UIKit
 
 class GameInteractor: GameInteractorInterface {
   
-  var currentGame: Game?
+  fileprivate var _currentGame: Game!
   
-  func answered(game: Game, country: String, result: Bool) -> Game {
-    
-    currentGame = game
-    currentGame?.tracker.updateTracker(country, result: result)
-    
-    return currentGame!
+  var currentGame: Game {
+    return _currentGame
+  }
+  fileprivate var _imageCache = NSCache<NSString, UIImage>()
+  
+  var imageCache: NSCache<NSString, UIImage> {
+    return _imageCache
   }
   
-  func getCurrentGame() -> Game {
+  
+  init(game: Game) {
     
-    currentGame?.gameRetried()
+    _currentGame = game
+  }
+  func answered(country: String, result: Bool) {
     
-    return currentGame!
+    _currentGame.tracker.updateTracker(country, result: result)
+    
   }
   
-  func retryGame() -> Game {
+  func populateCache() {
     
-    let game = currentGame!
-    currentGame = Game(countries: game.countries, attempts: game.attempts)
-    currentGame?.gameRetried()
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      
+      for i in self.currentGame.countries.indices {
+        
+        let flag = self.currentGame.countries[i].flag as! NSString
+        
+        if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
+          
+          let imageStr = self.currentGame.countries[i].flagSmall
+          
+          if let image = UIImage(named: imageStr) ?? UIImage(named: self.currentGame.countries[i].flag) {
+            
+            let smallImage = self.resizeImage(image: image, newWidth: 200)
+            self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+          }
+          
+        }
+      }
+    }
+  }
+  
+  
+  func populateCurrentCoutntriesCache(indexPaths: [IndexPath]) {
     
-    return currentGame!
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      
+      for i in indexPaths {
+        
+        let flag = self.currentGame.tracker.remainingCountries[i.row].flag as! NSString
+        
+        if self.imageCache.object(forKey: flag) == nil {
+          
+          let imageStr = self.currentGame.tracker.remainingCountries[i.row].flag
+          
+          let image = UIImage(named: imageStr!)
+          let smallImage = self.resizeImage(image: image!, newWidth: 500)
+          
+          self.imageCache.setObject(smallImage, forKey: imageStr! as NSString)
+          
+        }
+      }
+    }
+  }
+  
+  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    
+    let scale = newWidth / image.size.width
+    let newHeight = image.size.height * scale
+    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return newImage!
+  }
+  
+  func retryGame() {
+    
+    let game = currentGame
+    _currentGame = Game(countries: game.countries, attempts: game.attempts)
+    _currentGame.gameRetried()
+    
+    //    return currentGame
   }
   
 }

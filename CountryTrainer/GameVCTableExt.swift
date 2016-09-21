@@ -10,45 +10,12 @@ import UIKit
 
 extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
   
-  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-    
-    let scale = newWidth / image.size.width
-    let newHeight = image.size.height * scale
-    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-    let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    return newImage!
-  }
-  
   // MARK: - TABLE VIEW
   
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
     
-    print(indexPaths)
-    
-      DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-        
-        for i in indexPaths {
-          
-          print(i.row)
-          print(self.game?.tracker.remainingCountries.count)
-          
-          let flag = self.game?.tracker.remainingCountries[i.row].flag as! NSString
-          
-          if self.imageCache.object(forKey: flag) == nil {
-            
-            let imageStr = self.game?.tracker.remainingCountries[i.row].flag
-            
-            let image = UIImage(named: imageStr!)
-            let smallImage = self.resizeImage(image: image!, newWidth: 500)
-            
-            self.imageCache.setObject(smallImage, forKey: imageStr! as NSString)
-          }
-        }
-      }
-    }
+    gameInteractorInterface?.populateCurrentCoutntriesCache(indexPaths: indexPaths)
+  }
   
   func numberOfSections(in tableView: UITableView) -> Int {
     
@@ -70,6 +37,8 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
     
     let newView = view as! UITableViewHeaderFooterView
     newView.alpha = 0
+    newView.backgroundColor = .clear
+    newView.backgroundView?.backgroundColor = .clear
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,14 +48,11 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
       
       cell.delegate = self
       
-      let nsstring = game?.tracker.remainingCountries[indexPath.row].flag as! NSString
+      let flagObjectKey = game?.tracker.remainingCountries[indexPath.row].flag as! NSString
       
-      if let image = imageCache.object(forKey: nsstring) {
-        
-        cell.flagImage.image = image
-      }
+      let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
       
-      cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!)
+      cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!, cachedImage: cachedImage)
       
       return cell
       

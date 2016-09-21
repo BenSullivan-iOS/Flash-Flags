@@ -14,24 +14,26 @@ class GameVC: UIViewController, GameDelegate {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var progressView: UIProgressView!
   
+  @IBOutlet weak var progressLeading: NSLayoutConstraint!
+  @IBOutlet weak var progressTrailing: NSLayoutConstraint!
+  
   var gameWireframe: GameWireframe?
   var gameInteractorInterface: GameInteractorInterface?
   var selectedRow: IndexPath? = nil
-  var game: Game?
   
-  var imageCache = NSCache<NSString, UIImage>()
+  var game: Game? {
+    return gameInteractorInterface?.currentGame ?? nil
+  }
   
-  var prefetchTest: UITableViewDataSourcePrefetching?
-  
-  func radialPop() {
-    
-    navigationController?.radialPopViewController()
+  var imageCache: NSCache<NSString, UIImage> {
+    return gameInteractorInterface?.imageCache ?? NSCache<NSString, UIImage>()
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-//    self.preferredStatusBarStyle.rawValue = UIStatusBarStyle.lightContent
+    self.progressLeading.constant = self.view.frame.width / 2 + 10
+    self.progressTrailing.constant = self.view.frame.width / 2 + 10
     
     navigationItem.backBarButtonItem?.responds(to: #selector(self.radialPop))
     
@@ -40,39 +42,49 @@ class GameVC: UIViewController, GameDelegate {
     tableView.rowHeight = UITableViewAutomaticDimension
   }
   
-  func retryGame(game: Game) {
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    showPickerView(delay: 0)
+    gameInteractorInterface?.populateCache()
     
-    self.game = game
-    
-    self.progressView.setProgress(0, animated: false)
-    
-//    AnimationEngine.animateToPosition(
-//    view: progressView,
-//    position: CGPoint(x: self.progressView.center.x, y: self.progressView.center.y + 80),
-//    bounciness: 10,
-//    speed: CGFloat(2))
-//    { anim, success in
-//      
-//      let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
-//      AnimationEngine.popView(view: self.progressView, velocity: velocity)
-//    print("anim complete")
-//    }
+  }
+  
+  @IBAction func backButtonPressed(_ sender: UIButton) {
+    radialPop()
+  }
+  
+  
+  func showPickerView(delay: Double) {
     
     UIView.animate(withDuration: 1,
-                   delay: 0.5,
+                   delay: delay,
                    usingSpringWithDamping: CGFloat(0.4),
                    initialSpringVelocity: CGFloat(0.1),
                    options: UIViewAnimationOptions.curveEaseInOut,
                    animations: {
-      
-      self.progressLeading.constant = 50
-      self.progressTrailing.constant = 50
-      
-      self.view.layoutIfNeeded()
-      
-      }) { finished in
-        print("finished")
+                    
+                    self.progressLeading.constant = 50
+                    self.progressTrailing.constant = 50
+                    
+                    self.view.layoutIfNeeded()
+                    
+    }) { finished in
+      print("finished")
     }
+    
+  }
+  
+  func retryGame() {
+    
+//    imageCache.removeAllObjects()
+    
+    gameInteractorInterface?.retryGame()
+    
+//    self.game = game
+    
+    self.progressView.setProgress(0, animated: false)
+    
+    showPickerView(delay: 0.5)
     
     tableView.reloadData()
   }
@@ -81,12 +93,9 @@ class GameVC: UIViewController, GameDelegate {
     
     if game != nil {
       
-      game = gameInteractorInterface?.answered(
-        game: game!,
+      gameInteractorInterface?.answered(
         country: country,
         result: result)
-      
-      self.title = game!.progress
       
       tableView.deleteRows(
         at: [selectedRow!],
@@ -106,19 +115,12 @@ class GameVC: UIViewController, GameDelegate {
       
       let pro: Float = Float(result) / 100.0
       
-      let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
-      
-      AnimationEngine.popView(view: progressView, velocity: velocity)
-      
       UIView.animate(withDuration: 1, animations: {
+        
         self.progressView.setProgress(pro, animated: true)
       })
     }
-
   }
-  
-  @IBOutlet weak var progressLeading: NSLayoutConstraint!
-  @IBOutlet weak var progressTrailing: NSLayoutConstraint!
   
   func checkForGameCompleted(game: Game) {
     
@@ -138,10 +140,12 @@ class GameVC: UIViewController, GameDelegate {
         self.progressTrailing.constant = self.view.frame.width / 2 + 10
         
         self.view.layoutIfNeeded()
-
-        
-//        self.progressView.center = CGPoint(x: self.progressView.center.x, y: self.progressView.center.y - 80)
       })
     }
+  }
+  
+  func radialPop() {
+    
+    navigationController?.radialPopViewController()
   }
 }

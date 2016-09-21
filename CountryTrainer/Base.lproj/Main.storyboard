@@ -244,10 +244,12 @@
                                             <frame key="frameInset" width="375" height="294"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hie-BB-Ri5" customClass="FlagBGView" customModule="CountryTrainer" customModuleProvider="target">
+                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hie-BB-Ri5" customClass="FlagBGView" customModule="CountryTrainer" customModuleProvider="target">
+                                                    <frame key="frameInset" minX="8" minY="8" width="294" height="278"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-x5-Z9d">
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-x5-Z9d">
+                                                    <frame key="frameInset" minX="16" minY="16" width="278" height="262"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-fH-Ocx" customClass="FlagImageView" customModule="CountryTrainer" customModuleProvider="target">
                                                             <constraints>
@@ -263,7 +265,8 @@
                                                         </label>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-5t-DGN">
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="T8V-YG-OqE">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="T8V-YG-OqE">
+                                                                    <frame key="frameInset" width="278" height="35"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMh-c0-zVu">
                                                                             <connections>
@@ -277,7 +280,8 @@
                                                                         </button>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-D6-8nQ">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-D6-8nQ">
+                                                                    <frame key="frameInset" minY="2" width="278" height="30"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLa-nR-9UV" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
                                                                             <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
@@ -365,12 +369,19 @@
                                     <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuq-gM-K1h" customClass="FilterFlagsNavBarView" customModule="CountryTrainer" customModuleProvider="target">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="HdW-Jt-hZV"/>
+                                                <constraint firstAttribute="height" constant="75" id="Yxh-Kj-28h"/>
+                                            </constraints>
+                                        </view>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="E9m-L4-mTh" customClass="GameProgressView" customModule="CountryTrainer" customModuleProvider="target">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="77Y-sL-kvx"/>
                                             </constraints>
                                             <color key="progressTintColor" red="0.0" green="0.38823529410000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="trackTintColor" red="1" green="0.95115725569999998" blue="0.83839027399999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </progressView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v03-HS-6rz">
                                             <constraints>
@@ -380,23 +391,19 @@
                                             <state key="normal" title="&lt;" image="whiteBackButton">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="backButtonPressed:" destination="H4O-6A-ZFD" eventType="touchUpInside" id="qLH-i0-wdb"/>
+                                            </connections>
                                         </button>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuq-gM-K1h" customClass="FilterFlagsNavBarView" customModule="CountryTrainer" customModuleProvider="target">
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="HdW-Jt-hZV"/>
-                                                <constraint firstAttribute="height" constant="75" id="Yxh-Kj-28h"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="v03-HS-6rz" firstAttribute="top" secondItem="OgF-3v-o6Y" secondAttribute="top" constant="25" id="1n9-PX-Mac"/>
+                                        <constraint firstItem="v03-HS-6rz" firstAttribute="top" secondItem="OgF-3v-o6Y" secondAttribute="top" constant="28" id="1n9-PX-Mac"/>
                                         <constraint firstItem="nuq-gM-K1h" firstAttribute="leading" secondItem="OgF-3v-o6Y" secondAttribute="leading" constant="-1" id="46X-gM-KqZ"/>
                                         <constraint firstAttribute="trailing" secondItem="E9m-L4-mTh" secondAttribute="trailing" constant="50" id="BdD-tc-tYb"/>
                                         <constraint firstItem="nuq-gM-K1h" firstAttribute="top" secondItem="OgF-3v-o6Y" secondAttribute="top" constant="-1" id="FmU-Oe-Mzy"/>
                                         <constraint firstItem="E9m-L4-mTh" firstAttribute="leading" secondItem="OgF-3v-o6Y" secondAttribute="leading" constant="50" id="NQ4-61-RmA"/>
                                         <constraint firstItem="v03-HS-6rz" firstAttribute="leading" secondItem="OgF-3v-o6Y" secondAttribute="leading" id="Wf5-DQ-laG"/>
-                                        <constraint firstItem="E9m-L4-mTh" firstAttribute="top" secondItem="OgF-3v-o6Y" secondAttribute="top" constant="30" id="iq3-iG-PVI"/>
+                                        <constraint firstItem="E9m-L4-mTh" firstAttribute="top" secondItem="OgF-3v-o6Y" secondAttribute="top" constant="35" id="iq3-iG-PVI"/>
                                         <constraint firstItem="E9m-L4-mTh" firstAttribute="centerX" secondItem="OgF-3v-o6Y" secondAttribute="centerX" id="lEc-nh-xdr"/>
                                         <constraint firstAttribute="trailing" secondItem="nuq-gM-K1h" secondAttribute="trailing" constant="-1" id="mb5-7S-7sk"/>
                                     </constraints>

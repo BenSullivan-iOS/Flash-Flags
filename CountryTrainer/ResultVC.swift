@@ -66,17 +66,13 @@ class ResultVC: UIViewController {
   
   @IBAction func menuButton(_ sender: AnyObject) {
     
-    let game = gameInteractorInterface?.getCurrentGame()
-    print(game?.resultPercentage)
-    gameWireframe?.dismissResultVCToEndGame(game: game!)
+    gameWireframe?.dismissResultVCToEndGame(game: gameInteractorInterface?.currentGame ?? Game(countries: [Country](), attempts: 0))
   }
   
   @IBAction func retryButton(_ sender: ResultButton) {
     
-    let game = gameInteractorInterface?.retryGame()
-    print(game!.resultPercentage)
-    
-    gameWireframe?.dismissResultVCToRetry(game: game!)
+    gameInteractorInterface?.retryGame()
+    gameWireframe?.dismissResultVCToRetry()
     
 //    dismiss(animated: true, completion: nil)
 //    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retryGame"), object: nil)
