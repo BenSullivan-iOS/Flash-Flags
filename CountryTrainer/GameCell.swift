@@ -16,12 +16,6 @@ protocol GameDelegate {
 
 class GameCell: UITableViewCell {
   
-//  @IBOutlet fileprivate weak var stackView: UIStackView!
-//  @IBOutlet weak var flagImage: FlagImageView!
-//  @IBOutlet weak var countryName: UILabel!
-//  @IBOutlet weak var correctButton: ResultButton!
-//  @IBOutlet weak var nopeButton: ResultButton!
-  
   @IBOutlet weak var flagImage: FlagImageView!
   
   @IBOutlet weak var countryName: UILabel!
@@ -30,7 +24,7 @@ class GameCell: UITableViewCell {
   @IBOutlet weak var correctButton: ResultButton!
   @IBOutlet weak var nopeButton: ResultButton!
   
-  var delegate: GameDelegate? = nil
+  var delegate: GameDelegate?
   
   @IBAction func answeredCorrectly(_ sender: UIButton) {
     delegate?.answered(country: countryName.text!, result: true)

@@ -33,9 +33,7 @@ class AppDependencies {
     mainWireframe.gameWireframe = gameWireframe
     mainWireframe.filterFlagsWireframe = filterFlagsWireframe
     
-    
     gameWireframe.mainWireframe = mainWireframe
     
-    print("Configure dependencies")
   }
 }

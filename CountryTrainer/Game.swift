@@ -66,6 +66,5 @@ struct Game: GameType {
     _dateLastCompleted = Date()
     _attempts += 1
   }
-  
 
 }

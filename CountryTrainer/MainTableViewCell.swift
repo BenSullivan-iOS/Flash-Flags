@@ -8,18 +8,6 @@
 
 import UIKit
 
-class CurvedLabel: UILabel {
-  
-  override func awakeFromNib() {
-    layer.cornerRadius = 5.0
-//    layer.borderColor = UIColor.black.cgColor
-//    layer.borderWidth = 1.0
-    layer.masksToBounds = true
-    backgroundColor = UIColor.white
-    alpha = 0.95
-  }
-}
-
 class MainTableViewCell: UITableViewCell {
   
   @IBOutlet weak var bgLabel: UILabel!

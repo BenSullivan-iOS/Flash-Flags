@@ -53,6 +53,11 @@ class GameVC: UIViewController, GameDelegate {
     radialPop()
   }
   
+  @IBAction func shuffleButtonPressed(_ sender: UIButton) {
+    
+    gameInteractorInterface?.shuffleCountries()
+    tableView.reloadData()
+  }
   
   func showPickerView(delay: Double) {
     

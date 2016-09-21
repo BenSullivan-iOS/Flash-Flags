@@ -77,4 +77,8 @@ struct Tracker: GameTracker {
     }
 
   }
+  
+  mutating func shuffleCountries() {
+    _remainingCountries.shuffle()
+  }
 }

@@ -19,4 +19,7 @@ protocol MainInteractorInterface {
   func prepareContinentsForPicker() -> [String]
   func prepareNumberOfFlagsForPicker() -> [Int]
   
+  func populateGamesForMainVCTable(game: Game)
+  var games: [Game] { get }
+  
 }

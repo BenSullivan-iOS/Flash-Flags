@@ -11,15 +11,15 @@ import pop
 
 class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableViewDataSource, MenuTableViewCellDelegate {
   
-  @IBOutlet weak var flagImage: UIImageView!
-  @IBOutlet weak var newGameButton: UIButton!
   @IBOutlet weak var tableView: COBezierTableView!
   @IBOutlet weak var flagBg: UIImageView!
   
   var mainInteractor: MainInteractorInterface?
   var mainWireframe: MainWireframe?
   
-  var games = [Game]()
+  var games: [Game] {
+    return mainInteractor?.games ?? [Game]()
+  }
   
   var menuTitles = [
     MenuItems.about.rawValue,
@@ -110,7 +110,7 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
   
   func populateGames(game: Game) {
     
-    games.append(game)
+    mainInteractor?.populateGamesForMainVCTable(game: game)
     tableView.reloadData()
   }
   

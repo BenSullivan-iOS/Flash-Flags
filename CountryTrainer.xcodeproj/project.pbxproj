@@ -13,6 +13,9 @@
 		B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */; };
 		B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF61D91538600EF8CC2 /* GameProgressView.swift */; };
 		B503FBF91D92BF0000EF8CC2 /* StartNewGameVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF81D92BF0000EF8CC2 /* StartNewGameVCInterface.swift */; };
+		B5060C5A1D9329490093D29C /* SegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5060C591D9329490093D29C /* SegmentedControlExtension.swift */; };
+		B5060C5C1D932B630093D29C /* CurvedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5060C5B1D932B630093D29C /* CurvedLabel.swift */; };
+		B5060C5E1D932C5C0093D29C /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5060C5D1D932C5C0093D29C /* CollectionExtensions.swift */; };
 		B53A79D81D882180008C3D68 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D71D882180008C3D68 /* MainTableViewCell.swift */; };
 		B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */; };
 		B53AAA6F1D8ABDD900ED644E /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = B53AAA6E1D8ABDD900ED644E /* Notes */; };
@@ -56,7 +59,6 @@
 		B549C4E21D66306D000409B3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4E01D66306D000409B3 /* GameType.swift */; };
 		B557A27D1D6C42BD006C3A85 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */; };
 		B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B471D6855040023DC7A /* GameTracker.swift */; };
-		B55A6B491D6855040023DC7A /* GameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B471D6855040023DC7A /* GameTracker.swift */; };
 		B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 		B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 		B58A007D1D84020B00B8BD7D /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A007C1D84020B00B8BD7D /* MainWireframe.swift */; };
@@ -131,6 +133,9 @@
 		B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsNavBarView.swift; sourceTree = "<group>"; };
 		B503FBF61D91538600EF8CC2 /* GameProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
 		B503FBF81D92BF0000EF8CC2 /* StartNewGameVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartNewGameVCInterface.swift; sourceTree = "<group>"; };
+		B5060C591D9329490093D29C /* SegmentedControlExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlExtension.swift; sourceTree = "<group>"; };
+		B5060C5B1D932B630093D29C /* CurvedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurvedLabel.swift; sourceTree = "<group>"; };
+		B5060C5D1D932C5C0093D29C /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		B53A79D71D882180008C3D68 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		B53AAA6E1D8ABDD900ED644E /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
@@ -276,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				B53AAA731D8AD41500ED644E /* DateExtensions.swift */,
+				B5060C591D9329490093D29C /* SegmentedControlExtension.swift */,
+				B5060C5D1D932C5C0093D29C /* CollectionExtensions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -430,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				B58A007B1D8401D700B8BD7D /* DataService */,
-				B58A007A1D8401B500B8BD7D /* Entities */,
 				B58A00791D83FFA700B8BD7D /* View */,
 				B58A00771D83FF9700B8BD7D /* Wireframe */,
 				B58A00761D83FF8E00B8BD7D /* Presenter */,
@@ -481,15 +487,9 @@
 			children = (
 				B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */,
 				B53A79D71D882180008C3D68 /* MainTableViewCell.swift */,
+				B5060C5B1D932B630093D29C /* CurvedLabel.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		B58A007A1D8401B500B8BD7D /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Entities;
 			sourceTree = "<group>";
 		};
 		B58A007B1D8401D700B8BD7D /* DataService */ = {
@@ -943,11 +943,14 @@
 				B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */,
 				B549C4941D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld in Sources */,
 				B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */,
+				B5060C5A1D9329490093D29C /* SegmentedControlExtension.swift in Sources */,
 				B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */,
 				B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */,
 				B5F2604D1D704C93002A20B5 /* ResultButton.swift in Sources */,
 				B53CFC981D86A3A300152EDD /* RootWireframe.swift in Sources */,
+				B5060C5E1D932C5C0093D29C /* CollectionExtensions.swift in Sources */,
 				B549C4D21D65ED8B000409B3 /* Continent.swift in Sources */,
+				B5060C5C1D932B630093D29C /* CurvedLabel.swift in Sources */,
 				B53AAA741D8AD41500ED644E /* DateExtensions.swift in Sources */,
 				B549C48C1D5C7DA5000409B3 /* AppDelegate.swift in Sources */,
 				B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */,
@@ -982,7 +985,6 @@
 				B5ACDE0E1D718CFF00C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */,
 				B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */,
 				B53BA2751D6DBE04007A542E /* DismissResult.swift in Sources */,
-				B55A6B491D6855040023DC7A /* GameTracker.swift in Sources */,
 				B549C4A41D5C7DA5000409B3 /* CountryTrainerTests.swift in Sources */,
 				B5ACDE0C1D718CF900C4CA72 /* AAPTransactionDirector.swift in Sources */,
 				B5ACDE0D1D718CFC00C4CA72 /* UIView+Radial.swift in Sources */,

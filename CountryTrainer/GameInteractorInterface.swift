@@ -11,6 +11,7 @@ protocol GameInteractorInterface {
   func populateCache()
   func answered(country: String, result: Bool)
   func retryGame()
+  func shuffleCountries()
   var currentGame: Game { get }
   var imageCache: NSCache<NSString, UIImage> { get }
 }

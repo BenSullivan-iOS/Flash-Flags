@@ -15,6 +15,7 @@ class GameInteractor: GameInteractorInterface {
   var currentGame: Game {
     return _currentGame
   }
+  
   fileprivate var _imageCache = NSCache<NSString, UIImage>()
   
   var imageCache: NSCache<NSString, UIImage> {
@@ -35,7 +36,6 @@ class GameInteractor: GameInteractorInterface {
   func populateCache() {
     
     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-      
       
       for i in self.currentGame.countries.indices {
         
@@ -99,6 +99,10 @@ class GameInteractor: GameInteractorInterface {
     _currentGame.gameRetried()
     
     //    return currentGame
+  }
+  
+  func shuffleCountries() {
+    _currentGame.tracker.shuffleCountries()
   }
   
 }

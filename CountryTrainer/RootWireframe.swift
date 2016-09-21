@@ -14,6 +14,7 @@ class RootWireframe: NSObject {
     
     let navigationController = navigationControllerFromWindow(window: inWindow)
     navigationController.viewControllers = [viewController]
+    navigationController.navigationBar.barStyle = .black
   }
   
   func navigationControllerFromWindow(window: UIWindow) -> UINavigationController {

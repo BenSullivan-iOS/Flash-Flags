@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FilterFlagDelegate {
+protocol FilterFlagTableViewCellDelegate {
   func removeFlagButtonPressed(country: Country)
 }
 
@@ -21,7 +21,7 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var bgView: UIView!
   
   var country: Country?
-  var filterFlagDelegate: FilterFlagDelegate?
+  var filterFlagDelegate: FilterFlagTableViewCellDelegate?
   
   override func awakeFromNib() {
     
@@ -32,9 +32,6 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
     
     filterFlagDelegate?.removeFlagButtonPressed(country: country!)
   }
-  
-  
-  
   
   func configureView(country: Country, isRemainingCountry: Bool, cachedImage: UIImage?) {
     

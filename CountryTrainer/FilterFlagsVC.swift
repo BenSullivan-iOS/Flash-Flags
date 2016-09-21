@@ -8,14 +8,7 @@
 
 import UIKit
 
-extension UISegmentedControl{
-  func changeTitleFont(newFontName:String?, newFontSize:CGFloat?){
-    let attributedSegmentFont = NSDictionary(object: UIFont(name: newFontName!, size: newFontSize!)!, forKey: NSFontAttributeName as NSCopying)
-    setTitleTextAttributes(attributedSegmentFont as [NSObject : AnyObject], for: .normal)
-  }
-}
-
-class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDataSourcePrefetching, FilterFlagDelegate {
+class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDataSourcePrefetching, FilterFlagTableViewCellDelegate {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!

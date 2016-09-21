@@ -14,6 +14,11 @@ class MainInteractor: MainInteractorInterface, DataService {
   fileprivate var chosenOnes = [Country]()
   fileprivate var _countries = [Country]()
   fileprivate var newGame: Game? = nil
+  fileprivate var _games = [Game]()
+  
+  var games: [Game] {
+    return _games
+  }
   
   var countries: [Country] {
     return _countries
@@ -39,9 +44,6 @@ class MainInteractor: MainInteractorInterface, DataService {
     print(numberOfFlags, continent)
     
     clearCurrentGameData()
-    
-
-    
     
     //Filters out countires based on the continent provided
     var filteredCountries = _countries
@@ -74,31 +76,27 @@ class MainInteractor: MainInteractorInterface, DataService {
     while chosenNumbers.count < numberOfFlagsSelected {
       
       chosenNumbers.insert(Int(arc4random_uniform(UInt32(filteredCountries.count))))
-      print("chosen numbers", chosenNumbers, chosenNumbers.count)
       print(numberOfFlagsSelected)
     }
     
     for i in chosenNumbers {
       chosenOnes.append(filteredCountries[i])
-      print("i = ",i)
     }
     
     let game = Game(countries: chosenOnes, attempts: 0)
     
     mainVCInterface?.prepareGameData(game: game)
-    print(game)
-    print(chosenNumbers)
-    print(filteredCountries)
+
     
   }
   
   func clearCurrentGameData() {
     chosenOnes.removeAll()
     newGame = nil
-    print("Cleared current game data")
   }
   
   func prepareContinentsForPicker() -> [String] {
+    
     var continents = [String]()
     
     continents = Continent.all
@@ -120,4 +118,11 @@ class MainInteractor: MainInteractorInterface, DataService {
     }
     return numberOfFlags
   }
+  
+  func populateGamesForMainVCTable(game: Game) {
+    
+    _games.append(game)
+    
+  }
+  
 }
