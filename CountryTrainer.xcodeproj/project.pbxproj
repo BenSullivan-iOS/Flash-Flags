@@ -23,6 +23,7 @@
 		B5060CA41D940C110093D29C /* CDGame+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5060CA21D940C110093D29C /* CDGame+CoreDataClass.swift */; };
 		B5060CA51D940C110093D29C /* CDGame+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5060CA31D940C110093D29C /* CDGame+CoreDataProperties.swift */; };
 		B5060CA71D94366E0093D29C /* ResultInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5060CA61D94366E0093D29C /* ResultInteractor.swift */; };
+		B5060CA91D94857C0093D29C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5060CA81D94857C0093D29C /* CoreDataService.swift */; };
 		B53A79D81D882180008C3D68 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D71D882180008C3D68 /* MainTableViewCell.swift */; };
 		B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */; };
 		B53AAA6F1D8ABDD900ED644E /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = B53AAA6E1D8ABDD900ED644E /* Notes */; };
@@ -148,6 +149,7 @@
 		B5060CA21D940C110093D29C /* CDGame+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDGame+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B5060CA31D940C110093D29C /* CDGame+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDGame+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B5060CA61D94366E0093D29C /* ResultInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultInteractor.swift; sourceTree = "<group>"; };
+		B5060CA81D94857C0093D29C /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		B53A79D71D882180008C3D68 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		B53AAA6E1D8ABDD900ED644E /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				B549C4C21D6207CD000409B3 /* DataService.swift */,
+				B5060CA81D94857C0093D29C /* CoreDataService.swift */,
 			);
 			name = DataService;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				B5060CA71D94366E0093D29C /* ResultInteractor.swift in Sources */,
 				B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */,
 				B5060C9F1D93D3AA0093D29C /* CDCountriesTracker+CoreDataProperties.swift in Sources */,
+				B5060CA91D94857C0093D29C /* CoreDataService.swift in Sources */,
 				B549C4941D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld in Sources */,
 				B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */,
 				B5060CA11D93D3AA0093D29C /* CDCountriesForGame+CoreDataProperties.swift in Sources */,

@@ -78,9 +78,9 @@ struct Game: GameType {
     _dateLastCompleted = Date()
     _attempts += 1
   }
-  
+  //Change to complete game
   mutating func setHighestPercentage() {
-    
+
     if _highestPercentage < resultPercentage {
       _highestPercentage = resultPercentage
     }

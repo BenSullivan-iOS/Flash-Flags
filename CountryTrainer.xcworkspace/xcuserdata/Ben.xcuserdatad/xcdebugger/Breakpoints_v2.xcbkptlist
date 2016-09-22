@@ -153,13 +153,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CountryTrainer/ResultInteractor.swift"
-            timestampString = "496254145.796271"
+            filePath = "CountryTrainer/Game.swift"
+            timestampString = "496257274.947747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "saveGameToCoreData(game:)"
+            landmarkName = "Game"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CountryTrainer.Game.tracker.getter : CountryTrainer.Tracker"
+                  moduleName = "CountryTrainer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ben/iOS%20Swift%20Projects/Other/CountryTrainer/CountryTrainer/Game.swift"
+                  timestampString = "496273276.500356"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CountryTrainer.Game.tracker.setter : CountryTrainer.Tracker"
+                  moduleName = "CountryTrainer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ben/iOS%20Swift%20Projects/Other/CountryTrainer/CountryTrainer/Game.swift"
+                  timestampString = "496273276.506676"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1177">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CountryTrainer/ResultInteractor.swift"
+            timestampString = "496257958.942284"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "fetch(game:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
