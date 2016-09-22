@@ -12,6 +12,7 @@ protocol GameInteractorInterface {
   func answered(country: String, result: Bool)
   func retryGame()
   func shuffleCountries()
+  func updateHighestPercentage()
   var currentGame: Game { get }
   var imageCache: NSCache<NSString, UIImage> { get }
 }

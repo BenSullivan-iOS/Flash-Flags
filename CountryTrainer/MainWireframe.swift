@@ -41,6 +41,12 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     mainVC?.populateGames(game: game)
   }
   
+  func retryGame(game: Game) {
+    
+    mainVC?.populateGames(game: game)
+
+  }
+  
   func presentGameInterface(withGame game: Game) {
     
     mainVC?.dismiss(animated: true, completion: nil)

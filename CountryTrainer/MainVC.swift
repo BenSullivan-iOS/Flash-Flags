@@ -37,11 +37,16 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     
     configureTablePath()
     setInitialTableRow()
-
+    
   }
   
   @IBAction func newGameButtonPressed(_ sender: AnyObject) {
     mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil)
+  }
+  
+  func reloadTableData() {
+    
+    tableView.reloadData()
   }
   
   func presentFilterFlags() {
@@ -53,6 +58,32 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     
     mainInteractor?.updateCountries(countries: countries)
   }
+  
+  func populateGames(game: Game) {
+    
+    mainInteractor?.populateGamesForMainVCTable(game: game)
+    tableView.reloadData()
+  }
+  
+  func prepareGameData(game: Game) {
+    mainWireframe?.presentGameInterface(withGame: game)
+    
+  }
+  
+  func configureTablePath() {
+    UIView.BezierPoints.p1 = CGPoint(x: 148, y: 0)
+    UIView.BezierPoints.p2 = CGPoint(x: 11, y: 209)
+    UIView.BezierPoints.p3 = CGPoint(x: 18, y: 308)
+    UIView.BezierPoints.p4 = CGPoint(x: 163, y: 568)
+  }
+  
+  func setInitialTableRow() {
+    let indexPath = IndexPath(row: 2, section: 2)
+    
+    tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.top)
+  }
+  
+  //MARK: - TABLE VIEW
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return 3
@@ -97,7 +128,7 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
       
       cell.configureCell(game: games[indexPath.row])
       
-      //      cell.button?.setImage(UIImage(named: countries[indexPath.row].flag), for: .normal)
+      cell.mainWireframe = mainWireframe
       
       return cell
     }
@@ -107,29 +138,4 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     return cell
     
   }
-  
-  func populateGames(game: Game) {
-    
-    mainInteractor?.populateGamesForMainVCTable(game: game)
-    tableView.reloadData()
-  }
-  
-  func prepareGameData(game: Game) {
-    mainWireframe?.presentGameInterface(withGame: game)
-    
-  }
-  
-  func configureTablePath() {
-    UIView.BezierPoints.p1 = CGPoint(x: 148, y: 0)
-    UIView.BezierPoints.p2 = CGPoint(x: 11, y: 209)
-    UIView.BezierPoints.p3 = CGPoint(x: 18, y: 308)
-    UIView.BezierPoints.p4 = CGPoint(x: 163, y: 568)
-  }
-  
-  func setInitialTableRow() {
-    let indexPath = IndexPath(row: 2, section: 2)
-    
-    tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.top)
-  }
-
 }

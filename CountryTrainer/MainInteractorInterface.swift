@@ -22,4 +22,6 @@ protocol MainInteractorInterface {
   func populateGamesForMainVCTable(game: Game)
   var games: [Game] { get }
   
+  func retryGame()
+  
 }

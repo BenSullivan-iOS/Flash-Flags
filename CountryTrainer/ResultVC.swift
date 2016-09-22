@@ -13,10 +13,10 @@ class ResultVC: UIViewController {
   
   @IBOutlet weak var menuButton: ResultButton!
   @IBOutlet weak var retryButton: ResultButton!
-  var gameInteractorInterface: GameInteractorInterface?
-
   @IBOutlet weak var percentageLabel: UILabel!
-  
+
+  var gameInteractorInterface: GameInteractorInterface?
+  var resultInteractor: ResultInteractor?
   var gameWireframe: GameWireframe?
   var gameScoreString = String()
   var gameScoreInt = Int()
@@ -56,17 +56,11 @@ class ResultVC: UIViewController {
     AnimationEngine.popView(view: percentageLabel, velocity: velocity)
   }
   
-  func animateCircle() {
-    
-    let percent = Double(gameScoreInt) / 100
-    let value = CGFloat(percent)
-    
-    self.circleView.setStrokeEnd(strokeEnd: value, animated: true)
-  }
-  
   @IBAction func menuButton(_ sender: AnyObject) {
     
-    gameWireframe?.dismissResultVCToEndGame(game: gameInteractorInterface?.currentGame ?? Game(countries: [Country](), attempts: 0))
+    resultInteractor?.saveGameToCoreData(game: (gameInteractorInterface?.currentGame)!)
+    
+    gameWireframe?.dismissResultVCToEndGame(game: gameInteractorInterface?.currentGame ?? Game(countries: [Country](), attempts: 0, dateLastCompleted: nil, highestPercentage: nil))
   }
   
   @IBAction func retryButton(_ sender: ResultButton) {
@@ -124,5 +118,13 @@ class ResultVC: UIViewController {
 
     menuButton.alpha = 1
     AnimationEngine.popView(view: menuButton, velocity: velocity)
+  }
+  
+  func animateCircle() {
+    
+    let percent = Double(gameScoreInt) / 100
+    let value = CGFloat(percent)
+    
+    self.circleView.setStrokeEnd(strokeEnd: value, animated: true)
   }
 }

@@ -134,6 +134,8 @@ class GameVC: UIViewController, GameDelegate {
       let percentageString = " \(game.resultPercentage)%"
       let percentInt = game.resultPercentage
       
+      gameInteractorInterface?.updateHighestPercentage()
+      
       gameWireframe?.presentResultInterfaceFrom(
         viewController: self,
         scoreInt: percentInt,

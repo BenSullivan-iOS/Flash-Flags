@@ -21,6 +21,8 @@ struct Tracker: GameTracker {
   fileprivate var _remainingCells = [String : Bool]()
   fileprivate var _answers = [String : Bool]()
   
+  var gameDelegate: GameType?
+  
   internal var answers: [String : Bool] {
     return _answers
   }
@@ -59,6 +61,7 @@ struct Tracker: GameTracker {
     
     if remainingCountries.count == 1 {
       
+      gameDelegate?.setHighestPercentage()
       print("Game completed")
       
     }

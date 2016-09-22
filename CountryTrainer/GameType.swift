@@ -11,5 +11,5 @@ protocol GameType {
   var countries: [Country] { get }
   var numberOfFlags: Int { get }
   var tracker: Tracker { get set }
-  
+  mutating func setHighestPercentage()
 }

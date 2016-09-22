@@ -16,7 +16,9 @@ class MainTableViewCell: UITableViewCell {
   @IBOutlet weak var daysAgo: UILabel!
   @IBOutlet weak var flags: UILabel!
   
+  var mainWireframe: MainWireframe?
   var circleView: CircleView!
+  var game: Game?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -24,25 +26,24 @@ class MainTableViewCell: UITableViewCell {
     addCircleView()
   }
   
-  func configureCell(game: Game) {
+  @IBAction func retryButtonPressed(_ sender: UIButton) {
     
-    self.attempts.text = String(game.attempts)
-    self.percentage.text = "\(game.resultPercentage)%"
-    self.daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
-    self.flags.text = String(game.numberOfFlags)
-    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false)
-    
-    let percent = Float(game.resultPercentage) / 100.0
-    print(percent)
-    
-    self.circleView.setStrokeEnd(strokeEnd: CGFloat(percent), animated: true)
-    
+    mainWireframe?.presentGameInterface(withGame: game!)
   }
   
-  override func prepareForReuse() {
+  func configureCell(game: Game) {
     
+    self.game = game
+    
+    self.attempts.text = String(game.attempts)
+    self.percentage.text = "\(game.highestPercentage)%"
+    self.daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
+    self.flags.text = String(game.numberOfFlags)
+        
     self.circleView.setStrokeEnd(strokeEnd: 0, animated: false)
-    self.circleView.setStrokeEnd(strokeEnd: 0.75, animated: true)
+  
+    self.circleView.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true)
+    print(CGFloat(game.highestPercentage) / 100)
     
   }
   
@@ -52,18 +53,5 @@ class MainTableViewCell: UITableViewCell {
 
     self.addSubview(self.circleView)
     
-  }
-}
-
-// MARK: Random Color
-
-extension UIColor {
-  
-  static func randomColor() -> UIColor {
-    let randomRed: CGFloat = CGFloat(drand48())
-    let randomGreen: CGFloat = CGFloat(drand48())
-    let randomBlue: CGFloat = CGFloat(drand48())
-    
-    return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
   }
 }

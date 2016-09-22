@@ -14,6 +14,7 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   var presentedViewController: UIViewController?
   var mainWireframe: MainWireframe?
   var gameInteractor: GameInteractor?
+  var resultInteractor: ResultInteractor?
   var gameVC: GameVC?
   
   func dismissGameInterface() {
@@ -54,12 +55,14 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   func presentResultInterfaceFrom(viewController: UIViewController, scoreInt: Int, scoreString: String) {
     
     let newVC = resultVC()
+    resultInteractor = ResultInteractor()
     newVC.transitioningDelegate = self
     newVC.modalPresentationStyle = UIModalPresentationStyle.custom
     newVC.gameScoreInt = scoreInt
     newVC.gameScoreString = scoreString
     newVC.gameWireframe = self
     newVC.gameInteractorInterface = gameInteractor
+    newVC.resultInteractor = resultInteractor
     
     viewController.navigationController!.present(newVC, animated: true, completion: nil)
   }

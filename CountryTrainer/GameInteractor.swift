@@ -95,7 +95,7 @@ class GameInteractor: GameInteractorInterface {
   func retryGame() {
     
     let game = currentGame
-    _currentGame = Game(countries: game.countries, attempts: game.attempts)
+    _currentGame = Game(countries: game.countries, attempts: game.attempts, dateLastCompleted: nil, highestPercentage: nil)
     _currentGame.gameRetried()
     
     //    return currentGame
@@ -105,4 +105,7 @@ class GameInteractor: GameInteractorInterface {
     _currentGame.tracker.shuffleCountries()
   }
   
+  func updateHighestPercentage() {
+    _currentGame.setHighestPercentage()
+  }
 }

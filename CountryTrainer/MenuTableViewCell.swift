@@ -16,6 +16,9 @@ class MenuTableViewCell: UITableViewCell {
   
   @IBOutlet weak var button: UIButton!
   
+  var mainInteractor: MainInteractorInterface?
+  var mainWireframe: MainWireframe?
+  
   weak var menuTableViewCellDelegate: MenuTableViewCellDelegate?
   
   override func awakeFromNib() {
@@ -49,10 +52,7 @@ class MenuTableViewCell: UITableViewCell {
     //add pop in animation
     button.setTitle(title, for: .normal)
   }
-  
-  //temp functions - move logic to VC?
-  var mainInteractor: MainInteractorInterface?
-  var mainWireframe: MainWireframe?
+
   
   
   func prepareGameData(game: Game) {
