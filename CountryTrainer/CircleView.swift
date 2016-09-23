@@ -28,9 +28,9 @@ class CircleView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func setStrokeEnd(strokeEnd: CGFloat, animated: Bool) {
+  func setStrokeEnd(strokeEnd: CGFloat, animated: Bool, friction: CGFloat?) {
     if animated {
-      self.animateToStrokeEnd(strokeEnd: strokeEnd)
+      self.animateToStrokeEnd(strokeEnd: strokeEnd, friction: friction ?? nil)
       return
     }
     self.circleLayer.strokeEnd = strokeEnd
@@ -46,7 +46,8 @@ class CircleView: UIView {
     self.circleLayer = CAShapeLayer()
     let rect = CGRect(x: lineWidth / 2, y: lineWidth / 2, width: radius * 2, height: radius * 2)
     self.circleLayer.path = UIBezierPath(roundedRect: rect, cornerRadius: radius).cgPath
-    self.circleLayer.strokeColor = self.tintColor.cgColor
+    self.circleLayer.strokeColor = UIColor(colorLiteralRed: 0/255, green: 99/255, blue: 224/255, alpha: 0.8).cgColor
+    //self.tintColor.cgColor
     self.circleLayer.fillColor = nil
     self.circleLayer.lineWidth = lineWidth
     self.circleLayer.lineCap = kCALineCapRound
@@ -54,11 +55,11 @@ class CircleView: UIView {
     self.layer.addSublayer(self.circleLayer)
   }
   
-  func animateToStrokeEnd(strokeEnd: CGFloat) {
+  func animateToStrokeEnd(strokeEnd: CGFloat, friction: CGFloat?) {
     let strokeAnimation = POPSpringAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
     strokeAnimation?.toValue = strokeEnd
     //    strokeAnimation?.springBounciness = 15
-    strokeAnimation?.dynamicsFriction = 200
+    strokeAnimation?.dynamicsFriction = friction ?? 200
     strokeAnimation?.removedOnCompletion = false
     self.circleLayer.pop_add(strokeAnimation!, forKey: "layerStrokeAnimation")
   }

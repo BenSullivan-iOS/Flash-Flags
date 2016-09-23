@@ -35,7 +35,7 @@ class ResultVC: UIViewController {
     
     addCircleView()
     
-    self.circleView.setStrokeEnd(strokeEnd: 0.0, animated: false)
+    self.circleView.setStrokeEnd(strokeEnd: 0.0, animated: false, friction: nil)
 
   }
   
@@ -59,7 +59,6 @@ class ResultVC: UIViewController {
   @IBAction func menuButton(_ sender: AnyObject) {
     
     resultInteractor?.saveGameToCoreData(game: (gameInteractorInterface?.currentGame)!)
-    
     gameWireframe?.dismissResultVCToEndGame(game: gameInteractorInterface?.currentGame ?? Game(countries: [Country](), attempts: 0, dateLastCompleted: nil, highestPercentage: nil))
   }
   
@@ -125,6 +124,6 @@ class ResultVC: UIViewController {
     let percent = Double(gameScoreInt) / 100
     let value = CGFloat(percent)
     
-    self.circleView.setStrokeEnd(strokeEnd: value, animated: true)
+    self.circleView.setStrokeEnd(strokeEnd: value, animated: true, friction: nil)
   }
 }

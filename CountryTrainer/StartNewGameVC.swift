@@ -38,6 +38,7 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface {
   
   @IBAction func startGameButtonPressed(_ sender: UIButton) {
     mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent)
+    
   }
   
   func displayAlert(title: String, message: String) {

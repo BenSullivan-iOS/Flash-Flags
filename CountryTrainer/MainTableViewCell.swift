@@ -52,9 +52,10 @@ class MainTableViewCell: UITableViewCell {
     self.daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
     self.flags.text = String(game.numberOfFlags)
         
-    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false)
+    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
   
-    self.circleView.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true)
+    self.circleView.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
+    
     print(CGFloat(game.highestPercentage) / 100)
     
   }

@@ -465,7 +465,6 @@
 		B58A00741D83FEF500B8BD7D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B58A007B1D8401D700B8BD7D /* DataService */,
 				B58A00791D83FFA700B8BD7D /* View */,
 				B58A00771D83FF9700B8BD7D /* Wireframe */,
 				B58A00761D83FF8E00B8BD7D /* Presenter */,
@@ -521,18 +520,19 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		B58A007B1D8401D700B8BD7D /* DataService */ = {
+		B58A007B1D8401D700B8BD7D /* DataServices */ = {
 			isa = PBXGroup;
 			children = (
 				B549C4C21D6207CD000409B3 /* DataService.swift */,
 				B5060CA81D94857C0093D29C /* CoreDataService.swift */,
 			);
-			name = DataService;
+			name = DataServices;
 			sourceTree = "<group>";
 		};
 		B58A00801D84049F00B8BD7D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B58A007B1D8401D700B8BD7D /* DataServices */,
 				B53AAA721D8AD40700ED644E /* Utilities */,
 				B53CFCA11D8702B500152EDD /* Wireframe */,
 				B58A00811D8404A400B8BD7D /* View */,

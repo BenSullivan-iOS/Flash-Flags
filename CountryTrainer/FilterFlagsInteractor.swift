@@ -8,14 +8,18 @@
 
 import UIKit
 
-class FilterFlagsInteractor: FilterFlagsInteractorInterface {
+class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDataService {
   
+  fileprivate var didUpdateCountries = false
+
   fileprivate var _countries = [Country]()
+  
   fileprivate var _remainingCountries = [Country]() {
     didSet {
       didUpdateCountries = true
     }
   }
+  
   fileprivate var _memorisedCountries = [Country]() {
     didSet {
       didUpdateCountries = true
@@ -43,13 +47,31 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface {
   init(countries: [Country]) {
     setCountries(countryArray: countries)
     _remainingCountries = countries
+    setMemorisedCountries()
   }
   
   func setCountries(countryArray: [Country]) {
     _countries = countryArray
   }
   
-  var didUpdateCountries = false
+  func setMemorisedCountries() {
+    
+    guard let allCountries = createCountries() else { print("json error"); return }
+    
+    _memorisedCountries = allCountries.filter { c -> Bool in
+      
+      for i in _remainingCountries {
+        if c == i {
+          return false
+        }
+      }
+      return true
+    }
+  }
+  
+  func saveToCoreData(remainingCountries: [Country]) {
+    saveRemainingCountriesToCoreData(remainingCountries: remainingCountries)
+  }
   
   func addFlag(country: Country) -> IndexPath? {
     

@@ -49,6 +49,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     configureCellSize()
     
     segmentedControl.changeTitleFont(newFontName: "Lato-Light", newFontSize: 14)
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +59,8 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   }
   
   @IBAction func backButtonPressed(_ sender: UIButton) {
-    filterFlagsWireframe?.dismissFilterFlagsVCToMainVC(withCountries: currentCountries)
+    filterFlagsInteractor?.saveToCoreData(remainingCountries: remainingCountries)
+    filterFlagsWireframe?.dismissFilterFlagsVCToMainVC(withCountries: remainingCountries)
   }
   
   @IBAction func segmentedControlPressed(_ sender: UISegmentedControl) {
@@ -95,7 +97,9 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   
   func setProgressBar() {
     
-    let progress: Float = Float(self.memorisedCountries.count) / 236.0
+    numberOfMemorisedFlags.text = "\(memorisedCountries.count)"
+    
+    let progress: Float = Float(self.memorisedCountries.count) / 234.0
     self.progressBar.progress = progress
   }
   

@@ -20,5 +20,7 @@ protocol FilterFlagsInteractorInterface {
   var countries: [Country] { get }
   var remainingCountries: [Country] { get }
   var memorisedCountries: [Country] { get }
+  
+  func saveToCoreData(remainingCountries: [Country])
 
 }
