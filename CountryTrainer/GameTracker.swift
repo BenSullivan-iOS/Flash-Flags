@@ -61,7 +61,7 @@ struct Tracker: GameTracker {
     
     if remainingCountries.count == 1 {
       
-      gameDelegate?.setHighestPercentage()
+      gameDelegate?.gameCompleted()
       print("Game completed")
       
     }

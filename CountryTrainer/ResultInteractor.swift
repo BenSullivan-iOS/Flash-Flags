@@ -19,9 +19,13 @@ class ResultInteractor: ResultInteractorInterface, DataService {
   var cdCountriesForGame = [CDCountriesForGame]()
   var _games = [Game]()
   var _countries = [Country]()
-
   
-  func saveNewGame(game: Game) {
+  func saveGameToCoreData(game: Game) {
+    
+    fetch(game: game)
+  }
+  
+  private func saveNewGame(game: Game) {
     
     let newGame = NSEntityDescription.insertNewObject(forEntityName: "CDGame", into: ad.managedObjectContext) as! CDGame
     
@@ -39,22 +43,9 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     
     ad.saveContext()
   }
+
   
-  func saveGameToCoreData(game: Game) {
-    
-    fetch(game: game)
-    
-    for i in _games {
-      
-      if i.dateLastCompleted == game.dateLastCompleted {
-        
-        
-      }
-    }
-   
-  }
-  
-  func fetch(game: Game) {
+  private func fetch(game: Game) {
     
     ad.saveContext()
     
@@ -84,20 +75,14 @@ class ResultInteractor: ResultInteractorInterface, DataService {
           
           countryArray.removeAll()
           
-          print(i.cdcountriesforgame)
-          
           let arr = i.cdcountriesforgame?.allObjects
           
           for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
-            
-            print((a as! CDCountriesForGame).country)
             
             for i in _countries {
               
               if i.name == (a as! CDCountriesForGame).country! {
                 countryArray.append(i)
-                print(countryArray)
-                
               }
             }
             
@@ -111,32 +96,10 @@ class ResultInteractor: ResultInteractorInterface, DataService {
           _games.append(game)
           
         }
-
         
-        for i in CDGames {
-          
-          if i.dateLastCompleted == game.dateLastCompleted as NSDate {
-            
-            i.setValue(Date(), forKey: "dateLastCompleted")
-            i.setValue(game.highestPercentage, forKey: "highestPercentage")
-            i.setValue(game.attempts, forKey: "attempts")
-            
-//            ad.saveContext()
-
-            break
-
-          } else {
-            
-            saveNewGame(game: game)
-            break
-          }
+        if !updateExistingGameIfExists(game: game) {
+          saveNewGame(game: game)
         }
-        
-
-        
-        
-        
-        print(CDGames)
         
       } catch {
         print(error)
@@ -144,5 +107,24 @@ class ResultInteractor: ResultInteractorInterface, DataService {
       }
     }
   }
-
+  
+  func updateExistingGameIfExists(game: Game) -> Bool {
+    
+    var gameRequiredUpdate = false
+    
+    for i in CDGames {
+      
+      if i.dateLastCompleted == game.dateLastCompleted as NSDate {
+        
+        gameRequiredUpdate = true
+        
+        i.setValue(Date(), forKey: "dateLastCompleted")
+        i.setValue(game.highestPercentage, forKey: "highestPercentage")
+        i.setValue(game.attempts, forKey: "attempts")
+        
+        return gameRequiredUpdate
+      }
+    }
+    return gameRequiredUpdate
+  }
 }

@@ -11,6 +11,7 @@ import CoreData
 
 protocol CoreDataService: DataService {
   func fetch() -> [Game]?
+  func deleteGameFromCoreData(game: Game) -> Bool
 }
 
 
@@ -82,5 +83,87 @@ extension CoreDataService {
     }
     return nil
   }
+  
+  func deleteGameFromCoreData(game: Game) -> Bool {
+    
+    guard let countryArray = createCountries() else { print("json error"); return false }
+    
+    let _countries = countryArray
+    var CDGames = [CDGame]()
+    var _games = [Game]()
+    
+    ad.saveContext()
+    
+    if #available(iOS 10.0, *) {
+      
+      let request: NSFetchRequest<NSFetchRequestResult> = CDGame.fetchRequest()
+      
+      do {
+        
+        CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
+        
+        var countryArray = [Country]()
+        
+        for i in CDGames {
+          
+          countryArray.removeAll()
+          
+          print(i.cdcountriesforgame)
+          
+          let arr = i.cdcountriesforgame?.allObjects
+          
+          for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
+            
+            print((a as! CDCountriesForGame).country)
+            
+            for i in _countries {
+              
+              if i.name == (a as! CDCountriesForGame).country! {
+                countryArray.append(i)
+                print(countryArray)
+                
+              }
+            }
+            
+          }
+          
+          let game = Game(countries: countryArray,
+                          attempts: Int(i.attempts),
+                          dateLastCompleted: i.dateLastCompleted as Date?,
+                          highestPercentage: Int(i.highestPercentage))
+          
+          _games.append(game)
+          
+          
+        }
+        
+        for i in CDGames {
+          
+          if i.dateLastCompleted == game.dateLastCompleted as NSDate {
+            
+            ad.managedObjectContext.delete(i)
+//            if let cdgame = i.anyObject() as? NSManagedObject {
+//              admanagedObjectContext.deleteObject(anyItem)
+//            }
+            
+            //            i.setValue(Date(), forKey: "dateLastCompleted")
+//            i.setValue(game.highestPercentage, forKey: "highestPercentage")
+//            i.setValue(game.attempts, forKey: "attempts")
+            
+            return true
+          }
+        }
+        
+      } catch {
+        
+        print(error)
+        return false
+        
+        
+      }
+    }
+    return false
+  }
+
   
 }

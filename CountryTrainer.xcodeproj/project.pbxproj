@@ -300,7 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				B5BB5CA91D6D95A8008CABC4 /* ResultVC.swift */,
-				B5060CA61D94366E0093D29C /* ResultInteractor.swift */,
 			);
 			name = Result;
 			sourceTree = "<group>";
@@ -457,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				B53CFC9B1D86CB0D00152EDD /* GameInteractor.swift */,
+				B5060CA61D94366E0093D29C /* ResultInteractor.swift */,
 				B53CFC9D1D86CB2E00152EDD /* GameInteractorInterface.swift */,
 			);
 			name = Interactor;

@@ -17,11 +17,8 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   fileprivate var newGame: Game? = nil
   fileprivate var _games = [Game]()
   
-  var CDGames = [CDGame]()
-  var cdCountriesForGame = [CDCountriesForGame]()
-  
   var count = 0
-  //DELETE THIS?
+
   func retryGame() {
     
     mainVCInterface?.prepareGameData(game: _games[count])
@@ -29,15 +26,23 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     count += 1
   }
   
-  func generateTestData() {
+  func deleteGame(game: Game) {
     
-    mainVCInterface?.reloadTableData()
-    
-    ad.saveContext()
-    
-    //    fetchCountries()
-    _games = fetch()!
-    //    cdGame.cdcountriesforgame = countries
+    if deleteGameFromCoreData(game: game) {
+      print("Delete success")
+      
+      for i in _games.indices {
+        if _games[i].dateLastCompleted == game.dateLastCompleted {
+          _games.remove(at: i)
+          mainVCInterface?.reloadTableData()
+          break
+          
+        }
+      }
+      
+    } else {
+      print("delete failed")
+    }
     
   }
   

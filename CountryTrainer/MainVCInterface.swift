@@ -9,6 +9,6 @@
 protocol MainVCInterface {
   
   func prepareGameData(game: Game)
-  
   func reloadTableData()
+  func displayGameOptionsActionSheet(game: Game, title: String)
 }

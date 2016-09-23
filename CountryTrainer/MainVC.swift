@@ -45,7 +45,6 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
   }
   
   func reloadTableData() {
-    
     tableView.reloadData()
   }
   
@@ -82,6 +81,22 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     
     tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.top)
   }
+
+  func displayGameOptionsActionSheet(game: Game, title: String) {
+  
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    
+    alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+      
+      self.mainInteractor?.deleteGame(game: game)
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    
+    present(alert, animated: true, completion: nil)
+  
+  }
+  
   
   //MARK: - TABLE VIEW
   
@@ -129,7 +144,7 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
       cell.configureCell(game: games[indexPath.row])
       
       cell.mainWireframe = mainWireframe
-      
+      cell.mainVCInterface = self
       return cell
     }
     

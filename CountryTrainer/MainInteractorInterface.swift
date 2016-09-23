@@ -24,4 +24,6 @@ protocol MainInteractorInterface {
   
   func retryGame()
   
+  func deleteGame(game: Game)
+  
 }

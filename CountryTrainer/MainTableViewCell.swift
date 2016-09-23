@@ -15,16 +15,28 @@ class MainTableViewCell: UITableViewCell {
   @IBOutlet weak var attempts: UILabel!
   @IBOutlet weak var daysAgo: UILabel!
   @IBOutlet weak var flags: UILabel!
+  @IBOutlet weak var button: UIButton!
   
   var mainWireframe: MainWireframe?
   var circleView: CircleView!
   var game: Game?
+  var mainVCInterface: MainVCInterface?
   
   override func awakeFromNib() {
     super.awakeFromNib()
     
+    let gesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressDetected))
+    
+    button.addGestureRecognizer(gesture)
+    
     addCircleView()
   }
+  
+  func longPressDetected() {
+    
+    mainVCInterface?.displayGameOptionsActionSheet(game: game!, title: "Would you like to delete this game?")
+  }
+  
   
   @IBAction func retryButtonPressed(_ sender: UIButton) {
     

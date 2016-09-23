@@ -151,6 +151,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7q-UR-lOl">
                                                     <frame key="frameInset" minY="8" width="317" height="76"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                     <connections>
                                                         <action selector="retryButtonPressed:" destination="f5H-yn-pA7" eventType="touchUpInside" id="KYJ-Jp-jrP"/>
                                                     </connections>
@@ -179,6 +180,7 @@
                                         <connections>
                                             <outlet property="attempts" destination="TbC-HM-dT3" id="pka-Ze-Cuv"/>
                                             <outlet property="bgLabel" destination="bGE-c6-JdM" id="kc1-PL-cJH"/>
+                                            <outlet property="button" destination="B7q-UR-lOl" id="xCf-2H-xV5"/>
                                             <outlet property="daysAgo" destination="kJl-vN-acp" id="2Bz-kO-6nS"/>
                                             <outlet property="flags" destination="R8a-kG-BOs" id="WdC-Ys-2CB"/>
                                             <outlet property="percentage" destination="pYK-jO-ili" id="9kR-K2-Ni8"/>
