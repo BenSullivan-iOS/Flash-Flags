@@ -60,13 +60,15 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   override init() {
     super.init()
     
-    //    get all countries
-
+    loadSavedCountriesAndGames()
+    
+  }
+  
+  func loadSavedCountriesAndGames() {
+    
     guard let countryArray = createCountries() else { print("json error"); return }
     
-//    get array of country names from core data
-//    will return nil if
-
+    //If the core data store is empty, the function will return nil and store all flags to core data
     if let remainingCountryNames = fetchRemainingCountries() {
       
       for i in countryArray.indices {
@@ -77,7 +79,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
             
             _countries.append(countryArray[i])
             print(nameString)
-
+            
           }
         }
         
@@ -85,7 +87,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
       
     } else {
       
-     let remainingCountryNames = fetchRemainingCountries()
+      let remainingCountryNames = fetchRemainingCountries()
       
       for i in countryArray.indices {
         
@@ -102,7 +104,6 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     }
     
     _games = fetch()!
-    
   }
   
   func updateCountries(countries: [Country]) {
