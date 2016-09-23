@@ -9,7 +9,7 @@
 import UIKit
 import pop
 
-class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableViewDataSource, MenuTableViewCellDelegate {
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, MainVCInterface, MenuTableViewCellDelegate {
   
   @IBOutlet weak var tableView: COBezierTableView!
   @IBOutlet weak var flagBg: UIImageView!
@@ -17,7 +17,7 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
   var mainInteractor: MainInteractorInterface?
   var mainWireframe: MainWireframe?
   
-  var games: [Game] {
+  fileprivate var games: [Game] {
     return mainInteractor?.games ?? [Game]()
   }
   
@@ -29,6 +29,8 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     MenuItems.quickStart.rawValue
   ]
   
+  
+  //MARK: - VC LIFECYCLE
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -37,55 +39,33 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     
     configureTablePath()
     setInitialTableRow()
-    
   }
+  
+  
+  //MARK: - OUTLET ACTIONS
   
   @IBAction func newGameButtonPressed(_ sender: AnyObject) {
     mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil)
   }
   
-  func reloadTableData() {
-    tableView.reloadData()
-  }
   
-  func presentFilterFlags() {
-    
+  //MARK: - INTERFACE FUNCTIONS
+  
+  internal func presentFilterFlags() {
     mainWireframe?.presentFilterFlagsInterface(withCountries: (mainInteractor?.countries)!)
   }
-  
-  func updateCountriesAfterFilter(countries: [Country]) {
-    
-    mainInteractor?.updateCountries(countries: countries)
-  }
-  
-  func populateGames(game: Game) {
-    
-    mainInteractor?.populateGamesForMainVCTable(game: game)
+
+  internal func reloadTableData() {
     tableView.reloadData()
   }
   
-  func prepareGameData(game: Game) {
+  internal func prepareGameData(game: Game) {
     mainWireframe?.presentGameInterface(withGame: game)
+  }
+  
+  internal func displayGameOptionsActionSheet(game: Game, title: String) {
     
-  }
-  
-  func configureTablePath() {
-    UIView.BezierPoints.p1 = CGPoint(x: 148, y: 0)
-    UIView.BezierPoints.p2 = CGPoint(x: 11, y: 209)
-    UIView.BezierPoints.p3 = CGPoint(x: 18, y: 308)
-    UIView.BezierPoints.p4 = CGPoint(x: 163, y: 568)
-  }
-  
-  func setInitialTableRow() {
-    let indexPath = IndexPath(row: 2, section: 2)
-    
-    tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.top)
-  }
-
-  func displayGameOptionsActionSheet(game: Game, title: String) {
-  
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-    
     alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
       
       self.mainInteractor?.deleteGame(game: game)
@@ -94,7 +74,44 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     
     present(alert, animated: true, completion: nil)
+    
+  }
   
+  internal func updateCountriesAfterFilter(countries: [Country]) {
+    mainInteractor?.updateCountries(countries: countries)
+  }
+  
+  internal func populateGames(game: Game) {
+    mainInteractor?.populateGamesForMainVCTable(game: game)
+    tableView.reloadData()
+  }
+  
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func configureTablePath() {
+    UIView.BezierPoints.p1 = CGPoint(x: 148, y: 0)
+    UIView.BezierPoints.p2 = CGPoint(x: 11, y: 209)
+    UIView.BezierPoints.p3 = CGPoint(x: 18, y: 308)
+    UIView.BezierPoints.p4 = CGPoint(x: 163, y: 568)
+  }
+
+  private func setInitialTableRow() {
+    
+    //The table should always default to a position which displays some menu and some main cells
+    
+    let indexPath: IndexPath
+
+    if games.count > 3 {
+      
+      indexPath = IndexPath(row: 3, section: 1)
+
+    } else {
+      
+      indexPath = IndexPath(row: 2, section: 2)
+    }
+    
+    tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.top)
   }
   
   
@@ -114,13 +131,9 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     case 2:
       return 3
       
-    default: break
+    default: return 0
     }
-    if section == 0 {
-      
-      return menuTitles.count
-    }
-    return games.count
+
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,7 +152,6 @@ class MainVC: UIViewController, MainVCInterface, UITableViewDelegate, UITableVie
     } else if indexPath.section == 1 {
       
       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MainTableViewCell
-      
       
       cell.configureCell(game: games[indexPath.row])
       

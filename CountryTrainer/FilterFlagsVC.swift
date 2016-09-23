@@ -8,12 +8,19 @@
 
 import UIKit
 
-class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDataSourcePrefetching, FilterFlagTableViewCellDelegate {
+class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, FilterFlagTableViewCellDelegate {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var progressBar: UIProgressView!
   @IBOutlet weak var numberOfMemorisedFlags: UILabel!
+  @IBOutlet weak var backButton: UIButton!
+  @IBOutlet weak var resetButton: UIButton!
+  
+  @IBAction func resetButtonPressed(_ sender: UIButton) {
+    
+    displayActionSheet()
+  }
   
   //True = Viewing remaining countries. False = Viewing memorised countries
   var isRemainingCountry = true
@@ -43,6 +50,8 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     if #available(iOS 10.0, *) {
       collectionView.prefetchDataSource = self
     }
+    
+    resetButton.imageView?.contentMode = .scaleAspectFit
     
     setProgressBar()
     
@@ -109,6 +118,35 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
       flowLayout.itemSize = CGSize(width: size, height: size)
     }
+  }
+  
+  func resetAllRemainingFlags() {
+    
+    segmentedControl.selectedSegmentIndex = 0
+    numberOfMemorisedFlags.text = "0"
+    isRemainingCountry = true
+    filterFlagsInteractor?.setCountries(countryArray: self.remainingCountries)
+    
+    collectionView.reloadData()
+    
+    if (filterFlagsInteractor?.resetAllFlags())! {
+      collectionView.reloadData()
+    }
+  }
+  
+  func displayActionSheet() {
+    
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+   
+    alert.addAction(UIAlertAction(title: "Reset all flags", style: .destructive, handler: { action in
+    
+      self.resetAllRemainingFlags()
+
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    
+    present(alert, animated: true, completion: nil)
   }
   
   

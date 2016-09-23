@@ -29,15 +29,15 @@ class GameVC: UIViewController, GameDelegate {
     return gameInteractorInterface?.imageCache ?? NSCache<NSString, UIImage>()
   }
   
+  
+  //MARK: VC LIFECYCLE
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.progressLeading.constant = self.view.frame.width / 2 + 10
-    self.progressTrailing.constant = self.view.frame.width / 2 + 10
+    setupProgressBar()
+    setupBackButton()
     
-    navigationItem.backBarButtonItem?.responds(to: #selector(self.radialPop))
-    
-    navigationController?.enableRadialSwipe()
     tableView.estimatedRowHeight = 250
     tableView.rowHeight = UITableViewAutomaticDimension
   }
@@ -49,43 +49,23 @@ class GameVC: UIViewController, GameDelegate {
     
   }
   
+  //MARK: - OUTLET FUNCTIONS
+  
   @IBAction func backButtonPressed(_ sender: UIButton) {
     radialPop()
   }
   
   @IBAction func shuffleButtonPressed(_ sender: UIButton) {
-    
     gameInteractorInterface?.shuffleCountries()
     tableView.reloadData()
   }
   
-  func showPickerView(delay: Double) {
-    
-    UIView.animate(withDuration: 1,
-                   delay: delay,
-                   usingSpringWithDamping: CGFloat(0.4),
-                   initialSpringVelocity: CGFloat(0.1),
-                   options: UIViewAnimationOptions.curveEaseInOut,
-                   animations: {
-                    
-                    self.progressLeading.constant = 50
-                    self.progressTrailing.constant = 50
-                    
-                    self.view.layoutIfNeeded()
-                    
-    }) { finished in
-      print("finished")
-    }
-    
-  }
   
-  func retryGame() {
-    
-//    imageCache.removeAllObjects()
+  //MARK: - INTERFACE FUNCTIONS
+  
+  internal func retryGame() {
     
     gameInteractorInterface?.retryGame()
-    
-//    self.game = game
     
     self.progressView.setProgress(0, animated: false)
     
@@ -94,7 +74,7 @@ class GameVC: UIViewController, GameDelegate {
     tableView.reloadData()
   }
   
-  func answered(country: String, result: Bool) {
+  internal func answered(country: String, result: Bool) {
     
     if game != nil {
       
@@ -114,7 +94,19 @@ class GameVC: UIViewController, GameDelegate {
     }
   }
   
-  func updateProgressBar() {
+  internal func radialPop() {
+    
+    let frame = CGRect(x: 0, y: 25, width: 40, height: 40)
+    
+    presentedViewController?.navigationController?.radialPopViewController(duration: 0.5,
+                                                                           startFrame: frame,
+                                                                           transitionCompletion: nil)
+  }
+  
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func updateProgressBar() {
     
     if let result = game?.resultPercentage {
       
@@ -127,7 +119,7 @@ class GameVC: UIViewController, GameDelegate {
     }
   }
   
-  func checkForGameCompleted(game: Game) {
+  private func checkForGameCompleted(game: Game) {
     
     if game.tracker.remainingCountries.count == 0 {
       
@@ -151,8 +143,33 @@ class GameVC: UIViewController, GameDelegate {
     }
   }
   
-  func radialPop() {
+  private func showPickerView(delay: Double) {
     
-    navigationController?.radialPopViewController()
+    UIView.animate(withDuration: 1,
+                   delay: delay,
+                   usingSpringWithDamping: CGFloat(0.4),
+                   initialSpringVelocity: CGFloat(0.1),
+                   options: UIViewAnimationOptions.curveEaseInOut,
+                   animations: {
+                    
+                    self.progressLeading.constant = 50
+                    self.progressTrailing.constant = 50
+                    
+                    self.view.layoutIfNeeded()
+                    
+    }) { finished in
+      print("finished")
+    }
+    
+  }
+  
+  private func setupProgressBar() {
+    self.progressLeading.constant = self.view.frame.width / 2 + 10
+    self.progressTrailing.constant = self.view.frame.width / 2 + 10
+  }
+  
+  private func setupBackButton() {
+    navigationController?.enableRadialSwipe()
+    navigationItem.backBarButtonItem?.responds(to: #selector(self.radialPop))
   }
 }

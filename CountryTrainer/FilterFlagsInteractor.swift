@@ -110,6 +110,43 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     }
     return nil
   }
+  
+  func resetAllFlags() -> Bool {
+    
+    guard let countryArray = createCountries() else { print("json error"); return false }
+    
+    print(countryArray.count)
+    
+    _countries.removeAll()
+    _memorisedCountries.removeAll()
+    _remainingCountries.removeAll()
+    
+    saveRemainingCountriesToCoreData(remainingCountries: countryArray)
+    
+    if let remainingCountryNames = fetchRemainingCountries() {
+      
+      for i in countryArray.indices {
+        
+        for nameString in remainingCountryNames {
+          
+          if countryArray[i].name == nameString {
+            
+            _countries.append(countryArray[i])
+            print(nameString)
+            
+          }
+        }
+        
+      }
+      
+    }
+    
+    setCountries(countryArray: countries)
+    _remainingCountries = countries
+    setMemorisedCountries()
+    
+    return true
+  }
 
   func populateCurrentCoutntriesCache(isRemainingCountry: Bool) {
    

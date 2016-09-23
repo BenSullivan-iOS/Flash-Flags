@@ -11,29 +11,31 @@ import UIKit
 class GameInteractor: GameInteractorInterface {
   
   fileprivate var _currentGame: Game!
-  
+  fileprivate var _imageCache = NSCache<NSString, UIImage>()
+
   var currentGame: Game {
     return _currentGame
   }
-  
-  fileprivate var _imageCache = NSCache<NSString, UIImage>()
   
   var imageCache: NSCache<NSString, UIImage> {
     return _imageCache
   }
   
   
+  //MARK: - INITIALISER
+  
   init(game: Game) {
-    
     _currentGame = game
   }
-  func answered(country: String, result: Bool) {
-    
+  
+  
+  //MARK: - INTERFACE FUNCTIONS
+  
+  internal func answered(country: String, result: Bool) {
     _currentGame.tracker.updateTracker(country, result: result)
-    
   }
   
-  func populateCache() {
+  internal func populateCache() {
     
     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
       
@@ -56,8 +58,7 @@ class GameInteractor: GameInteractorInterface {
     }
   }
   
-  
-  func populateCurrentCoutntriesCache(indexPaths: [IndexPath]) {
+  internal func populateCurrentCoutntriesCache(indexPaths: [IndexPath]) {
     
     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
       
@@ -80,19 +81,7 @@ class GameInteractor: GameInteractorInterface {
     }
   }
   
-  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-    
-    let scale = newWidth / image.size.width
-    let newHeight = image.size.height * scale
-    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-    let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    return newImage!
-  }
-  
-  func retryGame() {
+  internal func retryGame() {
     
     let game = currentGame
     _currentGame = Game(countries: game.countries,
@@ -102,11 +91,26 @@ class GameInteractor: GameInteractorInterface {
     _currentGame.gameRetried()
   }
   
-  func shuffleCountries() {
+  internal func shuffleCountries() {
     _currentGame.tracker.shuffleCountries()
   }
   
-  func gameCompleted() {
+  internal func gameCompleted() {
     _currentGame.gameCompleted()
+  }
+  
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    
+    let scale = newWidth / image.size.width
+    let newHeight = image.size.height * scale
+    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return newImage!
   }
 }

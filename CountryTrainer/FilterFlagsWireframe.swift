@@ -32,13 +32,20 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
     
     viewController.navigationController?.radialPushViewController(viewController: newVC)
     
+//    let frame = CGRect(x: 0, y: 25, width: 40, height: 40)
+//    
+//    viewController.navigationController?.radialPushViewController(viewController: newVC, duration: 0.5, startFrame: frame, transitionCompletion: nil)
+    
     presentedViewController = newVC
     
   }
   
   func dismissFilterFlagsVCToMainVC(withCountries countries: [Country]) {
     mainWireframe?.updateFilteredCountries(countries: countries)
-    presentedViewController?.navigationController?.radialPopViewController()
+    
+    let frame = CGRect(x: 0, y: 25, width: 40, height: 40)
+
+    presentedViewController?.navigationController?.radialPopViewController(duration: 0.5, startFrame: frame, transitionCompletion: nil)
     
   }
   

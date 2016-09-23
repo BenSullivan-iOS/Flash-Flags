@@ -14,6 +14,8 @@ protocol CoreDataService: DataService {
   func deleteGameFromCoreData(game: Game) -> Bool
   func fetchRemainingCountries() -> [String]?
   func saveRemainingCountriesToCoreData(remainingCountries: [Country])
+  func removeRemainingCountriesFromCoreData()
+
 }
 
 
@@ -262,5 +264,4 @@ extension CoreDataService {
     
     ad.saveContext()
   }
-  
 }

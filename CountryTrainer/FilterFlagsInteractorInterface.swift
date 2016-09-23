@@ -22,5 +22,7 @@ protocol FilterFlagsInteractorInterface {
   var memorisedCountries: [Country] { get }
   
   func saveToCoreData(remainingCountries: [Country])
+  
+  func resetAllFlags() -> Bool
 
 }

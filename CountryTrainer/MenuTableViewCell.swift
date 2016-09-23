@@ -25,9 +25,9 @@ class MenuTableViewCell: UITableViewCell {
     super.awakeFromNib()
         
     button.layer.cornerRadius = 5.0
-//    button.layer.borderColor = UIColor.black.cgColor
-//    button.layer.borderWidth = 1.0
+
   }
+  
   @IBAction func buttonPressed(_ sender: UIButton) {
     
     guard let title = sender.titleLabel?.text else { return }

@@ -151,9 +151,7 @@
                                                     <color key="textColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7q-UR-lOl">
-                                                    <frame key="frameInset" minY="8" width="317" height="76"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7q-UR-lOl">
                                                     <gestureRecognizers/>
                                                     <connections>
                                                         <action selector="retryButtonPressed:" destination="f5H-yn-pA7" eventType="touchUpInside" id="KYJ-Jp-jrP"/>
@@ -163,16 +161,20 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="Dzi-by-jqE" firstAttribute="leading" secondItem="Ap3-Um-On9" secondAttribute="trailing" constant="4" id="1D2-mF-4cI"/>
+                                                <constraint firstAttribute="bottom" secondItem="B7q-UR-lOl" secondAttribute="bottom" id="EQv-5X-NBv"/>
                                                 <constraint firstItem="Ap3-Um-On9" firstAttribute="top" secondItem="HQH-Zn-TMr" secondAttribute="top" constant="13" id="FDp-O7-rOp"/>
                                                 <constraint firstAttribute="bottom" secondItem="bGE-c6-JdM" secondAttribute="bottom" constant="8" id="Hkd-fY-au2"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ap3-Um-On9" secondAttribute="bottom" constant="13" id="JPw-xv-GwZ"/>
                                                 <constraint firstItem="Ap3-Um-On9" firstAttribute="leading" secondItem="HQH-Zn-TMr" secondAttribute="leading" constant="6" id="MpK-FK-DJi"/>
                                                 <constraint firstAttribute="trailing" secondItem="bGE-c6-JdM" secondAttribute="trailing" constant="58" id="O1o-ew-PpH"/>
+                                                <constraint firstAttribute="trailing" secondItem="B7q-UR-lOl" secondAttribute="trailing" id="Zut-Ff-e0G"/>
                                                 <constraint firstAttribute="bottom" secondItem="pYK-jO-ili" secondAttribute="bottom" constant="15" id="b3R-D9-VGC"/>
                                                 <constraint firstItem="Dzi-by-jqE" firstAttribute="leading" secondItem="pYK-jO-ili" secondAttribute="trailing" constant="2.5" id="bHn-Fo-cU2"/>
                                                 <constraint firstItem="Dzi-by-jqE" firstAttribute="top" secondItem="HQH-Zn-TMr" secondAttribute="topMargin" constant="8" id="bO3-c5-7lF"/>
+                                                <constraint firstItem="B7q-UR-lOl" firstAttribute="top" secondItem="HQH-Zn-TMr" secondAttribute="top" id="hKh-20-aSI"/>
                                                 <constraint firstItem="Dzi-by-jqE" firstAttribute="trailing" secondItem="bGE-c6-JdM" secondAttribute="trailing" id="jHd-sZ-gLs"/>
                                                 <constraint firstItem="bGE-c6-JdM" firstAttribute="leading" secondItem="HQH-Zn-TMr" secondAttribute="leading" id="sgQ-KQ-HR6"/>
+                                                <constraint firstItem="B7q-UR-lOl" firstAttribute="leading" secondItem="HQH-Zn-TMr" secondAttribute="leading" id="wD4-Oq-Nsh"/>
                                                 <constraint firstItem="pYK-jO-ili" firstAttribute="leading" secondItem="HQH-Zn-TMr" secondAttribute="leading" constant="8" id="wMQ-f1-xOp"/>
                                                 <constraint firstItem="bGE-c6-JdM" firstAttribute="top" secondItem="HQH-Zn-TMr" secondAttribute="top" constant="8" id="yKd-kN-aac"/>
                                                 <constraint firstItem="pYK-jO-ili" firstAttribute="top" secondItem="HQH-Zn-TMr" secondAttribute="top" constant="14" id="yzd-Yo-vxa"/>
@@ -671,16 +673,6 @@
                                             <frame key="frameInset"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Sk-D8-jay">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="46" id="c57-Gs-9bz"/>
-                                                        <constraint firstAttribute="height" constant="20" id="psE-i9-MVQ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
-                                                    <state key="normal" title="DONE">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="b30-jj-Pw2">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="5" id="KIX-ch-hMO"/>
@@ -717,10 +709,20 @@
                                                         <action selector="backButtonPressed:" destination="Y2A-zY-5j4" eventType="touchUpInside" id="zF9-FN-4RU"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWG-i2-Wwa">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="69" id="dnS-MR-27Q"/>
+                                                        <constraint firstAttribute="height" constant="22" id="nVD-Li-3ij"/>
+                                                    </constraints>
+                                                    <state key="normal" image="whiteResetButton"/>
+                                                    <connections>
+                                                        <action selector="resetButtonPressed:" destination="Y2A-zY-5j4" eventType="touchUpInside" id="jZT-4L-FCb"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="9Sk-D8-jay" secondAttribute="trailing" constant="9" id="87C-JE-7I0"/>
                                                 <constraint firstItem="b30-jj-Pw2" firstAttribute="leading" secondItem="0D9-6B-Hpc" secondAttribute="leading" constant="70" id="Ckr-Lj-bBf"/>
+                                                <constraint firstAttribute="trailing" secondItem="CWG-i2-Wwa" secondAttribute="trailing" constant="-1" id="DW9-O0-lbo"/>
                                                 <constraint firstItem="b30-jj-Pw2" firstAttribute="top" secondItem="0D9-6B-Hpc" secondAttribute="top" constant="61" id="MbT-Qe-wJ6"/>
                                                 <constraint firstItem="b30-jj-Pw2" firstAttribute="leading" secondItem="8DE-Dc-FOx" secondAttribute="trailing" constant="4" id="P6V-ZH-hR2"/>
                                                 <constraint firstAttribute="trailing" secondItem="b30-jj-Pw2" secondAttribute="trailing" constant="70" id="Q19-8f-zqs"/>
@@ -728,8 +730,8 @@
                                                 <constraint firstItem="q9w-l7-EAQ" firstAttribute="top" secondItem="0D9-6B-Hpc" secondAttribute="top" constant="25" id="UsO-rr-Fc9"/>
                                                 <constraint firstItem="q9w-l7-EAQ" firstAttribute="leading" secondItem="0D9-6B-Hpc" secondAttribute="leading" id="a87-nC-Lw4"/>
                                                 <constraint firstItem="8DE-Dc-FOx" firstAttribute="top" secondItem="0D9-6B-Hpc" secondAttribute="top" constant="53" id="eZd-eP-Gqz"/>
-                                                <constraint firstItem="9Sk-D8-jay" firstAttribute="top" secondItem="0D9-6B-Hpc" secondAttribute="top" constant="33" id="f6U-ZL-xkn"/>
-                                                <constraint firstItem="FPV-KJ-Xi3" firstAttribute="top" secondItem="9Sk-D8-jay" secondAttribute="bottom" id="k8B-dD-Qdi"/>
+                                                <constraint firstItem="FPV-KJ-Xi3" firstAttribute="top" secondItem="CWG-i2-Wwa" secondAttribute="bottom" constant="-1" id="vWY-wT-xMr"/>
+                                                <constraint firstItem="CWG-i2-Wwa" firstAttribute="top" secondItem="0D9-6B-Hpc" secondAttribute="top" constant="32" id="ynU-K1-nC3"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="light"/>
@@ -776,9 +778,11 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="q9w-l7-EAQ" id="Rpu-cj-FkQ"/>
                         <outlet property="collectionView" destination="Z4f-Oh-vQi" id="WLv-LO-WWR"/>
                         <outlet property="numberOfMemorisedFlags" destination="8DE-Dc-FOx" id="Tfj-CK-q5p"/>
                         <outlet property="progressBar" destination="b30-jj-Pw2" id="n8O-oq-UJh"/>
+                        <outlet property="resetButton" destination="CWG-i2-Wwa" id="mX7-9E-Bug"/>
                         <outlet property="segmentedControl" destination="58o-ih-Nym" id="Qat-jg-7VA"/>
                     </connections>
                 </viewController>
@@ -844,12 +848,13 @@
                     <size key="freeformSize" width="216" height="279"/>
                     <connections>
                         <outlet property="continentPicker" destination="rB9-a8-Lcb" id="fwO-lX-tjg"/>
+                        <outlet property="fullView" destination="oAW-fS-nnE" id="6YO-Bq-pog"/>
                         <outlet property="numberOfFlagsPicker" destination="eD1-pn-6aP" id="JLr-2s-t9f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyg-bY-zop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2293" y="247"/>
+            <point key="canvasLocation" x="-6322" y="190"/>
         </scene>
     </scenes>
     <resources>
@@ -857,5 +862,6 @@
         <image name="shuffleIcon" width="50" height="50"/>
         <image name="united_earth_flag_2_by_lordnarunh-d8uoq7m" width="1600" height="1200"/>
         <image name="whiteBackButton" width="128" height="128"/>
+        <image name="whiteResetButton" width="50" height="39"/>
     </resources>
 </document>
