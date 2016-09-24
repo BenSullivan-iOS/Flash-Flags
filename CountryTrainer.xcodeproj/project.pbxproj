@@ -167,7 +167,7 @@
 		B53CFC9B1D86CB0D00152EDD /* GameInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInteractor.swift; sourceTree = "<group>"; };
 		B53CFC9D1D86CB2E00152EDD /* GameInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInteractorInterface.swift; sourceTree = "<group>"; };
 		B53CFC9F1D86F23500152EDD /* GameVCTableExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVCTableExt.swift; sourceTree = "<group>"; };
-		B549C4881D5C7DA5000409B3 /* CountryTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B549C4881D5C7DA5000409B3 /* Flash Flags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flash Flags.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B549C48B1D5C7DA5000409B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B549C48D1D5C7DA5000409B3 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		B549C4901D5C7DA5000409B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -351,7 +351,7 @@
 		B549C4891D5C7DA5000409B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B549C4881D5C7DA5000409B3 /* CountryTrainer.app */,
+				B549C4881D5C7DA5000409B3 /* Flash Flags.app */,
 				B549C49F1D5C7DA5000409B3 /* CountryTrainerTests.xctest */,
 				B549C4AA1D5C7DA5000409B3 /* CountryTrainerUITests.xctest */,
 			);
@@ -699,7 +699,7 @@
 			);
 			name = CountryTrainer;
 			productName = CountryTrainer;
-			productReference = B549C4881D5C7DA5000409B3 /* CountryTrainer.app */;
+			productReference = B549C4881D5C7DA5000409B3 /* Flash Flags.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B549C49E1D5C7DA5000409B3 /* CountryTrainerTests */ = {
@@ -1200,7 +1200,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Flash Flags";
 				SWIFT_OBJC_BRIDGING_HEADER = "CountryTrainer/CountryTrainer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1218,7 +1218,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Flash Flags";
 				SWIFT_OBJC_BRIDGING_HEADER = "CountryTrainer/CountryTrainer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

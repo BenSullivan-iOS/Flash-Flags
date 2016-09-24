@@ -29,6 +29,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     MenuItems.quickStart.rawValue
   ]
   
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
   
   //MARK: - VC LIFECYCLE
   override func viewDidLoad() {

@@ -17,12 +17,15 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
   fileprivate var _remainingCountries = [Country]() {
     didSet {
       didUpdateCountries = true
+      print(_remainingCountries, "remaining countries")
     }
   }
   
   fileprivate var _memorisedCountries = [Country]() {
     didSet {
       didUpdateCountries = true
+      print(_memorisedCountries, "memorised countries")
+      
     }
   }
   
@@ -59,7 +62,9 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
   }
   
   internal func saveToCoreData(remainingCountries: [Country]) {
-    saveRemainingCountriesToCoreData(remainingCountries: remainingCountries)
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      self.saveRemainingCountriesToCoreData(remainingCountries: remainingCountries)
+    }
   }
   
   internal func addFlag(country: Country) -> IndexPath? {

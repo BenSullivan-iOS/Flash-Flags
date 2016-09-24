@@ -255,13 +255,13 @@ extension CoreDataService {
     
     removeRemainingCountriesFromCoreData()
     
-    for i in remainingCountries {
-      
-      let countries = NSEntityDescription.insertNewObject(forEntityName: "CDCountriesTrackerEntity", into: ad.managedObjectContext) as! CDCountriesTracker
-      
-      countries.remaining = i.name
-    }
-    
-    ad.saveContext()
+      for i in remainingCountries {
+        
+        let countries = NSEntityDescription.insertNewObject(forEntityName: "CDCountriesTrackerEntity", into: ad.managedObjectContext) as! CDCountriesTracker
+        
+        countries.remaining = i.name
+       
+      }
+      ad.saveContext()
   }
 }

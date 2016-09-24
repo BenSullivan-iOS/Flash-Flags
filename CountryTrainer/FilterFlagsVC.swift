@@ -134,13 +134,15 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     segmentedControl.selectedSegmentIndex = 0
     numberOfMemorisedFlags.text = "0"
+    progressBar.progress = 0
     isRemainingCountry = true
-    filterFlagsInteractor?.setCountries(countryArray: self.remainingCountries)
+//    filterFlagsInteractor?.setCountries(countryArray: self.remainingCountries)
     
     collectionView.reloadData()
     
     if (filterFlagsInteractor?.resetAllFlags())! {
       collectionView.reloadData()
+      
     }
   }
   
@@ -175,8 +177,6 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterFlagsCell", for: indexPath) as! FilterFlagsCollectionViewCell
     
-    print(remainingCountries[indexPath.row])
-    
     let flagObjectKey = isRemainingCountry
       ? remainingCountries[indexPath.row].flagSmall as! NSString
       : memorisedCountries [indexPath.row].flagSmall as! NSString
@@ -187,6 +187,10 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
     
     return cell
+  }
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
   
 }

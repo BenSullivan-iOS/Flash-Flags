@@ -27,7 +27,7 @@
         <!--mainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="mainVC" title="mainVC" id="BYZ-38-t0r" customClass="MainVC" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainVC" title="mainVC" id="BYZ-38-t0r" customClass="MainVC" customModule="Flash_Flags" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -40,7 +40,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yj8-Sc-WMn" customClass="COBezierTableView" customModule="COBezierTableView">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" rowHeight="80" id="5km-SM-aQ2" customClass="MenuTableViewCell" customModule="CountryTrainer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" rowHeight="80" id="5km-SM-aQ2" customClass="MenuTableViewCell" customModule="Flash_Flags" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5km-SM-aQ2" id="ezV-xo-2L6">
@@ -72,7 +72,7 @@
                                             <outlet property="button" destination="bjx-gc-D5U" id="iAE-QE-BJJ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="92" id="f5H-yn-pA7" customClass="MainTableViewCell" customModule="CountryTrainer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="92" id="f5H-yn-pA7" customClass="MainTableViewCell" customModule="Flash_Flags" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="108" width="375" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f5H-yn-pA7" id="HQH-Zn-TMr">
@@ -82,7 +82,7 @@
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ap3-Um-On9">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGE-c6-JdM" customClass="CurvedLabel" customModule="CountryTrainer" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGE-c6-JdM" customClass="CurvedLabel" customModule="Flash_Flags" customModuleProvider="target">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -235,7 +235,7 @@
         <!--GameVC-->
         <scene sceneID="g4p-xg-R3Y">
             <objects>
-                <viewController storyboardIdentifier="gameVC" id="H4O-6A-ZFD" customClass="GameVC" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameVC" id="H4O-6A-ZFD" customClass="GameVC" customModule="Flash_Flags" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fI8-Q9-2cI"/>
                         <viewControllerLayoutGuide type="bottom" id="Y56-aD-j66"/>
@@ -252,21 +252,21 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="294" sectionHeaderHeight="80" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-Q5-cFH">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="294" id="oxp-Uz-7Ru" customClass="GameCell" customModule="CountryTrainer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="294" id="oxp-Uz-7Ru" customClass="GameCell" customModule="Flash_Flags" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="375" height="294"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oxp-Uz-7Ru" id="7Ae-jJ-N1y">
                                             <frame key="frameInset" width="375" height="294"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hie-BB-Ri5" customClass="FlagBGView" customModule="CountryTrainer" customModuleProvider="target">
+                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hie-BB-Ri5" customClass="FlagBGView" customModule="Flash_Flags" customModuleProvider="target">
                                                     <frame key="frameInset" minX="8" minY="8" width="359" height="278"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-x5-Z9d">
-                                                    <frame key="frameInset" minX="16" minY="16" width="1000" height="262"/>
+                                                    <frame key="frameInset" minX="16" minY="16" width="278" height="262"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-fH-Ocx" customClass="FlagImageView" customModule="CountryTrainer" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-fH-Ocx" customClass="FlagImageView" customModule="Flash_Flags" customModuleProvider="target">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="BgS-Wj-wXG"/>
                                                             </constraints>
@@ -281,7 +281,7 @@
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-5t-DGN">
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="T8V-YG-OqE">
-                                                                    <frame key="frameInset" width="1000" height="35"/>
+                                                                    <frame key="frameInset" width="278" height="35"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMh-c0-zVu">
                                                                             <connections>
@@ -296,9 +296,9 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-D6-8nQ">
-                                                                    <frame key="frameInset" minY="2" width="1000" height="30"/>
+                                                                    <frame key="frameInset" minY="2" width="278" height="30"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLa-nR-9UV" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLa-nR-9UV" customClass="ResultButton" customModule="Flash_Flags" customModuleProvider="target">
                                                                             <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="130" id="qHE-cc-ks6"/>
@@ -311,7 +311,7 @@
                                                                                 <action selector="answeredCorrectly:" destination="oxp-Uz-7Ru" eventType="touchUpInside" id="RCa-cH-xit"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNH-a9-erk" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNH-a9-erk" customClass="ResultButton" customModule="Flash_Flags" customModuleProvider="target">
                                                                             <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                                                             <state key="normal" title="☹️ NOPE  ">
@@ -384,7 +384,7 @@
                                     <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuq-gM-K1h" customClass="FilterFlagsNavBarView" customModule="CountryTrainer" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuq-gM-K1h" customClass="FilterFlagsNavBarView" customModule="Flash_Flags" customModuleProvider="target">
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfE-L9-lCm">
                                                     <constraints>
@@ -416,7 +416,7 @@
                                                 <constraint firstItem="hjL-tw-UyU" firstAttribute="top" secondItem="nuq-gM-K1h" secondAttribute="top" constant="39" id="zIe-my-o6l"/>
                                             </constraints>
                                         </view>
-                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="E9m-L4-mTh" customClass="GameProgressView" customModule="CountryTrainer" customModuleProvider="target">
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="E9m-L4-mTh" customClass="GameProgressView" customModule="Flash_Flags" customModuleProvider="target">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="77Y-sL-kvx"/>
                                             </constraints>
@@ -498,7 +498,7 @@
         <!--ResultVC-->
         <scene sceneID="XTf-JT-UT9">
             <objects>
-                <viewController storyboardIdentifier="resultVC" id="PmV-J9-vhH" customClass="ResultVC" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resultVC" id="PmV-J9-vhH" customClass="ResultVC" customModule="Flash_Flags" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gov-rD-LTt"/>
                         <viewControllerLayoutGuide type="bottom" id="wnL-YP-iA1"/>
@@ -514,7 +514,7 @@
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="s1V-7n-NeC">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfI-Le-Ici" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfI-Le-Ici" customClass="ResultButton" customModule="Flash_Flags" customModuleProvider="target">
                                         <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                         <state key="normal" title="RETRY">
@@ -524,7 +524,7 @@
                                             <action selector="retryButton:" destination="PmV-J9-vhH" eventType="touchUpInside" id="yHI-OI-ZN4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TE7-Rl-cpW" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TE7-Rl-cpW" customClass="ResultButton" customModule="Flash_Flags" customModuleProvider="target">
                                         <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                         <state key="normal" title="MENU">
@@ -564,7 +564,7 @@
         <!--Filter FlagsVC-->
         <scene sceneID="Zgg-4r-W5j">
             <objects>
-                <viewController storyboardIdentifier="filterFlags" id="Y2A-zY-5j4" customClass="FilterFlagsVC" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="filterFlags" id="Y2A-zY-5j4" customClass="FilterFlagsVC" customModule="Flash_Flags" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aMg-bK-kYi"/>
                         <viewControllerLayoutGuide type="bottom" id="qiO-KU-bQz"/>
@@ -588,7 +588,7 @@
                                     <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="filterFlagsCell" id="5qU-dr-HSX" customClass="FilterFlagsCollectionViewCell" customModule="CountryTrainer" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="filterFlagsCell" id="5qU-dr-HSX" customClass="FilterFlagsCollectionViewCell" customModule="Flash_Flags" customModuleProvider="target">
                                         <rect key="frame" x="15" y="75" width="136" height="136"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -667,7 +667,7 @@
                                     <outlet property="delegate" destination="Y2A-zY-5j4" id="ukc-p9-VNi"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4Q-uk-PQu" customClass="FilterFlagsNavBarView" customModule="CountryTrainer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4Q-uk-PQu" customClass="FilterFlagsNavBarView" customModule="Flash_Flags" customModuleProvider="target">
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeh-DG-3vd">
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0D9-6B-Hpc">
@@ -794,7 +794,7 @@
         <!--Start New GameVC-->
         <scene sceneID="7Cu-Gy-OnP">
             <objects>
-                <viewController storyboardIdentifier="startNewGameVC" id="kew-h5-nux" customClass="StartNewGameVC" customModule="CountryTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startNewGameVC" id="kew-h5-nux" customClass="StartNewGameVC" customModule="Flash_Flags" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U6k-VU-vth"/>
                         <viewControllerLayoutGuide type="bottom" id="yy1-zJ-0L1"/>
@@ -803,7 +803,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="216" height="279"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jK1-pK-x4P" customClass="ResultButton" customModule="CountryTrainer" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jK1-pK-x4P" customClass="ResultButton" customModule="Flash_Flags" customModuleProvider="target">
                                 <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GAI-Gs-W4b"/>

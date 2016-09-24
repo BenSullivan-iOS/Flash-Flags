@@ -175,4 +175,8 @@ class GameVC: UIViewController, GameCellDelegate {
     navigationController?.enableRadialSwipe()
     navigationItem.backBarButtonItem?.responds(to: #selector(self.radialPop))
   }
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
 }
