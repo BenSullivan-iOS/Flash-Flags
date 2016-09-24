@@ -8,21 +8,18 @@
 
 protocol FilterFlagsInteractorInterface {
   
-  func removeFlag(country: Country) -> IndexPath?
-  func addFlag(country: Country) -> IndexPath?
-  
-  func populateCurrentCoutntriesCache(isRemainingCountry: Bool)
-  func populateCacheFromPrefetch(isRemainingCountry: Bool, indexPaths: [IndexPath])
-  
-  var imageCache: NSCache<NSString, UIImage> { get }
-
-  func setCountries(countryArray: [Country])
   var countries: [Country] { get }
   var remainingCountries: [Country] { get }
   var memorisedCountries: [Country] { get }
-  
-  func saveToCoreData(remainingCountries: [Country])
-  
+  var imageCache: NSCache<NSString, UIImage> { get }
+
+  func addFlag(country: Country) -> IndexPath?
+  func removeFlag(country: Country) -> IndexPath?
   func resetAllFlags() -> Bool
 
+  func populateCurrentCoutntriesCache(isRemainingCountry: Bool)
+  func populateCacheFromPrefetch(isRemainingCountry: Bool, indexPaths: [IndexPath])
+
+  func setCountries(countryArray: [Country])
+  func saveToCoreData(remainingCountries: [Country])
 }

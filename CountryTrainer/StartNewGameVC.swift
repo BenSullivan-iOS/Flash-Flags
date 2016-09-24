@@ -11,43 +11,45 @@ import CoreData
 
 class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecognizerDelegate {
  
-  @IBOutlet var fullView: UIView!
-
   @IBOutlet weak var continentPicker: UIPickerView!
   @IBOutlet weak var numberOfFlagsPicker: UIPickerView!
+  @IBOutlet var fullView: UIView!
   
-  var mainInteractor: MainInteractorInterface?
+  fileprivate var tapBGGesture: UITapGestureRecognizer!
   
-  var tapBGGesture: UITapGestureRecognizer!
+  //Default settings
+  internal var selectedContinent = Continent.All.rawValue
+  internal var selectedNumOfFlags = 5
   
-  var continents = ["Select Continent", "All"]
-  var numberOfFlags = [Int]()
+  internal var continents = ["Select Continent", Continent.All.rawValue]
+  internal var numberOfFlags = [Int]()
   
-  //Settings for a default game
-  var selectedContinent = "All"
-  var selectedNumOfFlags = 5
+  internal var mainInteractor: MainInteractorInterface?
+
+  
+  //MARK: - VC LIFECYCLE
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     setupGestureRecogniser()
-    
-    if let contData = mainInteractor?.prepareContinentsForPicker(),
-      let flagData = mainInteractor?.prepareNumberOfFlagsForPicker() {
-      
-      continents += contData
-      numberOfFlags += flagData
-    }
+    getPickerData()
     
     view.layer.cornerRadius = 8.0
   }
+  
+  
+  //MARK: - OUTLET FUNCTIONS
 
   @IBAction func startGameButtonPressed(_ sender: UIButton) {
     mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent)
     
   }
   
-  func displayAlert(title: String, message: String) {
+  
+  //MARK: - INTERFACE FUNCTIONS
+  
+  internal func displayAlert(title: String, message: String) {
     
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Thanks! 😍", style: .default, handler: nil))
@@ -55,7 +57,22 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
     present(alert, animated: true, completion: nil)
   }
   
-  //MARK: - DISMISS GESTURE
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func getPickerData() {
+    
+    if let contData = mainInteractor?.prepareContinentsForPicker(),
+      let flagData = mainInteractor?.prepareNumberOfFlagsForPicker() {
+      
+      continents += contData
+      numberOfFlags += flagData
+    }
+  }
+  
+  
+  //MARK: - DISMISS GESTURE RECOGNISER
+  //Dismisses VC on tap outside of frame
   
   func setupGestureRecogniser() {
     

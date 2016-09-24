@@ -13,7 +13,7 @@ enum Continent: String {
   case Asia = "Asia"
   case Americas = "Americas"
   case Europe = "Europe"
-  case None = ""
+  case All = "All"
   
   static let all = [
     "Oceania",

@@ -38,7 +38,7 @@ extension DataService {
           
             if let currencyStr = currencyObj.firstObject as? String {
               
-              var continent = Continent.None
+              var continent = Continent.All
               
               switch cont {
                 
@@ -57,8 +57,8 @@ extension DataService {
               case Continent.Europe.rawValue:
                 continent = Continent.Europe
 
-              case Continent.None.rawValue:
-                continent = Continent.None
+              case Continent.All.rawValue:
+                continent = Continent.All
                 
               default: break
 

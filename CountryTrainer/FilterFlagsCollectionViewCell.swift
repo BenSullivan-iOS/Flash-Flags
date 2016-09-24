@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol FilterFlagTableViewCellDelegate {
-  func removeFlagButtonPressed(country: Country)
-}
-
 class FilterFlagsCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var flagImage: UIImageView!

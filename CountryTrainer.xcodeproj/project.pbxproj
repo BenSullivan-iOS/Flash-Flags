@@ -71,6 +71,7 @@
 		B58A007F1D8402AC00B8BD7D /* MainVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A007E1D8402AC00B8BD7D /* MainVCInterface.swift */; };
 		B58A00861D8408CB00B8BD7D /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A00851D8408CB00B8BD7D /* MainInteractor.swift */; };
 		B58A008A1D84092800B8BD7D /* MainInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A00891D84092800B8BD7D /* MainInteractorInterface.swift */; };
+		B5A45A961D966B0D00F1791A /* FilterFlagsTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A951D966B0D00F1791A /* FilterFlagsTableViewCellDelegate.swift */; };
 		B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */; };
 		B5ACDE0A1D71841800C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */; };
 		B5ACDE0B1D71841800C4CA72 /* UIView+Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */; };
@@ -194,6 +195,7 @@
 		B58A007E1D8402AC00B8BD7D /* MainVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCInterface.swift; sourceTree = "<group>"; };
 		B58A00851D8408CB00B8BD7D /* MainInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		B58A00891D84092800B8BD7D /* MainInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractorInterface.swift; sourceTree = "<group>"; };
+		B5A45A951D966B0D00F1791A /* FilterFlagsTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPTransactionDirector.swift; sourceTree = "<group>"; };
 		B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RadialTransaction.swift"; sourceTree = "<group>"; };
 		B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Radial.swift"; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				B5AD692C1D8C3D3F00F2331A /* FilterFlagsCollectionViewCell.swift */,
 				B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */,
 				B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */,
+				B5A45A951D966B0D00F1791A /* FilterFlagsTableViewCellDelegate.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -969,6 +972,7 @@
 				B53AAA761D8AF39A00ED644E /* StartNewGameVC.swift in Sources */,
 				B549C4E11D66306D000409B3 /* GameType.swift in Sources */,
 				B53BA2711D6DBDF3007A542E /* PresentResult.swift in Sources */,
+				B5A45A961D966B0D00F1791A /* FilterFlagsTableViewCellDelegate.swift in Sources */,
 				B58A00861D8408CB00B8BD7D /* MainInteractor.swift in Sources */,
 				B5060CA71D94366E0093D29C /* ResultInteractor.swift in Sources */,
 				B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */,

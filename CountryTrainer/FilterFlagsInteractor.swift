@@ -11,7 +11,7 @@ import UIKit
 class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDataService {
   
   fileprivate var didUpdateCountries = false
-
+  fileprivate var _imageCache = NSCache<NSString, UIImage>()
   fileprivate var _countries = [Country]()
   
   fileprivate var _remainingCountries = [Country]() {
@@ -25,8 +25,6 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
       didUpdateCountries = true
     }
   }
-  
-  fileprivate var _imageCache = NSCache<NSString, UIImage>()
   
   var imageCache: NSCache<NSString, UIImage> {
     return _imageCache
@@ -44,36 +42,27 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     return _countries
   }
   
+  
+  //MARK: - INITIALISER
+  
   init(countries: [Country]) {
     setCountries(countryArray: countries)
     _remainingCountries = countries
     setMemorisedCountries()
   }
   
-  func setCountries(countryArray: [Country]) {
+  
+  //MARK: - INTERFACE FUNCTIONS
+  
+  internal func setCountries(countryArray: [Country]) {
     _countries = countryArray
   }
   
-  func setMemorisedCountries() {
-    
-    guard let allCountries = createCountries() else { print("json error"); return }
-    
-    _memorisedCountries = allCountries.filter { c -> Bool in
-      
-      for i in _remainingCountries {
-        if c == i {
-          return false
-        }
-      }
-      return true
-    }
-  }
-  
-  func saveToCoreData(remainingCountries: [Country]) {
+  internal func saveToCoreData(remainingCountries: [Country]) {
     saveRemainingCountriesToCoreData(remainingCountries: remainingCountries)
   }
   
-  func addFlag(country: Country) -> IndexPath? {
+  internal func addFlag(country: Country) -> IndexPath? {
     
     for i in _memorisedCountries.indices {
       
@@ -92,7 +81,7 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     
   }
   
-  func removeFlag(country: Country) -> IndexPath? {
+  internal func removeFlag(country: Country) -> IndexPath? {
     
     for i in _countries.indices {
       
@@ -111,11 +100,9 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     return nil
   }
   
-  func resetAllFlags() -> Bool {
+  internal func resetAllFlags() -> Bool {
     
     guard let countryArray = createCountries() else { print("json error"); return false }
-    
-    print(countryArray.count)
     
     _countries.removeAll()
     _memorisedCountries.removeAll()
@@ -147,9 +134,9 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     
     return true
   }
-
-  func populateCurrentCoutntriesCache(isRemainingCountry: Bool) {
-   
+  
+  internal func populateCurrentCoutntriesCache(isRemainingCountry: Bool) {
+    
     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
       
       for i in self.countries.indices {
@@ -188,14 +175,11 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     }
   }
   
-  func populateCacheFromPrefetch(isRemainingCountry: Bool, indexPaths: [IndexPath]) {
+  internal func populateCacheFromPrefetch(isRemainingCountry: Bool, indexPaths: [IndexPath]) {
     
     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
       
       for i in indexPaths {
-        
-        print(i.row)
-        print("remaining", self._countries.count)
         
         let flag = self._countries[i.row].flag as! NSString
         
@@ -225,7 +209,26 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     }
   }
   
-  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func setMemorisedCountries() {
+    
+    guard let allCountries = createCountries() else { print("json error"); return }
+    
+    _memorisedCountries = allCountries.filter { c -> Bool in
+      
+      for i in _remainingCountries {
+        if c == i {
+          return false
+        }
+      }
+      return true
+    }
+  }
+  
+  
+  private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
     
     let scale = newWidth / image.size.width
     let newHeight = image.size.height * scale

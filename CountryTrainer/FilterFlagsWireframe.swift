@@ -10,13 +10,17 @@ import UIKit
 
 class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
-  var countries: [Country]?
-  var filterFlagInteractor: FilterFlagsInteractor?
-  var filterFlagsVC: FilterFlagsVC?
-  var presentedViewController: UIViewController?
+  fileprivate var countries: [Country]?
+  fileprivate var filterFlagInteractor: FilterFlagsInteractor?
+  fileprivate var filterFlagsVC: FilterFlagsVC?
+  fileprivate var presentedViewController: UIViewController?
+  
   var mainWireframe: MainWireframe?
   
-  func presentFilterFlagsInterfaceFromViewController(viewController: UIViewController!, countries: [Country]) {
+  
+  //MARK: - INTERNAL FUNCTIONS
+  
+  internal func presentFilterFlagsInterfaceFromViewController(viewController: UIViewController!, countries: [Country]) {
     
     self.countries = countries
     
@@ -32,15 +36,11 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
     
     viewController.navigationController?.radialPushViewController(viewController: newVC)
     
-//    let frame = CGRect(x: 0, y: 25, width: 40, height: 40)
-//    
-//    viewController.navigationController?.radialPushViewController(viewController: newVC, duration: 0.5, startFrame: frame, transitionCompletion: nil)
-    
     presentedViewController = newVC
     
   }
   
-  func dismissFilterFlagsVCToMainVC(withCountries countries: [Country]) {
+  internal func dismissFilterFlagsVCToMainVC(withCountries countries: [Country]) {
     mainWireframe?.updateFilteredCountries(countries: countries)
     
     let frame = CGRect(x: 0, y: 25, width: 40, height: 40)
@@ -49,24 +49,29 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
     
   }
   
-  func filterFlagsViewController() -> FilterFlagsVC {
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func filterFlagsViewController() -> FilterFlagsVC {
     let storyboard = mainStoryboard()
     let filterFlagsVC = storyboard.instantiateViewController(withIdentifier: "filterFlags") as! FilterFlagsVC
     return filterFlagsVC
   }
-  func mainStoryboard() -> UIStoryboard {
+  
+  private func mainStoryboard() -> UIStoryboard {
     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     return storyboard
   }
   
+  
   //MARK: TRANSITION DELEGATE
   
-  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     
     return PresentingAnimator()
     
   }
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     return DismissingAnimator()
     
   }

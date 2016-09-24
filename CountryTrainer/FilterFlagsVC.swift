@@ -17,13 +17,8 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var resetButton: UIButton!
   
-  @IBAction func resetButtonPressed(_ sender: UIButton) {
-    
-    displayActionSheet()
-  }
-  
   //True = Viewing remaining countries. False = Viewing memorised countries
-  var isRemainingCountry = true
+  fileprivate var isRemainingCountry = true
   
   var filterFlagsWireframe: FilterFlagsWireframe?
   var filterFlagsInteractor: FilterFlagsInteractorInterface?
@@ -44,19 +39,19 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     return filterFlagsInteractor?.imageCache ?? NSCache<NSString, UIImage>()
   }
   
+  //MARK: - VC LIFECYCLE
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     if #available(iOS 10.0, *) {
       collectionView.prefetchDataSource = self
     }
-    
-    resetButton.imageView?.contentMode = .scaleAspectFit
-    
+  
     setProgressBar()
-    
     configureCellSize()
     
+    resetButton.imageView?.contentMode = .scaleAspectFit
     segmentedControl.changeTitleFont(newFontName: "Lato-Light", newFontSize: 14)
     
   }
@@ -65,6 +60,14 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     super.viewWillAppear(animated)
     
     filterFlagsInteractor?.populateCurrentCoutntriesCache(isRemainingCountry: isRemainingCountry)
+  }
+  
+  
+  //MARK: - OUTLET FUNCTIONS
+  
+  @IBAction func resetButtonPressed(_ sender: UIButton) {
+    
+    displayActionSheet()
   }
   
   @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -89,7 +92,10 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     collectionView.reloadData()
   }
 
-  func removeFlagButtonPressed(country: Country) {
+  
+  //MARK: - INTERFACE FUNCTIONS
+  
+ internal func removeFlagButtonPressed(country: Country) {
     
     if isRemainingCountry {
       if let rowToDelete = filterFlagsInteractor?.removeFlag(country: country) {
@@ -104,7 +110,10 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     setProgressBar()
   }
   
-  func setProgressBar() {
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func setProgressBar() {
     
     numberOfMemorisedFlags.text = "\(memorisedCountries.count)"
     
@@ -112,7 +121,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     self.progressBar.progress = progress
   }
   
-  func configureCellSize() {
+  private func configureCellSize() {
     let size = UIScreen.main.bounds.width / 2 - 22
     
     if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -120,7 +129,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
   }
   
-  func resetAllRemainingFlags() {
+  private func resetAllRemainingFlags() {
     
     segmentedControl.selectedSegmentIndex = 0
     numberOfMemorisedFlags.text = "0"
@@ -134,7 +143,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
   }
   
-  func displayActionSheet() {
+  private func displayActionSheet() {
     
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
    
