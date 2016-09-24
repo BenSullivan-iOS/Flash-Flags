@@ -12,14 +12,29 @@ import pop
 class GameCell: UITableViewCell {
   
   @IBOutlet weak var flagImage: FlagImageView!
-  
   @IBOutlet weak var countryName: UILabel!
   @IBOutlet weak var stackView: UIStackView!
-  
   @IBOutlet weak var correctButton: ResultButton!
   @IBOutlet weak var nopeButton: ResultButton!
   
   weak internal var delegate: GameCellDelegate?
+  
+  
+  //MARK: - CELL LIFECYCLE
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    
+    stackView.arrangedSubviews.last?.isHidden = true
+  }
+  
+  override func prepareForReuse() {
+    self.stackView.arrangedSubviews[1].isHidden = true
+    self.stackView.arrangedSubviews.last?.isHidden = true
+  }
+  
+  
+  //MARK: - OUTLET FUNCTIONS
   
   @IBAction func answeredCorrectly(_ sender: UIButton) {
     delegate?.answered(country: countryName.text!, result: true)
@@ -29,18 +44,10 @@ class GameCell: UITableViewCell {
     delegate?.answered(country: countryName.text!, result: false)
   }
   
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    stackView.arrangedSubviews.last?.isHidden = true
-    
-  }
   
-  override func prepareForReuse() {
-    self.stackView.arrangedSubviews[1].isHidden = true
-    self.stackView.arrangedSubviews.last?.isHidden = true
-  }
+  //MARK: - INTERNAL FUNCTIONS
   
-  func configureCell(_ country: Country, cachedImage: UIImage?) {
+  internal func configureCell(_ country: Country, cachedImage: UIImage?) {
     
     flagImage.image = cachedImage ?? UIImage(named: country.flag)
 
@@ -48,7 +55,10 @@ class GameCell: UITableViewCell {
     flagImage.animate()
   }
   
-  func changeCellStatus(selected: Bool) {
+  internal func changeCellStatus(selected: Bool) {
+    
+    //Called by GameVC willSelectRow
+    //Shows and hides the flag name and buttons
     
     if selected == true {
       

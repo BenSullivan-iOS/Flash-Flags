@@ -10,23 +10,26 @@ import UIKit
 
 class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
-  var mainVC: MainVC?
-  var mainInteractor: MainInteractor?
-  var gameWireframe: GameWireframe?
-  var rootWireframe: RootWireframe?
-  var filterFlagsWireframe: FilterFlagsWireframe?
-  var startNewGameVC: StartNewGameVC?
+  fileprivate var mainVC: MainVC?
+  fileprivate var mainInteractor: MainInteractor?
+  fileprivate var startNewGameVC: StartNewGameVC?
   
-  func updateFilteredCountries(countries: [Country]) {
+  internal var gameWireframe: GameWireframe?
+  internal var rootWireframe: RootWireframe?
+  internal var filterFlagsWireframe: FilterFlagsWireframe?
+  
+  //MARK: - INTERNAL FUNCTIONS
+  
+  internal func updateFilteredCountries(countries: [Country]) {
     mainVC?.updateCountriesAfterFilter(countries: countries)
   }
   
-  func presentFilterFlagsInterface(withCountries countries: [Country]) {
+  internal func presentFilterFlagsInterface(withCountries countries: [Country]) {
     
     filterFlagsWireframe?.presentFilterFlagsInterfaceFromViewController(viewController: mainVC!, countries: countries)
   }
   
-  func presentStartNewGameVCFromMainVC() {
+  internal func presentStartNewGameVCFromMainVC() {
     
     startNewGameVC = startNewGameViewController()
     startNewGameVC?.transitioningDelegate = self
@@ -37,23 +40,22 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     mainVC!.navigationController!.present(startNewGameVC!, animated: true, completion: nil)
   }
   
-  func gameCompleted(game: Game) {
+  internal func gameCompleted(game: Game) {
     mainVC?.populateGames(game: game)
   }
   
-  func retryGame(game: Game) {
+  internal func retryGame(game: Game) {
     
     mainVC?.populateGames(game: game)
-
   }
   
-  func presentGameInterface(withGame game: Game) {
+  internal func presentGameInterface(withGame game: Game) {
     
     mainVC?.dismiss(animated: true, completion: nil)
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }
 
-  func presentMainVCInterfaceFromWindow(window: UIWindow) {
+  internal func presentMainVCInterfaceFromWindow(window: UIWindow) {
     
     let viewController = mainVCFromStoryboard()
 
@@ -69,33 +71,36 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     rootWireframe?.showRootViewController(viewController: viewController, inWindow: window)
   }
   
-  func mainVCFromStoryboard() -> MainVC {
+  
+  //MARK: - PRIVATE FUNCTIONS
+
+  private func mainVCFromStoryboard() -> MainVC {
     
     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as! MainVC
     return viewController
   }
   
-  func startNewGameViewController() -> StartNewGameVC {
+  private func startNewGameViewController() -> StartNewGameVC {
     let storyboard = mainStoryboard()
     let startNewGameVC = storyboard.instantiateViewController(withIdentifier: "startNewGameVC") as! StartNewGameVC
     return startNewGameVC
   }
   
-  func mainStoryboard() -> UIStoryboard {
+  private func mainStoryboard() -> UIStoryboard {
     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     return storyboard
   }
 
   
-  //TRANSITION DELEGATE
+  //MARK: - TRANSITION DELEGATE
   
-  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     
     return PresentStartNewGame()
     
   }
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     return DismissingAnimator()
     
   }

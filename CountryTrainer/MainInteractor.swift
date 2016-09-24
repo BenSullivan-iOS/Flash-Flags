@@ -92,7 +92,6 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     
   }
   
-  
   func clearCurrentGameData() {
     chosenOnes.removeAll()
   }

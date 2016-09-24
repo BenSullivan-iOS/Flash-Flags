@@ -38,7 +38,6 @@ extension StartNewGameVC: UIPickerViewDelegate, UIPickerViewDataSource {
       
       pickerLabel?.text = continents[row]
       
-      
     }
     
     return pickerLabel!

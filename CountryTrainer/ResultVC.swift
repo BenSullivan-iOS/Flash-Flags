@@ -22,21 +22,13 @@ class ResultVC: UIViewController {
   var gameScoreInt = Int()
   var circleView: CircleView!
   
+  
+  //MARK: - VC LIFECYCLE
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    percentageLabel.text = gameScoreString
-    
-    percentageLabel.alpha = 0
-    view.layer.cornerRadius = 8.0
-    
-    menuButton.alpha = 0
-    retryButton.alpha = 0
-    
-    addCircleView()
-    
-    self.circleView.setStrokeEnd(strokeEnd: 0.0, animated: false, friction: nil)
-
+    configureView()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -56,6 +48,9 @@ class ResultVC: UIViewController {
     AnimationEngine.popView(view: percentageLabel, velocity: velocity)
   }
   
+  
+  //MARK: - OUTLET FUNCTIONS
+  
   @IBAction func menuButton(_ sender: AnyObject) {
     
     resultInteractor?.saveGameToCoreData(game: (gameInteractorInterface?.currentGame)!)
@@ -66,16 +61,60 @@ class ResultVC: UIViewController {
     
     gameInteractorInterface?.retryGame()
     gameWireframe?.dismissResultVCToRetry()
+  }
+  
+  
+  //MARK: - INTERNAL FUNCTIONS
+  
+  internal func unhideButtons() {
+    //Displays Retry button then animates menu button after delay
+    let velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
     
-//    dismiss(animated: true, completion: nil)
-//    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retryGame"), object: nil)
+    retryButton.alpha = 1
+    AnimationEngine.popView(view: retryButton, velocity: velocity)
+    
+    Timer.scheduledTimer(timeInterval: 0.4,
+                         target: self,
+                         selector: #selector(self.unhideMenuButton),
+                         userInfo: nil,
+                         repeats: false)
   }
   
-  func dismiss(sender: AnyObject) {
-    self.dismiss(animated: true, completion: { _ in })
+  internal func unhideMenuButton() {
+    
+    let velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
+    
+    menuButton.alpha = 1
+    AnimationEngine.popView(view: menuButton, velocity: velocity)
   }
   
-  func addCircleView() {
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func configureView() {
+    
+    percentageLabel.text = gameScoreString
+    
+    percentageLabel.alpha = 0
+    view.layer.cornerRadius = 8.0
+    
+    menuButton.alpha = 0
+    retryButton.alpha = 0
+    
+    addCircleView()
+    
+    self.circleView.setStrokeEnd(strokeEnd: 0.0, animated: false, friction: nil)
+  }
+  
+  private func animateCircle() {
+    
+    let percent = Double(gameScoreInt) / 100
+    let value = CGFloat(percent)
+    
+    self.circleView.setStrokeEnd(strokeEnd: value, animated: true, friction: nil)
+  }
+  
+  private func addCircleView() {
     
     let screenSize = UIScreen.main.bounds
     
@@ -94,36 +133,10 @@ class ResultVC: UIViewController {
     self.circleView.center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
     
     self.view!.addSubview(self.circleView)
-    
   }
   
-  func unhideButtons() {
-    
-    let velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
+  private func dismiss(sender: AnyObject) {
+    self.dismiss(animated: true, completion: { _ in })
+  }
 
-    retryButton.alpha = 1
-    AnimationEngine.popView(view: retryButton, velocity: velocity)
-    
-    Timer.scheduledTimer(timeInterval: 0.4,
-                         target: self,
-                         selector: #selector(self.unhideMenuButton),
-                         userInfo: nil,
-                         repeats: false)
-  }
-  
-  func unhideMenuButton() {
-    
-    let velocity = NSValue(cgSize: CGSize(width: 3.0, height: 3.0))
-
-    menuButton.alpha = 1
-    AnimationEngine.popView(view: menuButton, velocity: velocity)
-  }
-  
-  func animateCircle() {
-    
-    let percent = Double(gameScoreInt) / 100
-    let value = CGFloat(percent)
-    
-    self.circleView.setStrokeEnd(strokeEnd: value, animated: true, friction: nil)
-  }
 }

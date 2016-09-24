@@ -364,7 +364,7 @@
                                             <outlet property="stackView" destination="JWj-x5-Z9d" id="CZA-F1-vcq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gamePlaceholderCell" rowHeight="60" id="vwg-Qz-Shw">
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gamePlaceholderCell" rowHeight="60" id="vwg-Qz-Shw">
                                         <rect key="frame" x="0.0" y="374" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vwg-Qz-Shw" id="w2z-eg-1OS">

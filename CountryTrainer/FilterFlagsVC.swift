@@ -39,6 +39,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     return filterFlagsInteractor?.imageCache ?? NSCache<NSString, UIImage>()
   }
   
+  
   //MARK: - VC LIFECYCLE
   
   override func viewDidLoad() {

@@ -10,18 +10,18 @@ import UIKit
 
 class AppDependencies {
   
-  var mainWireframe = MainWireframe()
+  fileprivate var mainWireframe = MainWireframe()
   
   init() {
     configureDependencies()
   }
   
-  func installRootViewControllerIntoWindow(window: UIWindow) {
+  internal func installRootViewControllerIntoWindow(window: UIWindow) {
     
     mainWireframe.presentMainVCInterfaceFromWindow(window: window)
   }
   
-  func configureDependencies() {
+  private func configureDependencies() {
     
     let rootWireframe = RootWireframe()
     let gameWireframe = GameWireframe()

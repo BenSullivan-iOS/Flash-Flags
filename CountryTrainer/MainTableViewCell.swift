@@ -24,28 +24,26 @@ class MainTableViewCell: UITableViewCell {
   fileprivate var circleView: CircleView!
   fileprivate var game: Game?
   
+  //MARK: - CELL LIFECYCLE
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    let gesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressDetected))
-    
-    button.addGestureRecognizer(gesture)
-    
+    addButtonGestureRecogniser()
     addCircleView()
   }
   
-  func longPressDetected() {
-    
-    mainVCInterface?.displayGameOptionsActionSheet(game: game!, title: "Would you like to delete this game?")
-  }
-  
+  //MARK: - OUTLET FUNCTIONS
   
   @IBAction func retryButtonPressed(_ sender: UIButton) {
     
     mainWireframe?.presentGameInterface(withGame: game!)
   }
   
-  func configureCell(game: Game) {
+  
+  //MARK: - INTERFACE FUNCTIONS
+  
+  internal func configureCell(game: Game) {
     
     self.game = game
     
@@ -58,16 +56,30 @@ class MainTableViewCell: UITableViewCell {
       
       self.daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
     }
-        
-    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
-  
-    self.circleView.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
     
-    print(CGFloat(game.highestPercentage) / 100)
-    
+    animateCircleView(game: game)
   }
   
-  func addCircleView() {
+  internal func longPressDetected() {
+    
+    mainVCInterface?.displayGameOptionsActionSheet(game: game!, title: "Would you like to delete this game?")
+  }
+
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func animateCircleView(game: Game) {
+    
+    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
+    self.circleView.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
+  }
+
+  private func addButtonGestureRecogniser() {
+    
+    let gesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressDetected))
+    button.addGestureRecognizer(gesture)
+  }
+  
+  private func addCircleView() {
     
     circleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
 

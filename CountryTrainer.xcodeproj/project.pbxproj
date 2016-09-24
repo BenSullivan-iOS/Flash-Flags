@@ -75,6 +75,7 @@
 		B5A45A981D9677C500F1791A /* ResultInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A971D9677C500F1791A /* ResultInteractorInterface.swift */; };
 		B5A45A9A1D96798800F1791A /* GameCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A991D96798800F1791A /* GameCellDelegate.swift */; };
 		B5A45A9C1D967D0400F1791A /* ImageResizeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A9B1D967D0400F1791A /* ImageResizeable.swift */; };
+		B5A45A9E1D96ADD700F1791A /* MenuTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A9D1D96ADD700F1791A /* MenuTableViewCellDelegate.swift */; };
 		B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */; };
 		B5ACDE0A1D71841800C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */; };
 		B5ACDE0B1D71841800C4CA72 /* UIView+Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */; };
@@ -202,6 +203,7 @@
 		B5A45A971D9677C500F1791A /* ResultInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultInteractorInterface.swift; sourceTree = "<group>"; };
 		B5A45A991D96798800F1791A /* GameCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCellDelegate.swift; sourceTree = "<group>"; };
 		B5A45A9B1D967D0400F1791A /* ImageResizeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizeable.swift; sourceTree = "<group>"; };
+		B5A45A9D1D96ADD700F1791A /* MenuTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPTransactionDirector.swift; sourceTree = "<group>"; };
 		B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RadialTransaction.swift"; sourceTree = "<group>"; };
 		B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Radial.swift"; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */,
 				B53A79D71D882180008C3D68 /* MainTableViewCell.swift */,
 				B5060C5B1D932B630093D29C /* CurvedLabel.swift */,
+				B5A45A9D1D96ADD700F1791A /* MenuTableViewCellDelegate.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				B503FBF91D92BF0000EF8CC2 /* StartNewGameVCInterface.swift in Sources */,
 				B53CFC9E1D86CB2E00152EDD /* GameInteractorInterface.swift in Sources */,
 				B549C4D71D65FA08000409B3 /* GameVC.swift in Sources */,
+				B5A45A9E1D96ADD700F1791A /* MenuTableViewCellDelegate.swift in Sources */,
 				B53CFC9C1D86CB0D00152EDD /* GameInteractor.swift in Sources */,
 				B5ED08BB1D84142200A7A3D0 /* AppDependencies.swift in Sources */,
 				B53A79D81D882180008C3D68 /* MainTableViewCell.swift in Sources */,

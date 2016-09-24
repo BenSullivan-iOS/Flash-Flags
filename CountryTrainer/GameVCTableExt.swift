@@ -12,35 +12,6 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
   
   // MARK: - TABLE VIEW
   
-  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-    
-    gameInteractorInterface?.populateCurrentCoutntriesCache(indexPaths: indexPaths)
-  }
-  
-  func numberOfSections(in tableView: UITableView) -> Int {
-    
-    if #available(iOS 10.0, *) {
-      tableView.prefetchDataSource = self
-    }
-    
-    return 2
-  }
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if section == 0 {
-      return 80
-    }
-    return 0
-  }
-  
-  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-    
-    let newView = view as! UITableViewHeaderFooterView
-    newView.alpha = 0
-    newView.backgroundColor = .clear
-    newView.backgroundView?.backgroundColor = .clear
-  }
-
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     if indexPath.section == 0 {
@@ -62,6 +33,41 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
     return cell
   }
   
+  func numberOfSections(in tableView: UITableView) -> Int {
+    
+    if #available(iOS 10.0, *) {
+      tableView.prefetchDataSource = self
+    }
+    
+    return 2
+  }
+  
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    
+    gameInteractorInterface?.populateCurrentCoutntriesCache(indexPaths: indexPaths)
+  }
+
+  
+  //MARK: - HEADER
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    if section == 0 {
+      return 80
+    }
+    return 0
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    
+    let newView = view as! UITableViewHeaderFooterView
+    newView.alpha = 0
+    newView.backgroundColor = .clear
+    newView.backgroundView?.backgroundColor = .clear
+  }
+  
+  
+  //MARK: - CELL SELECTION
+
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     
     if let selectedIndex = tableView.indexPathForSelectedRow, selectedIndex == indexPath as IndexPath {

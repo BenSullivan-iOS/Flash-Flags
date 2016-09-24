@@ -15,7 +15,7 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
   fileprivate var filterFlagsVC: FilterFlagsVC?
   fileprivate var presentedViewController: UIViewController?
   
-  var mainWireframe: MainWireframe?
+  internal weak var mainWireframe: MainWireframe?
   
   
   //MARK: - INTERNAL FUNCTIONS

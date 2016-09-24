@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol MenuTableViewCellDelegate: class {
-  func presentFilterFlags()
-}
-
 class MenuTableViewCell: UITableViewCell {
   
   @IBOutlet weak var button: UIButton!
@@ -25,7 +21,6 @@ class MenuTableViewCell: UITableViewCell {
     super.awakeFromNib()
     
     button.layer.cornerRadius = 5.0
-    
   }
   
   @IBAction func buttonPressed(_ sender: UIButton) {
@@ -44,18 +39,11 @@ class MenuTableViewCell: UITableViewCell {
       menuTableViewCellDelegate?.presentFilterFlags()
     default: break
     }
-    
-    
   }
   
-  func configureCell(title: String) {
-    //add pop in animation
+  internal func configureCell(title: String) {
+    //FIXME: - add pop in animation
     button.setTitle(title, for: .normal)
   }
   
-  
-  
-  func prepareGameData(game: Game) {
-    mainWireframe?.presentGameInterface(withGame: game)
-  }
 }

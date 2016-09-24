@@ -34,6 +34,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    //FIXME: - SET STATUS BAR TO LIGHT CONTENT
     self.navigationController?.navigationBar.barStyle = UIBarStyle.black
     self.navigationController?.isNavigationBarHidden = true
     
