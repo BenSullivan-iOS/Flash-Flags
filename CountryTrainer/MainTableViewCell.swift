@@ -16,11 +16,13 @@ class MainTableViewCell: UITableViewCell {
   @IBOutlet weak var daysAgo: UILabel!
   @IBOutlet weak var flags: UILabel!
   @IBOutlet weak var button: UIButton!
+  @IBOutlet weak var daysAgoText: UILabel!
   
-  var mainWireframe: MainWireframe?
-  var circleView: CircleView!
-  var game: Game?
-  var mainVCInterface: MainVCInterface?
+  weak internal var mainWireframe: MainWireframe?
+  weak internal var mainVCInterface: MainVCInterface?
+  
+  fileprivate var circleView: CircleView!
+  fileprivate var game: Game?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -51,6 +53,11 @@ class MainTableViewCell: UITableViewCell {
     self.percentage.text = "\(game.highestPercentage)%"
     self.daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
     self.flags.text = String(game.numberOfFlags)
+    
+    if let days = Int(daysAgo.text!) {
+      
+      self.daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
+    }
         
     self.circleView.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
   

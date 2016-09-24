@@ -16,14 +16,14 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   fileprivate var _countries = [Country]()
   fileprivate var _games = [Game]()
   
-  var mainVCInterface: MainVCInterface?
-  var startNewGameVCInterface: StartNewGameVCInterface?
+  internal var mainVCInterface: MainVCInterface?
+  internal var startNewGameVCInterface: StartNewGameVCInterface?
   
-  var games: [Game] {
+  internal var games: [Game] {
     return _games
   }
   
-  var countries: [Country] {
+  internal var countries: [Country] {
     return _countries
   }
   

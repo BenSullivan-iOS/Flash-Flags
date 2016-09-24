@@ -6,7 +6,7 @@
 //  Copyright © 2016 Ben Sullivan. All rights reserved.
 //
 
-protocol MainVCInterface {
+protocol MainVCInterface: class {
   
   func prepareGameData(game: Game)
   func reloadTableData()

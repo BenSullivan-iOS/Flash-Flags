@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MainInteractorInterface {
+protocol MainInteractorInterface: class {
   
   var countries: [Country] { get }
   var games: [Game] { get }

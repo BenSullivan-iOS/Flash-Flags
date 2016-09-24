@@ -14,14 +14,14 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   @IBOutlet weak var tableView: COBezierTableView!
   @IBOutlet weak var flagBg: UIImageView!
   
-  var mainInteractor: MainInteractorInterface?
-  var mainWireframe: MainWireframe?
+  internal var mainInteractor: MainInteractorInterface?
+  internal var mainWireframe: MainWireframe?
   
   fileprivate var games: [Game] {
     return mainInteractor?.games ?? [Game]()
   }
   
-  var menuTitles = [
+  fileprivate var menuTitles = [
     MenuItems.about.rawValue,
     MenuItems.tutorial.rawValue,
     MenuItems.filterFlags.rawValue,

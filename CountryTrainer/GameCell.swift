@@ -9,11 +9,6 @@
 import UIKit
 import pop
 
-protocol GameDelegate {
-  func answered(country: String, result: Bool)
-  func retryGame()
-}
-
 class GameCell: UITableViewCell {
   
   @IBOutlet weak var flagImage: FlagImageView!
@@ -24,7 +19,7 @@ class GameCell: UITableViewCell {
   @IBOutlet weak var correctButton: ResultButton!
   @IBOutlet weak var nopeButton: ResultButton!
   
-  var delegate: GameDelegate?
+  weak internal var delegate: GameCellDelegate?
   
   @IBAction func answeredCorrectly(_ sender: UIButton) {
     delegate?.answered(country: countryName.text!, result: true)

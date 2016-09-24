@@ -21,7 +21,7 @@ struct Tracker: GameTracker {
   fileprivate var _remainingCells = [String : Bool]()
   fileprivate var _answers = [String : Bool]()
   
-  var gameDelegate: GameType?
+  internal var gameDelegate: GameType?
   
   internal var answers: [String : Bool] {
     return _answers

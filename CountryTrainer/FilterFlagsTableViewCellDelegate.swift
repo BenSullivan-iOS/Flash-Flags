@@ -6,6 +6,6 @@
 //  Copyright © 2016 Ben Sullivan. All rights reserved.
 //
 
-protocol FilterFlagTableViewCellDelegate {
+protocol FilterFlagTableViewCellDelegate: class {
   func removeFlagButtonPressed(country: Country)
 }

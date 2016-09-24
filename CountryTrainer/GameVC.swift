@@ -9,7 +9,7 @@
 import UIKit
 import pop
 
-class GameVC: UIViewController, GameDelegate {
+class GameVC: UIViewController, GameCellDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var progressView: UIProgressView!
@@ -17,15 +17,16 @@ class GameVC: UIViewController, GameDelegate {
   @IBOutlet weak var progressLeading: NSLayoutConstraint!
   @IBOutlet weak var progressTrailing: NSLayoutConstraint!
   
-  var gameWireframe: GameWireframe?
-  var gameInteractorInterface: GameInteractorInterface?
-  var selectedRow: IndexPath? = nil
+  internal var selectedRow: IndexPath? = nil
   
-  var game: Game? {
+  internal var gameWireframe: GameWireframe?
+  internal var gameInteractorInterface: GameInteractorInterface?
+  
+  internal var game: Game? {
     return gameInteractorInterface?.currentGame ?? nil
   }
   
-  var imageCache: NSCache<NSString, UIImage> {
+  internal var imageCache: NSCache<NSString, UIImage> {
     return gameInteractorInterface?.imageCache ?? NSCache<NSString, UIImage>()
   }
   
@@ -48,6 +49,7 @@ class GameVC: UIViewController, GameDelegate {
     gameInteractorInterface?.populateCache()
     
   }
+  
   
   //MARK: - OUTLET FUNCTIONS
   
@@ -98,7 +100,7 @@ class GameVC: UIViewController, GameDelegate {
     
     let frame = CGRect(x: 0, y: 25, width: 40, height: 40)
     
-    presentedViewController?.navigationController?.radialPopViewController(duration: 0.5,
+    navigationController?.radialPopViewController(duration: 0.3,
                                                                            startFrame: frame,
                                                                            transitionCompletion: nil)
   }

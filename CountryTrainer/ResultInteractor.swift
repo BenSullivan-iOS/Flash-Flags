@@ -9,21 +9,23 @@
 import UIKit
 import CoreData
 
-protocol ResultInteractorInterface {
-  func saveGameToCoreData(game: Game)
-}
-
 class ResultInteractor: ResultInteractorInterface, DataService {
   
-  var CDGames = [CDGame]()
-  var cdCountriesForGame = [CDCountriesForGame]()
-  var _games = [Game]()
-  var _countries = [Country]()
+  fileprivate var CDGames = [CDGame]()
+  fileprivate var cdCountriesForGame = [CDCountriesForGame]()
+  fileprivate var _games = [Game]()
+  fileprivate var _countries = [Country]()
   
-  func saveGameToCoreData(game: Game) {
+  
+  //MARK: - INTERFACE FUNCTIONS
+  
+  internal func saveGameToCoreData(game: Game) {
     
     fetch(game: game)
   }
+  
+  
+  //MARK: - PRIVATE FUNCTIONS
   
   private func saveNewGame(game: Game) {
     
@@ -44,7 +46,6 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     ad.saveContext()
   }
 
-  
   private func fetch(game: Game) {
     
     ad.saveContext()
@@ -108,7 +109,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     }
   }
   
-  func updateExistingGameIfExists(game: Game) -> Bool {
+  private func updateExistingGameIfExists(game: Game) -> Bool {
     
     var gameRequiredUpdate = false
     

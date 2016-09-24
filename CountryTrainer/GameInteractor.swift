@@ -8,16 +8,16 @@
 
 import UIKit
 
-class GameInteractor: GameInteractorInterface {
+class GameInteractor: GameInteractorInterface, ImageResizeable {
   
   fileprivate var _currentGame: Game!
   fileprivate var _imageCache = NSCache<NSString, UIImage>()
 
-  var currentGame: Game {
+  internal var currentGame: Game {
     return _currentGame
   }
   
-  var imageCache: NSCache<NSString, UIImage> {
+  internal var imageCache: NSCache<NSString, UIImage> {
     return _imageCache
   }
   
@@ -99,18 +99,4 @@ class GameInteractor: GameInteractorInterface {
     _currentGame.gameCompleted()
   }
   
-  
-  //MARK: - PRIVATE FUNCTIONS
-  
-  private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-    
-    let scale = newWidth / image.size.width
-    let newHeight = image.size.height * scale
-    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-    let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    return newImage!
-  }
 }

@@ -45,7 +45,7 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
     
     let frame = CGRect(x: 0, y: 25, width: 40, height: 40)
 
-    presentedViewController?.navigationController?.radialPopViewController(duration: 0.5, startFrame: frame, transitionCompletion: nil)
+    presentedViewController?.navigationController?.radialPopViewController(duration: 0.3, startFrame: frame, transitionCompletion: nil)
     
   }
   

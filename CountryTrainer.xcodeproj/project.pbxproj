@@ -72,6 +72,9 @@
 		B58A00861D8408CB00B8BD7D /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A00851D8408CB00B8BD7D /* MainInteractor.swift */; };
 		B58A008A1D84092800B8BD7D /* MainInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A00891D84092800B8BD7D /* MainInteractorInterface.swift */; };
 		B5A45A961D966B0D00F1791A /* FilterFlagsTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A951D966B0D00F1791A /* FilterFlagsTableViewCellDelegate.swift */; };
+		B5A45A981D9677C500F1791A /* ResultInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A971D9677C500F1791A /* ResultInteractorInterface.swift */; };
+		B5A45A9A1D96798800F1791A /* GameCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A991D96798800F1791A /* GameCellDelegate.swift */; };
+		B5A45A9C1D967D0400F1791A /* ImageResizeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A45A9B1D967D0400F1791A /* ImageResizeable.swift */; };
 		B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */; };
 		B5ACDE0A1D71841800C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */; };
 		B5ACDE0B1D71841800C4CA72 /* UIView+Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */; };
@@ -196,6 +199,9 @@
 		B58A00851D8408CB00B8BD7D /* MainInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		B58A00891D84092800B8BD7D /* MainInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractorInterface.swift; sourceTree = "<group>"; };
 		B5A45A951D966B0D00F1791A /* FilterFlagsTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		B5A45A971D9677C500F1791A /* ResultInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultInteractorInterface.swift; sourceTree = "<group>"; };
+		B5A45A991D96798800F1791A /* GameCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCellDelegate.swift; sourceTree = "<group>"; };
+		B5A45A9B1D967D0400F1791A /* ImageResizeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizeable.swift; sourceTree = "<group>"; };
 		B5ACDE061D71841800C4CA72 /* AAPTransactionDirector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPTransactionDirector.swift; sourceTree = "<group>"; };
 		B5ACDE071D71841800C4CA72 /* UINavigationController+RadialTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+RadialTransaction.swift"; sourceTree = "<group>"; };
 		B5ACDE081D71841800C4CA72 /* UIView+Radial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Radial.swift"; sourceTree = "<group>"; };
@@ -312,6 +318,7 @@
 				B53AAA731D8AD41500ED644E /* DateExtensions.swift */,
 				B5060C591D9329490093D29C /* SegmentedControlExtension.swift */,
 				B5060C5D1D932C5C0093D29C /* CollectionExtensions.swift */,
+				B5A45A9B1D967D0400F1791A /* ImageResizeable.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -458,8 +465,10 @@
 			isa = PBXGroup;
 			children = (
 				B53CFC9B1D86CB0D00152EDD /* GameInteractor.swift */,
-				B5060CA61D94366E0093D29C /* ResultInteractor.swift */,
 				B53CFC9D1D86CB2E00152EDD /* GameInteractorInterface.swift */,
+				B5060CA61D94366E0093D29C /* ResultInteractor.swift */,
+				B5A45A971D9677C500F1791A /* ResultInteractorInterface.swift */,
+				B5A45A991D96798800F1791A /* GameCellDelegate.swift */,
 			);
 			name = Interactor;
 			sourceTree = "<group>";
@@ -994,6 +1003,7 @@
 				B53AAA741D8AD41500ED644E /* DateExtensions.swift in Sources */,
 				B549C48C1D5C7DA5000409B3 /* AppDelegate.swift in Sources */,
 				B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */,
+				B5A45A9A1D96798800F1791A /* GameCellDelegate.swift in Sources */,
 				B5AD69271D8C35FA00F2331A /* FilterFlagsVC.swift in Sources */,
 				B5AD692A1D8C360B00F2331A /* FilterFlagsInteractor.swift in Sources */,
 				B58A007F1D8402AC00B8BD7D /* MainVCInterface.swift in Sources */,
@@ -1002,9 +1012,11 @@
 				B549C4C71D659F13000409B3 /* Country.swift in Sources */,
 				B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */,
 				B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */,
+				B5A45A9C1D967D0400F1791A /* ImageResizeable.swift in Sources */,
 				B53CFC9A1D86A8E300152EDD /* GameWireframe.swift in Sources */,
 				B5AD69581D8FF78C00F2331A /* StartNewGameVCPickerExt.swift in Sources */,
 				B53CFCA01D86F23500152EDD /* GameVCTableExt.swift in Sources */,
+				B5A45A981D9677C500F1791A /* ResultInteractorInterface.swift in Sources */,
 				B5060CA01D93D3AA0093D29C /* CDCountriesForGame+CoreDataClass.swift in Sources */,
 				B5AD69231D8C35DE00F2331A /* FilterFlagsWireframe.swift in Sources */,
 				B5AD692F1D8EC7B800F2331A /* FilterFlagsInteractorInterface.swift in Sources */,

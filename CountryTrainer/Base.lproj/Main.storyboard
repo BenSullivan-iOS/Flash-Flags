@@ -186,7 +186,8 @@
                                             <outlet property="attempts" destination="TbC-HM-dT3" id="pka-Ze-Cuv"/>
                                             <outlet property="bgLabel" destination="bGE-c6-JdM" id="kc1-PL-cJH"/>
                                             <outlet property="button" destination="B7q-UR-lOl" id="xCf-2H-xV5"/>
-                                            <outlet property="daysAgo" destination="kJl-vN-acp" id="2Bz-kO-6nS"/>
+                                            <outlet property="daysAgo" destination="kJl-vN-acp" id="6tL-p7-rWa"/>
+                                            <outlet property="daysAgoText" destination="ueg-zN-CXR" id="7gn-S1-FGj"/>
                                             <outlet property="flags" destination="R8a-kG-BOs" id="WdC-Ys-2CB"/>
                                             <outlet property="percentage" destination="pYK-jO-ili" id="9kR-K2-Ni8"/>
                                         </connections>

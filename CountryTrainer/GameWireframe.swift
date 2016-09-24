@@ -10,34 +10,32 @@ import UIKit
 
 class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
-  var addPresenter: GameVC?
-  var presentedViewController: UIViewController?
-  var mainWireframe: MainWireframe?
-  var gameInteractor: GameInteractor?
-  var resultInteractor: ResultInteractor?
-  var gameVC: GameVC?
+  fileprivate var addPresenter: GameVC?
+  fileprivate var presentedViewController: UIViewController?
+  fileprivate var gameInteractor: GameInteractor?
+  fileprivate var resultInteractor: ResultInteractor?
+  fileprivate var gameVC: GameVC?
   
-  func dismissGameInterface() {
-    presentedViewController?.navigationController?.popViewController(animated: true)
-  }
+  internal var mainWireframe: MainWireframe?
   
-  func dismissResultVCToEndGame(game: Game) {
+  
+  //MARK: - INTERNAL FUNCTIONS
+  
+  internal func dismissResultVCToEndGame(game: Game) {
     
     presentedViewController?.dismiss(animated: true, completion: nil)
     dismissGameInterface()
     mainWireframe?.gameCompleted(game: game)
   }
   
-  func dismissResultVCToRetry() {
+  internal func dismissResultVCToRetry() {
     
     presentedViewController?.dismiss(animated: true, completion: nil)
     
     gameVC?.retryGame()
-        
-//    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retryGame"), object: nil)
   }
   
-  func presentGameInterfaceFromViewController(viewController: UIViewController, withGame game: Game) {
+  internal func presentGameInterfaceFromViewController(viewController: UIViewController, withGame game: Game) {
     
     gameInteractor = GameInteractor(game: game)
     
@@ -52,7 +50,7 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
 
   }
   
-  func presentResultInterfaceFrom(viewController: UIViewController, scoreInt: Int, scoreString: String) {
+  internal func presentResultInterfaceFrom(viewController: UIViewController, scoreInt: Int, scoreString: String) {
     
     let newVC = resultVC()
     resultInteractor = ResultInteractor()
@@ -67,32 +65,39 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
     viewController.navigationController!.present(newVC, animated: true, completion: nil)
   }
   
-  func resultVC() -> ResultVC {
+  
+  //MARK: - PRIVATE FUNCTIONS
+  
+  private func dismissGameInterface() {
+    _ = presentedViewController?.navigationController?.popViewController(animated: true)
+  }
+  
+  private func resultVC() -> ResultVC {
     let storyboard = mainStoryboard()
     let gameVC: ResultVC = storyboard.instantiateViewController(withIdentifier: "resultVC") as! ResultVC
     return gameVC
   }
 
   
-  func gameViewController() -> GameVC {
+  private func gameViewController() -> GameVC {
     let storyboard = mainStoryboard()
     let gameVC: GameVC = storyboard.instantiateViewController(withIdentifier: "gameVC") as! GameVC
     return gameVC
   }
   
-  func mainStoryboard() -> UIStoryboard {
+  private func mainStoryboard() -> UIStoryboard {
     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     return storyboard
   }
   
   //MARK: TRANSITION DELEGATE
   
-  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     
     return PresentingAnimator()
     
   }
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     return DismissingAnimator()
     
   }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterFlagsCollectionViewCell: UICollectionViewCell {
+class FilterFlagsCollectionViewCell: UICollectionViewCell, ImageResizeable {
   
   @IBOutlet weak var flagImage: UIImageView!
   @IBOutlet weak var addRemoveImage: UIImageView!
@@ -16,8 +16,9 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var countryName: UILabel!
   @IBOutlet weak var bgView: UIView!
   
-  var country: Country?
-  var filterFlagDelegate: FilterFlagTableViewCellDelegate?
+  weak internal var filterFlagDelegate: FilterFlagTableViewCellDelegate?
+  
+  fileprivate var country: Country?
   
   override func awakeFromNib() {
     
@@ -39,17 +40,5 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell {
     countryName.text = country.name
     print(country.name)
     
-  }
-  
-  func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-    
-    let scale = newWidth / image.size.width
-    let newHeight = image.size.height * scale
-    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-    image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-    let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    return newImage!
   }
 }
