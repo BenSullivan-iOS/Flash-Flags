@@ -7,12 +7,14 @@
 //
 
 protocol GameInteractorInterface {
+  
+  var currentGame: Game { get }
+  var imageCache: NSCache<NSString, UIImage> { get }
+  
   func populateCurrentCoutntriesCache(indexPaths: [IndexPath])
   func populateCache()
   func answered(country: String, result: Bool)
   func retryGame()
   func shuffleCountries()
   func gameCompleted()
-  var currentGame: Game { get }
-  var imageCache: NSCache<NSString, UIImage> { get }
 }

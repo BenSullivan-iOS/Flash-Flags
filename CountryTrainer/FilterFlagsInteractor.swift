@@ -160,7 +160,7 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
           return
         }
         
-        let flag = self.countries[i].flag as! NSString
+        let flag = self._countries[i].flag as! NSString
         
         if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
           
@@ -169,15 +169,15 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
           
           if isRemainingCountry {
             
-            imageStr = self.remainingCountries[i].flagSmall
+            imageStr = self._countries[i].flagSmall
             
-            image = UIImage(named: imageStr) ?? UIImage(named: self.remainingCountries[i].flag)!
+            image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i].flag)!
             
           } else {
             
-            imageStr = self.memorisedCountries[i].flagSmall
+            imageStr = self._countries[i].flagSmall
             
-            image = UIImage(named: imageStr) ?? UIImage(named: self.memorisedCountries[i].flag)!
+            image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i].flag)!
           }
           
           let smallImage = self.resizeImage(image: image, newWidth: 200)
@@ -194,7 +194,10 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
       
       for i in indexPaths {
         
-        let flag = self.remainingCountries[i.row].flag as! NSString
+        print(i.row)
+        print("remaining", self._countries.count)
+        
+        let flag = self._countries[i.row].flag as! NSString
         
         if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
           
@@ -203,15 +206,15 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
           
           if isRemainingCountry {
             
-            imageStr = self.remainingCountries[i.row].flagSmall
+            imageStr = self._countries[i.row].flagSmall
             
-            image = UIImage(named: imageStr) ?? UIImage(named: self.remainingCountries[i.row].flag)!
+            image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i.row].flag)!
             
           } else {
             
-            imageStr = self.memorisedCountries[i.row].flagSmall
+            imageStr = self._countries[i.row].flagSmall
             
-            image = UIImage(named: imageStr) ?? UIImage(named: self.memorisedCountries[i.row].flag)!
+            image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i.row].flag)!
           }
           
           let smallImage = self.resizeImage(image: image, newWidth: 200)
