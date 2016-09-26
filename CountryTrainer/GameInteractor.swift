@@ -83,12 +83,14 @@ class GameInteractor: GameInteractorInterface, ImageResizeable {
   
   internal func retryGame() {
     
-    let game = currentGame
-    _currentGame = Game(countries: game.countries,
-                        attempts: game.attempts,
-                        dateLastCompleted: nil,
-                        highestPercentage: nil)
-    _currentGame.gameRetried()
+//    let game = currentGame
+//    _currentGame = Game(countries: game.countries,
+//                        attempts: game.attempts,
+//                        dateLastCompleted: nil,
+//                        highestPercentage: nil)
+//    _currentGame.gameRetried()
+    
+    _currentGame.gameCompleted()
   }
   
   internal func shuffleCountries() {

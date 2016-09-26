@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B549C4871D5C7DA5000409B3"
-               BuildableName = "CountryTrainer.app"
+               BuildableName = "Flash Flags.app"
                BlueprintName = "CountryTrainer"
                ReferencedContainer = "container:CountryTrainer.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B549C4871D5C7DA5000409B3"
-            BuildableName = "CountryTrainer.app"
+            BuildableName = "Flash Flags.app"
             BlueprintName = "CountryTrainer"
             ReferencedContainer = "container:CountryTrainer.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B549C4871D5C7DA5000409B3"
-            BuildableName = "CountryTrainer.app"
+            BuildableName = "Flash Flags.app"
             BlueprintName = "CountryTrainer"
             ReferencedContainer = "container:CountryTrainer.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B549C4871D5C7DA5000409B3"
-            BuildableName = "CountryTrainer.app"
+            BuildableName = "Flash Flags.app"
             BlueprintName = "CountryTrainer"
             ReferencedContainer = "container:CountryTrainer.xcodeproj">
          </BuildableReference>

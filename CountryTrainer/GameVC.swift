@@ -36,7 +36,7 @@ class GameVC: UIViewController, GameCellDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    setupProgressBar()
+//    setupProgressBar()
     setupBackButton()
     
     tableView.estimatedRowHeight = 250

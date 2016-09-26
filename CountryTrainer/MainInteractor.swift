@@ -39,11 +39,11 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   
   //MARK: - INTERFACE FUNCTIONS
   
-  func updateCountries(countries: [Country]) {
+  internal func updateCountries(countries: [Country]) {
     _countries = countries
   }
   
-  func getNewGameData(numberOfFlags: Int, continent: String?) {
+  internal func getNewGameData(numberOfFlags: Int, continent: String?) {
     //FIXME: - Needs refactoring
     
     clearCurrentGameData()
@@ -92,12 +92,11 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     
   }
   
-  func clearCurrentGameData() {
+  internal func clearCurrentGameData() {
     chosenOnes.removeAll()
   }
   
-  
-  func prepareContinentsForPicker() -> [String] {
+  internal func prepareContinentsForPicker() -> [String] {
     
     var continents = Continent.all
     continents.sort()
@@ -106,7 +105,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   }
   
   
-  func prepareNumberOfFlagsForPicker() -> [Int] {
+  internal func prepareNumberOfFlagsForPicker() -> [Int] {
     
     var numberOfFlags = [5]
     
@@ -116,15 +115,24 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     return numberOfFlags
   }
   
-  
-  func populateGamesForMainVCTable(game: Game) {
+  internal func populateGamesForMainVCTable(game: Game) {
     
-    _games.removeAll()
-    _games = fetch()!
+    //If game already exists then replace in array, else append
+    
+    for i in _games.indices {
+      
+      if _games[i] == game {
+        
+        _games[i] = game
+        return
+      }
+    }
+    
+    _games.append(game)
+    
   }
   
-  
-  func deleteGame(game: Game) {
+  internal func deleteGame(game: Game) {
     
     if deleteGameFromCoreData(game: game) {
       print("Delete success")

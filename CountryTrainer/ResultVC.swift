@@ -54,6 +54,7 @@ class ResultVC: UIViewController {
   @IBAction func menuButton(_ sender: AnyObject) {
     
     resultInteractor?.saveGameToCoreData(game: (gameInteractorInterface?.currentGame)!)
+    
     gameWireframe?.dismissResultVCToEndGame(game: gameInteractorInterface?.currentGame ?? Game(countries: [Country](), attempts: 0, dateLastCompleted: nil, highestPercentage: nil))
   }
   

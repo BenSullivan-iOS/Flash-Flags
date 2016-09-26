@@ -39,6 +39,8 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
     
     gameInteractor = GameInteractor(game: game)
     
+    print(game)
+    
     let newVC = gameViewController()
     newVC.transitioningDelegate = self
     newVC.gameWireframe = self

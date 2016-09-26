@@ -8,6 +8,17 @@
 
 import Foundation
 
+extension Game {
+  
+  static func ==(lhs: Game, rhs: Game) -> Bool {
+    
+    if lhs._dateCreated == rhs._dateCreated {
+      return true
+    }
+    return false
+  }
+}
+
 struct Game: GameType {
   
   init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?) {
@@ -16,7 +27,7 @@ struct Game: GameType {
     self._attempts = attempts
     self._highestPercentage = highestPercentage ?? 0
     self._dateLastCompleted = dateLastCompleted ?? Date()
-    
+    self._dateCreated = Date()
     setDelegate()
   }
   
@@ -28,6 +39,7 @@ struct Game: GameType {
   fileprivate var _dateLastCompleted: Date
   fileprivate var _attempts: Int
   fileprivate var _highestPercentage: Int
+  fileprivate var _dateCreated: Date
   
   var tracker: Tracker 
   
@@ -81,9 +93,13 @@ struct Game: GameType {
   mutating func gameCompleted() {
 
     _attempts += 1
+    _dateLastCompleted = Date()
     
     if _highestPercentage < resultPercentage {
       _highestPercentage = resultPercentage
     }
+    
+    tracker = Tracker(countries: countries)
+
   }
 }

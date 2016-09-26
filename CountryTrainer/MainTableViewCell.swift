@@ -24,6 +24,7 @@ class MainTableViewCell: UITableViewCell {
   fileprivate var circleView: CircleView!
   fileprivate var game: Game?
   
+  
   //MARK: - CELL LIFECYCLE
   
   override func awakeFromNib() {
@@ -33,10 +34,11 @@ class MainTableViewCell: UITableViewCell {
     addCircleView()
   }
   
+  
   //MARK: - OUTLET FUNCTIONS
   
   @IBAction func retryButtonPressed(_ sender: UIButton) {
-    
+    print("game =", game!)
     mainWireframe?.presentGameInterface(withGame: game!)
   }
   
@@ -65,6 +67,7 @@ class MainTableViewCell: UITableViewCell {
     mainVCInterface?.displayGameOptionsActionSheet(game: game!, title: "Would you like to delete this game?")
   }
 
+  
   //MARK: - PRIVATE FUNCTIONS
   
   private func animateCircleView(game: Game) {

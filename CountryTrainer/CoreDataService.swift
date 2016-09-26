@@ -41,6 +41,8 @@ extension CoreDataService {
         
         var countryArray = [Country]()
         
+        print("Fetching games")
+        
         for i in CDGames {
           
           countryArray.removeAll()
@@ -51,13 +53,10 @@ extension CoreDataService {
           
           for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
             
-            print((a as! CDCountriesForGame).country)
-            
             for i in _countries {
-              
+
               if i.name == (a as! CDCountriesForGame).country! {
                 countryArray.append(i)
-                print(countryArray)
                 
               }
             }
@@ -70,8 +69,6 @@ extension CoreDataService {
                           highestPercentage: Int(i.highestPercentage))
           
           _games.append(game)
-          
-          
         }
         
         return _games

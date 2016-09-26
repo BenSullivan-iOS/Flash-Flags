@@ -45,12 +45,11 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   }
   
   internal func retryGame(game: Game) {
-    
     mainVC?.populateGames(game: game)
   }
   
   internal func presentGameInterface(withGame game: Game) {
-    
+    //dismisses startNewGameVC
     mainVC?.dismiss(animated: true, completion: nil)
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }

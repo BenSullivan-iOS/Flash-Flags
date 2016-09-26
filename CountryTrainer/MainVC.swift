@@ -87,6 +87,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   
   internal func populateGames(game: Game) {
     mainInteractor?.populateGamesForMainVCTable(game: game)
+    
     tableView.reloadData()
   }
   
@@ -161,6 +162,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       
       cell.mainWireframe = mainWireframe
       cell.mainVCInterface = self
+      
+      print("cell for row game", games[indexPath.row])
+      
+      
       return cell
     }
     

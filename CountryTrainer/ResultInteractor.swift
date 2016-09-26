@@ -13,7 +13,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
   
   fileprivate var CDGames = [CDGame]()
   fileprivate var cdCountriesForGame = [CDCountriesForGame]()
-  fileprivate var _games = [Game]()
+//  fileprivate var _games = [Game]()
   fileprivate var _countries = [Country]()
   
   
@@ -21,30 +21,13 @@ class ResultInteractor: ResultInteractorInterface, DataService {
   
   internal func saveGameToCoreData(game: Game) {
     
+    print(game.highestPercentage)
     fetch(game: game)
+    
   }
   
   
   //MARK: - PRIVATE FUNCTIONS
-  
-  private func saveNewGame(game: Game) {
-    
-    let newGame = NSEntityDescription.insertNewObject(forEntityName: "CDGame", into: ad.managedObjectContext) as! CDGame
-    
-    newGame.attempts = Double(game.attempts)
-    newGame.highestPercentage = Double(game.highestPercentage)
-    newGame.dateLastCompleted = Date() as NSDate?
-    
-    for i in game.countries {
-      
-      let countries = NSEntityDescription.insertNewObject(forEntityName: "CDCountriesForGame", into: ad.managedObjectContext) as! CDCountriesForGame
-      
-      countries.cdgame = newGame
-      countries.country = i.name
-    }
-    
-    ad.saveContext()
-  }
 
   private func fetch(game: Game) {
     
@@ -72,41 +55,60 @@ class ResultInteractor: ResultInteractorInterface, DataService {
           return
         }
         
-        for i in CDGames {
-          
-          countryArray.removeAll()
-          
-          let arr = i.cdcountriesforgame?.allObjects
-          
-          for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
-            
-            for i in _countries {
-              
-              if i.name == (a as! CDCountriesForGame).country! {
-                countryArray.append(i)
-              }
-            }
-            
-          }
-          
-          let game = Game(countries: countryArray,
-                          attempts: Int(i.attempts),
-                          dateLastCompleted: i.dateLastCompleted as Date?,
-                          highestPercentage: Int(i.highestPercentage))
-          
-          _games.append(game)
-          
-        }
-        
         if !updateExistingGameIfExists(game: game) {
           saveNewGame(game: game)
         }
+        
+//        for i in CDGames {
+        
+//          countryArray.removeAll()
+//          
+//          let arr = i.cdcountriesforgame?.allObjects
+//          
+//          for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
+//            
+//            for i in _countries {
+//              
+//              if i.name == (a as! CDCountriesForGame).country! {
+//                countryArray.append(i)
+//              }
+//            }
+//            
+//          }
+          
+//          let game = Game(countries: countryArray,
+//                          attempts: Int(i.attempts),
+//                          dateLastCompleted: i.dateLastCompleted as Date?,
+//                          highestPercentage: Int(i.highestPercentage))
+//          
+//          _games.append(game)
+          
+//        }
         
       } catch {
         print(error)
         
       }
     }
+  }
+  
+  private func saveNewGame(game: Game) {
+    
+    let newGame = NSEntityDescription.insertNewObject(forEntityName: "CDGame", into: ad.managedObjectContext) as! CDGame
+    
+    newGame.attempts = Double(game.attempts)
+    newGame.highestPercentage = Double(game.highestPercentage)
+    newGame.dateLastCompleted = Date() as NSDate?
+    
+    for i in game.countries {
+      
+      let countries = NSEntityDescription.insertNewObject(forEntityName: "CDCountriesForGame", into: ad.managedObjectContext) as! CDCountriesForGame
+      
+      countries.cdgame = newGame
+      countries.country = i.name
+    }
+    
+    ad.saveContext()
   }
   
   private func updateExistingGameIfExists(game: Game) -> Bool {
