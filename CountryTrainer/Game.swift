@@ -21,13 +21,13 @@ extension Game {
 
 struct Game: GameType {
   
-  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?) {
+  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?) {
     self._countries = countries
     self.tracker = Tracker(countries: countries)
     self._attempts = attempts
     self._highestPercentage = highestPercentage ?? 0
     self._dateLastCompleted = dateLastCompleted ?? Date()
-    self._dateCreated = Date()
+    self._dateCreated = dateCreated ?? Date()
     setDelegate()
   }
   
@@ -39,7 +39,12 @@ struct Game: GameType {
   fileprivate var _dateLastCompleted: Date
   fileprivate var _attempts: Int
   fileprivate var _highestPercentage: Int
-  fileprivate var _dateCreated: Date
+  fileprivate var _dateCreated: Date {
+    didSet {
+      print("date created =", _dateCreated)
+      
+    }
+  }
   
   var tracker: Tracker 
   
@@ -61,6 +66,10 @@ struct Game: GameType {
   
   var highestPercentage: Int {
     return _highestPercentage
+  }
+  
+  var dateCreated: Date {
+    return _dateCreated
   }
   
   var progress: String {

@@ -55,7 +55,7 @@ class ResultVC: UIViewController {
     
     resultInteractor?.saveGameToCoreData(game: (gameInteractorInterface?.currentGame)!)
     
-    gameWireframe?.dismissResultVCToEndGame(game: gameInteractorInterface?.currentGame ?? Game(countries: [Country](), attempts: 0, dateLastCompleted: nil, highestPercentage: nil))
+    gameWireframe?.dismissResultVCToEndGame(game: (gameInteractorInterface?.currentGame)!)
   }
   
   @IBAction func retryButton(_ sender: ResultButton) {

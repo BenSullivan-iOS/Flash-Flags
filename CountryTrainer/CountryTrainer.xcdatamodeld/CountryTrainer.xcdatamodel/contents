@@ -10,7 +10,7 @@
     </entity>
     <entity name="CDGame" representedClassName=".CDGame" syncable="YES">
         <attribute name="attempts" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateLastCompleted" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="highestPercentage" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="cdcountriesforgame" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDCountriesForGame" inverseName="cdgame" inverseEntity="CDCountriesForGame" syncable="YES"/>

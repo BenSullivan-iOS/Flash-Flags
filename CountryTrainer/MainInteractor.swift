@@ -44,9 +44,6 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   }
   
   internal func getNewGameData(numberOfFlags: Int, continent: String?) {
-    //FIXME: - Needs refactoring
-    
-    clearCurrentGameData()
     
     //Filters out countires based on the continent provided
     var filteredCountries = _countries
@@ -59,41 +56,39 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
       }
     }
     
+    //Display alert if no flags to display
+    
     if filteredCountries.count == 0 {
-      startNewGameVCInterface?.displayAlert(title: "WOW!", message: "There are no more remaining flags in \(continent!)")
+      startNewGameVCInterface?.displayAlert(title: "WOW!", message: "There are no more remaining flags in \(continent ?? "the list")")
       return
     }
     
-    //Change number of flags if countries are filtered to below the selected amount
-    if countries.count < numberOfFlags {
-      numberOfFlagsSelected = countries.count
-    } else {
-      numberOfFlagsSelected = numberOfFlags
-    }
+    filteredCountries.shuffle()
     
-    //Set prevents duplicate flags being selected
-    var chosenNumbers = Set<Int>()
+    var filteredArray = [Country]()
     
-    
-    //Fills chosenNumbers with random numbers
-    while chosenNumbers.count < numberOfFlagsSelected {
+    for i in 0...numberOfFlags - 1 {
       
-      chosenNumbers.insert(Int(arc4random_uniform(UInt32(filteredCountries.count))))
-      print(numberOfFlagsSelected)
+      let isIndexAvailable = filteredCountries.indices.contains(i)
+      
+      if isIndexAvailable {
+        filteredArray.append(filteredCountries[i])
+      }
+      
     }
     
-    for i in chosenNumbers {
-      chosenOnes.append(filteredCountries[i])
-    }
-    
-    let game = Game(countries: chosenOnes, attempts: 0, dateLastCompleted: nil, highestPercentage: nil)
-    
+    let game = Game(countries: filteredArray,
+                    attempts: 0,
+                    dateLastCompleted: nil,
+                    highestPercentage: nil,
+                    dateCreated: Date())
+
     mainVCInterface?.prepareGameData(game: game)
-    
+
+
   }
-  
   internal func clearCurrentGameData() {
-    chosenOnes.removeAll()
+//    chosenOnes.removeAll()
   }
   
   internal func prepareContinentsForPicker() -> [String] {

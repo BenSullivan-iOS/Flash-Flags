@@ -41,10 +41,10 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
     
     return 2
   }
-  
+  //MARK: - PREFETCHING
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
     
-    gameInteractorInterface?.populateCurrentCoutntriesCache(indexPaths: indexPaths)
+    gameInteractorInterface?.populateCurrentCountriesCacheForPrefetching(indexPaths: indexPaths)
   }
 
   

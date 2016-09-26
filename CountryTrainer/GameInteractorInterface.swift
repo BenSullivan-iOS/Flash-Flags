@@ -11,7 +11,7 @@ protocol GameInteractorInterface {
   var currentGame: Game { get }
   var imageCache: NSCache<NSString, UIImage> { get }
   
-  func populateCurrentCoutntriesCache(indexPaths: [IndexPath])
+  func populateCurrentCountriesCacheForPrefetching(indexPaths: [IndexPath])
   func populateCache()
   func answered(country: String, result: Bool)
   func retryGame()

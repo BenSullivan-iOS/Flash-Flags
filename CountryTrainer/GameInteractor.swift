@@ -12,7 +12,7 @@ class GameInteractor: GameInteractorInterface, ImageResizeable {
   
   fileprivate var _currentGame: Game!
   fileprivate var _imageCache = NSCache<NSString, UIImage>()
-
+  
   internal var currentGame: Game {
     return _currentGame
   }
@@ -41,55 +41,54 @@ class GameInteractor: GameInteractorInterface, ImageResizeable {
       
       for i in self.currentGame.countries.indices {
         
-        let flag = self.currentGame.countries[i].flag as! NSString
+        let isIndexValid = self.currentGame.countries.indices.contains(i)
         
-        if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
+        if isIndexValid {
           
-          let imageStr = self.currentGame.countries[i].flagSmall
+          let flag = self.currentGame.countries[i].flag as! NSString
           
-          if let image = UIImage(named: imageStr) ?? UIImage(named: self.currentGame.countries[i].flag) {
+          if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
             
-            let smallImage = self.resizeImage(image: image, newWidth: 200)
-            self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+            let imageStr = self.currentGame.countries[i].flagSmall
+            
+            if let image = UIImage(named: imageStr) ?? UIImage(named: self.currentGame.countries[i].flag) {
+              
+              let smallImage = self.resizeImage(image: image, newWidth: 200)
+              self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+            }
           }
-          
         }
       }
     }
   }
   
-  internal func populateCurrentCoutntriesCache(indexPaths: [IndexPath]) {
+  internal func populateCurrentCountriesCacheForPrefetching(indexPaths: [IndexPath]) {
     
     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
       
-      
       for i in indexPaths {
         
-        let flag = self.currentGame.tracker.remainingCountries[i.row].flag as! NSString
+        let isIndexValid = self.currentGame.tracker.remainingCountries.indices.contains(i.row)
         
-        if self.imageCache.object(forKey: flag) == nil {
+        if isIndexValid {
           
-          let imageStr = self.currentGame.tracker.remainingCountries[i.row].flag
+          let flag = self.currentGame.tracker.remainingCountries[i.row].flag as! NSString
           
-          let image = UIImage(named: imageStr!)
-          let smallImage = self.resizeImage(image: image!, newWidth: 500)
-          
-          self.imageCache.setObject(smallImage, forKey: imageStr! as NSString)
-          
+          if self.imageCache.object(forKey: flag) == nil {
+            
+            let imageStr = self.currentGame.tracker.remainingCountries[i.row].flag
+            
+            let image = UIImage(named: imageStr!)
+            let smallImage = self.resizeImage(image: image!, newWidth: 500)
+            
+            self.imageCache.setObject(smallImage, forKey: imageStr! as NSString)
+          }
         }
       }
     }
   }
   
   internal func retryGame() {
-    
-//    let game = currentGame
-//    _currentGame = Game(countries: game.countries,
-//                        attempts: game.attempts,
-//                        dateLastCompleted: nil,
-//                        highestPercentage: nil)
-//    _currentGame.gameRetried()
-    
     _currentGame.gameCompleted()
   }
   

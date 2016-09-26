@@ -40,14 +40,10 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     if #available(iOS 10.0, *) {
       
       let request: NSFetchRequest<NSFetchRequestResult> = CDGame.fetchRequest()
-      let countriesRequest: NSFetchRequest<NSFetchRequestResult> = CDCountriesForGame.fetchRequest()
       
       do {
         
         self.CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
-        self.cdCountriesForGame = try ad.managedObjectContext.fetch(countriesRequest) as! [CDCountriesForGame]
-        
-        var countryArray = [Country]()
         
         if CDGames.isEmpty {
           saveNewGame(game: game)
@@ -58,6 +54,13 @@ class ResultInteractor: ResultInteractorInterface, DataService {
         if !updateExistingGameIfExists(game: game) {
           saveNewGame(game: game)
         }
+        
+        //      let countriesRequest: NSFetchRequest<NSFetchRequestResult> = CDCountriesForGame.fetchRequest()
+
+        //        self.cdCountriesForGame = try ad.managedObjectContext.fetch(countriesRequest) as! [CDCountriesForGame]
+
+        //        var countryArray = [Country]()
+
         
 //        for i in CDGames {
         
@@ -99,6 +102,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     newGame.attempts = Double(game.attempts)
     newGame.highestPercentage = Double(game.highestPercentage)
     newGame.dateLastCompleted = Date() as NSDate?
+    newGame.dateCreated = game.dateCreated as NSDate?
     
     for i in game.countries {
       
@@ -116,8 +120,9 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     var gameRequiredUpdate = false
     
     for i in CDGames {
+      print(i.dateCreated, game.dateCreated)
       
-      if i.dateLastCompleted == game.dateLastCompleted as NSDate {
+      if i.dateCreated == game.dateCreated as NSDate {
         
         gameRequiredUpdate = true
         

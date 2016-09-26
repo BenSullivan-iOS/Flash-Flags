@@ -66,7 +66,8 @@ extension CoreDataService {
           let game = Game(countries: countryArray,
                           attempts: Int(i.attempts),
                           dateLastCompleted: i.dateLastCompleted as Date?,
-                          highestPercentage: Int(i.highestPercentage))
+                          highestPercentage: Int(i.highestPercentage),
+                          dateCreated: i.dateCreated as Date?)
           
           _games.append(game)
         }
@@ -86,7 +87,7 @@ extension CoreDataService {
   }
   
   func deleteGameFromCoreData(game: Game) -> Bool {
-    
+    //FIXME: - Check this deletes
     guard let countryArray = createCountries() else { print("json error"); return false }
     
     let _countries = countryArray
@@ -131,7 +132,8 @@ extension CoreDataService {
           let game = Game(countries: countryArray,
                           attempts: Int(i.attempts),
                           dateLastCompleted: i.dateLastCompleted as Date?,
-                          highestPercentage: Int(i.highestPercentage))
+                          highestPercentage: Int(i.highestPercentage),
+                          dateCreated: i.dateCreated as Date?)
           
           _games.append(game)
           

@@ -62,9 +62,8 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
   }
   
   internal func saveToCoreData(remainingCountries: [Country]) {
-    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-      self.saveRemainingCountriesToCoreData(remainingCountries: remainingCountries)
-    }
+    self.saveRemainingCountriesToCoreData(remainingCountries: remainingCountries)
+    
   }
   
   internal func addFlag(country: Country) -> IndexPath? {
@@ -152,29 +151,34 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
           return
         }
         
-        let flag = self._countries[i].flag as! NSString
+        let isIndexValid = self._countries.indices.contains(i)
         
-        if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
+        if isIndexValid {
           
-          var image = UIImage()
-          var imageStr = String()
+          let flag = self._countries[i].flag as! NSString
           
-          if isRemainingCountry {
+          if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
             
-            imageStr = self._countries[i].flagSmall
+            var image = UIImage()
+            var imageStr = String()
             
-            image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i].flag)!
+            if isRemainingCountry {
+              
+              imageStr = self._countries[i].flagSmall
+              
+              image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i].flag)!
+              
+            } else {
+              
+              imageStr = self._countries[i].flagSmall
+              
+              image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i].flag)!
+            }
             
-          } else {
-            
-            imageStr = self._countries[i].flagSmall
-            
-            image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i].flag)!
+            let smallImage = self.resizeImage(image: image, newWidth: 200)
+            self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+            print(i)
           }
-          
-          let smallImage = self.resizeImage(image: image, newWidth: 200)
-          self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
-          print(i)
         }
       }
     }
@@ -186,29 +190,35 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
       
       for i in indexPaths {
         
-        let flag = self._countries[i.row].flag as! NSString
+        let isIndexValid = self._countries.indices.contains(i.row)
         
-        if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
+        if isIndexValid {
           
-          var image = UIImage()
-          var imageStr = String()
           
-          if isRemainingCountry {
+          let flag = self._countries[i.row].flag as! NSString
+          
+          if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
             
-            imageStr = self._countries[i.row].flagSmall
+            var image = UIImage()
+            var imageStr = String()
             
-            image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i.row].flag)!
+            if isRemainingCountry {
+              
+              imageStr = self._countries[i.row].flagSmall
+              
+              image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i.row].flag)!
+              
+            } else {
+              
+              imageStr = self._countries[i.row].flagSmall
+              
+              image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i.row].flag)!
+            }
             
-          } else {
-            
-            imageStr = self._countries[i.row].flagSmall
-            
-            image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i.row].flag)!
+            let smallImage = self.resizeImage(image: image, newWidth: 200)
+            self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
+            print(i)
           }
-          
-          let smallImage = self.resizeImage(image: image, newWidth: 200)
-          self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
-          print(i)
         }
       }
     }
