@@ -17,15 +17,12 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
   fileprivate var _remainingCountries = [Country]() {
     didSet {
       didUpdateCountries = true
-      print(_remainingCountries, "remaining countries")
     }
   }
   
   fileprivate var _memorisedCountries = [Country]() {
     didSet {
       didUpdateCountries = true
-      print(_memorisedCountries, "memorised countries")
-      
     }
   }
   
@@ -123,13 +120,9 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
           if countryArray[i].name == nameString {
             
             _countries.append(countryArray[i])
-            print(nameString)
-            
           }
         }
-        
       }
-      
     }
     
     setCountries(countryArray: countries)
@@ -177,7 +170,6 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
             
             let smallImage = self.resizeImage(image: image, newWidth: 200)
             self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
-            print(i)
           }
         }
       }
@@ -217,7 +209,6 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
             
             let smallImage = self.resizeImage(image: image, newWidth: 200)
             self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
-            print(i)
           }
         }
       }

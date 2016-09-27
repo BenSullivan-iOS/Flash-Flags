@@ -47,8 +47,6 @@ extension CoreDataService {
           
           countryArray.removeAll()
           
-          print(i.cdcountriesforgame)
-          
           let arr = i.cdcountriesforgame?.allObjects
           
           for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
@@ -110,19 +108,15 @@ extension CoreDataService {
           
           countryArray.removeAll()
           
-          print(i.cdcountriesforgame)
           
           let arr = i.cdcountriesforgame?.allObjects
           
           for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
             
-            print((a as! CDCountriesForGame).country)
-            
             for i in _countries {
               
               if i.name == (a as! CDCountriesForGame).country! {
                 countryArray.append(i)
-                print(countryArray)
                 
               }
             }

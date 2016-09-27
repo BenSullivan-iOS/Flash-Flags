@@ -28,6 +28,7 @@ struct Game: GameType {
     self._highestPercentage = highestPercentage ?? 0
     self._dateLastCompleted = dateLastCompleted ?? Date()
     self._dateCreated = dateCreated ?? Date()
+    setUid()
     setDelegate()
   }
   
@@ -39,12 +40,8 @@ struct Game: GameType {
   fileprivate var _dateLastCompleted: Date
   fileprivate var _attempts: Int
   fileprivate var _highestPercentage: Int
-  fileprivate var _dateCreated: Date {
-    didSet {
-      print("date created =", _dateCreated)
-      
-    }
-  }
+  fileprivate var _dateCreated: Date
+  fileprivate var _uid = NSString()
   
   var tracker: Tracker 
   
@@ -72,6 +69,10 @@ struct Game: GameType {
     return _dateCreated
   }
   
+  var uid: NSString {
+    return _uid
+  }
+  
   var progress: String {
     
     var score = 0
@@ -93,6 +94,12 @@ struct Game: GameType {
     }
     
     return Int(correct / totalFlags * 100)
+  }
+  
+  mutating func setUid() {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "M/d/yy, H:mm"
+    _uid = dateFormatter.string(from: _dateCreated) as NSString
   }
   
   mutating func gameRetried() {

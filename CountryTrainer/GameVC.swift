@@ -14,6 +14,8 @@ class GameVC: UIViewController, GameCellDelegate {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var progressView: UIProgressView!
   
+  @IBOutlet weak var backLeading: NSLayoutConstraint!
+  @IBOutlet weak var shuffleTrailing: NSLayoutConstraint!
   @IBOutlet weak var progressLeading: NSLayoutConstraint!
   @IBOutlet weak var progressTrailing: NSLayoutConstraint!
   
@@ -36,7 +38,7 @@ class GameVC: UIViewController, GameCellDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-//    setupProgressBar()
+    setupProgressBar()
     setupBackButton()
     
     tableView.estimatedRowHeight = 250
@@ -45,7 +47,7 @@ class GameVC: UIViewController, GameCellDelegate {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    showPickerView(delay: 0)
+    animateUIOnToScreen(delay: 0)
     gameInteractorInterface?.populateCache()
     
   }
@@ -71,7 +73,7 @@ class GameVC: UIViewController, GameCellDelegate {
     
     self.progressView.setProgress(0, animated: false)
     
-    showPickerView(delay: 0.5)
+    animateUIOnToScreen(delay: 0.5)
     
     tableView.reloadData()
   }
@@ -136,39 +138,50 @@ class GameVC: UIViewController, GameCellDelegate {
         scoreInt: percentInt,
         scoreString: percentageString)
       
-      UIView.animate(withDuration: 0.5, animations: {
-        
-        self.progressLeading.constant = self.view.frame.width / 2 + 10
-        self.progressTrailing.constant = self.view.frame.width / 2 + 10
-        
-        self.view.layoutIfNeeded()
-      })
+      animateUIOffScreen()
+      
     }
   }
+  private func animateUIOffScreen() {
+    
+    UIView.animate(withDuration: 0.5, animations: {
+      
+      self.progressLeading.constant = self.view.frame.width / 2 + 10
+      self.progressTrailing.constant = self.view.frame.width / 2 + 10
+      
+      self.backLeading.constant = -50
+      self.shuffleTrailing.constant = -50
+      
+      self.view.layoutIfNeeded()
+    })
+  }
   
-  private func showPickerView(delay: Double) {
+  private func animateUIOnToScreen(delay: Double) {
     
-    UIView.animate(withDuration: 1,
-                   delay: delay,
-                   usingSpringWithDamping: CGFloat(0.4),
-                   initialSpringVelocity: CGFloat(0.1),
-                   options: UIViewAnimationOptions.curveEaseInOut,
-                   animations: {
-                    
-                    self.progressLeading.constant = 50
-                    self.progressTrailing.constant = 50
-                    
-                    self.view.layoutIfNeeded()
-                    
-    }) { finished in
-      print("finished")
-    }
-    
+    UIView.animate(
+      withDuration: 1,
+      delay: delay,
+      usingSpringWithDamping: CGFloat(0.4),
+      initialSpringVelocity: CGFloat(0.1),
+      options: UIViewAnimationOptions.curveEaseInOut,
+      animations: {
+        
+        self.progressLeading.constant = 50
+        self.progressTrailing.constant = 50
+        self.backLeading.constant = 0
+        self.shuffleTrailing.constant = 15
+        
+        self.view.layoutIfNeeded()
+        
+    })
   }
   
   private func setupProgressBar() {
-    self.progressLeading.constant = self.view.frame.width / 2 + 10
-    self.progressTrailing.constant = self.view.frame.width / 2 + 10
+    
+    self.backLeading.constant = -50
+    self.shuffleTrailing.constant = -50
+//    self.progressLeading.constant = self.view.frame.width / 2 + 10
+//    self.progressTrailing.constant = self.view.frame.width / 2 + 10
   }
   
   private func setupBackButton() {

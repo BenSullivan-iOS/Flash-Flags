@@ -21,9 +21,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
   
   internal func saveGameToCoreData(game: Game) {
     
-    print(game.highestPercentage)
     fetch(game: game)
-    
   }
   
   
@@ -120,7 +118,6 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     var gameRequiredUpdate = false
     
     for i in CDGames {
-      print(i.dateCreated, game.dateCreated)
       
       if i.dateCreated == game.dateCreated as NSDate {
         

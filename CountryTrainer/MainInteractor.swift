@@ -165,9 +165,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
           
           if countryArray[i].name == nameString {
             
-            _countries.append(countryArray[i])
-            print(nameString)
-            
+            _countries.append(countryArray[i])            
           }
         }
         
@@ -184,7 +182,6 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
           if countryArray[i].name == nameString {
             
             _countries.append(countryArray[i])
-            print(nameString)
           }
         }
         

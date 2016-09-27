@@ -21,7 +21,7 @@ class MainTableViewCell: UITableViewCell {
   weak internal var mainWireframe: MainWireframe?
   weak internal var mainVCInterface: MainVCInterface?
   
-  fileprivate var circleView: CircleView!
+  fileprivate var circleView: CircleView?
   fileprivate var game: Game?
   
   
@@ -31,21 +31,28 @@ class MainTableViewCell: UITableViewCell {
     super.awakeFromNib()
     
     addButtonGestureRecogniser()
-    addCircleView()
+//    addCircleView()
   }
   
   
   //MARK: - OUTLET FUNCTIONS
   
   @IBAction func retryButtonPressed(_ sender: UIButton) {
-    print("game =", game!)
     mainWireframe?.presentGameInterface(withGame: game!)
   }
   
   
   //MARK: - INTERFACE FUNCTIONS
   
-  internal func configureCell(game: Game) {
+  internal func configureCell(game: Game, circleView: CircleView) {
+    
+    self.circleView = circleView
+    
+    self.addSubview(self.circleView!)
+
+    
+//    circleView.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
+//    circleView.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
     
     self.game = game
     
@@ -58,7 +65,6 @@ class MainTableViewCell: UITableViewCell {
       
       self.daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
     }
-    
     animateCircleView(game: game)
   }
   
@@ -72,10 +78,10 @@ class MainTableViewCell: UITableViewCell {
   
   private func animateCircleView(game: Game) {
     
-    self.circleView.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
-    self.circleView.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
+    self.circleView?.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
+    self.circleView?.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
   }
-
+  
   private func addButtonGestureRecogniser() {
     
     let gesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressDetected))
@@ -84,9 +90,9 @@ class MainTableViewCell: UITableViewCell {
   
   private func addCircleView() {
     
-    circleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
-
-    self.addSubview(self.circleView)
+//    circleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
+    
+//    self.addSubview(self.circleView)
     
   }
 }

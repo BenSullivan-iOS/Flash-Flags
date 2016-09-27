@@ -70,8 +70,6 @@ struct Tracker: GameTracker {
       
       _ = removeRemainingCell(country: country)
       
-      print(remainingCells)
-      
     }
     
     for a in remainingCountries.indices where remainingCountries[a].name == country {

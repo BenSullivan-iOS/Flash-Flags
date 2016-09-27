@@ -80,9 +80,7 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
     tapBGGesture.delegate = self
     tapBGGesture.numberOfTapsRequired = 1
     tapBGGesture.cancelsTouchesInView = false
-    
-    print(tapBGGesture)
-    
+        
     ad.window?.addGestureRecognizer(tapBGGesture)
   }
   

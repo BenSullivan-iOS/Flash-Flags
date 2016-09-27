@@ -17,6 +17,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   internal var mainInteractor: MainInteractorInterface?
   internal var mainWireframe: MainWireframe?
   
+  fileprivate var circleViewCache = NSCache<NSString, CircleView>()
+
   fileprivate var games: [Game] {
     return mainInteractor?.games ?? [Game]()
   }
@@ -29,16 +31,13 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     MenuItems.quickStart.rawValue
   ]
   
-  override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .lightContent
-  }
   
   //MARK: - VC LIFECYCLE
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     //FIXME: - SET STATUS BAR TO LIGHT CONTENT
-    self.navigationController?.navigationBar.barStyle = UIBarStyle.black
     self.navigationController?.isNavigationBarHidden = true
     
     configureTablePath()
@@ -96,9 +95,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   
   private func configureTablePath() {
     UIView.BezierPoints.p1 = CGPoint(x: 148, y: 0)
-    UIView.BezierPoints.p2 = CGPoint(x: 11, y: 209)
-    UIView.BezierPoints.p3 = CGPoint(x: 18, y: 308)
-    UIView.BezierPoints.p4 = CGPoint(x: 163, y: 568)
+    UIView.BezierPoints.p2 = CGPoint(x: -52, y: 233)
+    UIView.BezierPoints.p3 = CGPoint(x: 25, y: 308)
+    UIView.BezierPoints.p4 = CGPoint(x: 200, y: 568)
   }
 
   private func setInitialTableRow() {
@@ -158,13 +157,22 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       
       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MainTableViewCell
       
-      cell.configureCell(game: games[indexPath.row])
+      if let circle = circleViewCache.object(forKey: games[indexPath.row].uid) {
+
+        cell.configureCell(game: games[indexPath.row], circleView: circle)
+
+      } else {
+        
+       let circle = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
+
+        circleViewCache.setObject(circle, forKey: games[indexPath.row].uid)
+        
+        cell.configureCell(game: games[indexPath.row], circleView: circle)
+
+      }
       
       cell.mainWireframe = mainWireframe
       cell.mainVCInterface = self
-      
-      print("cell for row game", games[indexPath.row])
-      
       
       return cell
     }
@@ -173,5 +181,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     
     return cell
     
+  }
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 }
