@@ -47,12 +47,7 @@ class MainTableViewCell: UITableViewCell {
   internal func configureCell(game: Game, circleView: CircleView) {
     
     self.circleView = circleView
-    
     self.addSubview(self.circleView!)
-
-    
-//    circleView.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
-//    circleView.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
     
     self.game = game
     
