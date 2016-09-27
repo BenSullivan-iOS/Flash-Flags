@@ -133,7 +133,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
       print("Delete success")
       
       for i in _games.indices {
-        if _games[i].dateLastCompleted == game.dateLastCompleted {
+        if _games[i].dateCreated == game.dateCreated {
           _games.remove(at: i)
           mainVCInterface?.reloadTableData()
           break
