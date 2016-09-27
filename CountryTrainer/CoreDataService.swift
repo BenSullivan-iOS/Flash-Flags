@@ -85,12 +85,8 @@ extension CoreDataService {
   }
   
   func deleteGameFromCoreData(game: Game) -> Bool {
-    //FIXME: - Check this deletes
-    guard let countryArray = createCountries() else { print("json error"); return false }
     
-    let _countries = countryArray
     var CDGames = [CDGame]()
-    var _games = [Game]()
     
     ad.saveContext()
     
@@ -102,41 +98,9 @@ extension CoreDataService {
         
         CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
         
-        var countryArray = [Country]()
-        
         for i in CDGames {
           
-          countryArray.removeAll()
-          
-          
-          let arr = i.cdcountriesforgame?.allObjects
-          
-          for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
-            
-            for i in _countries {
-              
-              if i.name == (a as! CDCountriesForGame).country! {
-                countryArray.append(i)
-                
-              }
-            }
-            
-          }
-          
-          let game = Game(countries: countryArray,
-                          attempts: Int(i.attempts),
-                          dateLastCompleted: i.dateLastCompleted as Date?,
-                          highestPercentage: Int(i.highestPercentage),
-                          dateCreated: i.dateCreated as Date?)
-          
-          _games.append(game)
-          
-          
-        }
-        
-        for i in CDGames {
-          
-          if i.dateLastCompleted == game.dateLastCompleted as NSDate {
+          if i.dateCreated == game.dateCreated as NSDate {
             
             ad.managedObjectContext.delete(i)
             
@@ -150,8 +114,6 @@ extension CoreDataService {
         
         print(error)
         return false
-        
-        
       }
     }
     return false
