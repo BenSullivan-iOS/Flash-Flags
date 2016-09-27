@@ -23,13 +23,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     return mainInteractor?.games ?? [Game]()
   }
   
-  fileprivate var menuTitles = [
-    MenuItems.about.rawValue,
-    MenuItems.tutorial.rawValue,
-    MenuItems.filterFlags.rawValue,
-    MenuItems.startNewGame.rawValue,
-    MenuItems.quickStart.rawValue
-  ]
+  fileprivate var menuTitles = MenuItems.all
   
   
   //MARK: - VC LIFECYCLE
@@ -37,7 +31,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    //FIXME: - SET STATUS BAR TO LIGHT CONTENT
     self.navigationController?.isNavigationBarHidden = true
     
     configureTablePath()

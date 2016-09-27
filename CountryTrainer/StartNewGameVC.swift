@@ -18,10 +18,10 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
   fileprivate var tapBGGesture: UITapGestureRecognizer!
   
   //Default settings
-  internal var selectedContinent = Continent.All.rawValue
+  internal var selectedContinent = Continent.all.rawValue
   internal var selectedNumOfFlags = 5
   
-  internal var continents = ["Select Continent", Continent.All.rawValue]
+  internal var continents = ["Select Continent", Continent.all.rawValue]
   internal var numberOfFlags = [Int]()
   
   internal var mainInteractor: MainInteractorInterface?

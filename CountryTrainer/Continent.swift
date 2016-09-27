@@ -8,18 +8,17 @@
 
 enum Continent: String {
   
-  case Oceania = "Oceania"
-  case Africa = "Africa"
-  case Asia = "Asia"
-  case Americas = "Americas"
-  case Europe = "Europe"
-  case All = "All"
+  case oceania = "Oceania"
+  case africa = "Africa"
+  case asia = "Asia"
+  case americas = "Americas"
+  case europe = "Europe"
+  case all = "All"
   
-  static let all = [
-    "Oceania",
-    "Africa",
-    "Asia",
-    "Americas",
-    "Europe"]
-  
+  static let allContinents = [
+    oceania.rawValue,
+    africa.rawValue,
+    asia.rawValue,
+    americas.rawValue,
+    europe.rawValue]
 }

@@ -12,5 +12,12 @@ enum MenuItems: String {
   case startNewGame = "START NEW GAME"
   case filterFlags = "FILTER FLAGS"
   case tutorial = "TUTORIAL"
-  case about = "ABOUT"
+//  case about = "ABOUT"
+  
+  static let all = [
+    quickStart.rawValue,
+    startNewGame.rawValue,
+    filterFlags.rawValue,
+    tutorial.rawValue
+  ]
 }

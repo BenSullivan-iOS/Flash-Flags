@@ -93,7 +93,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   
   internal func prepareContinentsForPicker() -> [String] {
     
-    var continents = Continent.all
+    var continents = Continent.allContinents
     continents.sort()
     
     return continents

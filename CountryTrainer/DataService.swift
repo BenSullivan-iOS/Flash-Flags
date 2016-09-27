@@ -38,27 +38,27 @@ extension DataService {
           
             if let currencyStr = currencyObj.firstObject as? String {
               
-              var continent = Continent.All
+              var continent = Continent.all
               
               switch cont {
                 
-              case Continent.Oceania.rawValue:
-                continent = Continent.Oceania
+              case Continent.oceania.rawValue:
+                continent = Continent.oceania
                 
-              case Continent.Africa.rawValue:
-                continent = Continent.Africa
+              case Continent.africa.rawValue:
+                continent = Continent.africa
 
-              case Continent.Americas.rawValue:
-                continent = Continent.Americas
+              case Continent.americas.rawValue:
+                continent = Continent.americas
 
-              case Continent.Asia.rawValue:
-                continent = Continent.Asia
+              case Continent.asia.rawValue:
+                continent = Continent.asia
 
-              case Continent.Europe.rawValue:
-                continent = Continent.Europe
+              case Continent.europe.rawValue:
+                continent = Continent.europe
 
-              case Continent.All.rawValue:
-                continent = Continent.All
+              case Continent.all.rawValue:
+                continent = Continent.all
                 
               default: break
 
