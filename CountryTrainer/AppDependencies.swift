@@ -25,12 +25,14 @@ class AppDependencies {
     
     let rootWireframe = RootWireframe()
     let gameWireframe = GameWireframe()
+    let howToPlayWireframe = HowToPlayWireframe()
     let filterFlagsWireframe = FilterFlagsWireframe()
     
     filterFlagsWireframe.mainWireframe = mainWireframe
     
     mainWireframe.rootWireframe = rootWireframe
     mainWireframe.gameWireframe = gameWireframe
+    mainWireframe.howToPlayWireframe = howToPlayWireframe
     mainWireframe.filterFlagsWireframe = filterFlagsWireframe
     
     gameWireframe.mainWireframe = mainWireframe
