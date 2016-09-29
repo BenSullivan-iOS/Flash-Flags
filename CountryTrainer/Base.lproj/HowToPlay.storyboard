@@ -33,35 +33,27 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iRX-7W-DpV">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="iD8-X0-NIM" userLabel="Filter">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9gK-CD-8UQ" userLabel="Filter">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Flags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haL-aD-G1v">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Flags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MW6-om-uv8">
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="37" id="iqf-lT-Cvi"/>
+                                                            <constraint firstAttribute="height" constant="37" id="84t-iK-hSQ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
                                                         <color key="textColor" red="0.0" green="0.38823529410000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="orR-qE-s05">
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8Y6-ZY-DK1">
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apt-ky-bbR">
-                                                                        <string key="text">First of all, let’s filter out all of the countries you already know. Tap on Filter Flags and start pressing the red button on all of the flags you’re familiar with. From then on, any new game will only present flags you don’t know!
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyL-Jb-Qgz">
+                                                        <string key="text">First of all, let’s filter out all of the countries you already know. Tap on Filter Flags and start pressing the red button on all of the flags you’re familiar with. From then on, any new game will only present flags you don’t know!
 
 You can add any filtered flags back into the mix by using the toggle at the top of the Filter Flags screen.</string>
-                                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
-                                                    </stackView>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="B9o-TH-OH8" userLabel="Quick Start">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="B9o-TH-OH8" userLabel="Quick Start">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjo-S9-YXf">
                                                         <constraints>
@@ -82,7 +74,7 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Ape-pq-JEF" userLabel="Start Game">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ape-pq-JEF" userLabel="Start Game">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Cr-IW-ZbY">
                                                         <constraints>
@@ -103,7 +95,7 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Sjy-L8-ISr" userLabel="Progressing">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Sjy-L8-ISr" userLabel="During">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="During The Game" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naz-Ce-WlK">
                                                         <constraints>
@@ -125,26 +117,22 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Tpl-mo-jQi" userLabel="During">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QNb-v9-IRP">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progressing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lL-5i-7IS">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progressing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXo-c5-rUG">
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="37" id="dNo-eF-Scq"/>
+                                                            <constraint firstAttribute="height" constant="37" id="jWi-2P-lap"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
                                                         <color key="textColor" red="0.0" green="0.38823529410000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="77R-HJ-3uV">
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhE-kR-wQc">
-                                                                <string key="text">At the end of every game you will be given your score, tap Retry and try to improve your score...keep going until you get to 100%! The game will be saved for you to retry at a later date, once you’ve memorised all of those flags you can delete the game by pressing and holding on it, filter the flags and get to work on the next ones!</string>
-                                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0m-Db-CQo">
+                                                        <string key="text">At the end of every game you will be given your score, tap Retry and try to improve your score...keep going until you get to 100%! The game will be saved for you to retry at a later date, once you’ve memorised all of those flags you can delete the game by pressing and holding on it, filter the flags and get to work on the next ones!</string>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -217,6 +205,24 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbR-Dh-mdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4404" y="73.763118440779621"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Gma-y6-vKj">
+            <objects>
+                <viewController id="1pf-2s-1OU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mKV-Us-p8i"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ylg-Qe-8xa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yjm-L9-jQb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pud-EY-ZnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5284" y="-10.344827586206897"/>
         </scene>
     </scenes>
 </document>
