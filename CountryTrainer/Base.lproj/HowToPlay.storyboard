@@ -31,8 +31,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6E-gl-CbW">
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iRX-7W-DpV">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iRX-7W-DpV">
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="iD8-X0-NIM" userLabel="Filter">
                                                 <subviews>
@@ -157,15 +156,15 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="iRX-7W-DpV" secondAttribute="bottom" id="G7m-M1-fR2"/>
-                                    <constraint firstItem="iRX-7W-DpV" firstAttribute="width" secondItem="V6E-gl-CbW" secondAttribute="width" id="Jti-Hj-5cM"/>
-                                    <constraint firstItem="iRX-7W-DpV" firstAttribute="leading" secondItem="V6E-gl-CbW" secondAttribute="leading" id="QF2-sd-KfA"/>
-                                    <constraint firstAttribute="trailing" secondItem="iRX-7W-DpV" secondAttribute="trailing" id="jF9-xW-BIz"/>
+                                    <constraint firstItem="iRX-7W-DpV" firstAttribute="width" secondItem="V6E-gl-CbW" secondAttribute="width" constant="-16" id="Jti-Hj-5cM"/>
+                                    <constraint firstItem="iRX-7W-DpV" firstAttribute="leading" secondItem="V6E-gl-CbW" secondAttribute="leading" constant="8" id="QF2-sd-KfA"/>
+                                    <constraint firstAttribute="trailing" secondItem="iRX-7W-DpV" secondAttribute="trailing" constant="-8" id="jF9-xW-BIz"/>
                                     <constraint firstItem="iRX-7W-DpV" firstAttribute="top" secondItem="V6E-gl-CbW" secondAttribute="top" id="m2g-0O-pMv"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsH-0u-x5c" userLabel="HeaderView">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXD-bH-HCe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXD-bH-HCe">
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="134" id="Bry-AS-muA"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="W15-pr-yDh"/>
@@ -184,17 +183,32 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                                     <constraint firstItem="NXD-bH-HCe" firstAttribute="centerY" secondItem="FsH-0u-x5c" secondAttribute="centerY" id="l3a-P9-7VE"/>
                                     <constraint firstAttribute="height" constant="44" id="yeo-BJ-Z4Y"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhx-oj-8GV">
+                                <color key="backgroundColor" red="0.0" green="0.38823529410000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="0Fz-la-isU"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FsH-0u-x5c" secondAttribute="trailing" id="0i6-J3-eam"/>
+                            <constraint firstAttribute="trailing" secondItem="hhx-oj-8GV" secondAttribute="trailing" id="4bg-KU-H4W"/>
                             <constraint firstAttribute="trailing" secondItem="V6E-gl-CbW" secondAttribute="trailing" id="6M5-oA-THh"/>
                             <constraint firstItem="6Lm-d4-0tY" firstAttribute="top" secondItem="V6E-gl-CbW" secondAttribute="bottom" id="LnA-wJ-Jw1"/>
+                            <constraint firstItem="hhx-oj-8GV" firstAttribute="leading" secondItem="bih-fk-6kR" secondAttribute="leading" id="OIc-FN-uZe"/>
                             <constraint firstItem="V6E-gl-CbW" firstAttribute="leading" secondItem="bih-fk-6kR" secondAttribute="leading" id="bda-6w-NEU"/>
                             <constraint firstItem="FsH-0u-x5c" firstAttribute="top" secondItem="bih-fk-6kR" secondAttribute="top" id="ca7-aT-2lO"/>
+                            <constraint firstItem="hhx-oj-8GV" firstAttribute="leading" secondItem="FsH-0u-x5c" secondAttribute="trailing" constant="-375" id="jVC-ol-cNU"/>
                             <constraint firstItem="FsH-0u-x5c" firstAttribute="leading" secondItem="bih-fk-6kR" secondAttribute="leading" id="l9T-fH-gRR"/>
                             <constraint firstItem="V6E-gl-CbW" firstAttribute="top" secondItem="bih-fk-6kR" secondAttribute="top" constant="44" id="oaS-Ll-vzs"/>
+                            <constraint firstItem="hhx-oj-8GV" firstAttribute="top" secondItem="FsH-0u-x5c" secondAttribute="bottom" constant="-9" id="vUA-Il-HMa"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
