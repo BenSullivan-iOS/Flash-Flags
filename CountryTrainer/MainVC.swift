@@ -105,7 +105,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
 
     if games.count > 3 {
       
-      indexPath = IndexPath(row: 3, section: 1)
+      indexPath = IndexPath(row: 1, section: 0)
 
     } else {
       

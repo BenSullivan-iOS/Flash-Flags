@@ -267,7 +267,7 @@
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="Lwm-PK-tV4"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvV-Qs-eHB">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USA" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvV-Qs-eHB">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="Fg6-Ff-IyY"/>
                                                             </constraints>
@@ -497,12 +497,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="216" height="279"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 75%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRo-5b-0vl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRo-5b-0vl">
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="51"/>
                                 <color key="textColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="s1V-7n-NeC">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="s1V-7n-NeC">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfI-Le-Ici" customClass="ResultButton" customModule="Flash_Flags" customModuleProvider="target">
                                         <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
@@ -525,23 +525,47 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="UYn-00-hDT"/>
+                                </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100/100" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="g3U-vi-69h">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="219" id="IPf-Wq-n5X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="51"/>
+                                <color key="textColor" red="0.0" green="0.38823529410000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBL-bT-m1d">
+                                <connections>
+                                    <action selector="toggleUIButtonPressed:" destination="PmV-J9-vhH" eventType="touchUpInside" id="EdU-cJ-Ecu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="g3U-vi-69h" secondAttribute="trailing" constant="40" id="CV5-u3-Bmn"/>
                             <constraint firstItem="s1V-7n-NeC" firstAttribute="centerX" secondItem="2xN-O7-bg4" secondAttribute="centerX" id="JgT-6R-ASY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="s1V-7n-NeC" secondAttribute="trailing" id="NIM-mU-zNu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="s1V-7n-NeC" secondAttribute="trailing" constant="-8" id="NIM-mU-zNu"/>
                             <constraint firstItem="wnL-YP-iA1" firstAttribute="top" secondItem="XRo-5b-0vl" secondAttribute="bottom" constant="60" id="QHr-zi-zMH"/>
-                            <constraint firstItem="wnL-YP-iA1" firstAttribute="top" secondItem="s1V-7n-NeC" secondAttribute="bottom" constant="13" id="ViC-3H-3mh"/>
-                            <constraint firstItem="s1V-7n-NeC" firstAttribute="leading" secondItem="2xN-O7-bg4" secondAttribute="leadingMargin" id="Xaz-wJ-7zY"/>
+                            <constraint firstItem="wnL-YP-iA1" firstAttribute="top" secondItem="s1V-7n-NeC" secondAttribute="bottom" constant="8" id="ViC-3H-3mh"/>
+                            <constraint firstItem="s1V-7n-NeC" firstAttribute="leading" secondItem="2xN-O7-bg4" secondAttribute="leadingMargin" constant="-8" id="Xaz-wJ-7zY"/>
+                            <constraint firstItem="OBL-bT-m1d" firstAttribute="height" secondItem="XRo-5b-0vl" secondAttribute="height" id="bGh-tX-liX"/>
                             <constraint firstItem="XRo-5b-0vl" firstAttribute="top" secondItem="2xN-O7-bg4" secondAttribute="top" id="bYY-q2-oMq"/>
+                            <constraint firstItem="OBL-bT-m1d" firstAttribute="centerY" secondItem="2xN-O7-bg4" secondAttribute="centerY" constant="-30" id="cPF-hT-pYn"/>
                             <constraint firstAttribute="trailing" secondItem="XRo-5b-0vl" secondAttribute="trailing" constant="3" id="d14-h5-vW6"/>
+                            <constraint firstItem="OBL-bT-m1d" firstAttribute="centerX" secondItem="2xN-O7-bg4" secondAttribute="centerX" id="dCp-IG-m2Q"/>
+                            <constraint firstItem="OBL-bT-m1d" firstAttribute="width" secondItem="XRo-5b-0vl" secondAttribute="width" id="jXH-wt-zLl"/>
+                            <constraint firstItem="g3U-vi-69h" firstAttribute="top" secondItem="2xN-O7-bg4" secondAttribute="top" id="oXD-eI-1Fd"/>
+                            <constraint firstItem="g3U-vi-69h" firstAttribute="leading" secondItem="2xN-O7-bg4" secondAttribute="leading" constant="40" id="t3F-mS-yTt"/>
                             <constraint firstItem="XRo-5b-0vl" firstAttribute="leading" secondItem="2xN-O7-bg4" secondAttribute="leading" constant="-3" id="yM5-vC-f29"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="216" height="279"/>
                     <connections>
+                        <outlet property="fractionLabel" destination="g3U-vi-69h" id="FKC-5G-8BK"/>
                         <outlet property="menuButton" destination="TE7-Rl-cpW" id="tiI-pf-Qb5"/>
                         <outlet property="percentageLabel" destination="XRo-5b-0vl" id="Tw2-2G-nvd"/>
                         <outlet property="retryButton" destination="TfI-Le-Ici" id="LEo-kt-VhF"/>
@@ -549,7 +573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYM-6s-vy7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2293" y="-56"/>
+            <point key="canvasLocation" x="2292.8000000000002" y="-56.221889055472268"/>
         </scene>
         <!--Filter FlagsVC-->
         <scene sceneID="Zgg-4r-W5j">

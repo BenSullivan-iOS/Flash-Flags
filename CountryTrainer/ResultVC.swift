@@ -14,13 +14,15 @@ class ResultVC: UIViewController {
   @IBOutlet weak var menuButton: ResultButton!
   @IBOutlet weak var retryButton: ResultButton!
   @IBOutlet weak var percentageLabel: UILabel!
+  @IBOutlet weak var fractionLabel: UILabel!
 
-  var gameInteractorInterface: GameInteractorInterface?
-  var resultInteractor: ResultInteractor?
-  var gameWireframe: GameWireframe?
-  var gameScoreString = String()
-  var gameScoreInt = Int()
-  var circleView: CircleView!
+  internal var gameInteractorInterface: GameInteractorInterface?
+  internal var resultInteractor: ResultInteractor?
+  internal var gameWireframe: GameWireframe?
+  internal var gameScoreString = String()
+  internal var gameScoreInt = Int()
+  
+  private var circleView: CircleView!
   
   
   //MARK: - VC LIFECYCLE
@@ -33,6 +35,8 @@ class ResultVC: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     
+    print(gameScoreString, gameScoreInt)
+    
     animateCircle()
     
     Timer.scheduledTimer(timeInterval: 0.4,
@@ -41,11 +45,12 @@ class ResultVC: UIViewController {
                          userInfo: nil,
                          repeats: false)
     
-    self.percentageLabel.alpha = 1
-    
     let velocity = NSValue(cgSize: CGSize(width: 5.0, height: 5.0))
     
     AnimationEngine.popView(view: percentageLabel, velocity: velocity)
+    
+    animateScore()
+
   }
   
   
@@ -92,11 +97,45 @@ class ResultVC: UIViewController {
   
   //MARK: - PRIVATE FUNCTIONS
   
+  @IBAction func toggleUIButtonPressed(_ sender: UIButton) {
+    
+    UIView.animate(withDuration: 0.2) {
+      self.fractionLabel.alpha = self.fractionLabel.alpha == 0 ? 1 : 0
+      self.percentageLabel.alpha = self.percentageLabel.alpha == 0 ? 1 : 0
+    }
+  }
+  
+  private func animateScore() {
+    
+    UIView.animate(withDuration: 0.5, animations: {
+      
+      self.fractionLabel.alpha = 1
+      
+      }) { finished in
+        
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+          
+          self.fractionLabel.alpha = 0
+
+          }, completion: { done in
+            
+            UIView.animate(withDuration: 0.5, animations: {
+              
+              self.percentageLabel.alpha = 1
+              
+            })
+        })
+    }
+  }
+  
   private func configureView() {
     
-    percentageLabel.text = gameScoreString
+    fractionLabel.alpha = 0
+    fractionLabel.text = gameInteractorInterface?.currentGame.resultFraction
     
+    percentageLabel.text = gameScoreString
     percentageLabel.alpha = 0
+    
     view.layer.cornerRadius = 8.0
     
     menuButton.alpha = 0
@@ -134,6 +173,8 @@ class ResultVC: UIViewController {
     self.circleView.center = CGPoint(x: screenCenterWidth, y: screenCenterHeight)
     
     self.view!.addSubview(self.circleView)
+    self.view!.sendSubview(toBack: circleView)
+//    self.circleView!.sendSubview(toBack: view!)
   }
   
   private func dismiss(sender: AnyObject) {

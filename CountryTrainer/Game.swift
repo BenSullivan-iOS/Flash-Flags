@@ -42,6 +42,7 @@ struct Game: GameType {
   fileprivate var _highestPercentage: Int
   fileprivate var _dateCreated: Date
   fileprivate var _uid = NSString()
+  fileprivate var _resultFraction: String!
   
   var tracker: Tracker 
   
@@ -96,6 +97,10 @@ struct Game: GameType {
     return Int(correct / totalFlags * 100)
   }
   
+  var resultFraction: String {
+    return _resultFraction
+  }
+  
   mutating func setUid() {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "M/d/yy, H:mm"
@@ -107,7 +112,16 @@ struct Game: GameType {
   }
   
   mutating func gameCompleted() {
-
+    
+    var correct = 0
+    let totalFlags = _countries.count
+    
+    for i in self.tracker.answers where i.value == true {
+      correct += 1
+    }
+    
+    _resultFraction = "\(correct)/\(totalFlags)"
+    
     _attempts += 1
     _dateLastCompleted = Date()
     
