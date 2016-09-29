@@ -37,6 +37,9 @@ class MenuTableViewCell: UITableViewCell {
       
     case MenuItems.filterFlags.rawValue:
       menuTableViewCellDelegate?.presentFilterFlags()
+      
+    case MenuItems.howToPlay.rawValue:
+      menuTableViewCellDelegate?.presentHowToPlay()
     default: break
     }
   }

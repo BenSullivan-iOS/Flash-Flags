@@ -8,4 +8,5 @@
 
 protocol MenuTableViewCellDelegate: class {
   func presentFilterFlags()
+  func presentHowToPlay()
 }

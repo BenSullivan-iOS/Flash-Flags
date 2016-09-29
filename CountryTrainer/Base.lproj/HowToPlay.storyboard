@@ -6,6 +6,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Lato-Black.ttf">
+            <string>Lato-Black</string>
+        </array>
         <array key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
         </array>
@@ -53,19 +56,19 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="B9o-TH-OH8" userLabel="Quick Start">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tlh-IR-tkq" userLabel="Quick Start">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjo-S9-YXf">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSb-vx-LhU">
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="37" id="2Zl-zO-F9i"/>
+                                                            <constraint firstAttribute="height" constant="37" id="kb5-tO-xLp"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
                                                         <color key="textColor" red="0.0" green="0.38823529410000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="xau-bp-4Ca">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="2bQ-Be-sXP">
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Quick Start will instantly start a new game with five random flags from any continent." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLb-KD-zux">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Quick Start will instantly start a new game with five random flags from any continent." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwV-U6-8wF">
                                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -152,7 +155,7 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsH-0u-x5c" userLabel="HeaderView">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXD-bH-HCe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXD-bH-HCe">
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="134" id="Bry-AS-muA"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="W15-pr-yDh"/>
@@ -163,9 +166,24 @@ You can add any filtered flags back into the mix by using the toggle at the top 
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQt-0m-zAV">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="AOU-X2-6uP"/>
+                                            <constraint firstAttribute="height" constant="44" id="sn4-K6-A5s"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="12"/>
+                                        <state key="normal" title="DONE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="wqm-MY-VlL" eventType="touchUpInside" id="Rlo-tq-3lZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.38823529410000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QQt-0m-zAV" secondAttribute="trailing" id="CVD-To-4ra"/>
+                                    <constraint firstItem="QQt-0m-zAV" firstAttribute="top" secondItem="FsH-0u-x5c" secondAttribute="top" id="DoL-cF-hsT"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="N0O-jZ-f7t"/>
                                     <constraint firstItem="NXD-bH-HCe" firstAttribute="centerX" secondItem="FsH-0u-x5c" secondAttribute="centerX" id="dYH-YL-xkB"/>
                                     <constraint firstItem="NXD-bH-HCe" firstAttribute="centerY" secondItem="FsH-0u-x5c" secondAttribute="centerY" id="l3a-P9-7VE"/>

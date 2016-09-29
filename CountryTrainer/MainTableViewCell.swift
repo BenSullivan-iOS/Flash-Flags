@@ -31,7 +31,7 @@ class MainTableViewCell: UITableViewCell {
     super.awakeFromNib()
     
     addButtonGestureRecogniser()
-//    addCircleView()
+    addCircleView()
   }
   
   
@@ -45,9 +45,6 @@ class MainTableViewCell: UITableViewCell {
   //MARK: - INTERFACE FUNCTIONS
   
   internal func configureCell(game: Game, circleView: CircleView) {
-    
-    self.circleView = circleView
-    self.addSubview(self.circleView!)
     
     self.game = game
     
@@ -85,9 +82,7 @@ class MainTableViewCell: UITableViewCell {
   
   private func addCircleView() {
     
-//    circleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
-    
-//    self.addSubview(self.circleView)
-    
+    circleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
+    self.addSubview(self.circleView!)
   }
 }

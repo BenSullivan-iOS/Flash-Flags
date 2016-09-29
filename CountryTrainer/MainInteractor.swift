@@ -87,9 +87,6 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
 
 
   }
-  internal func clearCurrentGameData() {
-//    chosenOnes.removeAll()
-  }
   
   internal func prepareContinentsForPicker() -> [String] {
     
@@ -144,7 +141,6 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     } else {
       print("delete failed")
     }
-    
   }
   
   
@@ -191,6 +187,5 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     
     _games = fetch()!
   }
-
   
 }

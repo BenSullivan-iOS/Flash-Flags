@@ -10,9 +10,17 @@ import UIKit
 
 class HowToPlayVC: UIViewController, UIViewControllerTransitioningDelegate {
   
+  var howToPlayWireframe: HowToPlayWireframe?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     view.layer.cornerRadius = 8.0
+  }
+  
+  @IBAction func doneButtonPressed(_ sender: UIButton) {
+    
+    howToPlayWireframe?.dismissHowToPlayVC()
+    
   }
 }

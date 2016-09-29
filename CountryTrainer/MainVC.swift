@@ -50,6 +50,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   internal func presentFilterFlags() {
     mainWireframe?.presentFilterFlagsInterface(withCountries: (mainInteractor?.countries)!)
   }
+  
+  internal func presentHowToPlay() {
+    mainWireframe?.presentHowToPlay()
+  }
 
   internal func reloadTableData() {
     tableView.reloadData()

@@ -19,6 +19,8 @@ class GameVC: UIViewController, GameCellDelegate {
   @IBOutlet weak var progressLeading: NSLayoutConstraint!
   @IBOutlet weak var progressTrailing: NSLayoutConstraint!
   
+  internal let key = "prompted"
+  
   internal var selectedRow: IndexPath? = nil
   
   internal var gameWireframe: GameWireframe?
@@ -76,6 +78,23 @@ class GameVC: UIViewController, GameCellDelegate {
     animateUIOnToScreen(delay: 0.5)
     
     tableView.reloadData()
+  }
+  
+  internal func alertUserOfRules() {
+    
+    //called from wilLSelectRow
+    let alert = UIAlertController(
+      title: "😮 IMPORTANT! 😮",
+      message: "\nFlash Flags is a flash card style game. You need to guess which country the flag belongs to and THEN tap the flag.\n\nWhen the answer is revealed you are answering whether or not your guess was correct.",
+      preferredStyle: .alert)
+    
+    alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { action in
+     
+      UserDefaults.standard.set(true, forKey: self.key)
+
+    }))
+    
+    present(alert, animated: true, completion: nil)
   }
   
   internal func answered(country: String, result: Bool) {
@@ -142,6 +161,7 @@ class GameVC: UIViewController, GameCellDelegate {
       
     }
   }
+  
   private func animateUIOffScreen() {
     
     UIView.animate(withDuration: 0.5, animations: {

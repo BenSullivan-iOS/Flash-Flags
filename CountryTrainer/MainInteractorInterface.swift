@@ -13,7 +13,6 @@ protocol MainInteractorInterface: class {
   var countries: [Country] { get }
   var games: [Game] { get }
   
-  func clearCurrentGameData()
   func getNewGameData(numberOfFlags: Int, continent: String?)
   func updateCountries(countries: [Country])
   

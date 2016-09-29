@@ -21,11 +21,18 @@ class HowToPlayWireframe: NSObject, UIViewControllerTransitioningDelegate {
   internal func presentHowToPlayFromVC(viewController: UIViewController!) {
     
     mainVC = viewController as! MainVC?
+    
     howToPlayVC = howToPlayViewController()
     howToPlayVC?.transitioningDelegate = self
     howToPlayVC?.modalPresentationStyle = UIModalPresentationStyle.custom
+    howToPlayVC?.howToPlayWireframe = self
       
     mainVC!.navigationController!.present(howToPlayVC!, animated: true, completion: nil)
+  }
+  
+  internal func dismissHowToPlayVC() {
+    
+    howToPlayVC?.dismiss(animated: true, completion: nil)
   }
   
   

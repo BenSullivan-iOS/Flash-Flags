@@ -70,21 +70,32 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
 
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     
+    //User will be alerted about rules on first answer only
+    guard UserDefaults.standard.object(forKey: key) != nil else {
+      
+      alertUserOfRules()
+      
+      return cellSelected(indexPath: indexPath)
+    }
+    
+    return cellSelected(indexPath: indexPath)
+  }
+  
+  func cellSelected(indexPath: IndexPath) -> IndexPath? {
+    
     if let selectedIndex = tableView.indexPathForSelectedRow, selectedIndex == indexPath as IndexPath {
       
       if let cell = tableView.cellForRow(at: indexPath) as? GameCell {
         DispatchQueue.main.async {
           
-          tableView.beginUpdates()
-          tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+          self.tableView.beginUpdates()
+          self.tableView.deselectRow(at: indexPath as IndexPath, animated: true)
           cell.changeCellStatus(selected: false)
-          tableView.endUpdates()
+          self.tableView.endUpdates()
         }
       }
-      
       return nil
     }
-    
     return indexPath
   }
   
