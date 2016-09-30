@@ -780,6 +780,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 2KVYSWMVXX;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					B549C49E1D5C7DA5000409B3 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1232,15 +1233,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2KVYSWMVXX;
 				INFOPLIST_FILE = CountryTrainer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SulivanApplications.CountryTrainer;
 				PRODUCT_NAME = "Flash Flags";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CountryTrainer/CountryTrainer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1251,14 +1256,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2KVYSWMVXX;
 				INFOPLIST_FILE = CountryTrainer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Sullivan-Applications.CountryTrainer";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SulivanApplications.CountryTrainer;
 				PRODUCT_NAME = "Flash Flags";
 				SWIFT_OBJC_BRIDGING_HEADER = "CountryTrainer/CountryTrainer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
