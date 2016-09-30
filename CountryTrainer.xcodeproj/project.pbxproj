@@ -62,6 +62,12 @@
 		B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 		B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 		B56111421D9D31C90000E103 /* HowToPlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56111401D9D31C90000E103 /* HowToPlay.storyboard */; };
+		B564E21A1D9ED39B00E84EC7 /* CustomGameWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564E2191D9ED39B00E84EC7 /* CustomGameWireframe.swift */; };
+		B564E21C1D9ED3A900E84EC7 /* CustomGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564E21B1D9ED3A900E84EC7 /* CustomGameVC.swift */; };
+		B564E21E1D9ED3BB00E84EC7 /* CustomGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564E21D1D9ED3BB00E84EC7 /* CustomGameInteractor.swift */; };
+		B564E2201D9ED3E200E84EC7 /* CustomGameInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564E21F1D9ED3E200E84EC7 /* CustomGameInteractorInterface.swift */; };
+		B564E2221D9ED61900E84EC7 /* CustomGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564E2211D9ED61900E84EC7 /* CustomGameCollectionViewCell.swift */; };
+		B564E2241D9ED64800E84EC7 /* CustomGameVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564E2231D9ED64800E84EC7 /* CustomGameVCInterface.swift */; };
 		B567F4AC1D9D13D600B5015A /* HowToPlayWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567F4AB1D9D13D600B5015A /* HowToPlayWireframe.swift */; };
 		B567F4AE1D9D14D900B5015A /* HowToPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567F4AD1D9D14D900B5015A /* HowToPlayVC.swift */; };
 		B567F4B01D9D1C3E00B5015A /* PresentHowToPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567F4AF1D9D1C3E00B5015A /* PresentHowToPlay.swift */; };
@@ -196,6 +202,12 @@
 		B55A6B471D6855040023DC7A /* GameTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTracker.swift; sourceTree = "<group>"; };
 		B55A6B4A1D6874470023DC7A /* FlagImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagImageView.swift; sourceTree = "<group>"; };
 		B56111411D9D31C90000E103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HowToPlay.storyboard; sourceTree = "<group>"; };
+		B564E2191D9ED39B00E84EC7 /* CustomGameWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameWireframe.swift; sourceTree = "<group>"; };
+		B564E21B1D9ED3A900E84EC7 /* CustomGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameVC.swift; sourceTree = "<group>"; };
+		B564E21D1D9ED3BB00E84EC7 /* CustomGameInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameInteractor.swift; sourceTree = "<group>"; };
+		B564E21F1D9ED3E200E84EC7 /* CustomGameInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameInteractorInterface.swift; sourceTree = "<group>"; };
+		B564E2211D9ED61900E84EC7 /* CustomGameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameCollectionViewCell.swift; sourceTree = "<group>"; };
+		B564E2231D9ED64800E84EC7 /* CustomGameVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameVCInterface.swift; sourceTree = "<group>"; };
 		B567F4AB1D9D13D600B5015A /* HowToPlayWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayWireframe.swift; sourceTree = "<group>"; };
 		B567F4AD1D9D14D900B5015A /* HowToPlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayVC.swift; sourceTree = "<group>"; };
 		B567F4AF1D9D1C3E00B5015A /* PresentHowToPlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentHowToPlay.swift; sourceTree = "<group>"; };
@@ -442,6 +454,51 @@
 			name = Game;
 			sourceTree = "<group>";
 		};
+		B564E2141D9ED36600E84EC7 /* CustomGame */ = {
+			isa = PBXGroup;
+			children = (
+				B564E2181D9ED38B00E84EC7 /* Wireframe */,
+				B564E2171D9ED38500E84EC7 /* Presenter */,
+				B564E2161D9ED37D00E84EC7 /* Interactor */,
+				B564E2151D9ED37800E84EC7 /* View */,
+			);
+			name = CustomGame;
+			sourceTree = "<group>";
+		};
+		B564E2151D9ED37800E84EC7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B564E2211D9ED61900E84EC7 /* CustomGameCollectionViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		B564E2161D9ED37D00E84EC7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B564E21D1D9ED3BB00E84EC7 /* CustomGameInteractor.swift */,
+				B564E21F1D9ED3E200E84EC7 /* CustomGameInteractorInterface.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		B564E2171D9ED38500E84EC7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B564E21B1D9ED3A900E84EC7 /* CustomGameVC.swift */,
+				B564E2231D9ED64800E84EC7 /* CustomGameVCInterface.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		B564E2181D9ED38B00E84EC7 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B564E2191D9ED39B00E84EC7 /* CustomGameWireframe.swift */,
+			);
+			name = Wireframe;
+			sourceTree = "<group>";
+		};
 		B567F4AA1D9D13BE00B5015A /* HowToPlay */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +645,7 @@
 		B58A00821D8404B400B8BD7D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B564E2141D9ED36600E84EC7 /* CustomGame */,
 				B58A00741D83FEF500B8BD7D /* Main */,
 				B58A00701D83FE4200B8BD7D /* Game */,
 				B5AD69211D8C35BD00F2331A /* FilterFlags */,
@@ -1013,6 +1071,7 @@
 				B58A00861D8408CB00B8BD7D /* MainInteractor.swift in Sources */,
 				B5060CA71D94366E0093D29C /* ResultInteractor.swift in Sources */,
 				B530889A1D99386B00FD85CE /* CDGame+CoreDataClass.swift in Sources */,
+				B564E2201D9ED3E200E84EC7 /* CustomGameInteractorInterface.swift in Sources */,
 				B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */,
 				B5060C9F1D93D3AA0093D29C /* CDCountriesTracker+CoreDataProperties.swift in Sources */,
 				B5060CA91D94857C0093D29C /* CoreDataService.swift in Sources */,
@@ -1021,8 +1080,10 @@
 				B5060CA11D93D3AA0093D29C /* CDCountriesForGame+CoreDataProperties.swift in Sources */,
 				B5060C5A1D9329490093D29C /* SegmentedControlExtension.swift in Sources */,
 				B5BB5CAD1D6DA511008CABC4 /* CircleView.swift in Sources */,
+				B564E2221D9ED61900E84EC7 /* CustomGameCollectionViewCell.swift in Sources */,
 				B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */,
 				B530889B1D99386B00FD85CE /* CDGame+CoreDataProperties.swift in Sources */,
+				B564E21C1D9ED3A900E84EC7 /* CustomGameVC.swift in Sources */,
 				B5F2604D1D704C93002A20B5 /* ResultButton.swift in Sources */,
 				B53CFC981D86A3A300152EDD /* RootWireframe.swift in Sources */,
 				B5060C5E1D932C5C0093D29C /* CollectionExtensions.swift in Sources */,
@@ -1035,6 +1096,7 @@
 				B5A45A9A1D96798800F1791A /* GameCellDelegate.swift in Sources */,
 				B5AD69271D8C35FA00F2331A /* FilterFlagsVC.swift in Sources */,
 				B5AD692A1D8C360B00F2331A /* FilterFlagsInteractor.swift in Sources */,
+				B564E21A1D9ED39B00E84EC7 /* CustomGameWireframe.swift in Sources */,
 				B58A007F1D8402AC00B8BD7D /* MainVCInterface.swift in Sources */,
 				B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */,
 				B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */,
@@ -1049,6 +1111,8 @@
 				B5A45A981D9677C500F1791A /* ResultInteractorInterface.swift in Sources */,
 				B5060CA01D93D3AA0093D29C /* CDCountriesForGame+CoreDataClass.swift in Sources */,
 				B5AD69231D8C35DE00F2331A /* FilterFlagsWireframe.swift in Sources */,
+				B564E2241D9ED64800E84EC7 /* CustomGameVCInterface.swift in Sources */,
+				B564E21E1D9ED3BB00E84EC7 /* CustomGameInteractor.swift in Sources */,
 				B5AD692F1D8EC7B800F2331A /* FilterFlagsInteractorInterface.swift in Sources */,
 				B5AD691E1D8C07BC00F2331A /* MenuItems.swift in Sources */,
 				B549C4C31D6207CD000409B3 /* DataService.swift in Sources */,

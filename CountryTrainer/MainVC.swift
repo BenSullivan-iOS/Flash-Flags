@@ -56,6 +56,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   internal func presentHowToPlay() {
     mainWireframe?.presentHowToPlay()
   }
+  
+  internal func presentCustomGame() {
+    mainWireframe?.presentCustomGame(withCountries: (mainInteractor?.countries)!)
+  }
 
   internal func reloadTableData() {
     tableView.reloadData()

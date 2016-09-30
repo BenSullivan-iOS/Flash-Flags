@@ -27,6 +27,7 @@ class AppDependencies {
     let gameWireframe = GameWireframe()
     let howToPlayWireframe = HowToPlayWireframe()
     let filterFlagsWireframe = FilterFlagsWireframe()
+    let customGameWireframe = CustomGameWireframe()
     
     filterFlagsWireframe.mainWireframe = mainWireframe
     
@@ -34,6 +35,7 @@ class AppDependencies {
     mainWireframe.gameWireframe = gameWireframe
     mainWireframe.howToPlayWireframe = howToPlayWireframe
     mainWireframe.filterFlagsWireframe = filterFlagsWireframe
+    mainWireframe.customGameWireframe = customGameWireframe
     
     gameWireframe.mainWireframe = mainWireframe
     

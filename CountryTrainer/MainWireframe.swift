@@ -18,6 +18,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   internal var gameWireframe: GameWireframe?
   internal var rootWireframe: RootWireframe?
   internal var filterFlagsWireframe: FilterFlagsWireframe?
+  internal var customGameWireframe: CustomGameWireframe?
   
   
   //MARK: - INTERNAL FUNCTIONS
@@ -33,6 +34,10 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   internal func presentHowToPlay() {
     howToPlayWireframe?.presentHowToPlayFromVC(viewController: mainVC!)
+  }
+  
+  internal func presentCustomGame(withCountries countries: [Country]) {
+    customGameWireframe?.presentCustomGameFromVC(viewController: mainVC!, countries: countries)
   }
   
   internal func presentStartNewGameVCFromMainVC() {

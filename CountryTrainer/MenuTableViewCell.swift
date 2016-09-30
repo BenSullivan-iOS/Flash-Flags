@@ -40,6 +40,9 @@ class MenuTableViewCell: UITableViewCell {
       
     case MenuItems.howToPlay.rawValue:
       menuTableViewCellDelegate?.presentHowToPlay()
+      
+    case MenuItems.customGame.rawValue:
+      menuTableViewCellDelegate?.presentCustomGame()
     default: break
     }
   }
