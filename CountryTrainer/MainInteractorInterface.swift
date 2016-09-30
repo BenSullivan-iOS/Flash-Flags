@@ -13,7 +13,7 @@ protocol MainInteractorInterface: class {
   var countries: [Country] { get }
   var games: [Game] { get }
   
-  func getNewGameData(numberOfFlags: Int, continent: String?)
+  func getNewGameData(numberOfFlags: Int, continent: String?, difficulty: String)
   func updateCountries(countries: [Country])
   
   func prepareContinentsForPicker() -> [String]

@@ -6,14 +6,6 @@
 //  Copyright © 2016 Ben Sullivan. All rights reserved.
 //
 
-//
-//  PresentResult.swift
-//  CountryTrainer
-//
-//  Created by Ben Sullivan on 24/08/2016.
-//  Copyright © 2016 Ben Sullivan. All rights reserved.
-//
-
 import UIKit
 import pop
 
@@ -72,7 +64,7 @@ class PresentStartNewGame: NSObject, UIViewControllerAnimatedTransitioning {
   func createToView(_ trans: UIViewControllerContextTransitioning) -> UIView {
     
     let toView = trans.viewController(forKey: .to)!.view!
-    toView.frame = CGRect(x: 0, y: 0, width: trans.containerView.bounds.width - 40, height: trans.containerView.bounds.height - 250.0)
+    toView.frame = CGRect(x: 0, y: 0, width: trans.containerView.bounds.width - 40, height: trans.containerView.bounds.height - 180.0) //was 250
     
     toView.center = CGPoint(x: trans.containerView.center.x, y: -trans.containerView.center.y)
     

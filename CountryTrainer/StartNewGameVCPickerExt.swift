@@ -34,10 +34,13 @@ extension StartNewGameVC: UIPickerViewDelegate, UIPickerViewDataSource {
         pickerLabel?.text = "How many flags? 🤔"
       }
       
-    } else {
+    } else if pickerView == continentPicker {
       
       pickerLabel?.text = continents[row]
       
+    } else if pickerView == difficultyPicker {
+      
+      pickerLabel?.text = difficulties[row]
     }
     
     return pickerLabel!
@@ -46,13 +49,15 @@ extension StartNewGameVC: UIPickerViewDelegate, UIPickerViewDataSource {
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     
     if pickerView == numberOfFlagsPicker {
-      
       selectedNumOfFlags = numberOfFlags[row]
     }
     
     if pickerView == continentPicker {
-      
       selectedContinent = continents[row]
+    }
+    
+    if pickerView == difficultyPicker {
+      selectedDifficulty = difficulties[row]
     }
   }
   
@@ -63,10 +68,13 @@ extension StartNewGameVC: UIPickerViewDelegate, UIPickerViewDataSource {
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     
     if pickerView == continentPicker {
-      
       return continents.count
     }
     
-    return numberOfFlags.count
+    if pickerView == numberOfFlagsPicker {
+      return numberOfFlags.count
+    }
+    
+    return difficulties.count
   }
 }

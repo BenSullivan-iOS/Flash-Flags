@@ -43,7 +43,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   //MARK: - OUTLET ACTIONS
   
   @IBAction func newGameButtonPressed(_ sender: AnyObject) {
-    mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil)
+    mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil, difficulty: Difficulty.allDifficulties.rawValue)
   }
   
   

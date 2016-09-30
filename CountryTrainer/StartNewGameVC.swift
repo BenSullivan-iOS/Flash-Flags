@@ -11,8 +11,10 @@ import CoreData
 
 class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecognizerDelegate {
  
+  @IBOutlet weak var difficultyPicker: UIPickerView!
   @IBOutlet weak var continentPicker: UIPickerView!
   @IBOutlet weak var numberOfFlagsPicker: UIPickerView!
+  
   @IBOutlet var fullView: UIView!
   
   fileprivate var tapBGGesture: UITapGestureRecognizer!
@@ -20,8 +22,10 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
   //Default settings
   internal var selectedContinent = Continent.all.rawValue
   internal var selectedNumOfFlags = 5
+  internal var selectedDifficulty = Difficulty.allDifficulties.rawValue
   
-  internal var continents = ["Select Continent", Continent.all.rawValue]
+  internal var continents = [Continent.all.rawValue]
+  internal var difficulties = Difficulty.difficulties
   internal var numberOfFlags = [Int]()
   
   internal var mainInteractor: MainInteractorInterface?
@@ -42,7 +46,7 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
   //MARK: - OUTLET FUNCTIONS
 
   @IBAction func startGameButtonPressed(_ sender: UIButton) {
-    mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent)
+    mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent, difficulty: selectedDifficulty)
     
   }
   

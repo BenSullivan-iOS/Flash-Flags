@@ -43,16 +43,24 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     _countries = countries
   }
   
-  internal func getNewGameData(numberOfFlags: Int, continent: String?) {
+  internal func getNewGameData(numberOfFlags: Int, continent: String?, difficulty: String) {
     
     //Filters out countires based on the continent provided
     var filteredCountries = _countries
     
-    if continent != nil && continent != "All" && continent != "Select Continent" {
+    if continent != nil && continent != Continent.all.rawValue {
       
       filteredCountries = _countries.filter { country -> Bool in
         
         return country.cont.rawValue == continent
+      }
+    }
+    
+    if difficulty != Difficulty.allDifficulties.rawValue {
+      
+      filteredCountries = filteredCountries.filter { country -> Bool in
+        
+        return country.difficulty.rawValue == difficulty
       }
     }
     
@@ -106,6 +114,8 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     }
     return numberOfFlags
   }
+  
+  
   
   internal func populateGamesForMainVCTable(game: Game) {
     

@@ -65,9 +65,28 @@ extension DataService {
                 continent = Continent.all
                 
               default: break
-                
               }
-              countries.append(Country(name: commonName, currency: currencyStr, flag: flag.lowercased(), continent: continent))
+              
+              var flagDifficulty = Difficulty.allDifficulties
+              
+              switch difficulty {
+                
+              case "easy":
+                flagDifficulty = Difficulty.easy
+              case "medium":
+                flagDifficulty = Difficulty.medium
+              case "hard":
+                flagDifficulty = Difficulty.hard
+                
+              default: break
+              }
+              
+              countries.append(Country(
+                name: commonName,
+                currency: currencyStr,
+                flag: flag.lowercased(),
+                continent: continent,
+                difficulty: flagDifficulty))
             }
           }
         }

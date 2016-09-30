@@ -30,7 +30,7 @@ class MenuTableViewCell: UITableViewCell {
     switch title {
       
     case MenuItems.quickStart.rawValue:
-      mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil)
+      mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil, difficulty: Difficulty.allDifficulties.rawValue)
       
     case MenuItems.startNewGame.rawValue:
       mainWireframe?.presentStartNewGameVCFromMainVC()

@@ -53,12 +53,8 @@
 		B549C4CB1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */; };
 		B549C4CE1D65B249000409B3 /* RemovedCountries in Resources */ = {isa = PBXBuildFile; fileRef = B549C4CD1D65B249000409B3 /* RemovedCountries */; };
 		B549C4D21D65ED8B000409B3 /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D11D65ED8A000409B3 /* Continent.swift */; };
-		B549C4D31D65EDCF000409B3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C61D659F13000409B3 /* Country.swift */; };
-		B549C4D41D65EDCF000409B3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C61D659F13000409B3 /* Country.swift */; };
-		B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D11D65ED8A000409B3 /* Continent.swift */; };
 		B549C4D71D65FA08000409B3 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D61D65FA08000409B3 /* GameVC.swift */; };
 		B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D81D65FA63000409B3 /* GameCell.swift */; };
-		B549C4DC1D6603BF000409B3 /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4D11D65ED8A000409B3 /* Continent.swift */; };
 		B549C4DE1D660E94000409B3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4DD1D660E94000409B3 /* Game.swift */; };
 		B549C4E11D66306D000409B3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4E01D66306D000409B3 /* GameType.swift */; };
 		B557A27D1D6C42BD006C3A85 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */; };
@@ -592,10 +588,10 @@
 		B58A00821D8404B400B8BD7D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B567F4AA1D9D13BE00B5015A /* HowToPlay */,
 				B58A00741D83FEF500B8BD7D /* Main */,
 				B58A00701D83FE4200B8BD7D /* Game */,
 				B5AD69211D8C35BD00F2331A /* FilterFlags */,
+				B567F4AA1D9D13BE00B5015A /* HowToPlay */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -1069,9 +1065,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B549C4D31D65EDCF000409B3 /* Country.swift in Sources */,
 				B5ACDE0E1D718CFF00C4CA72 /* UINavigationController+RadialTransaction.swift in Sources */,
-				B549C4D51D65EDDA000409B3 /* Continent.swift in Sources */,
 				B53BA2751D6DBE04007A542E /* DismissResult.swift in Sources */,
 				B549C4A41D5C7DA5000409B3 /* CountryTrainerTests.swift in Sources */,
 				B5ACDE0C1D718CF900C4CA72 /* AAPTransactionDirector.swift in Sources */,
@@ -1087,9 +1081,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B549C4DC1D6603BF000409B3 /* Continent.swift in Sources */,
 				B549C4AF1D5C7DA5000409B3 /* CountryTrainerUITests.swift in Sources */,
-				B549C4D41D65EDCF000409B3 /* Country.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
