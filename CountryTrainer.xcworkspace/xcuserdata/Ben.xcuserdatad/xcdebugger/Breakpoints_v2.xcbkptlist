@@ -302,13 +302,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
-<<<<<<< DifficultyFeature
-            endingLineNumber = "42"
-            landmarkName = "createCountries()"
-            landmarkType = "7">
-=======
             endingLineNumber = "42">
->>>>>>> local
             <Locations>
                <Location
                   shouldBeEnabled = "No"
