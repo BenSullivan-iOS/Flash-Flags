@@ -17,8 +17,8 @@ extension DataService {
   func createCountries() -> [Country]? {
     
     if let path = Bundle.main.path(forResource: "countries", ofType: "json") {
-    
-    do {
+      
+      do {
         
         var countries = [Country]()
         
@@ -34,8 +34,12 @@ extension DataService {
             let commonName = name["common"] as? String,
             let cont = i["region"]! as? String,
             let currencyObj = i["currency"] as! NSArray?,
-            let flag = i["cca2"]! as? String {
-          
+            let flag = i["cca2"]! as? String,
+            let difficulty = i["difficulty"] as? String {
+           
+            print(commonName)
+            print(difficulty)
+            
             if let currencyStr = currencyObj.firstObject as? String {
               
               var continent = Continent.all
@@ -47,21 +51,21 @@ extension DataService {
                 
               case Continent.africa.rawValue:
                 continent = Continent.africa
-
+                
               case Continent.americas.rawValue:
                 continent = Continent.americas
-
+                
               case Continent.asia.rawValue:
                 continent = Continent.asia
-
+                
               case Continent.europe.rawValue:
                 continent = Continent.europe
-
+                
               case Continent.all.rawValue:
                 continent = Continent.all
                 
               default: break
-
+                
               }
               countries.append(Country(name: commonName, currency: currencyStr, flag: flag.lowercased(), continent: continent))
             }

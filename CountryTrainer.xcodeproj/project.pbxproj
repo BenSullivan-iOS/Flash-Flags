@@ -48,8 +48,6 @@
 		B549C4AF1D5C7DA5000409B3 /* CountryTrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4AE1D5C7DA5000409B3 /* CountryTrainerUITests.swift */; };
 		B549C4BE1D5C7E63000409B3 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = B549C4BD1D5C7E63000409B3 /* countries.json */; };
 		B549C4C31D6207CD000409B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C21D6207CD000409B3 /* DataService.swift */; };
-		B549C4C41D6207CD000409B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C21D6207CD000409B3 /* DataService.swift */; };
-		B549C4C51D6208B5000409B3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C21D6207CD000409B3 /* DataService.swift */; };
 		B549C4C71D659F13000409B3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4C61D659F13000409B3 /* Country.swift */; };
 		B549C4CA1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */; };
 		B549C4CB1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */; };
@@ -72,6 +70,7 @@
 		B567F4AE1D9D14D900B5015A /* HowToPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567F4AD1D9D14D900B5015A /* HowToPlayVC.swift */; };
 		B567F4B01D9D1C3E00B5015A /* PresentHowToPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567F4AF1D9D1C3E00B5015A /* PresentHowToPlay.swift */; };
 		B5680B3B1D9B008200EFF2EC /* DesignableFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5680B3A1D9B008200EFF2EC /* DesignableFont.swift */; };
+		B56855751D9E702B002488C2 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56855741D9E702B002488C2 /* Difficulty.swift */; };
 		B58A007D1D84020B00B8BD7D /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A007C1D84020B00B8BD7D /* MainWireframe.swift */; };
 		B58A007F1D8402AC00B8BD7D /* MainVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A007E1D8402AC00B8BD7D /* MainVCInterface.swift */; };
 		B58A00861D8408CB00B8BD7D /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A00851D8408CB00B8BD7D /* MainInteractor.swift */; };
@@ -205,6 +204,7 @@
 		B567F4AD1D9D14D900B5015A /* HowToPlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayVC.swift; sourceTree = "<group>"; };
 		B567F4AF1D9D1C3E00B5015A /* PresentHowToPlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentHowToPlay.swift; sourceTree = "<group>"; };
 		B5680B3A1D9B008200EFF2EC /* DesignableFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DesignableFont.swift; path = ../DesignableFont.swift; sourceTree = "<group>"; };
+		B56855741D9E702B002488C2 /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		B58A007C1D84020B00B8BD7D /* MainWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
 		B58A007E1D8402AC00B8BD7D /* MainVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCInterface.swift; sourceTree = "<group>"; };
 		B58A00851D8408CB00B8BD7D /* MainInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
@@ -420,6 +420,7 @@
 				B5AD691D1D8C07BC00F2331A /* MenuItems.swift */,
 				B549C4C61D659F13000409B3 /* Country.swift */,
 				B549C4D11D65ED8A000409B3 /* Continent.swift */,
+				B56855741D9E702B002488C2 /* Difficulty.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1007,6 +1008,7 @@
 				B53CFC9C1D86CB0D00152EDD /* GameInteractor.swift in Sources */,
 				B5ED08BB1D84142200A7A3D0 /* AppDependencies.swift in Sources */,
 				B53A79D81D882180008C3D68 /* MainTableViewCell.swift in Sources */,
+				B56855751D9E702B002488C2 /* Difficulty.swift in Sources */,
 				B53AAA761D8AF39A00ED644E /* StartNewGameVC.swift in Sources */,
 				B549C4E11D66306D000409B3 /* GameType.swift in Sources */,
 				B567F4AE1D9D14D900B5015A /* HowToPlayVC.swift in Sources */,
@@ -1076,7 +1078,6 @@
 				B5ACDE0D1D718CFC00C4CA72 /* UIView+Radial.swift in Sources */,
 				B5F2604E1D704C93002A20B5 /* ResultButton.swift in Sources */,
 				B5BB5CAE1D6DB67D008CABC4 /* CircleView.swift in Sources */,
-				B549C4C41D6207CD000409B3 /* DataService.swift in Sources */,
 				B53BA2721D6DBDF3007A542E /* PresentResult.swift in Sources */,
 				B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */,
 			);
@@ -1089,7 +1090,6 @@
 				B549C4DC1D6603BF000409B3 /* Continent.swift in Sources */,
 				B549C4AF1D5C7DA5000409B3 /* CountryTrainerUITests.swift in Sources */,
 				B549C4D41D65EDCF000409B3 /* Country.swift in Sources */,
-				B549C4C51D6208B5000409B3 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

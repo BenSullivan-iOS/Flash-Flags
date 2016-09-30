@@ -6,3 +6,74 @@
 //Saint Pierre and Miquelon
 //United States Minor Outlying Islands
 //Wallis and Futuna
+//Antarctica
+
+"name": {
+"common": "Antarctica",
+"official": "Antarctica",
+"native": []
+},
+"tld": [".aq"],
+"cca2": "AQ",
+"ccn3": "010",
+"cca3": "ATA",
+"cioc": "",
+"currency": [],
+"callingCode": [],
+"capital": "",
+"altSpellings": ["AQ"],
+"region": "",
+"subregion": "",
+"languages": {},
+"translations": {
+"cym": {
+"official": "Antarctica",
+"common": "Antarctica"
+},
+"deu": {
+"official": "Antarktika",
+"common": "Antarktis"
+},
+"fra": {
+"official": "Antarctique",
+"common": "Antarctique"
+},
+"hrv": {
+"official": "Antarktika",
+"common": "Antarktika"
+},
+"ita": {
+"official": "Antartide",
+"common": "Antartide"
+},
+"jpn": {
+"official": "\u5357\u6975\u5927\u9678",
+"common": "\u5357\u6975"
+},
+"nld": {
+"official": "Antarctica",
+"common": "Antarctica"
+},
+"por": {
+"official": "Ant\u00e1rtica",
+"common": "Ant\u00e1rtida"
+},
+"rus": {
+"official": "\u0410\u043d\u0442\u0430\u0440\u043a\u0442\u0438\u0434\u0430",
+"common": "\u0410\u043d\u0442\u0430\u0440\u043a\u0442\u0438\u0434\u0430"
+},
+"spa": {
+"official": "Ant\u00e1rtida",
+"common": "Ant\u00e1rtida"
+},
+"fin": {
+"official": "Etel\u00e4manner",
+"common": "Etel\u00e4manner"
+}
+},
+"latlng": [-90, 0],
+"demonym": "Antarctican",
+"landlocked": false,
+"borders": [],
+"area": 14000000
+}, {
