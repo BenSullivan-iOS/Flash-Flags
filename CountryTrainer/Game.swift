@@ -21,13 +21,14 @@ extension Game {
 
 struct Game: GameType {
   
-  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?) {
+  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?, customGameTitle: String?) {
     self._countries = countries
     self.tracker = Tracker(countries: countries)
     self._attempts = attempts
     self._highestPercentage = highestPercentage ?? 0
     self._dateLastCompleted = dateLastCompleted ?? Date()
     self._dateCreated = dateCreated ?? Date()
+    self._customGameTitle = customGameTitle
     setUid()
     setDelegate()
   }
@@ -43,6 +44,7 @@ struct Game: GameType {
   fileprivate var _dateCreated: Date
   fileprivate var _uid = NSString()
   fileprivate var _resultFraction: String!
+  fileprivate var _customGameTitle: String?
   
   var tracker: Tracker 
   
@@ -73,7 +75,9 @@ struct Game: GameType {
   var uid: NSString {
     return _uid
   }
-  
+  var customGameTitle: String? {
+    return _customGameTitle
+  }
   var progress: String {
     
     var score = 0

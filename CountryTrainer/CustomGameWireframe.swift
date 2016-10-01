@@ -20,6 +20,16 @@ class CustomGameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   //MARK: - INTERNAL FUNCTIONS
   
+  internal func beginGame(game: Game) {
+    
+    customGameVC?.navigationController?.popViewController(animated: false)
+    self.mainWireframe?.presentCustomGameInterface(withGame: game)
+
+//    dismiss(animated: false, completion: {
+//      self.mainWireframe?.presentGameInterface(withGame: game)
+//    })
+  }
+  
   internal func presentCustomGameFromVC(viewController: UIViewController!, countries: [Country]) {
     
     self.countries = countries

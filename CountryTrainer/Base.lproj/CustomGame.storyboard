@@ -106,11 +106,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ksp-lc-zhz">
-                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="75"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Yw-Vq-D78">
-                                    <rect key="frame" x="0.0" y="211" width="1000" height="20"/>
+                                    <rect key="frame" x="0.0" y="211" width="383" height="20"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <connections>
@@ -147,7 +147,7 @@
                                                     </constraints>
                                                     <state key="normal" image="whiteDoneButton"/>
                                                     <connections>
-                                                        <action selector="resetButtonPressed:" destination="Xse-BP-ALa" eventType="touchUpInside" id="WH5-P6-hH7"/>
+                                                        <action selector="completedButtonPressed:" destination="Xse-BP-ALa" eventType="touchUpInside" id="ghA-xM-sov"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -258,7 +258,7 @@
                             <constraint firstItem="V0v-qe-EnD" firstAttribute="leading" secondItem="7KE-5a-WYv" secondAttribute="leading" id="Nff-fj-H0w"/>
                             <constraint firstItem="Jde-v0-DTk" firstAttribute="top" secondItem="IK8-Jl-sYd" secondAttribute="bottom" constant="-20" id="Ppa-AU-qvb"/>
                             <constraint firstItem="8Uu-SF-4U2" firstAttribute="top" secondItem="7KE-5a-WYv" secondAttribute="top" id="Q8i-hO-UWf"/>
-                            <constraint firstItem="vbM-Pf-R9d" firstAttribute="top" secondItem="V0v-qe-EnD" secondAttribute="bottom" id="igf-NX-Wje"/>
+                            <constraint firstItem="vbM-Pf-R9d" firstAttribute="top" secondItem="V0v-qe-EnD" secondAttribute="bottom" constant="-115" id="igf-NX-Wje"/>
                             <constraint firstItem="rt0-Xg-uor" firstAttribute="leading" secondItem="7KE-5a-WYv" secondAttribute="leading" constant="-1" id="plk-0C-Qwz"/>
                             <constraint firstAttribute="trailing" secondItem="rt0-Xg-uor" secondAttribute="trailing" constant="-1" id="rdI-9F-tl6"/>
                         </constraints>
@@ -266,6 +266,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="Ds3-hR-cR7" id="d0j-c8-q4z"/>
+                        <outlet property="chosenFlagsBottomConstraint" destination="igf-NX-Wje" id="aXF-7h-8wG"/>
                         <outlet property="chosenFlagsCollectionView" destination="V0v-qe-EnD" id="ROP-wD-ppw"/>
                         <outlet property="collectionView" destination="Jde-v0-DTk" id="jHL-Et-x6z"/>
                         <outlet property="resetButton" destination="vdq-bR-9bZ" id="XdP-8D-krM"/>

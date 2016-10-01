@@ -89,7 +89,8 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
                     attempts: 0,
                     dateLastCompleted: nil,
                     highestPercentage: nil,
-                    dateCreated: Date())
+                    dateCreated: Date(),
+                    customGameTitle: nil)
 
     mainVCInterface?.prepareGameData(game: game)
 

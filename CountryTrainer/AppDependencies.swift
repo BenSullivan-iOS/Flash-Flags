@@ -36,7 +36,7 @@ class AppDependencies {
     mainWireframe.howToPlayWireframe = howToPlayWireframe
     mainWireframe.filterFlagsWireframe = filterFlagsWireframe
     mainWireframe.customGameWireframe = customGameWireframe
-    
+    customGameWireframe.mainWireframe = mainWireframe
     gameWireframe.mainWireframe = mainWireframe
     
   }

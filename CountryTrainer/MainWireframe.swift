@@ -64,6 +64,10 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     mainVC?.dismiss(animated: true, completion: nil)
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }
+  
+  internal func presentCustomGameInterface(withGame game: Game) {
+    gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
+  }
 
   internal func presentMainVCInterfaceFromWindow(window: UIWindow) {
     

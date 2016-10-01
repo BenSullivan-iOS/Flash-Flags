@@ -15,9 +15,11 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var resetButton: UIButton!
+  @IBOutlet weak var chosenFlagsBottomConstraint: NSLayoutConstraint!
   
   //True = Viewing remaining countries. False = Viewing memorised countries
   fileprivate var isRemainingCountry = true
+  fileprivate var game: Game?
   
   internal var customGameWireframe: CustomGameWireframe?
   internal var customGameInteractor: CustomGameInteractorInterface?
@@ -58,18 +60,22 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
   //MARK: - OUTLET FUNCTIONS
   
-  @IBAction func resetButtonPressed(_ sender: UIButton) {
+ 
+  @IBAction func completedButtonPressed(_ sender: UIButton) {
+    displayAlert()
   }
   
   @IBAction func backButtonPressed(_ sender: UIButton) {
-    customGameInteractor?.saveToCoreData(remainingCountries: remainingCountries)
-    customGameWireframe?.dismisscustomGameVCToMainVC(withCountries: remainingCountries)
+
+//    customGameWireframe?.dismisscustomGameVCToMainVC(withCountries: remainingCountries)
   }
   
   
   //MARK: - INTERFACE FUNCTIONS
   
   internal func moveFlagButtonPressed(country: Country, remove: Bool) {
+    
+   
     //true = remove from custom game. false = add to custom game
     if !remove {
       
@@ -78,13 +84,23 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
         let indexPath = IndexPath(row: 0, section: 0)
         chosenFlagsCollectionView.insertItems(at: [indexPath])
       }
-      } else {
-        
-        if let rowToAdd = customGameInteractor?.addFlag(country: country) {
-          chosenFlagsCollectionView.deleteItems(at: [rowToAdd])
-          let indexPath = IndexPath(row: 0, section: 0)
-          collectionView.insertItems(at: [indexPath])
-        }
+    } else {
+      
+      if let rowToAdd = customGameInteractor?.addFlag(country: country) {
+        chosenFlagsCollectionView.deleteItems(at: [rowToAdd])
+        let indexPath = IndexPath(row: 0, section: 0)
+        collectionView.insertItems(at: [indexPath])
+      }
+      
+    }
+    
+    if chosenFlagsBottomConstraint.constant == -115 && !chosenCountries.isEmpty {
+      
+      animateUIOnToScreen()
+      
+    } else if chosenCountries.isEmpty {
+      
+      animateUIOffScreen()
       
     }
   }
@@ -102,16 +118,72 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
   private func displayAlert() {
     
-    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    let alert = UIAlertController(title: "Name your game", message: nil, preferredStyle: .alert)
     
-    alert.addAction(UIAlertAction(title: "Reset all flags", style: .destructive, handler: { action in
+    alert.addTextField { (textfield) in
+      textfield.placeholder = "e.g. Scandinavia, British Territories etc..."
+    }
+
+    alert.addAction(UIAlertAction(title: "Start Game", style: .default, handler: { action in
+      
+      for textfield in alert.textFields! {
+        
+        print(textfield.text)
+        
+        self.game = Game(
+          countries: self.chosenCountries,
+          attempts: 0,
+          dateLastCompleted: nil,
+          highestPercentage: nil,
+          dateCreated: nil,
+          customGameTitle:
+          textfield.text)
+        
+        self.customGameWireframe?.beginGame(game: self.game!)
+      }
       
     }))
     
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    
+    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+
     present(alert, animated: true, completion: nil)
   }
+  
+  private func animateUIOnToScreen() {
+    
+    UIView.animate(
+      withDuration: 0.5,
+      delay: 0,
+      usingSpringWithDamping: CGFloat(1),
+      initialSpringVelocity: CGFloat(0.1),
+      options: UIViewAnimationOptions.curveEaseInOut,
+      animations: {
+        
+        self.chosenFlagsBottomConstraint.constant = 0
+        
+        self.view.layoutIfNeeded()
+        
+    })
+  }
+  
+  private func animateUIOffScreen() {
+    
+    UIView.animate(
+      withDuration: 0.3,
+      delay: 0,
+      usingSpringWithDamping: CGFloat(1),
+      initialSpringVelocity: CGFloat(0.1),
+      options: UIViewAnimationOptions.curveEaseInOut,
+      animations: {
+        
+        self.chosenFlagsBottomConstraint.constant = -115
+        
+        self.view.layoutIfNeeded()
+        
+    })
+    
+  }
+
   
   
   //MARK: - COLLECTION VIEW DELEGATE
@@ -134,28 +206,28 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     if collectionView == self.collectionView {
       
-    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customGameCell", for: indexPath) as? CustomGameCollectionViewCell {
-    
-    let flagObjectKey = isRemainingCountry
-      ? remainingCountries[indexPath.row].flagSmall as! NSString
-      : chosenCountries [indexPath.row].flagSmall as! NSString
-    
-    let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
-    cell.customGameVCInterface = self
-    
-    cell.configureView(country: remainingCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
-    
-    return cell
+      if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customGameCell", for: indexPath) as? CustomGameCollectionViewCell {
+        
+        let flagObjectKey = isRemainingCountry
+          ? remainingCountries[indexPath.row].flagSmall as! NSString
+          : chosenCountries [indexPath.row].flagSmall as! NSString
+        
+        let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
+        cell.customGameVCInterface = self
+        
+        cell.configureView(country: remainingCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
+        
+        return cell
       }
       
     } else {
       
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chosenFlagsCell", for: indexPath) as! CustomGameChosenFlagsCell
       
-        cell.customGameVCInterface = self
-        cell.configureView(country: chosenCountries[indexPath.row], cachedImage: nil)
+      cell.customGameVCInterface = self
+      cell.configureView(country: chosenCountries[indexPath.row], cachedImage: nil)
       
-        return cell
+      return cell
     }
     return UICollectionViewCell()
   }
