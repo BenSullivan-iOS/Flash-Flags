@@ -19,22 +19,18 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   //True = Viewing remaining countries. False = Viewing memorised countries
   fileprivate var isRemainingCountry = true
   
-  var customGameWireframe: CustomGameWireframe?
-  var customGameInteractor: CustomGameInteractorInterface?
+  internal var customGameWireframe: CustomGameWireframe?
+  internal var customGameInteractor: CustomGameInteractorInterface?
   
-  var remainingCountries: [Country] {
+  private var remainingCountries: [Country] {
     return customGameInteractor?.remainingCountries ?? [Country]()
   }
   
-  var chosenCountries: [Country] {
+  private var chosenCountries: [Country] {
     return customGameInteractor?.chosenCountries ?? [Country]()
   }
   
-  var currentCountries: [Country] {
-    return customGameInteractor?.countries ?? [Country]()
-  }
-  
-  var imageCache: NSCache<NSString, UIImage> {
+  private var imageCache: NSCache<NSString, UIImage> {
     return customGameInteractor?.imageCache ?? NSCache<NSString, UIImage>()
   }
   
@@ -63,8 +59,6 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   //MARK: - OUTLET FUNCTIONS
   
   @IBAction func resetButtonPressed(_ sender: UIButton) {
-    
-    displayActionSheet()
   }
   
   @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -72,36 +66,26 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     customGameWireframe?.dismisscustomGameVCToMainVC(withCountries: remainingCountries)
   }
   
-  @IBAction func segmentedControlPressed(_ sender: UISegmentedControl) {
-    
-    switch sender.selectedSegmentIndex {
-      
-    case 0:
-      isRemainingCountry = true
-      customGameInteractor?.setCountries(countryArray: remainingCountries)
-      
-    case 1:
-      isRemainingCountry = false
-      customGameInteractor?.setCountries(countryArray: chosenCountries)
-      
-    default: break
-    }
-    collectionView.reloadData()
-  }
-  
   
   //MARK: - INTERFACE FUNCTIONS
   
-  internal func removeFlagButtonPressed(country: Country) {
-    
-    if isRemainingCountry {
+  internal func moveFlagButtonPressed(country: Country, remove: Bool) {
+    //true = remove from custom game. false = add to custom game
+    if !remove {
+      
       if let rowToDelete = customGameInteractor?.removeFlag(country: country) {
         collectionView.deleteItems(at: [rowToDelete])
+        let indexPath = IndexPath(row: 0, section: 0)
+        chosenFlagsCollectionView.insertItems(at: [indexPath])
       }
-    } else {
-      if let rowToDelete = customGameInteractor?.addFlag(country: country) {
-        collectionView.deleteItems(at: [rowToDelete])
-      }
+      } else {
+        
+        if let rowToAdd = customGameInteractor?.addFlag(country: country) {
+          chosenFlagsCollectionView.deleteItems(at: [rowToAdd])
+          let indexPath = IndexPath(row: 0, section: 0)
+          collectionView.insertItems(at: [indexPath])
+        }
+      
     }
   }
   
@@ -116,26 +100,11 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     }
   }
   
-  private func resetAllRemainingFlags() {
-    
-    isRemainingCountry = true
-    //    customGameInteractor?.setCountries(countryArray: self.remainingCountries)
-    
-    collectionView.reloadData()
-    
-    if (customGameInteractor?.resetAllFlags())! {
-      collectionView.reloadData()
-      
-    }
-  }
-  
-  private func displayActionSheet() {
+  private func displayAlert() {
     
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     
     alert.addAction(UIAlertAction(title: "Reset all flags", style: .destructive, handler: { action in
-      
-      self.resetAllRemainingFlags()
       
     }))
     
@@ -156,12 +125,10 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     if collectionView == self.collectionView {
       
-      return currentCountries.count
+      return remainingCountries.count
     }
     return chosenCountries.count
   }
-  
-  //chosenFlagsCell
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
@@ -176,7 +143,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
     cell.customGameVCInterface = self
     
-    cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
+    cell.configureView(country: remainingCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
     
     return cell
       }
@@ -184,19 +151,17 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     } else {
       
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chosenFlagsCell", for: indexPath) as! CustomGameChosenFlagsCell
-        
-        let flagObjectKey = isRemainingCountry
-          ? remainingCountries[indexPath.row].flagSmall as! NSString
-          : chosenCountries [indexPath.row].flagSmall as! NSString
-        
-        let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
+      
         cell.customGameVCInterface = self
-        
-        cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
+        cell.configureView(country: chosenCountries[indexPath.row], cachedImage: nil)
       
         return cell
     }
     return UICollectionViewCell()
+  }
+  
+  internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    self.view.endEditing(true)
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {

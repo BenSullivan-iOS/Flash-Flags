@@ -31,13 +31,13 @@ class CustomGameChosenFlagsCell: UICollectionViewCell {
   
   @IBAction func removeButtonPressed(_ sender: UIButton) {
     
-    customGameVCInterface?.removeFlagButtonPressed(country: country!)
+    customGameVCInterface?.moveFlagButtonPressed(country: country!, remove: true)
   }
   
   
   //MARK: - INTERNTAL FUNCTIONS
   
-  internal func configureView(country: Country, isRemainingCountry: Bool, cachedImage: UIImage?) {
+  internal func configureView(country: Country, cachedImage: UIImage?) {
     
     flagImage.image = cachedImage ?? UIImage(named: country.flagSmall)
     

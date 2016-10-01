@@ -106,11 +106,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ksp-lc-zhz">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="75"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Yw-Vq-D78">
-                                    <rect key="frame" x="0.0" y="211" width="383" height="20"/>
+                                    <rect key="frame" x="0.0" y="211" width="1000" height="20"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <connections>
@@ -196,24 +196,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nPc-j6-8sD">
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gb" translatesAutoresizingMaskIntoConstraints="NO" id="5mh-VW-gaW"/>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaY-rn-wsZ">
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="B8A-Od-YLC"/>
-                                                                <constraint firstAttribute="height" constant="50" id="dso-RI-ZKc"/>
-                                                            </constraints>
-                                                            <connections>
-                                                                <action selector="removeButtonPressed:" destination="YRU-94-8Qd" eventType="touchUpInside" id="kY8-MH-me7"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.4567537568306011" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="5mh-VW-gaW" firstAttribute="top" secondItem="nPc-j6-8sD" secondAttribute="top" constant="3" id="APF-vP-iX2"/>
                                                         <constraint firstAttribute="trailing" secondItem="5mh-VW-gaW" secondAttribute="trailing" constant="3" id="KDL-3g-usa"/>
-                                                        <constraint firstItem="JaY-rn-wsZ" firstAttribute="leading" secondItem="nPc-j6-8sD" secondAttribute="leading" constant="-9" id="TZm-6G-caS"/>
                                                         <constraint firstItem="5mh-VW-gaW" firstAttribute="leading" secondItem="nPc-j6-8sD" secondAttribute="leading" constant="3" id="klN-iY-jWT"/>
                                                         <constraint firstAttribute="bottom" secondItem="5mh-VW-gaW" secondAttribute="bottom" constant="3" id="wHb-ED-GTc"/>
-                                                        <constraint firstItem="JaY-rn-wsZ" firstAttribute="top" secondItem="nPc-j6-8sD" secondAttribute="top" constant="-9" id="zpM-TU-AeX"/>
                                                     </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filterFlagDeletebutton" translatesAutoresizingMaskIntoConstraints="NO" id="VUP-MJ-FaV">
@@ -224,11 +213,22 @@
                                                         <constraint firstAttribute="width" constant="18" id="mBu-Tf-LiL"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaY-rn-wsZ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="B8A-Od-YLC"/>
+                                                        <constraint firstAttribute="height" constant="50" id="dso-RI-ZKc"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="removeButtonPressed:" destination="YRU-94-8Qd" eventType="touchUpInside" id="kY8-MH-me7"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="JaY-rn-wsZ" firstAttribute="leading" secondItem="YRU-94-8Qd" secondAttribute="leading" id="Abx-uJ-zO7"/>
                                             <constraint firstItem="VUP-MJ-FaV" firstAttribute="leading" secondItem="YRU-94-8Qd" secondAttribute="leading" id="BEe-tU-z1r"/>
                                             <constraint firstItem="nPc-j6-8sD" firstAttribute="top" secondItem="YRU-94-8Qd" secondAttribute="top" constant="9" id="EHC-Sf-pX9"/>
+                                            <constraint firstItem="JaY-rn-wsZ" firstAttribute="top" secondItem="YRU-94-8Qd" secondAttribute="top" id="dGG-Rg-O6Y"/>
                                             <constraint firstItem="VUP-MJ-FaV" firstAttribute="top" secondItem="YRU-94-8Qd" secondAttribute="top" id="gEe-Pw-uXl"/>
                                             <constraint firstAttribute="trailing" secondItem="nPc-j6-8sD" secondAttribute="trailing" constant="8" id="iHW-uj-Qyn"/>
                                             <constraint firstItem="nPc-j6-8sD" firstAttribute="leading" secondItem="VUP-MJ-FaV" secondAttribute="trailing" constant="-9" id="ncS-dY-Hhy"/>

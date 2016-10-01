@@ -32,7 +32,7 @@ class CustomGameCollectionViewCell: UICollectionViewCell, ImageResizeable {
   
   @IBAction func removeButtonPressed(_ sender: UIButton) {
     
-    customGameVCInterface?.removeFlagButtonPressed(country: country!)
+    customGameVCInterface?.moveFlagButtonPressed(country: country!, remove: false)
   }
   
   

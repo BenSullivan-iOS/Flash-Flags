@@ -7,5 +7,5 @@
 //
 
 protocol CustomGameCollectionViewCellInterface: class {
-  func removeFlagButtonPressed(country: Country)
+  func moveFlagButtonPressed(country: Country, remove: Bool)
 }
