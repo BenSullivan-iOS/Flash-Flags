@@ -15,7 +15,9 @@ class CustomGameSearchBarView: UISearchBar {
 
     for i in subviews {
       
-      if i.isKind(of: UITextField.self) {
+      print(i)
+      
+      if i.isKind(of: NSClassFromString("UISearchBarBackground")!) {
         i.backgroundColor = .white
       }
     }

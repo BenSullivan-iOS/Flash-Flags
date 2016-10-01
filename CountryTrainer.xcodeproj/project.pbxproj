@@ -58,6 +58,8 @@
 		B549C4DE1D660E94000409B3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4DD1D660E94000409B3 /* Game.swift */; };
 		B549C4E11D66306D000409B3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4E01D66306D000409B3 /* GameType.swift */; };
 		B557A27D1D6C42BD006C3A85 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */; };
+		B5581AE21D9FDC45000A4CCB /* CustomGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5581AE01D9FDC45000A4CCB /* CustomGame.storyboard */; };
+		B5581AE41D9FE043000A4CCB /* CustomGameChosenFlagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5581AE31D9FE043000A4CCB /* CustomGameChosenFlagsCell.swift */; };
 		B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B471D6855040023DC7A /* GameTracker.swift */; };
 		B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 		B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
@@ -200,6 +202,8 @@
 		B549C4E01D66306D000409B3 /* GameType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
 		B557A27F1D6C4463006C3A85 /* CountryTrainer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CountryTrainer-Bridging-Header.h"; sourceTree = "<group>"; };
+		B5581AE11D9FDC45000A4CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomGame.storyboard; sourceTree = "<group>"; };
+		B5581AE31D9FE043000A4CCB /* CustomGameChosenFlagsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameChosenFlagsCell.swift; sourceTree = "<group>"; };
 		B55A6B471D6855040023DC7A /* GameTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTracker.swift; sourceTree = "<group>"; };
 		B55A6B4A1D6874470023DC7A /* FlagImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagImageView.swift; sourceTree = "<group>"; };
 		B56111411D9D31C90000E103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HowToPlay.storyboard; sourceTree = "<group>"; };
@@ -470,8 +474,9 @@
 		B564E2151D9ED37800E84EC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B564E2211D9ED61900E84EC7 /* CustomGameCollectionViewCell.swift */,
 				B564E2251D9FAE6800E84EC7 /* CustomGameSearchBarView.swift */,
+				B5581AE31D9FE043000A4CCB /* CustomGameChosenFlagsCell.swift */,
+				B564E2211D9ED61900E84EC7 /* CustomGameCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				B549C4C11D620785000409B3 /* CustomViews */,
 				B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */,
 				B549C48F1D5C7DA5000409B3 /* Main.storyboard */,
+				B5581AE01D9FDC45000A4CCB /* CustomGame.storyboard */,
 				B56111401D9D31C90000E103 /* HowToPlay.storyboard */,
 				B549C4971D5C7DA5000409B3 /* LaunchScreen.storyboard */,
 				B53CFC971D86A3A300152EDD /* RootWireframe.swift */,
@@ -887,6 +893,7 @@
 				B5AD69471D8FDC4200F2331A /* Lato-Bold.ttf in Resources */,
 				B5AD69561D8FDC4200F2331A /* Lato-ThinItalic.ttf in Resources */,
 				B5AD69491D8FDC4200F2331A /* Lato-Hairline.ttf in Resources */,
+				B5581AE21D9FDC45000A4CCB /* CustomGame.storyboard in Resources */,
 				B549C4CA1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */,
 				B549C4CE1D65B249000409B3 /* RemovedCountries in Resources */,
 				B5AD694F1D8FDC4200F2331A /* Lato-LightItalic.ttf in Resources */,
@@ -1059,6 +1066,7 @@
 				B58A008A1D84092800B8BD7D /* MainInteractorInterface.swift in Sources */,
 				B549C4DE1D660E94000409B3 /* Game.swift in Sources */,
 				B503FBF91D92BF0000EF8CC2 /* StartNewGameVCInterface.swift in Sources */,
+				B5581AE41D9FE043000A4CCB /* CustomGameChosenFlagsCell.swift in Sources */,
 				B53CFC9E1D86CB2E00152EDD /* GameInteractorInterface.swift in Sources */,
 				B549C4D71D65FA08000409B3 /* GameVC.swift in Sources */,
 				B5A45A9E1D96ADD700F1791A /* MenuTableViewCellDelegate.swift in Sources */,
@@ -1183,6 +1191,14 @@
 				B549C4981D5C7DA5000409B3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B5581AE01D9FDC45000A4CCB /* CustomGame.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5581AE11D9FDC45000A4CCB /* Base */,
+			);
+			name = CustomGame.storyboard;
 			sourceTree = "<group>";
 		};
 		B56111401D9D31C90000E103 /* HowToPlay.storyboard */ = {

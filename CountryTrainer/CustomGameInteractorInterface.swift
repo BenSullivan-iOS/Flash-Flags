@@ -10,7 +10,7 @@ protocol CustomGameInteractorInterface {
   
   var countries: [Country] { get }
   var remainingCountries: [Country] { get }
-  var memorisedCountries: [Country] { get }
+  var chosenCountries: [Country] { get }
   var imageCache: NSCache<NSString, UIImage> { get }
   
   func addFlag(country: Country) -> IndexPath?

@@ -8,12 +8,11 @@
 
 import UIKit
 
-class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, CustomGameCollectionViewCellInterface {
+class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UISearchBarDelegate, CustomGameCollectionViewCellInterface {
   
   @IBOutlet weak var collectionView: UICollectionView!
-  @IBOutlet weak var segmentedControl: UISegmentedControl!
-  @IBOutlet weak var progressBar: UIProgressView!
-  @IBOutlet weak var numberOfMemorisedFlags: UILabel!
+  @IBOutlet weak var chosenFlagsCollectionView: UICollectionView!
+  
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var resetButton: UIButton!
   
@@ -27,8 +26,8 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     return customGameInteractor?.remainingCountries ?? [Country]()
   }
   
-  var memorisedCountries: [Country] {
-    return customGameInteractor?.memorisedCountries ?? [Country]()
+  var chosenCountries: [Country] {
+    return customGameInteractor?.chosenCountries ?? [Country]()
   }
   
   var currentCountries: [Country] {
@@ -49,12 +48,9 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       collectionView.prefetchDataSource = self
     }
     
-    setProgressBar()
     configureCellSize()
     
     resetButton.imageView?.contentMode = .scaleAspectFit
-    segmentedControl.changeTitleFont(newFontName: "Lato-Light", newFontSize: 14)
-    
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +82,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       
     case 1:
       isRemainingCountry = false
-      customGameInteractor?.setCountries(countryArray: memorisedCountries)
+      customGameInteractor?.setCountries(countryArray: chosenCountries)
       
     default: break
     }
@@ -107,20 +103,10 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
         collectionView.deleteItems(at: [rowToDelete])
       }
     }
-    numberOfMemorisedFlags.text = "\(memorisedCountries.count)"
-    setProgressBar()
   }
   
   
   //MARK: - PRIVATE FUNCTIONS
-  
-  private func setProgressBar() {
-    
-    numberOfMemorisedFlags.text = "\(memorisedCountries.count)"
-    
-    let progress: Float = Float(self.memorisedCountries.count) / 234.0
-    self.progressBar.progress = progress
-  }
   
   private func configureCellSize() {
     let size = UIScreen.main.bounds.width / 2 - 22
@@ -132,9 +118,6 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
   private func resetAllRemainingFlags() {
     
-    segmentedControl.selectedSegmentIndex = 0
-    numberOfMemorisedFlags.text = "0"
-    progressBar.progress = 0
     isRemainingCountry = true
     //    customGameInteractor?.setCountries(countryArray: self.remainingCountries)
     
@@ -170,16 +153,25 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return currentCountries.count
+    
+    if collectionView == self.collectionView {
+      
+      return currentCountries.count
+    }
+    return chosenCountries.count
   }
+  
+  //chosenFlagsCell
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customGameCell", for: indexPath) as! CustomGameCollectionViewCell
+    if collectionView == self.collectionView {
+      
+    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customGameCell", for: indexPath) as? CustomGameCollectionViewCell {
     
     let flagObjectKey = isRemainingCountry
       ? remainingCountries[indexPath.row].flagSmall as! NSString
-      : memorisedCountries [indexPath.row].flagSmall as! NSString
+      : chosenCountries [indexPath.row].flagSmall as! NSString
     
     let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
     cell.customGameVCInterface = self
@@ -187,6 +179,24 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
     
     return cell
+      }
+      
+    } else {
+      
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "chosenFlagsCell", for: indexPath) as! CustomGameChosenFlagsCell
+        
+        let flagObjectKey = isRemainingCountry
+          ? remainingCountries[indexPath.row].flagSmall as! NSString
+          : chosenCountries [indexPath.row].flagSmall as! NSString
+        
+        let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
+        cell.customGameVCInterface = self
+        
+        cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
+      
+        return cell
+    }
+    return UICollectionViewCell()
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -20,7 +20,7 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
     }
   }
   
-  fileprivate var _memorisedCountries = [Country]() {
+  fileprivate var _chosenCountries = [Country]() {
     didSet {
       didUpdateCountries = true
     }
@@ -34,8 +34,8 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
     return _remainingCountries
   }
   
-  var memorisedCountries: [Country] {
-    return _memorisedCountries
+  var chosenCountries: [Country] {
+    return _chosenCountries
   }
   
   var countries: [Country] {
@@ -48,7 +48,7 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
   init(countries: [Country]) {
     setCountries(countryArray: countries)
     _remainingCountries = countries
-    setMemorisedCountries()
+    setchosenCountries()
   }
   
   
@@ -65,13 +65,13 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
   
   internal func addFlag(country: Country) -> IndexPath? {
     
-    for i in _memorisedCountries.indices {
+    for i in _chosenCountries.indices {
       
-      if _memorisedCountries[i] == country {
+      if _chosenCountries[i] == country {
         didUpdateCountries = true
         _countries.remove(at: i)
         _remainingCountries.insert(country, at: 0)
-        _memorisedCountries.remove(at: i)
+        _chosenCountries.remove(at: i)
         
         let indexPath = IndexPath(row: i, section: 0)
         
@@ -91,7 +91,7 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
         didUpdateCountries = true
         _countries.remove(at: i)
         _remainingCountries.remove(at: i)
-        _memorisedCountries.insert(country, at: 0)
+        _chosenCountries.insert(country, at: 0)
         
         let indexPath = IndexPath(row: i, section: 0)
         
@@ -106,7 +106,7 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
     guard let countryArray = createCountries() else { print("json error"); return false }
     
     _countries.removeAll()
-    _memorisedCountries.removeAll()
+    _chosenCountries.removeAll()
     _remainingCountries.removeAll()
     
     saveRemainingCountriesToCoreData(remainingCountries: countryArray)
@@ -127,7 +127,7 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
     
     setCountries(countryArray: countries)
     _remainingCountries = countries
-    setMemorisedCountries()
+    setchosenCountries()
     
     return true
   }
@@ -218,11 +218,11 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
   
   //MARK: - PRIVATE FUNCTIONS
   
-  private func setMemorisedCountries() {
+  private func setchosenCountries() {
     
     guard let allCountries = createCountries() else { print("json error"); return }
     
-    _memorisedCountries = allCountries.filter { c -> Bool in
+    _chosenCountries = allCountries.filter { c -> Bool in
       
       for i in _remainingCountries {
         if c == i {
