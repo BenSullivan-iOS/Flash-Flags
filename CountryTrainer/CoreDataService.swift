@@ -123,6 +123,8 @@ extension CoreDataService {
   
   func fetchRemainingCountries() -> [String]? {
     
+    let request: NSFetchRequest<NSFetchRequestResult>
+    
     var remainingCountries = [String]()
     
     var cdCountriesTracker = [CDCountriesTracker]()
@@ -131,7 +133,34 @@ extension CoreDataService {
     
     if #available(iOS 10.0, *) {
       
-      let request: NSFetchRequest<NSFetchRequestResult> = CDCountriesTracker.fetchRequest()
+      request = CDCountriesTracker.fetchRequest()
+      
+      do {
+        
+        cdCountriesTracker = try ad.managedObjectContext.fetch(request) as! [CDCountriesTracker]
+        
+        for i in cdCountriesTracker {
+          
+          remainingCountries.append(i.remaining!)
+        }
+        
+        if cdCountriesTracker.isEmpty {
+          
+          saveAllCountriesToCoreData()
+          
+          return nil
+        }
+        
+        return remainingCountries
+        
+      } catch {
+        
+        print(error)
+        return nil
+      }
+    } else if #available(iOS 9.3, *) {
+      
+      request = NSFetchRequest(entityName: "CDCountriesTracker")
       
       do {
         

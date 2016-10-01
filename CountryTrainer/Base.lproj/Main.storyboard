@@ -997,30 +997,6 @@
                                             <frame key="frameInset"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EnB-0c-0ic">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="5" id="kLR-tR-64d"/>
-                                                    </constraints>
-                                                    <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </progressView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zkx-OY-jIV">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="42" id="7IO-gN-ceY"/>
-                                                        <constraint firstAttribute="height" constant="21" id="Bfk-9f-KJj"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEN-eC-AxI">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="4wZ-OQ-j5P"/>
-                                                        <constraint firstAttribute="height" constant="21" id="tzn-lr-MOA"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ds3-hR-cR7">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="nR3-GX-3T5"/>
@@ -1043,47 +1019,29 @@
                                                         <action selector="resetButtonPressed:" destination="Xse-BP-ALa" eventType="touchUpInside" id="WH5-P6-hH7"/>
                                                     </connections>
                                                 </button>
+                                                <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="X7I-1F-t81" customClass="CustomGameSearchBarView" customModule="Flash_Flags" customModuleProvider="target">
+                                                    <frame key="frameInset" minX="1" minY="25" height="44" maxX="-1"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </searchBar>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="EnB-0c-0ic" firstAttribute="top" secondItem="rYe-PJ-Fh5" secondAttribute="top" constant="61" id="9nZ-eH-VSd"/>
-                                                <constraint firstItem="EnB-0c-0ic" firstAttribute="leading" secondItem="Zkx-OY-jIV" secondAttribute="trailing" constant="4" id="CZb-MC-P7g"/>
                                                 <constraint firstItem="Ds3-hR-cR7" firstAttribute="leading" secondItem="rYe-PJ-Fh5" secondAttribute="leading" id="D9p-bs-0UP"/>
-                                                <constraint firstItem="EnB-0c-0ic" firstAttribute="leading" secondItem="rYe-PJ-Fh5" secondAttribute="leading" constant="70" id="LGi-Cw-jgY"/>
-                                                <constraint firstItem="IEN-eC-AxI" firstAttribute="leading" secondItem="EnB-0c-0ic" secondAttribute="trailing" constant="2" id="LRy-M0-hRH"/>
                                                 <constraint firstItem="vdq-bR-9bZ" firstAttribute="top" secondItem="rYe-PJ-Fh5" secondAttribute="top" constant="32" id="QRS-PQ-jym"/>
                                                 <constraint firstAttribute="trailing" secondItem="vdq-bR-9bZ" secondAttribute="trailing" constant="-1" id="QS8-xy-EGk"/>
-                                                <constraint firstAttribute="trailing" secondItem="EnB-0c-0ic" secondAttribute="trailing" constant="70" id="UtJ-Qn-lR3"/>
-                                                <constraint firstItem="Zkx-OY-jIV" firstAttribute="top" secondItem="rYe-PJ-Fh5" secondAttribute="top" constant="53" id="cIY-ZA-6eA"/>
-                                                <constraint firstItem="IEN-eC-AxI" firstAttribute="top" secondItem="vdq-bR-9bZ" secondAttribute="bottom" constant="-1" id="iPA-9i-bt4"/>
                                                 <constraint firstItem="Ds3-hR-cR7" firstAttribute="top" secondItem="rYe-PJ-Fh5" secondAttribute="top" constant="25" id="zNr-Ww-vWJ"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tf7-RY-qbD">
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <segments>
-                                            <segment title="Remaining"/>
-                                            <segment title="Memorised"/>
-                                        </segments>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="segmentedControlPressed:" destination="Xse-BP-ALa" eventType="valueChanged" id="BlQ-04-thp"/>
-                                        </connections>
-                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Tf7-RY-qbD" firstAttribute="leading" secondItem="rt0-Xg-uor" secondAttribute="leading" constant="65" id="5zF-bt-avS"/>
                                     <constraint firstAttribute="bottom" secondItem="Sgi-Sv-6No" secondAttribute="bottom" id="BHH-Cj-lB2"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tf7-RY-qbD" secondAttribute="bottom" constant="24" id="IUY-gH-uZ1"/>
                                     <constraint firstItem="Sgi-Sv-6No" firstAttribute="top" secondItem="rt0-Xg-uor" secondAttribute="top" id="Rn0-Kv-20S"/>
                                     <constraint firstItem="Sgi-Sv-6No" firstAttribute="leading" secondItem="rt0-Xg-uor" secondAttribute="leading" id="SvM-Wb-Aof"/>
                                     <constraint firstAttribute="height" constant="75" id="bQj-nN-9J8"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tf7-RY-qbD" secondAttribute="trailing" constant="66" id="hPB-Ue-87M"/>
-                                    <constraint firstItem="Tf7-RY-qbD" firstAttribute="centerX" secondItem="rt0-Xg-uor" secondAttribute="centerX" id="kXV-fK-2Vr"/>
                                     <constraint firstAttribute="trailing" secondItem="Sgi-Sv-6No" secondAttribute="trailing" id="mdC-FF-YkV"/>
-                                    <constraint firstItem="Tf7-RY-qbD" firstAttribute="top" secondItem="rt0-Xg-uor" secondAttribute="top" constant="23" id="qWK-5o-EBz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1104,10 +1062,7 @@
                     <connections>
                         <outlet property="backButton" destination="Ds3-hR-cR7" id="d0j-c8-q4z"/>
                         <outlet property="collectionView" destination="Jde-v0-DTk" id="jHL-Et-x6z"/>
-                        <outlet property="numberOfMemorisedFlags" destination="Zkx-OY-jIV" id="Nve-We-t6m"/>
-                        <outlet property="progressBar" destination="EnB-0c-0ic" id="tdt-9o-Fhr"/>
                         <outlet property="resetButton" destination="vdq-bR-9bZ" id="XdP-8D-krM"/>
-                        <outlet property="segmentedControl" destination="Tf7-RY-qbD" id="2Ku-He-lky"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIM-hX-UGg" userLabel="First Responder" sceneMemberID="firstResponder"/>

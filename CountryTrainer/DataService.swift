@@ -36,9 +36,6 @@ extension DataService {
             let currencyObj = i["currency"] as! NSArray?,
             let flag = i["cca2"]! as? String,
             let difficulty = i["difficulty"] as? String {
-           
-            print(commonName)
-            print(difficulty)
             
             if let currencyStr = currencyObj.firstObject as? String {
               
