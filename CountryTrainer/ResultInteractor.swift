@@ -35,10 +35,14 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     
     _countries = countryArray
     
+    let request: NSFetchRequest<NSFetchRequestResult>
+    
     if #available(iOS 10.0, *) {
-      
-      let request: NSFetchRequest<NSFetchRequestResult> = CDGame.fetchRequest()
-      
+      request = CDGame.fetchRequest()
+    } else {
+      request = NSFetchRequest(entityName: "CDGame")
+    }
+    
       do {
         
         self.CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
@@ -52,46 +56,11 @@ class ResultInteractor: ResultInteractorInterface, DataService {
         if !updateExistingGameIfExists(game: game) {
           saveNewGame(game: game)
         }
-        
-        //      let countriesRequest: NSFetchRequest<NSFetchRequestResult> = CDCountriesForGame.fetchRequest()
-
-        //        self.cdCountriesForGame = try ad.managedObjectContext.fetch(countriesRequest) as! [CDCountriesForGame]
-
-        //        var countryArray = [Country]()
-
-        
-//        for i in CDGames {
-        
-//          countryArray.removeAll()
-//          
-//          let arr = i.cdcountriesforgame?.allObjects
-//          
-//          for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
-//            
-//            for i in _countries {
-//              
-//              if i.name == (a as! CDCountriesForGame).country! {
-//                countryArray.append(i)
-//              }
-//            }
-//            
-//          }
-          
-//          let game = Game(countries: countryArray,
-//                          attempts: Int(i.attempts),
-//                          dateLastCompleted: i.dateLastCompleted as Date?,
-//                          highestPercentage: Int(i.highestPercentage))
-//          
-//          _games.append(game)
-          
-//        }
-        
       } catch {
         print(error)
         
       }
     }
-  }
   
   private func saveNewGame(game: Game) {
     

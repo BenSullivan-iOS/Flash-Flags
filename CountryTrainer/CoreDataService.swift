@@ -15,7 +15,7 @@ protocol CoreDataService: DataService {
   func fetchRemainingCountries() -> [String]?
   func saveRemainingCountriesToCoreData(remainingCountries: [Country])
   func removeRemainingCountriesFromCoreData()
-
+  
 }
 
 
@@ -28,60 +28,60 @@ extension CoreDataService {
     let _countries = countryArray
     var CDGames = [CDGame]()
     var _games = [Game]()
-    
-    ad.saveContext()
+    let request: NSFetchRequest<NSFetchRequestResult>
     
     if #available(iOS 10.0, *) {
+      request = CDGame.fetchRequest()
+    } else {
+      request = NSFetchRequest(entityName: "CDGame")
+    }
+    ad.saveContext()
+    
+    do {
       
-      let request: NSFetchRequest<NSFetchRequestResult> = CDGame.fetchRequest()
+      CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
       
-      do {
+      var countryArray = [Country]()
+      
+      print("Fetching games")
+      
+      for i in CDGames {
         
-        CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
+        countryArray.removeAll()
         
-        var countryArray = [Country]()
+        let arr = i.cdcountriesforgame?.allObjects
         
-        print("Fetching games")
-        
-        for i in CDGames {
+        for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
           
-          countryArray.removeAll()
-          
-          let arr = i.cdcountriesforgame?.allObjects
-          
-          for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
+          for i in _countries {
             
-            for i in _countries {
-
-              if i.name == (a as! CDCountriesForGame).country! {
-                countryArray.append(i)
-                
-              }
+            if i.name == (a as! CDCountriesForGame).country! {
+              countryArray.append(i)
+              
             }
-            
           }
           
-          let game = Game(countries: countryArray,
-                          attempts: Int(i.attempts),
-                          dateLastCompleted: i.dateLastCompleted as Date?,
-                          highestPercentage: Int(i.highestPercentage),
-                          dateCreated: i.dateCreated as Date?)
-          
-          _games.append(game)
         }
         
-        return _games
+        let game = Game(countries: countryArray,
+                        attempts: Int(i.attempts),
+                        dateLastCompleted: i.dateLastCompleted as Date?,
+                        highestPercentage: Int(i.highestPercentage),
+                        dateCreated: i.dateCreated as Date?)
         
-        
-      } catch {
-        
-        print(error)
-        return nil
-        
-        
+        _games.append(game)
       }
+      
+      return _games
+      
+      
+    } catch {
+      
+      print(error)
+      return nil
+      
+      
     }
-    return nil
   }
   
   func deleteGameFromCoreData(game: Game) -> Bool {
@@ -90,36 +90,37 @@ extension CoreDataService {
     
     ad.saveContext()
     
+    let request: NSFetchRequest<NSFetchRequestResult>
+    
     if #available(iOS 10.0, *) {
+      request = CDGame.fetchRequest()
+    } else {
+      request = NSFetchRequest(entityName: "CDGame")
+    }
+    
+    do {
       
-      let request: NSFetchRequest<NSFetchRequestResult> = CDGame.fetchRequest()
+      CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
       
-      do {
+      for i in CDGames {
         
-        CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
-        
-        for i in CDGames {
+        if i.dateCreated == game.dateCreated as NSDate {
           
-          if i.dateCreated == game.dateCreated as NSDate {
-            
-            ad.managedObjectContext.delete(i)
-            
-            ad.saveContext()
-            
-            return true
-          }
+          ad.managedObjectContext.delete(i)
+          
+          ad.saveContext()
+          
+          return true
         }
-        
-      } catch {
-        
-        print(error)
-        return false
       }
+      
+    } catch {
+      
+      print(error)
+      return false
     }
     return false
   }
-  
-  
   
   func fetchRemainingCountries() -> [String]? {
     
@@ -129,39 +130,39 @@ extension CoreDataService {
     
     ad.saveContext()
     
+    let request: NSFetchRequest<NSFetchRequestResult>
+    
     if #available(iOS 10.0, *) {
-      
-      let request: NSFetchRequest<NSFetchRequestResult> = CDCountriesTracker.fetchRequest()
-      
-      do {
-        
-        cdCountriesTracker = try ad.managedObjectContext.fetch(request) as! [CDCountriesTracker]
-        
-        for i in cdCountriesTracker {
-          
-          remainingCountries.append(i.remaining!)
-        }
-        
-        if cdCountriesTracker.isEmpty {
-          
-          saveAllCountriesToCoreData()
-          
-          return nil
-        }
-        
-        return remainingCountries
-        
-      } catch {
-        
-        print(error)
-        return nil
-        
-        
-      }
+      request = CDCountriesTracker.fetchRequest()
+    } else {
+      request = NSFetchRequest(entityName: "CDCountriesTrackerEntity")
     }
-    return nil
+    
+    do {
+      
+      cdCountriesTracker = try ad.managedObjectContext.fetch(request) as! [CDCountriesTracker]
+      
+      for i in cdCountriesTracker {
+        
+        remainingCountries.append(i.remaining!)
+      }
+      
+      if cdCountriesTracker.isEmpty {
+        
+        saveAllCountriesToCoreData()
+        
+        return nil
+      }
+      
+      return remainingCountries
+      
+    } catch {
+      
+      print(error)
+      return nil
+    }
   }
-
+  
   func saveAllCountriesToCoreData() {
     
     guard let countryArray = createCountries() else { print("json error"); return }
@@ -183,26 +184,29 @@ extension CoreDataService {
     
     ad.saveContext()
     
+    let request: NSFetchRequest<NSFetchRequestResult>
+    
     if #available(iOS 10.0, *) {
+      request = CDCountriesTracker.fetchRequest()
+    } else {
+      request = NSFetchRequest(entityName: "CDCountriesTrackerEntity")
+    }
+    
+    do {
       
-      let request: NSFetchRequest<NSFetchRequestResult> = CDCountriesTracker.fetchRequest()
+      cdCountriesTracker = try ad.managedObjectContext.fetch(request) as! [CDCountriesTracker]
       
-      do {
+      for i in cdCountriesTracker {
         
-        cdCountriesTracker = try ad.managedObjectContext.fetch(request) as! [CDCountriesTracker]
-        
-        for i in cdCountriesTracker {
-          
-          ad.managedObjectContext.delete(i)
-          ad.saveContext()
-        }
-        
-      } catch {
-        
-        print(error)
-        
-        
+        ad.managedObjectContext.delete(i)
+        ad.saveContext()
       }
+      
+    } catch {
+      
+      print(error)
+      
+      
     }
   }
   
@@ -210,13 +214,13 @@ extension CoreDataService {
     
     removeRemainingCountriesFromCoreData()
     
-      for i in remainingCountries {
-        
-        let countries = NSEntityDescription.insertNewObject(forEntityName: "CDCountriesTrackerEntity", into: ad.managedObjectContext) as! CDCountriesTracker
-        
-        countries.remaining = i.name
-       
-      }
-      ad.saveContext()
+    for i in remainingCountries {
+      
+      let countries = NSEntityDescription.insertNewObject(forEntityName: "CDCountriesTrackerEntity", into: ad.managedObjectContext) as! CDCountriesTracker
+      
+      countries.remaining = i.name
+      
+    }
+    ad.saveContext()
   }
 }
