@@ -227,53 +227,5 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CountryTrainer/CustomGameVC.swift"
-            timestampString = "497032583.081297"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "moveFlagButtonPressed(country:remove:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Flash_Flags.CustomGameVC.moveFlagButtonPressed (country : Flash_Flags.Country, remove : Swift.Bool) -&gt; ()"
-                  moduleName = "Flash Flags"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Ben/iOS%20Swift%20Projects/Other/CountryTrainer/CountryTrainer/CustomGameVC.swift"
-                  timestampString = "497026130.60571"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "2124">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Flash_Flags.CustomGameVC.moveFlagButtonPressed (country : Flash_Flags.Country, remove : Swift.Bool) -&gt; ()"
-                  moduleName = "Flash Flags"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Ben/iOS%20Swift%20Projects/Other/CountryTrainer/CountryTrainer/CustomGameVC.swift"
-                  timestampString = "497026130.612032"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "2856">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

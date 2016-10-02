@@ -11,9 +11,11 @@ protocol CustomGameInteractorInterface {
   var remainingCountries: [Country] { get }
   var chosenCountries: [Country] { get }
   var imageCache: NSCache<NSString, UIImage> { get }
+  var filteredCountries: [Country] { get }
   
-  func addFlag(country: Country) -> IndexPath?
-  func removeFlag(country: Country) -> IndexPath?
+  func filterCountries(withText text: String)
+  func addFlag(country: Country, searchActive: Bool) -> IndexPath?
+  func removeFlag(country: Country, searchActive: Bool) -> IndexPath?
   
   func populateCurrentCoutntriesCache(isRemainingCountry: Bool)
   func populateCacheFromPrefetch(isRemainingCountry: Bool, indexPaths: [IndexPath])

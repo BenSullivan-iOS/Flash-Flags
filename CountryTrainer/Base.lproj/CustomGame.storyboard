@@ -139,8 +139,20 @@
                                                 </button>
                                                 <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search" backgroundImage="clearTextFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="X7I-1F-t81" customClass="CustomGameSearchBarView" customModule="Flash_Flags" customModuleProvider="target">
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Xse-BP-ALa" id="U2a-O3-P5M"/>
+                                                    </connections>
                                                 </searchBar>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdq-bR-9bZ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGV-xO-Hmu" userLabel="CompletedBtnCover">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" id="SLy-uX-v1A"/>
+                                                        <constraint firstAttribute="height" constant="57" id="pTi-Yb-fNu"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="completedButtonPressed:" destination="Xse-BP-ALa" eventType="touchUpInside" id="Gue-aV-KAJ"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdq-bR-9bZ" userLabel="CompletedButton">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="1eI-6l-u1m"/>
                                                         <constraint firstAttribute="height" constant="17" id="qGG-ew-5bw"/>
@@ -154,10 +166,12 @@
                                             <constraints>
                                                 <constraint firstItem="X7I-1F-t81" firstAttribute="leading" secondItem="rYe-PJ-Fh5" secondAttribute="leading" constant="36" id="00t-ep-69A"/>
                                                 <constraint firstItem="Ds3-hR-cR7" firstAttribute="leading" secondItem="rYe-PJ-Fh5" secondAttribute="leading" constant="2" id="D9p-bs-0UP"/>
+                                                <constraint firstAttribute="trailing" secondItem="IGV-xO-Hmu" secondAttribute="trailing" id="Kxu-z7-sqU"/>
                                                 <constraint firstItem="X7I-1F-t81" firstAttribute="centerX" secondItem="rYe-PJ-Fh5" secondAttribute="centerX" id="dc0-ww-tzt"/>
                                                 <constraint firstItem="vdq-bR-9bZ" firstAttribute="top" secondItem="rYe-PJ-Fh5" secondAttribute="top" constant="37" id="eBx-2M-feT"/>
                                                 <constraint firstItem="X7I-1F-t81" firstAttribute="centerY" secondItem="Ds3-hR-cR7" secondAttribute="centerY" id="iLS-fA-M0Y"/>
                                                 <constraint firstAttribute="trailing" secondItem="X7I-1F-t81" secondAttribute="trailing" constant="37" id="jIT-yI-vIs"/>
+                                                <constraint firstItem="IGV-xO-Hmu" firstAttribute="top" secondItem="rYe-PJ-Fh5" secondAttribute="top" constant="18" id="leV-ER-cnu"/>
                                                 <constraint firstAttribute="trailing" secondItem="vdq-bR-9bZ" secondAttribute="trailing" constant="13" id="wmw-oN-wqT"/>
                                                 <constraint firstItem="Ds3-hR-cR7" firstAttribute="top" secondItem="rYe-PJ-Fh5" secondAttribute="top" constant="27" id="zNr-Ww-vWJ"/>
                                             </constraints>
@@ -270,11 +284,12 @@
                         <outlet property="chosenFlagsCollectionView" destination="V0v-qe-EnD" id="ROP-wD-ppw"/>
                         <outlet property="collectionView" destination="Jde-v0-DTk" id="jHL-Et-x6z"/>
                         <outlet property="resetButton" destination="vdq-bR-9bZ" id="XdP-8D-krM"/>
+                        <outlet property="searchBar" destination="X7I-1F-t81" id="iv1-Ym-d4P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIM-hX-UGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4117.5" y="117.25352112676056"/>
+            <point key="canvasLocation" x="4116" y="116.49175412293854"/>
         </scene>
     </scenes>
     <resources>

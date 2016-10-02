@@ -8,39 +8,52 @@
 
 import UIKit
 
-class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UISearchBarDelegate, CustomGameCollectionViewCellInterface {
+class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UISearchBarDelegate, UITextFieldDelegate, CustomGameCollectionViewCellInterface {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var chosenFlagsCollectionView: UICollectionView!
+  @IBOutlet weak var searchBar: CustomGameSearchBarView!
   
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var resetButton: UIButton!
   @IBOutlet weak var chosenFlagsBottomConstraint: NSLayoutConstraint!
   
+  internal var customGameWireframe: CustomGameWireframe?
+  internal var customGameInteractor: CustomGameInteractorInterface?
+  
   //True = Viewing remaining countries. False = Viewing memorised countries
   fileprivate var isRemainingCountry = true
   fileprivate var game: Game?
   
-  internal var customGameWireframe: CustomGameWireframe?
-  internal var customGameInteractor: CustomGameInteractorInterface?
-  
-  private var remainingCountries: [Country] {
+  fileprivate var remainingCountries: [Country] {
     return customGameInteractor?.remainingCountries ?? [Country]()
   }
   
-  private var chosenCountries: [Country] {
+  fileprivate var chosenCountries: [Country] {
     return customGameInteractor?.chosenCountries ?? [Country]()
   }
   
-  private var imageCache: NSCache<NSString, UIImage> {
+  fileprivate var imageCache: NSCache<NSString, UIImage> {
     return customGameInteractor?.imageCache ?? NSCache<NSString, UIImage>()
   }
   
+  fileprivate var searchActive = false
+  
+  fileprivate var filteredCountries: [Country] {
+    return customGameInteractor?.filteredCountries ?? [Country]()
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    
+    self.view.endEditing(true)
+  }
   
   //MARK: - VC LIFECYCLE
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    searchBar.returnKeyType = .default
     
     if #available(iOS 10.0, *) {
       collectionView.prefetchDataSource = self
@@ -75,18 +88,17 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
   internal func moveFlagButtonPressed(country: Country, remove: Bool) {
     
-   
     //true = remove from custom game. false = add to custom game
     if !remove {
       
-      if let rowToDelete = customGameInteractor?.removeFlag(country: country) {
+      if let rowToDelete = customGameInteractor?.removeFlag(country: country, searchActive: searchActive) {
         collectionView.deleteItems(at: [rowToDelete])
         let indexPath = IndexPath(row: 0, section: 0)
         chosenFlagsCollectionView.insertItems(at: [indexPath])
       }
     } else {
       
-      if let rowToAdd = customGameInteractor?.addFlag(country: country) {
+      if let rowToAdd = customGameInteractor?.addFlag(country: country, searchActive: searchActive) {
         chosenFlagsCollectionView.deleteItems(at: [rowToAdd])
         let indexPath = IndexPath(row: 0, section: 0)
         collectionView.insertItems(at: [indexPath])
@@ -103,6 +115,24 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       animateUIOffScreen()
       
     }
+  }
+  
+  internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    
+    guard searchText != "" else {
+      
+      searchActive = false
+      
+      self.collectionView.reloadData()
+      
+      return
+    }
+
+    searchActive = true
+    
+    customGameInteractor?.filterCountries(withText: searchText)
+    
+    self.collectionView.reloadData()
   }
   
   
@@ -124,7 +154,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       textfield.placeholder = "e.g. Scandinavia, British Territories etc..."
     }
 
-    alert.addAction(UIAlertAction(title: "Start Game", style: .default, handler: { action in
+    alert.addAction(UIAlertAction(title: "Start Game", style: .cancel, handler: { action in
       
       for textfield in alert.textFields! {
         
@@ -197,7 +227,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     if collectionView == self.collectionView {
       
-      return remainingCountries.count
+      return searchActive ? filteredCountries.count : remainingCountries.count
     }
     return chosenCountries.count
   }
@@ -208,14 +238,14 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       
       if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customGameCell", for: indexPath) as? CustomGameCollectionViewCell {
         
-        let flagObjectKey = isRemainingCountry
+        let flagObjectKey = !searchActive
           ? remainingCountries[indexPath.row].flagSmall as! NSString
-          : chosenCountries [indexPath.row].flagSmall as! NSString
+          : filteredCountries[indexPath.row].flagSmall as! NSString
         
         let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
         cell.customGameVCInterface = self
         
-        cell.configureView(country: remainingCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
+        cell.configureView(country: searchActive ? filteredCountries[indexPath.row] : remainingCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
         
         return cell
       }
@@ -232,7 +262,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     return UICollectionViewCell()
   }
   
-  internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
+  internal func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     self.view.endEditing(true)
   }
   

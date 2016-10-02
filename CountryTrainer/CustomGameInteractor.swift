@@ -12,7 +12,8 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
   
   fileprivate var didUpdateCountries = false
   fileprivate var _imageCache = NSCache<NSString, UIImage>()
-  
+  fileprivate var _filteredCountries = [Country]()
+
   fileprivate var _remainingCountries = [Country]() {
     didSet {
       didUpdateCountries = true
@@ -25,16 +26,20 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
     }
   }
   
-  var imageCache: NSCache<NSString, UIImage> {
+  internal var imageCache: NSCache<NSString, UIImage> {
     return _imageCache
   }
   
-  var remainingCountries: [Country] {
+  internal var remainingCountries: [Country] {
     return _remainingCountries
   }
   
-  var chosenCountries: [Country] {
+  internal var chosenCountries: [Country] {
     return _chosenCountries
+  }
+  
+  internal var filteredCountries: [Country] {
+    return _filteredCountries
   }
   
   
@@ -56,7 +61,22 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
     self.saveRemainingCountriesToCoreData(remainingCountries: remainingCountries)
   }
   
-  internal func addFlag(country: Country) -> IndexPath? {
+  internal func filterCountries(withText text: String) {
+    
+    _filteredCountries.removeAll()
+    
+    for i in _remainingCountries.indices {
+      
+      if _remainingCountries[i].name.contains(text) {
+        
+        _filteredCountries.append(_remainingCountries[i])
+      }
+    }
+  }
+  
+  internal func addFlag(country: Country, searchActive: Bool) -> IndexPath? {
+    
+    if !searchActive {
     
     for i in _chosenCountries.indices {
       
@@ -70,23 +90,64 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
         return indexPath
       }
     }
+    } else {
+      
+      for i in _chosenCountries.indices {
+        
+        if _chosenCountries[i] == country {
+          didUpdateCountries = true
+          _remainingCountries.insert(country, at: 0)
+          _filteredCountries.insert(country, at: 0)
+          _chosenCountries.remove(at: i)
+          
+          let indexPath = IndexPath(row: i, section: 0)
+          
+          return indexPath
+        }
+      }
+      
+      
+    }
     return nil
     
   }
   
-  internal func removeFlag(country: Country) -> IndexPath? {
+  internal func removeFlag(country: Country, searchActive: Bool) -> IndexPath? {
     
-    for i in remainingCountries.indices {
+    if !searchActive {
       
-      if _remainingCountries[i] == country {
+      for i in _remainingCountries.indices {
         
-        didUpdateCountries = true
-        _remainingCountries.remove(at: i)
-        _chosenCountries.insert(country, at: 0)
+        if _remainingCountries[i] == country {
+          
+          didUpdateCountries = true
+          _remainingCountries.remove(at: i)
+          _chosenCountries.insert(country, at: 0)
+          
+          let indexPath = IndexPath(row: i, section: 0)
+          
+          return indexPath
+        }
+      }
+    } else {
+      
+      for i in _filteredCountries.indices {
         
-        let indexPath = IndexPath(row: i, section: 0)
-        
-        return indexPath
+        if _filteredCountries[i] == country {
+          
+          didUpdateCountries = true
+          _filteredCountries.remove(at: i)
+          _chosenCountries.insert(country, at: 0)
+          
+          let indexPath = IndexPath(row: i, section: 0)
+          
+          for a in _remainingCountries.indices where _remainingCountries[a] == country {
+            _remainingCountries.remove(at: a)
+            return indexPath
+          }
+          
+          return indexPath
+        }
       }
     }
     return nil
