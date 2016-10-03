@@ -35,7 +35,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8gz-tk-Sza">
                                     <size key="itemSize" width="136" height="136"/>
                                     <size key="headerReferenceSize" width="0.0" height="75"/>
-                                    <size key="footerReferenceSize" width="50" height="20"/>
+                                    <size key="footerReferenceSize" width="50" height="125"/>
                                     <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -105,12 +105,12 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ksp-lc-zhz">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Header" id="ksp-lc-zhz">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Yw-Vq-D78">
-                                    <rect key="frame" x="0.0" y="211" width="383" height="20"/>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Footer" id="1Yw-Vq-D78">
+                                    <rect key="frame" x="0.0" y="211" width="383" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <connections>

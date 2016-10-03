@@ -14,6 +14,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   fileprivate var numberOfFlagsSelected = Int()
   fileprivate var chosenOnes = [Country]()
   fileprivate var _countries = [Country]()
+  fileprivate var _allCountries = [Country]()
   fileprivate var _games = [Game]()
   
   internal var mainVCInterface: MainVCInterface?
@@ -25,6 +26,10 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   
   internal var countries: [Country] {
     return _countries
+  }
+  
+  internal var allCountries: [Country] {
+    return _allCountries
   }
   
   
@@ -162,6 +167,9 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     //Downloads all remaining countries from core data and generates countries array
     
     guard let countryArray = createCountries() else { print("json error"); return }
+    
+    //Store all countries for use in Custom Game module
+    _allCountries = countryArray
     
     //If the core data store is empty, the function will return nil and store all flags to core data
     if let remainingCountryNames = fetchRemainingCountries() {

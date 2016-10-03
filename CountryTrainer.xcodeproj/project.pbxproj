@@ -654,9 +654,9 @@
 		B58A00821D8404B400B8BD7D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B564E2141D9ED36600E84EC7 /* CustomGame */,
 				B58A00741D83FEF500B8BD7D /* Main */,
 				B58A00701D83FE4200B8BD7D /* Game */,
+				B564E2141D9ED36600E84EC7 /* CustomGame */,
 				B5AD69211D8C35BD00F2331A /* FilterFlags */,
 				B567F4AA1D9D13BE00B5015A /* HowToPlay */,
 			);

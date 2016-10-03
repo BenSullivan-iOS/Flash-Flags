@@ -147,6 +147,9 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     alert.addTextField { (textfield) in
       textfield.placeholder = "e.g. Scandinavia, British Territories etc..."
+      textfield.autocapitalizationType = .sentences
+      textfield.spellCheckingType = .default
+      textfield.autocorrectionType = .default
     }
 
     alert.addAction(UIAlertAction(title: "Start Game", style: .cancel, handler: { action in
@@ -212,6 +215,28 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
   
   //MARK: - COLLECTION VIEW DELEGATE
+  
+  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    
+    switch kind {
+      
+    case UICollectionElementKindSectionHeader:
+      
+      let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) 
+      
+      return headerView
+      
+    case UICollectionElementKindSectionFooter:
+      let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Footer", for: indexPath) 
+      
+      return footerView
+      
+    default:
+      
+      assert(false, "Unexpected element kind")
+    }
+
+  }
   
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
     

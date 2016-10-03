@@ -66,7 +66,7 @@ class MainTableViewCell: UITableViewCell {
       gameTitle.isHidden = false
       gameTitleStack.isHidden = false
 
-      bgLabel.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 227/255, blue: 164/255, alpha: 1.0)
+      bgLabel.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 236/255, blue: 191/255, alpha: 1.0)
       
       topStackConstraint.constant = 2
       bottomStackConstraint.constant = -4
@@ -76,7 +76,7 @@ class MainTableViewCell: UITableViewCell {
       gameTitle.isHidden = true
       bgLabel.backgroundColor = .white
       topStackConstraint.constant = 5
-      bottomStackConstraint.constant = -5
+      bottomStackConstraint.constant = -8
 
     }
     

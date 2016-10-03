@@ -10,6 +10,7 @@ import Foundation
 
 protocol MainInteractorInterface: class {
   
+  var allCountries: [Country] { get }
   var countries: [Country] { get }
   var games: [Game] { get }
   

@@ -84,7 +84,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGE-c6-JdM" customClass="CurvedLabel" customModule="Flash_Flags" customModuleProvider="target">
-                                                    <color key="backgroundColor" red="1" green="0.8901960784313725" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="1" green="0.92644582312065893" blue="0.7502688100948699" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -143,10 +143,10 @@
                                                         <constraint firstItem="BKc-04-0KF" firstAttribute="top" secondItem="bde-TB-XK4" secondAttribute="bottom" id="640-mo-BTN"/>
                                                         <constraint firstAttribute="bottom" secondItem="BKc-04-0KF" secondAttribute="bottom" id="8P8-1H-n1A"/>
                                                         <constraint firstItem="bde-TB-XK4" firstAttribute="leading" secondItem="LWb-ek-cpO" secondAttribute="leading" id="COj-FK-Gug"/>
+                                                        <constraint firstItem="7a6-r3-wAd" firstAttribute="leading" secondItem="LWb-ek-cpO" secondAttribute="leading" id="CoX-7O-QZD"/>
                                                         <constraint firstAttribute="trailing" secondItem="BKc-04-0KF" secondAttribute="trailing" id="D4c-er-D8C"/>
                                                         <constraint firstAttribute="trailing" secondItem="bde-TB-XK4" secondAttribute="trailing" id="JHG-Uz-TdT"/>
-                                                        <constraint firstAttribute="trailing" secondItem="7a6-r3-wAd" secondAttribute="trailing" id="MwA-hC-Pky"/>
-                                                        <constraint firstItem="7a6-r3-wAd" firstAttribute="leading" secondItem="LWb-ek-cpO" secondAttribute="leading" id="bQL-Hs-AyK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7a6-r3-wAd" secondAttribute="trailing" constant="5" id="MwA-hC-Pky"/>
                                                         <constraint firstItem="BKc-04-0KF" firstAttribute="leading" secondItem="LWb-ek-cpO" secondAttribute="leading" id="luH-2O-sGA"/>
                                                         <constraint firstItem="bde-TB-XK4" firstAttribute="top" secondItem="7a6-r3-wAd" secondAttribute="bottom" id="qwB-W8-1lt"/>
                                                     </constraints>

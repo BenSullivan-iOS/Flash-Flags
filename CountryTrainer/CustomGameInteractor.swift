@@ -46,7 +46,9 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
   //MARK: - INITIALISER
   
   init(countries: [Country]) {
-    populateCountries()
+    
+    _remainingCountries.removeAll()
+    _remainingCountries = countries
     
   }
   
@@ -151,14 +153,6 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
       }
     }
     return nil
-  }
-  
-  internal func populateCountries() {
-    
-    guard let countryArray = createCountries() else { print("json error"); return }
-    
-    _remainingCountries.removeAll()
-    _remainingCountries = countryArray
   }
   
   internal func populateCurrentCoutntriesCache(isRemainingCountry: Bool) {
