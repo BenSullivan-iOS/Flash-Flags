@@ -211,8 +211,6 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     })
     
   }
-
-  
   
   //MARK: - COLLECTION VIEW DELEGATE
   

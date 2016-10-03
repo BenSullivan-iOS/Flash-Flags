@@ -161,7 +161,7 @@ extension CoreDataService {
       }
     } else if #available(iOS 9.3, *) {
       
-      request = NSFetchRequest(entityName: "CDCountriesTracker")
+      request = NSFetchRequest(entityName: "CDCountriesTrackerEntity")
       
       do {
         

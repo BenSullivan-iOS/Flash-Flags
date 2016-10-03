@@ -20,7 +20,7 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   //MARK: - INTERNAL FUNCTIONS
   
-  internal func presentFilterFlagsInterfaceFromViewController(viewController: UIViewController!, countries: [Country]) {
+  internal func presentFilterFlagsInterfaceFromViewController(viewController: UIViewController!, countries: [Country], location: CGRect) {
     
     self.countries = countries
     
@@ -34,7 +34,13 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
     
     filterFlagsVC = newVC
     
-    viewController.navigationController?.radialPushViewController(viewController: newVC)
+    let rect = CGRect(x: location.midX, y: location.midY, width: 1, height: 1)
+    
+    viewController.navigationController?.radialPushViewController(
+      viewController: newVC,
+      duration: 0.3,
+      startFrame: rect,
+      transitionCompletion: nil)
     
     presentedViewController = newVC
     
@@ -71,6 +77,7 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
     return PresentingAnimator()
     
   }
+  
   internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     return DismissingAnimator()
     

@@ -27,9 +27,9 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     mainVC?.updateCountriesAfterFilter(countries: countries)
   }
   
-  internal func presentFilterFlagsInterface(withCountries countries: [Country]) {
+  internal func presentFilterFlagsInterface(withCountries countries: [Country], location: CGRect) {
     
-    filterFlagsWireframe?.presentFilterFlagsInterfaceFromViewController(viewController: mainVC!, countries: countries)
+    filterFlagsWireframe?.presentFilterFlagsInterfaceFromViewController(viewController: mainVC!, countries: countries, location: location)
   }
   
   internal func presentHowToPlay() {

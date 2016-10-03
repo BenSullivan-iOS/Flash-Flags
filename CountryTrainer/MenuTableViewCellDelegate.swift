@@ -7,7 +7,7 @@
 //
 
 protocol MenuTableViewCellDelegate: class {
-  func presentFilterFlags()
+  func presentFilterFlags(indexPath: IndexPath)
   func presentHowToPlay()
   func presentCustomGame()
 

@@ -39,6 +39,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     setInitialTableRow()
   }
   
+  var indexPathForCustomGame: IndexPath?
+  
+  //Trying to save the index path of each cell, then use rectForIndexPath whenever one of the menu buttons are pressed
   
   //MARK: - OUTLET ACTIONS
   
@@ -49,8 +52,11 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   
   //MARK: - INTERFACE FUNCTIONS
   
-  internal func presentFilterFlags() {
-    mainWireframe?.presentFilterFlagsInterface(withCountries: (mainInteractor?.countries)!)
+  internal func presentFilterFlags(indexPath: IndexPath) {
+    
+    let rect = tableView.rectForRow(at: indexPath)
+    
+    mainWireframe?.presentFilterFlagsInterface(withCountries: (mainInteractor?.countries)!, location: rect)
   }
   
   internal func presentHowToPlay() {
@@ -149,7 +155,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as! MenuTableViewCell
       
       cell.menuTableViewCellDelegate = self
-      cell.configureCell(title: menuTitles[indexPath.row])
+      cell.configureCell(title: menuTitles[indexPath.row], indexPath: indexPath)
       cell.mainInteractor = mainInteractor
       cell.mainWireframe = mainWireframe
       

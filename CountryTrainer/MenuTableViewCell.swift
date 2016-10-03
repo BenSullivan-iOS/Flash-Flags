@@ -14,14 +14,21 @@ class MenuTableViewCell: UITableViewCell {
   
   weak internal var mainInteractor: MainInteractorInterface?
   weak internal var mainWireframe: MainWireframe?
-  
   weak var menuTableViewCellDelegate: MenuTableViewCellDelegate?
+  
+  fileprivate var indexPath: IndexPath?
+
+  
+  //MARK: - CELL LIFECYCLE
   
   override func awakeFromNib() {
     super.awakeFromNib()
     
     button.layer.cornerRadius = 5.0
   }
+  
+  
+  //MARK: - CELL OUTLET FUNCTIONS
   
   @IBAction func buttonPressed(_ sender: UIButton) {
     
@@ -30,25 +37,34 @@ class MenuTableViewCell: UITableViewCell {
     switch title {
       
     case MenuItems.quickStart.rawValue:
-      mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil, difficulty: Difficulty.allDifficulties.rawValue)
+      mainInteractor?.getNewGameData(
+        numberOfFlags: 5,
+        continent: nil,
+        difficulty: Difficulty.allDifficulties.rawValue)
       
     case MenuItems.startNewGame.rawValue:
       mainWireframe?.presentStartNewGameVCFromMainVC()
       
     case MenuItems.filterFlags.rawValue:
-      menuTableViewCellDelegate?.presentFilterFlags()
+      menuTableViewCellDelegate?.presentFilterFlags(indexPath: indexPath!)
       
     case MenuItems.howToPlay.rawValue:
       menuTableViewCellDelegate?.presentHowToPlay()
       
     case MenuItems.customGame.rawValue:
       menuTableViewCellDelegate?.presentCustomGame()
+      
     default: break
     }
   }
+
   
-  internal func configureCell(title: String) {
+  //MARK: - INTERNAL FUNCTIONS
+  
+  internal func configureCell(title: String, indexPath: IndexPath) {
     //FIXME: - add pop in animation
+    
+    self.indexPath = indexPath
     button.setTitle(title, for: .normal)
   }
   
