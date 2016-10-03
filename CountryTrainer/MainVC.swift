@@ -89,7 +89,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   
   internal func populateGames(game: Game) {
     mainInteractor?.populateGamesForMainVCTable(game: game)
-    
     tableView.reloadData()
   }
   

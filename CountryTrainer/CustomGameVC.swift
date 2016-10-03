@@ -23,6 +23,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
   //True = Viewing remaining countries. False = Viewing memorised countries
   fileprivate var isRemainingCountry = true
+  fileprivate var searchActive = false
   fileprivate var game: Game?
   
   fileprivate var remainingCountries: [Country] {
@@ -37,16 +38,10 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     return customGameInteractor?.imageCache ?? NSCache<NSString, UIImage>()
   }
   
-  fileprivate var searchActive = false
-  
   fileprivate var filteredCountries: [Country] {
     return customGameInteractor?.filteredCountries ?? [Country]()
   }
   
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    
-    self.view.endEditing(true)
-  }
   
   //MARK: - VC LIFECYCLE
   
@@ -262,9 +257,16 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     return UICollectionViewCell()
   }
   
+  //MARK: - KEYBOARD CONTROLS
+  
   internal func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     self.view.endEditing(true)
   }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    self.view.endEditing(true)
+  }
+  
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent

@@ -101,6 +101,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     newGame.highestPercentage = Double(game.highestPercentage)
     newGame.dateLastCompleted = Date() as NSDate?
     newGame.dateCreated = game.dateCreated as NSDate?
+    newGame.customGameTitle = game.customGameTitle
     
     for i in game.countries {
       

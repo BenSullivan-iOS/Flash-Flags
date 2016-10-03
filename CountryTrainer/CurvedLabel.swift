@@ -17,3 +17,11 @@ class CurvedLabel: UILabel {
     alpha = 0.95
   }
 }
+
+class CurvedCustomGameLabel: UILabel {
+  
+  override func awakeFromNib() {
+    layer.cornerRadius = 5.0
+    layer.masksToBounds = true
+  }
+}

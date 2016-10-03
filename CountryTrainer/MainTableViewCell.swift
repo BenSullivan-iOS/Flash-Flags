@@ -17,6 +17,9 @@ class MainTableViewCell: UITableViewCell {
   @IBOutlet weak var flags: UILabel!
   @IBOutlet weak var button: UIButton!
   @IBOutlet weak var daysAgoText: UILabel!
+  @IBOutlet weak var gameTitle: UILabel!
+  @IBOutlet weak var flagsText: UILabel!
+  @IBOutlet weak var attemptsText: UILabel!
   
   weak internal var mainWireframe: MainWireframe?
   weak internal var mainVCInterface: MainVCInterface?
@@ -24,6 +27,11 @@ class MainTableViewCell: UITableViewCell {
   fileprivate var circleView: CircleView?
   fileprivate var game: Game?
   
+  @IBOutlet weak var topStackConstraint: NSLayoutConstraint!
+  @IBOutlet weak var bottomStackConstraint: NSLayoutConstraint!
+  
+  
+  @IBOutlet weak var gameTitleStack: UIStackView!
   
   //MARK: - CELL LIFECYCLE
   
@@ -53,10 +61,30 @@ class MainTableViewCell: UITableViewCell {
     self.daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
     self.flags.text = String(game.numberOfFlags)
     
-    if let days = Int(daysAgo.text!) {
+    if let title = game.customGameTitle {
+      gameTitle.text = title
+      gameTitle.isHidden = false
+      gameTitleStack.isHidden = false
+
+      bgLabel.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 227/255, blue: 164/255, alpha: 1.0)
       
+      topStackConstraint.constant = 2
+      bottomStackConstraint.constant = -4
+      
+    } else {
+      gameTitleStack.isHidden = true
+      gameTitle.isHidden = true
+      bgLabel.backgroundColor = .white
+      topStackConstraint.constant = 5
+      bottomStackConstraint.constant = -5
+
+    }
+    
+    if let days = Int(daysAgo.text!) {
       self.daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
     }
+    flagsText.text = game.numberOfFlags == 1 ? "FLAG" : "FLAGS"
+    attemptsText.text = game.attempts == 1 ? "ATTEMPT" : "ATTEMPTS"
     animateCircleView(game: game)
   }
   
@@ -64,7 +92,7 @@ class MainTableViewCell: UITableViewCell {
     
     mainVCInterface?.displayGameOptionsActionSheet(game: game!, title: "Would you like to delete this game?")
   }
-
+  
   
   //MARK: - PRIVATE FUNCTIONS
   

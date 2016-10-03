@@ -2,7 +2,7 @@
 //  CDGame+CoreDataProperties.swift
 //  CountryTrainer
 //
-//  Created by Ben Sullivan on 26/09/2016.
+//  Created by Ben Sullivan on 03/10/2016.
 //  Copyright © 2016 Ben Sullivan. All rights reserved.
 //
 
@@ -19,6 +19,7 @@ extension CDGame {
     @NSManaged public var dateCreated: NSDate?
     @NSManaged public var dateLastCompleted: NSDate?
     @NSManaged public var highestPercentage: Double
+    @NSManaged public var customGameTitle: String?
     @NSManaged public var cdcountriesforgame: NSSet?
 
 }

@@ -10,6 +10,7 @@
     </entity>
     <entity name="CDGame" representedClassName=".CDGame" syncable="YES">
         <attribute name="attempts" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="customGameTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateLastCompleted" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="highestPercentage" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -18,6 +19,6 @@
     <elements>
         <element name="CDCountriesForGame" positionX="-2" positionY="75" width="128" height="75"/>
         <element name="CDCountriesTrackerEntity" positionX="-108" positionY="-36" width="128" height="75"/>
-        <element name="CDGame" positionX="-209" positionY="72" width="128" height="120"/>
+        <element name="CDGame" positionX="-209" positionY="72" width="128" height="135"/>
     </elements>
 </model>
