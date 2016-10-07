@@ -28,12 +28,15 @@ extension CoreDataService {
     let _countries = countryArray
     var CDGames = [CDGame]()
     var _games = [Game]()
-    
-    ad.saveContext()
+    let request: NSFetchRequest<NSFetchRequestResult>
     
     if #available(iOS 10.0, *) {
-      
-      let request: NSFetchRequest<NSFetchRequestResult> = CDGame.fetchRequest()
+      request = CDGame.fetchRequest()
+    } else {
+      request = NSFetchRequest(entityName: "CDGame")
+    }
+    ad.saveContext()
+
       
       do {
         
@@ -82,8 +85,6 @@ extension CoreDataService {
         
       }
     }
-    return nil
-  }
   
   func deleteGameFromCoreData(game: Game) -> Bool {
     
@@ -91,10 +92,13 @@ extension CoreDataService {
     
     ad.saveContext()
     
+    let request: NSFetchRequest<NSFetchRequestResult>
+    
     if #available(iOS 10.0, *) {
-      
-      let request: NSFetchRequest<NSFetchRequestResult> = CDGame.fetchRequest()
-      
+      request = CDGame.fetchRequest()
+    } else {
+      request = NSFetchRequest(entityName: "CDGame")
+    }
       do {
         
         CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
@@ -116,9 +120,8 @@ extension CoreDataService {
         print(error)
         return false
       }
-    }
     return false
-  }
+    }
   
   
   

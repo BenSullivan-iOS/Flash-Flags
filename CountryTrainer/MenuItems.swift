@@ -17,9 +17,9 @@ enum MenuItems: String {
   
   static let all = [
     howToPlay.rawValue,
+    filterFlags.rawValue,
     customGame.rawValue,
     startNewGame.rawValue,
-    quickStart.rawValue,
-    filterFlags.rawValue//put back to second
+    quickStart.rawValue
   ]
 }
