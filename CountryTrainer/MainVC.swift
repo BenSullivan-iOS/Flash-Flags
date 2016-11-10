@@ -9,7 +9,73 @@
 //BRANCH TEST
 
 import UIKit
+import QuartzCore
+import SceneKit
 import pop
+
+protocol gradientBro {
+  func getGradient() -> CAGradientLayer
+}
+
+extension gradientBro {
+  
+  func getGradient() -> CAGradientLayer {
+    
+    let gradientLayer: CAGradientLayer = {
+      
+      $0.startPoint = CGPoint(x: 1, y: 0)
+      $0.endPoint = CGPoint(x: 0, y: 1)
+      $0.cornerRadius = 8.0
+      
+      return $0
+      
+    }(CAGradientLayer())
+    
+    return gradientLayer
+  }
+}
+
+class GradientButton: UIButton, gradientBro {
+  
+  private var gradientLayer: CAGradientLayer?
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    
+//    configureView()
+    
+    gradientLayer = getGradient()
+    
+    layer.shouldRasterize = true
+    layer.rasterizationScale = UIScreen.main.scale
+    
+  }
+  
+  var colors = [#colorLiteral(red: 0, green: 0.4526865697, blue: 0.8437882798, alpha: 1).cgColor, #colorLiteral(red: 0, green: 0.3394995246, blue: 0.6328125, alpha: 1).cgColor]
+  
+  override func layoutSublayers(of layer: CALayer) {
+    
+    let rect = layer.bounds
+    
+    gradientLayer?.frame = rect
+    
+    gradientLayer?.colors = colors
+    
+    if layer.sublayers == nil {
+      
+      layer.addSublayer(gradientLayer!)
+    }
+    
+    layoutSubviews()
+    
+    for i in subviews {
+      
+      if i.isKind(of: UILabel.self) {
+        bringSubview(toFront: i)
+      }
+    }
+  }
+}
 
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, MainVCInterface, MenuTableViewCellDelegate {
   
@@ -33,10 +99,16 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    setupGlobe()
+    
     self.navigationController?.isNavigationBarHidden = true
     
     configureTablePath()
     setInitialTableRow()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    tableViewFrameOrigin = tableView.frame
   }
   
   var indexPathForCustomGame: IndexPath?
@@ -49,6 +121,35 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil, difficulty: Difficulty.allDifficulties.rawValue)
   }
   
+  @IBOutlet weak var toggleMenu: UIButton!
+  
+  var tableViewFrameOrigin: CGRect!
+
+  @IBOutlet weak var tableViewTrailing: NSLayoutConstraint!
+  @IBOutlet weak var tableViewLeading: NSLayoutConstraint!
+  
+  @IBAction func toggleMenuToShowGlobe(_ sender: Any) {
+    
+    UIView.animate(withDuration: 0.4, animations: {
+    
+      self.tableViewLeading.constant = self.tableViewLeading.constant == 0 ? 414 : 0
+      self.tableViewTrailing.constant = self.tableViewTrailing.constant == 0 ? -414 : 0
+
+      self.view.layoutIfNeeded()
+
+    })
+    
+//    UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+//      
+//      let offScreenRect = CGRect(x: self.tableViewFrameOrigin.origin.x + 400, y: self.tableViewFrameOrigin.origin.y, width: self.tableViewFrameOrigin.width, height: self.tableViewFrameOrigin.height)
+//      self.tableView.frame = self.tableView.frame != self.tableViewFrameOrigin ? self.tableViewFrameOrigin : offScreenRect
+//    
+//    }) { action in
+//      
+//      
+//    }
+    
+  }
   
   //MARK: - INTERFACE FUNCTIONS
   
@@ -193,5 +294,90 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  let materialPrefixes : [String] = ["bamboo-wood-semigloss",
+                                     "oakfloor2",
+                                     "scuffed-plastic",
+                                     "rustediron-streaks"];
+  
+  func setupGlobe() {
+    
+    // create a new scene
+    let scene = SCNScene(named: "sphere.obj")!
+    
+    // select the sphere node - As we know we only loaded one object
+    // we select the first item on the children list
+    let sphereNode = scene.rootNode.childNodes[0]
+    
+    // create and add a camera to the scene
+    let cameraNode = SCNNode()
+    cameraNode.camera = SCNCamera()
+    scene.rootNode.addChildNode(cameraNode)
+    
+    // place the camera
+    cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+    
+    let material = sphereNode.geometry?.firstMaterial
+    
+    // Declare that you intend to work in PBR shading mode
+    // Note that this requires iOS 10 and up
+    if #available(iOS 10.0, *) {
+      material?.lightingModel = SCNMaterial.LightingModel.physicallyBased
+    } else {
+      // Fallback on earlier versions
+    }
+    
+    // Setup the material maps for your object
+    let materialFilePrefix = materialPrefixes[3];
+    material?.diffuse.contents = UIImage(named: "\(materialFilePrefix)-albedo.png")
+    if #available(iOS 10.0, *) {
+      material?.roughness.contents = UIImage(named: "\(materialFilePrefix)-roughness.png")
+      material?.metalness.contents = UIImage(named: "\(materialFilePrefix)-metal.png")
+      
+    } else {
+      // Fallback on earlier versions
+    }
+    material?.normal.contents = UIImage(named: "\(materialFilePrefix)-normal.png")
+    
+    // Setup background - This will be the beautiful blurred background
+    // that assist the user understand the 3D envirnoment
+    let bg = UIImage(named: "sphericalBlurred.png")
+    scene.background.contents = bg;
+    
+    // Setup Image Based Lighting (IBL) map
+    let env = UIImage(named: "spherical.jpg")
+    if #available(iOS 10.0, *) {
+      scene.lightingEnvironment.contents = env
+      scene.lightingEnvironment.intensity = 2.0
+      
+    } else {
+      // Fallback on earlier versions
+    }
+    
+    
+    // retrieve the SCNView
+    let scnView = self.view as! SCNView
+    
+    // set the scene to the view
+    scnView.scene = scene
+    
+    // allows the user to manipulate the camera
+    scnView.allowsCameraControl = true
+    
+    
+    /*
+     * The following was not a part of my blog post but are pretty easy to understand:
+     * To make the Orb cool, we'll add rotation animation to it
+     */
+    
+    sphereNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 1, y: 1, z: 1, duration: 10)))
   }
 }
