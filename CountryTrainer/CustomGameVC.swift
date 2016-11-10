@@ -75,7 +75,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
   @IBAction func backButtonPressed(_ sender: UIButton) {
 
-//    customGameWireframe?.dismisscustomGameVCToMainVC(withCountries: remainingCountries)
+    customGameWireframe?.dismisscustomGameVCToMainVC(withCountries: remainingCountries)
   }
   
   
