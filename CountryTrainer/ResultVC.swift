@@ -99,6 +99,8 @@ class ResultVC: UIViewController {
   
   @IBAction func toggleUIButtonPressed(_ sender: UIButton) {
     
+    guard animationCompleted == true else { return }
+    
     UIView.animate(withDuration: 0.2) {
       self.fractionLabel.alpha = self.fractionLabel.alpha == 0 ? 1 : 0
       self.percentageLabel.alpha = self.percentageLabel.alpha == 0 ? 1 : 0
@@ -123,10 +125,14 @@ class ResultVC: UIViewController {
               
               self.percentageLabel.alpha = 1
               
-            })
+            }) { completed in
+              self.animationCompleted = true
+              }
         })
     }
   }
+  
+  var animationCompleted = false
   
   private func configureView() {
     

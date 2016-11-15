@@ -14,7 +14,7 @@ class CurvedLabel: UILabel {
     layer.cornerRadius = 5.0
     layer.masksToBounds = true
     backgroundColor = UIColor.white
-    alpha = 0.95
+//    alpha = 0.95
   }
 }
 

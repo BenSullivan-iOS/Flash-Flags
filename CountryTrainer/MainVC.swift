@@ -99,7 +99,12 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    setupGlobe()
+    if #available(iOS 10.0, *) {
+      setupGlobe()
+      flagBg.alpha = 0
+    } else {
+      flagBg.alpha = 1
+    }
     
     self.navigationController?.isNavigationBarHidden = true
     
@@ -266,19 +271,19 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       
       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MainTableViewCell
       
-      if let circle = circleViewCache.object(forKey: games[indexPath.row].uid) {
-
-        cell.configureCell(game: games[indexPath.row], circleView: circle)
-
-      } else {
-        
-       let circle = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
-
-        circleViewCache.setObject(circle, forKey: games[indexPath.row].uid)
-        
-        cell.configureCell(game: games[indexPath.row], circleView: circle)
-
-      }
+//      if let circle = circleViewCache.object(forKey: games[indexPath.row].uid) {
+//
+//        cell.configureCell(game: games[indexPath.row], circleView: circle)
+//
+//      } else {
+//        
+//       let circle = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
+//
+//        circleViewCache.setObject(circle, forKey: games[indexPath.row].uid)
+//        
+        cell.configureCell(game: games[indexPath.row], circleView: nil)
+//
+//      }
       
       cell.mainWireframe = mainWireframe
       cell.mainVCInterface = self
@@ -307,77 +312,66 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
                                      "oakfloor2",
                                      "scuffed-plastic",
                                      "rustediron-streaks"];
-  
   func setupGlobe() {
     
-    // create a new scene
-    let scene = SCNScene(named: "sphere.obj")!
-    
-    // select the sphere node - As we know we only loaded one object
-    // we select the first item on the children list
-    let sphereNode = scene.rootNode.childNodes[0]
-    
-    // create and add a camera to the scene
-    let cameraNode = SCNNode()
-    cameraNode.camera = SCNCamera()
-    scene.rootNode.addChildNode(cameraNode)
-    
-    // place the camera
-    cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-    
-    let material = sphereNode.geometry?.firstMaterial
-    
-    // Declare that you intend to work in PBR shading mode
-    // Note that this requires iOS 10 and up
     if #available(iOS 10.0, *) {
+      
+      // create a new scene
+      let scene = SCNScene(named: "sphere.obj")!
+      
+      // select the sphere node - As we know we only loaded one object
+      // we select the first item on the children list
+      let sphereNode = scene.rootNode.childNodes[0]
+      
+      // create and add a camera to the scene
+      let cameraNode = SCNNode()
+      cameraNode.camera = SCNCamera()
+      scene.rootNode.addChildNode(cameraNode)
+      
+      // place the camera
+      cameraNode.position = SCNVector3(x: 0, y: 0, z: 10.5)
+      
+      let material = sphereNode.geometry?.firstMaterial
+      
+      // Declare that you intend to work in PBR shading mode
+      // Note that this requires iOS 10 and up
       material?.lightingModel = SCNMaterial.LightingModel.physicallyBased
-    } else {
-      // Fallback on earlier versions
-    }
-    
-    // Setup the material maps for your object
-    let materialFilePrefix = materialPrefixes[3];
-    material?.diffuse.contents = UIImage(named: "\(materialFilePrefix)-albedo.png")
-    if #available(iOS 10.0, *) {
+      
+      // Setup the material maps for your object
+      let materialFilePrefix = materialPrefixes[3]
+      material?.diffuse.contents = UIImage(named: "\(materialFilePrefix)-albedo.png")
       material?.roughness.contents = UIImage(named: "\(materialFilePrefix)-roughness.png")
       material?.metalness.contents = UIImage(named: "\(materialFilePrefix)-metal.png")
       
-    } else {
-      // Fallback on earlier versions
-    }
-    material?.normal.contents = UIImage(named: "\(materialFilePrefix)-normal.png")
-    
-    // Setup background - This will be the beautiful blurred background
-    // that assist the user understand the 3D envirnoment
-    let bg = UIImage(named: "sphericalBlurred.png")
-    scene.background.contents = bg;
-    
-    // Setup Image Based Lighting (IBL) map
-    let env = UIImage(named: "spherical.jpg")
-    if #available(iOS 10.0, *) {
+      material?.normal.contents = UIImage(named: "\(materialFilePrefix)-normal.png")
+      
+      // Setup background - This will be the beautiful blurred background
+      // that assist the user understand the 3D envirnoment
+      let bg = UIImage(named: "sphericalBlurred.png")
+      scene.background.contents = bg;
+      
+      // Setup Image Based Lighting (IBL) map
+      let env = UIImage(named: "spherical.jpg")
       scene.lightingEnvironment.contents = env
       scene.lightingEnvironment.intensity = 2.0
       
-    } else {
-      // Fallback on earlier versions
+      
+      // retrieve the SCNView
+      let scnView = self.view as! SCNView
+      
+      // set the scene to the view
+      scnView.scene = scene
+      
+      // allows the user to manipulate the camera
+      scnView.allowsCameraControl = false
+      
+      
+      /*
+       * The following was not a part of my blog post but are pretty easy to understand:
+       * To make the Orb cool, we'll add rotation animation to it
+       */
+      
+      sphereNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 1, z: 0, duration: 10)))
     }
-    
-    
-    // retrieve the SCNView
-    let scnView = self.view as! SCNView
-    
-    // set the scene to the view
-    scnView.scene = scene
-    
-    // allows the user to manipulate the camera
-    scnView.allowsCameraControl = true
-    
-    
-    /*
-     * The following was not a part of my blog post but are pretty easy to understand:
-     * To make the Orb cool, we'll add rotation animation to it
-     */
-    
-    sphereNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 1, y: 1, z: 1, duration: 10)))
   }
 }

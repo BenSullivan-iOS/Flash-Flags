@@ -52,7 +52,7 @@ class MainTableViewCell: UITableViewCell {
   
   //MARK: - INTERFACE FUNCTIONS
   
-  internal func configureCell(game: Game, circleView: CircleView) {
+  internal func configureCell(game: Game, circleView: CircleView?) {
     
     self.game = game
     
@@ -83,6 +83,7 @@ class MainTableViewCell: UITableViewCell {
     if let days = Int(daysAgo.text!) {
       self.daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
     }
+    
     flagsText.text = game.numberOfFlags == 1 ? "FLAG" : "FLAGS"
     attemptsText.text = game.attempts == 1 ? "ATTEMPT" : "ATTEMPTS"
     animateCircleView(game: game)
