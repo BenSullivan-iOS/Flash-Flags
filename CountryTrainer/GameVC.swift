@@ -76,7 +76,8 @@ class GameVC: UIViewController, GameCellDelegate {
     self.progressView.setProgress(0, animated: false)
     
     animateUIOnToScreen(delay: 0.5)
-    
+    tableView.estimatedRowHeight = 250
+    tableView.rowHeight = UITableViewAutomaticDimension
     tableView.reloadData()
   }
   
@@ -164,6 +165,10 @@ class GameVC: UIViewController, GameCellDelegate {
   
   private func animateUIOffScreen() {
     
+    //prevents section 0 from overlapping section 1
+    tableView.rowHeight = 0
+    tableView.reloadData()
+    
     UIView.animate(withDuration: 0.5, animations: {
       
       self.progressLeading.constant = self.view.frame.width / 2 + 10
@@ -171,7 +176,7 @@ class GameVC: UIViewController, GameCellDelegate {
       
       self.backLeading.constant = -50
       self.shuffleTrailing.constant = -50
-      
+
       self.view.layoutIfNeeded()
     })
   }

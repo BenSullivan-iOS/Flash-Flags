@@ -81,6 +81,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   
   @IBOutlet weak var tableView: COBezierTableView!
   @IBOutlet weak var flagBg: UIImageView!
+  @IBOutlet weak var splashBackground: UIImageView!
   
   internal var mainInteractor: MainInteractorInterface?
   internal var mainWireframe: MainWireframe?
@@ -114,6 +115,20 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   
   override func viewWillAppear(_ animated: Bool) {
     tableViewFrameOrigin = tableView.frame
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+   
+    UIView.animate(withDuration: 0.5, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { animation in
+      
+      self.splashBackground.alpha = 0
+      
+      if #available(iOS 10.0, *) {
+        self.toggleMenu.alpha = 1
+      }
+    })
+    
   }
   
   var indexPathForCustomGame: IndexPath?
