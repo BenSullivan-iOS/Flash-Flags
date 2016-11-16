@@ -254,6 +254,8 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     default:
       
       assert(false, "Unexpected element kind")
+      
+      return UICollectionReusableView()
     }
 
   }
