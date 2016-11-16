@@ -139,6 +139,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     
       self.tableViewLeading.constant = self.tableViewLeading.constant == 0 ? 414 : 0
       self.tableViewTrailing.constant = self.tableViewTrailing.constant == 0 ? -414 : 0
+      self.scnView?.allowsCameraControl = self.scnView?.allowsCameraControl == true ? false : true
 
       self.view.layoutIfNeeded()
 
@@ -307,8 +308,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   
   
   
-  
-  let materialPrefixes : [String] = ["bamboo-wood-semigloss",
+  var scnView: SCNView?
+
+  let materialPrefixes : [String] = [
                                      "oakfloor2",
                                      "scuffed-plastic",
                                      "rustediron-streaks"];
@@ -338,8 +340,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       material?.lightingModel = SCNMaterial.LightingModel.physicallyBased
       
       // Setup the material maps for your object
-      let materialFilePrefix = materialPrefixes[3]
-      material?.diffuse.contents = UIImage(named: "\(materialFilePrefix)-albedo.png")
+      let materialFilePrefix = materialPrefixes[2]
+      material?.diffuse.contents = #imageLiteral(resourceName: "bkflagMapWithCaps")
       material?.roughness.contents = UIImage(named: "\(materialFilePrefix)-roughness.png")
       material?.metalness.contents = UIImage(named: "\(materialFilePrefix)-metal.png")
       
@@ -357,13 +359,13 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       
       
       // retrieve the SCNView
-      let scnView = self.view as! SCNView
+      scnView = self.view as! SCNView?
       
       // set the scene to the view
-      scnView.scene = scene
+      scnView?.scene = scene
       
       // allows the user to manipulate the camera
-      scnView.allowsCameraControl = false
+      scnView?.allowsCameraControl = false
       
       
       /*

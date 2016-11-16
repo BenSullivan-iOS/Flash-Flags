@@ -12,7 +12,7 @@ import SceneKit
 
 class GameViewController: UIViewController {
     
-    let materialPrefixes : [String] = ["bamboo-wood-semigloss",
+    let materialPrefixes : [String] = [
                                        "oakfloor2",
                                        "scuffed-plastic",
                                        "rustediron-streaks"];

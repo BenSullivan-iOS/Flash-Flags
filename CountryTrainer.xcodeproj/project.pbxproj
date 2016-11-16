@@ -22,7 +22,7 @@
 		8573EDB61DD4A6C800745624 /* rustediron-streaks-metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9C1DD4A6C800745624 /* rustediron-streaks-metal.png */; };
 		8573EDB71DD4A6C800745624 /* rustediron-streaks-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9D1DD4A6C800745624 /* rustediron-streaks-normal.png */; };
 		8573EDB81DD4A6C800745624 /* rustediron-streaks-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9E1DD4A6C800745624 /* rustediron-streaks-roughness.png */; };
-		8573EDB91DD4A6C800745624 /* rustediron-streaks-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9F1DD4A6C800745624 /* rustediron-streaks-albedo.png */; };
+		8573EDB91DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9F1DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png */; };
 		8573EDBA1DD4A6C800745624 /* scuffed-plastic-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA11DD4A6C800745624 /* scuffed-plastic-albedo.png */; };
 		8573EDBB1DD4A6C800745624 /* scuffed-plastic-metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA21DD4A6C800745624 /* scuffed-plastic-metal.png */; };
 		8573EDBC1DD4A6C800745624 /* scuffed-plastic-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA31DD4A6C800745624 /* scuffed-plastic-normal.png */; };
@@ -31,6 +31,7 @@
 		8573EDBF1DD4A6C800745624 /* sphere.scn in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA81DD4A6C800745624 /* sphere.scn */; };
 		8573EDC01DD4A6C800745624 /* sphere2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA91DD4A6C800745624 /* sphere2.scn */; };
 		8573EDC21DD4A6EE00745624 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8573EDC11DD4A6EE00745624 /* GameViewController.swift */; };
+		8592A4441DDC6551004249DF /* rustediron-streaks-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8592A4431DDC6551004249DF /* rustediron-streaks-albedo.png */; };
 		B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */; };
 		B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */; };
 		B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF61D91538600EF8CC2 /* GameProgressView.swift */; };
@@ -183,7 +184,7 @@
 		8573ED9C1DD4A6C800745624 /* rustediron-streaks-metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-metal.png"; sourceTree = "<group>"; };
 		8573ED9D1DD4A6C800745624 /* rustediron-streaks-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-normal.png"; sourceTree = "<group>"; };
 		8573ED9E1DD4A6C800745624 /* rustediron-streaks-roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-roughness.png"; sourceTree = "<group>"; };
-		8573ED9F1DD4A6C800745624 /* rustediron-streaks-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-albedo.png"; sourceTree = "<group>"; };
+		8573ED9F1DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bkup2rustediron-streaks-albedo.png"; sourceTree = "<group>"; };
 		8573EDA11DD4A6C800745624 /* scuffed-plastic-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scuffed-plastic-albedo.png"; sourceTree = "<group>"; };
 		8573EDA21DD4A6C800745624 /* scuffed-plastic-metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scuffed-plastic-metal.png"; sourceTree = "<group>"; };
 		8573EDA31DD4A6C800745624 /* scuffed-plastic-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scuffed-plastic-normal.png"; sourceTree = "<group>"; };
@@ -192,6 +193,8 @@
 		8573EDA81DD4A6C800745624 /* sphere.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = sphere.scn; sourceTree = "<group>"; };
 		8573EDA91DD4A6C800745624 /* sphere2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = sphere2.scn; sourceTree = "<group>"; };
 		8573EDC11DD4A6EE00745624 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		8592A4421DDC58E6004249DF /* CountryTrainer 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CountryTrainer 3.xcdatamodel"; sourceTree = "<group>"; };
+		8592A4431DDC6551004249DF /* rustediron-streaks-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-albedo.png"; sourceTree = "<group>"; };
 		8C8F8C9D0779CF3FF116FCA4 /* Pods-CountryTrainerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagBGView.swift; sourceTree = "<group>"; };
 		B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsNavBarView.swift; sourceTree = "<group>"; };
@@ -389,7 +392,8 @@
 				8573ED9C1DD4A6C800745624 /* rustediron-streaks-metal.png */,
 				8573ED9D1DD4A6C800745624 /* rustediron-streaks-normal.png */,
 				8573ED9E1DD4A6C800745624 /* rustediron-streaks-roughness.png */,
-				8573ED9F1DD4A6C800745624 /* rustediron-streaks-albedo.png */,
+				8573ED9F1DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png */,
+				8592A4431DDC6551004249DF /* rustediron-streaks-albedo.png */,
 			);
 			path = "rustediron-streaks";
 			sourceTree = "<group>";
@@ -1044,7 +1048,7 @@
 				B5AD69541D8FDC4200F2331A /* Lato-SemiboldItalic.ttf in Resources */,
 				8573EDB41DD4A6C800745624 /* oakfloor2-roughness.png in Resources */,
 				B5AD69511D8FDC4200F2331A /* Lato-MediumItalic.ttf in Resources */,
-				8573EDB91DD4A6C800745624 /* rustediron-streaks-albedo.png in Resources */,
+				8573EDB91DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png in Resources */,
 				8573EDAF1DD4A6C800745624 /* bamboo-wood-semigloss-metal.png in Resources */,
 				B5AD69481D8FDC4200F2331A /* Lato-BoldItalic.ttf in Resources */,
 				B549C4961D5C7DA5000409B3 /* Assets.xcassets in Resources */,
@@ -1062,6 +1066,7 @@
 				B5AD694D1D8FDC4200F2331A /* Lato-Italic.ttf in Resources */,
 				8573EDB81DD4A6C800745624 /* rustediron-streaks-roughness.png in Resources */,
 				B549C4911D5C7DA5000409B3 /* Main.storyboard in Resources */,
+				8592A4441DDC6551004249DF /* rustediron-streaks-albedo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1597,6 +1602,7 @@
 		B549C4921D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				8592A4421DDC58E6004249DF /* CountryTrainer 3.xcdatamodel */,
 				B549C4931D5C7DA5000409B3 /* CountryTrainer.xcdatamodel */,
 			);
 			currentVersion = B549C4931D5C7DA5000409B3 /* CountryTrainer.xcdatamodel */;

@@ -57,6 +57,8 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     configureCellSize()
     
     resetButton.imageView?.contentMode = .scaleAspectFit
+    
+    configureDismissKeyboardOnTapGesture()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +72,18 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   
  
   @IBAction func completedButtonPressed(_ sender: UIButton) {
-    displayAlert()
+    
+    if chosenCountries.count == 0 {
+      
+      let alert = UIAlertController(title: "Please select at least one flag for your custom game", message: nil, preferredStyle: .alert)
+      
+      alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+      
+      present(alert, animated: true, completion: nil)
+      
+    } else {
+      displayAlert()
+    }
   }
   
   @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -156,8 +169,6 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       
       for textfield in alert.textFields! {
         
-        print(textfield.text)
-        
         self.game = Game(
           countries: self.chosenCountries,
           attempts: 0,
@@ -211,6 +222,17 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     })
     
   }
+  
+  private func configureDismissKeyboardOnTapGesture() {
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(collectionTapped))
+    collectionView.addGestureRecognizer(tap)
+  }
+  
+  func collectionTapped() {
+    self.view.endEditing(true)
+  }
+  
   
   //MARK: - COLLECTION VIEW DELEGATE
   

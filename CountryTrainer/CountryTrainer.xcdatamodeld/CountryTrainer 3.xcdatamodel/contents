@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDCountriesForGame" representedClassName=".CDCountriesForGame" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cdgame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGame" inverseName="cdcountriesforgame" inverseEntity="CDGame" syncable="YES"/>
+    </entity>
+    <entity name="CDCountriesTrackerEntity" representedClassName=".CDCountriesTracker" syncable="YES">
+        <attribute name="memorised" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remaining" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CDGame" representedClassName=".CDGame" syncable="YES">
+        <attribute name="attempts" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="customGameTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateLastCompleted" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="highestPercentage" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="cdcountriesforgame" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDCountriesForGame" inverseName="cdgame" inverseEntity="CDCountriesForGame" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDCountriesForGame" positionX="-2" positionY="75" width="128" height="75"/>
+        <element name="CDCountriesTrackerEntity" positionX="-108" positionY="-36" width="128" height="75"/>
+        <element name="CDGame" positionX="-209" positionY="72" width="128" height="135"/>
+    </elements>
+</model>
