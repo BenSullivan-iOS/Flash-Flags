@@ -48,7 +48,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     _countries = countries
   }
   
-  internal func getNewGameData(numberOfFlags: Int, continent: String?, difficulty: String) {
+  internal func getNewGameData(numberOfFlags: Int, continent: String?, difficulty: String, subject: Subject) {
     
     //Filters out countires based on the continent provided
     var filteredCountries = _countries
@@ -95,7 +95,8 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
                     dateLastCompleted: nil,
                     highestPercentage: nil,
                     dateCreated: Date(),
-                    customGameTitle: nil)
+                    customGameTitle: nil,
+                    subject: subject.rawValue)
 
     mainVCInterface?.prepareGameData(game: game)
 

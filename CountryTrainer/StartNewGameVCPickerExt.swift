@@ -31,7 +31,11 @@ extension StartNewGameVC: UIPickerViewDelegate, UIPickerViewDataSource {
       pickerLabel?.text = String(numberOfFlags[row])
       
       if row == 0 {
-        pickerLabel?.text = "How many flags? 🤔"
+        if segmentedControl.selectedSegmentIndex == 0 {
+          pickerLabel?.text = "How many flags? 🤔"
+        } else {
+          pickerLabel?.text = "How many capitals? 🤔"
+        }
       }
       
     } else if pickerView == continentPicker {

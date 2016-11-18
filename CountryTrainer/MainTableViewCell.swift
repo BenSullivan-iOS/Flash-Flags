@@ -21,17 +21,17 @@ class MainTableViewCell: UITableViewCell {
   @IBOutlet weak var flagsText: UILabel!
   @IBOutlet weak var attemptsText: UILabel!
   
+  @IBOutlet weak var topStackConstraint: NSLayoutConstraint!
+  @IBOutlet weak var bottomStackConstraint: NSLayoutConstraint!
+  
+  @IBOutlet weak var gameTitleStack: UIStackView!
+  
   weak internal var mainWireframe: MainWireframe?
   weak internal var mainVCInterface: MainVCInterface?
   
   fileprivate var circleView: CircleView?
   fileprivate var game: Game?
   
-  @IBOutlet weak var topStackConstraint: NSLayoutConstraint!
-  @IBOutlet weak var bottomStackConstraint: NSLayoutConstraint!
-  
-  
-  @IBOutlet weak var gameTitleStack: UIStackView!
   
   //MARK: - CELL LIFECYCLE
   

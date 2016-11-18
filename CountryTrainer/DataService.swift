@@ -35,7 +35,8 @@ extension DataService {
             let cont = i["region"]! as? String,
             let currencyObj = i["currency"] as! NSArray?,
             let flag = i["cca2"]! as? String,
-            let difficulty = i["difficulty"] as? String {
+            let difficulty = i["difficulty"] as? String,
+            let capital = i["capital"] as? String {
             
             if let currencyStr = currencyObj.firstObject as? String {
               
@@ -83,7 +84,8 @@ extension DataService {
                 currency: currencyStr,
                 flag: flag.lowercased(),
                 continent: continent,
-                difficulty: flagDifficulty))
+                difficulty: flagDifficulty,
+                capital: capital))
             }
           }
         }

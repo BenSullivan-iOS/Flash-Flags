@@ -16,12 +16,13 @@ extension Country {
 
 struct Country {
   
-  fileprivate let _name: String!
-  fileprivate let _currency: String!
-  fileprivate let _flag: String!
+  fileprivate let _name: String
+  fileprivate let _currency: String
+  fileprivate let _flag: String
   fileprivate let _flagSmall: String!
   fileprivate let _cont: Continent
   fileprivate let _difficulty: Difficulty
+  fileprivate let _capital: String
   
   var name: String! {
     return _name
@@ -41,14 +42,18 @@ struct Country {
   var difficulty: Difficulty {
     return _difficulty
   }
+  var capital: String {
+    return _capital
+  }
   
-  init(name: String, currency: String, flag: String, continent: Continent, difficulty: Difficulty) {
+  init(name: String, currency: String, flag: String, continent: Continent, difficulty: Difficulty, capital: String) {
     self._name = name
     self._currency = currency
     self._flag = flag
     self._cont = continent
     self._flagSmall = _flag + "-1"
     self._difficulty = difficulty
+    self._capital = capital
   }
 
 }

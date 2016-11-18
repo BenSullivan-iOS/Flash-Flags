@@ -19,9 +19,14 @@ extension Game {
   }
 }
 
+enum Subject: String {
+  case flags
+  case capitals
+}
+
 struct Game: GameType {
   
-  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?, customGameTitle: String?) {
+  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?, customGameTitle: String?, subject: String) {
     self._countries = countries
     self.tracker = Tracker(countries: countries)
     self._attempts = attempts
@@ -29,6 +34,7 @@ struct Game: GameType {
     self._dateLastCompleted = dateLastCompleted ?? Date()
     self._dateCreated = dateCreated ?? Date()
     self._customGameTitle = customGameTitle
+    self._subject = subject == "flags" ? Subject.flags : Subject.capitals
     setUid()
     setDelegate()
   }
@@ -45,6 +51,7 @@ struct Game: GameType {
   fileprivate var _uid = NSString()
   fileprivate var _resultFraction: String!
   fileprivate var _customGameTitle: String?
+  fileprivate var _subject: Subject
   
   var tracker: Tracker 
   
@@ -75,9 +82,15 @@ struct Game: GameType {
   var uid: NSString {
     return _uid
   }
+  
   var customGameTitle: String? {
     return _customGameTitle
   }
+  
+  var subject: Subject {
+    return _subject
+  }
+  
   var progress: String {
     
     var score = 0

@@ -15,6 +15,8 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
   @IBOutlet weak var continentPicker: UIPickerView!
   @IBOutlet weak var numberOfFlagsPicker: UIPickerView!
   
+  @IBOutlet weak var segmentedControl: UISegmentedControl!
+  
   @IBOutlet var fullView: UIView!
   
   fileprivate var tapBGGesture: UITapGestureRecognizer!
@@ -46,9 +48,14 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
   //MARK: - OUTLET FUNCTIONS
 
   @IBAction func startGameButtonPressed(_ sender: UIButton) {
-    mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent, difficulty: selectedDifficulty)
-    
+    let subject = segmentedControl.selectedSegmentIndex == 0 ? Subject.flags : Subject.capitals
+    mainInteractor?.getNewGameData(numberOfFlags: selectedNumOfFlags, continent: selectedContinent, difficulty: selectedDifficulty, subject: subject)
   }
+  
+  @IBAction func segmentPressed(_ sender: UISegmentedControl) {
+    numberOfFlagsPicker.reloadComponent(0)
+  }
+  
   
   
   //MARK: - INTERFACE FUNCTIONS

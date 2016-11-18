@@ -40,7 +40,8 @@ class MenuTableViewCell: UITableViewCell {
       mainInteractor?.getNewGameData(
         numberOfFlags: 5,
         continent: nil,
-        difficulty: Difficulty.allDifficulties.rawValue)
+        difficulty: Difficulty.allDifficulties.rawValue,
+        subject: .flags)
       
     case MenuItems.startNewGame.rawValue:
       mainWireframe?.presentStartNewGameVCFromMainVC()

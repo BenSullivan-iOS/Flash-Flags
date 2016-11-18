@@ -354,15 +354,23 @@
                                                     <rect key="frame" x="16" y="16" width="382" height="262"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-fH-Ocx" customClass="FlagImageView" customModule="Flash_Flags" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="197"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="167"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="Lwm-PK-tV4"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USA" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvV-Qs-eHB">
-                                                            <rect key="frame" x="0.0" y="197" width="382" height="30"/>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvV-Qs-eHB">
+                                                            <rect key="frame" x="0.0" y="167" width="382" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="Fg6-Ff-IyY"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capital" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfA-By-Xyc">
+                                                            <rect key="frame" x="0.0" y="197" width="382" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="6xk-VB-kJN"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
@@ -447,6 +455,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="capital" destination="sfA-By-Xyc" id="Gyk-po-aKd"/>
                                             <outlet property="correctButton" destination="rLa-nR-9UV" id="d3B-Ow-0CB"/>
                                             <outlet property="countryName" destination="lvV-Qs-eHB" id="1aI-nt-vaU"/>
                                             <outlet property="flagImage" destination="ICw-fH-Ocx" id="eDc-qi-9lx"/>
@@ -575,7 +584,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5II-WB-QIc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696.8" y="112.89355322338831"/>
+            <point key="canvasLocation" x="1695.6521739130435" y="112.50000000000001"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bq4-Dj-dHQ">
@@ -958,43 +967,67 @@
                                     <action selector="startGameButtonPressed:" destination="kew-h5-nux" eventType="touchUpInside" id="4IZ-5d-zJU"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-PE-hRz">
-                                <rect key="frame" x="0.0" y="12" width="216" height="278"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Mj-2z-oCq">
+                                <rect key="frame" x="0.0" y="15" width="216" height="277"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJQ-tj-Dxm">
-                                        <rect key="frame" x="0.0" y="0.0" width="216" height="92.666666666666671"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FbF-PZ-fIb">
+                                        <rect key="frame" x="10" y="0.0" width="196" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="EaM-dS-jRk"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Flags"/>
+                                            <segment title="Capitals"/>
+                                        </segments>
                                         <connections>
-                                            <outlet property="dataSource" destination="kew-h5-nux" id="WeF-Fh-r0X"/>
-                                            <outlet property="delegate" destination="kew-h5-nux" id="wSr-0v-z2V"/>
+                                            <action selector="segmentPressed:" destination="kew-h5-nux" eventType="valueChanged" id="mUx-an-knm"/>
                                         </connections>
-                                    </pickerView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rB9-a8-Lcb">
-                                        <rect key="frame" x="0.0" y="92.666666666666657" width="216" height="92.666666666666657"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="kew-h5-nux" id="qgF-9X-9GP"/>
-                                            <outlet property="delegate" destination="kew-h5-nux" id="ta6-cb-vH5"/>
-                                        </connections>
-                                    </pickerView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD1-pn-6aP">
-                                        <rect key="frame" x="0.0" y="185.33333333333337" width="216" height="92.666666666666629"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="kew-h5-nux" id="LZb-bX-dmb"/>
-                                            <outlet property="delegate" destination="kew-h5-nux" id="WBc-Mf-mJR"/>
-                                        </connections>
-                                    </pickerView>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-PE-hRz">
+                                        <rect key="frame" x="0.0" y="30" width="216" height="247"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJQ-tj-Dxm">
+                                                <rect key="frame" x="0.0" y="0.0" width="216" height="82.333333333333329"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="kew-h5-nux" id="WeF-Fh-r0X"/>
+                                                    <outlet property="delegate" destination="kew-h5-nux" id="wSr-0v-z2V"/>
+                                                </connections>
+                                            </pickerView>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rB9-a8-Lcb">
+                                                <rect key="frame" x="0.0" y="82.333333333333343" width="216" height="82.333333333333343"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="kew-h5-nux" id="qgF-9X-9GP"/>
+                                                    <outlet property="delegate" destination="kew-h5-nux" id="ta6-cb-vH5"/>
+                                                </connections>
+                                            </pickerView>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD1-pn-6aP">
+                                                <rect key="frame" x="0.0" y="164.66666666666663" width="216" height="82.333333333333343"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="kew-h5-nux" id="LZb-bX-dmb"/>
+                                                    <outlet property="delegate" destination="kew-h5-nux" id="WBc-Mf-mJR"/>
+                                                </connections>
+                                            </pickerView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FbF-PZ-fIb" secondAttribute="trailing" constant="10" id="A9m-5x-fWL"/>
+                                    <constraint firstItem="FbF-PZ-fIb" firstAttribute="leading" secondItem="7Mj-2z-oCq" secondAttribute="leading" constant="10" id="Bb3-Mo-7bd"/>
+                                    <constraint firstItem="dj8-PE-hRz" firstAttribute="top" secondItem="FbF-PZ-fIb" secondAttribute="bottom" id="G5q-RJ-VMf"/>
+                                    <constraint firstItem="FbF-PZ-fIb" firstAttribute="top" secondItem="7Mj-2z-oCq" secondAttribute="top" id="fiP-6s-as5"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dj8-PE-hRz" firstAttribute="bottom" secondItem="jK1-pK-x4P" secondAttribute="top" constant="-12" id="EkJ-gK-Rku"/>
+                            <constraint firstItem="7Mj-2z-oCq" firstAttribute="top" secondItem="oAW-fS-nnE" secondAttribute="top" constant="15" id="7sh-SE-DEa"/>
+                            <constraint firstAttribute="trailing" secondItem="7Mj-2z-oCq" secondAttribute="trailing" id="Deb-pR-xt0"/>
+                            <constraint firstItem="7Mj-2z-oCq" firstAttribute="bottom" secondItem="jK1-pK-x4P" secondAttribute="bottom" constant="-50" id="EMB-OH-Hp8"/>
                             <constraint firstItem="jK1-pK-x4P" firstAttribute="leading" secondItem="oAW-fS-nnE" secondAttribute="leadingMargin" constant="-8" id="TqI-wJ-Y1D"/>
-                            <constraint firstItem="dj8-PE-hRz" firstAttribute="top" secondItem="oAW-fS-nnE" secondAttribute="top" constant="12" id="VhT-CW-BRU"/>
+                            <constraint firstItem="7Mj-2z-oCq" firstAttribute="leading" secondItem="oAW-fS-nnE" secondAttribute="leading" id="jnF-Zx-azj"/>
                             <constraint firstItem="yy1-zJ-0L1" firstAttribute="top" secondItem="jK1-pK-x4P" secondAttribute="bottom" constant="8" id="o6Q-2z-WbG"/>
                             <constraint firstItem="jK1-pK-x4P" firstAttribute="trailing" secondItem="oAW-fS-nnE" secondAttribute="trailingMargin" constant="8" id="rpa-pV-Xyd"/>
-                            <constraint firstAttribute="trailing" secondItem="dj8-PE-hRz" secondAttribute="trailing" id="t80-Bq-rFD"/>
-                            <constraint firstItem="dj8-PE-hRz" firstAttribute="leading" secondItem="oAW-fS-nnE" secondAttribute="leading" id="xRK-K9-Yh8"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1004,11 +1037,12 @@
                         <outlet property="difficultyPicker" destination="aJQ-tj-Dxm" id="tc0-iT-cGy"/>
                         <outlet property="fullView" destination="oAW-fS-nnE" id="6YO-Bq-pog"/>
                         <outlet property="numberOfFlagsPicker" destination="eD1-pn-6aP" id="JLr-2s-t9f"/>
+                        <outlet property="segmentedControl" destination="FbF-PZ-fIb" id="A1W-sm-Ihh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyg-bY-zop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6322" y="190"/>
+            <point key="canvasLocation" x="61" y="706"/>
         </scene>
         <!--howToPlayVC-->
         <scene sceneID="5ge-Zl-UX6">

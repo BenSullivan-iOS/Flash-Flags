@@ -16,6 +16,7 @@ class GameCell: UITableViewCell {
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var correctButton: ResultButton!
   @IBOutlet weak var nopeButton: ResultButton!
+  @IBOutlet weak var capital: UILabel!
   
   weak internal var delegate: GameCellDelegate?
   
@@ -25,12 +26,12 @@ class GameCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    stackView.arrangedSubviews.last?.isHidden = true
+//    stackView.arrangedSubviews.last?.isHidden = true
   }
   
   override func prepareForReuse() {
-    self.stackView.arrangedSubviews[1].isHidden = true
-    self.stackView.arrangedSubviews.last?.isHidden = true
+//    self.stackView.arrangedSubviews[1].isHidden = true
+//    self.stackView.arrangedSubviews.last?.isHidden = true
   }
   
   
@@ -47,11 +48,13 @@ class GameCell: UITableViewCell {
   
   //MARK: - INTERNAL FUNCTIONS
   
-  internal func configureCell(_ country: Country, cachedImage: UIImage?) {
+  internal func configureCell(_ country: Country, cachedImage: UIImage?, game: Game) {
+    
+    self.stackView.arrangedSubviews[1].isHidden = game.subject == .flags ? false : true
     
     flagImage.image = cachedImage ?? UIImage(named: country.flag)
-
     countryName.text = country.name
+    capital.text = country.capital
     flagImage.animate()
   }
   
@@ -69,6 +72,7 @@ class GameCell: UITableViewCell {
         self.stackView.arrangedSubviews.last?.alpha = 1
       })
       
+      self.stackView.arrangedSubviews[2].isHidden = !selected
       self.stackView.arrangedSubviews[1].isHidden = !selected
       self.stackView.arrangedSubviews.last?.isHidden = !selected
       
@@ -79,7 +83,7 @@ class GameCell: UITableViewCell {
 
    } else {
       
-      self.stackView.arrangedSubviews[1].isHidden = !selected
+      self.stackView.arrangedSubviews[2].isHidden = !selected
       self.stackView.arrangedSubviews.last?.isHidden = !selected
     }
   }

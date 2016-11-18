@@ -69,7 +69,8 @@ extension CoreDataService {
                           dateLastCompleted: i.dateLastCompleted as Date?,
                           highestPercentage: Int(i.highestPercentage),
                           dateCreated: i.dateCreated as Date?,
-                          customGameTitle: i.customGameTitle ?? nil)
+                          customGameTitle: i.customGameTitle ?? nil,
+                          subject: i.subject ?? "flags")
           
           _games.append(game)
         }

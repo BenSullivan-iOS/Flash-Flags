@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+
 extension CDGame {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CDGame> {

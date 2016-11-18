@@ -176,7 +176,8 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
           highestPercentage: nil,
           dateCreated: nil,
           customGameTitle:
-          textfield.text)
+          textfield.text,
+          subject: "flags")
         
         self.customGameWireframe?.beginGame(game: self.game!)
       }

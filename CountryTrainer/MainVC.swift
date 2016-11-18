@@ -49,8 +49,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       }
     }
     
-   
-    
     self.navigationController?.isNavigationBarHidden = true
     
     configureTablePath()
@@ -82,7 +80,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   //MARK: - OUTLET ACTIONS
   
   @IBAction func newGameButtonPressed(_ sender: AnyObject) {
-    mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil, difficulty: Difficulty.allDifficulties.rawValue)
+    mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil, difficulty: Difficulty.allDifficulties.rawValue, subject: .flags)
   }
   
   @IBOutlet weak var toggleMenu: UIButton!

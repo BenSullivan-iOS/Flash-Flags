@@ -23,7 +23,7 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
       
       let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
       
-      cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!, cachedImage: cachedImage)
+      cell.configureCell((game?.tracker.remainingCountries[(indexPath as NSIndexPath).row])!, cachedImage: cachedImage, game: game!)
       
       return cell
       
