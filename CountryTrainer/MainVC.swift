@@ -142,7 +142,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   //MARK: - VC LIFECYCLE
   
   override func viewDidLoad() {
-    super.viewDidLoad()    
+    super.viewDidLoad()
     
     switch UIDevice.current.modelName {
     case "iPod Touch 6", "iPhone 4", "iPhone 4s", "iPhone 5", "iPhone 5c":

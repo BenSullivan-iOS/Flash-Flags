@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>COBezierTableView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Pods-CountryTrainer.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Pods-CountryTrainerTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-CountryTrainerUITests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>009B74053CDC21270FEFB59C2CFB73A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>34EA79DDE921FCDC41893A3BBF65AC52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7CF519E3460334FD371C561C5F6FE2C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9FA0FBE90873B655B589A03D18D7E191</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E520FC272573A450694FE965874331CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
