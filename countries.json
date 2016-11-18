@@ -10775,7 +10775,7 @@
   "difficulty": "hard"
   }, {
   "name": {
-		"common": "Myanmar",
+		"common": "Myanmar (Burma)",
 		"official": "Republic of the Union of Myanmar",
 		"native": {
   "mya": {
@@ -13772,8 +13772,8 @@
   "difficulty": "medium"
   }, {
   "name": {
-		"common": "Romania",
-		"official": "Romania",
+		"common": "Romania / Chad",
+		"official": "Romania / Chad",
 		"native": {
   "ron": {
   "official": "Rom\u00e2nia",
@@ -15657,7 +15657,7 @@
   "difficulty": "hard"
   }, {
   "name": {
-		"common": "Chad",
+		"common": "Chad / Romania",
 		"official": "Republic of Chad",
 		"native": {
   "ara": {
