@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		09B3F076AB15327533479F18 /* Pods_CountryTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5835CBE86E5889831712297 /* Pods_CountryTrainer.framework */; };
 		420CCE0F7B029A4C3A385020 /* Pods_CountryTrainerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7010D886B92DEDDBB99C9F /* Pods_CountryTrainerTests.framework */; };
+		8511FBF01DDF538A00C9911A /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */; };
+		8511FBF21DDF54E200C9911A /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBF11DDF54E200C9911A /* GradientButton.swift */; };
 		8573EDAC1DD4A6C800745624 /* spherical.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED8F1DD4A6C800745624 /* spherical.jpg */; };
 		8573EDAD1DD4A6C800745624 /* sphericalBlurred.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED901DD4A6C800745624 /* sphericalBlurred.png */; };
 		8573EDAE1DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED921DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png */; };
@@ -171,6 +173,8 @@
 		14150EA0EB58B5F45459EBDD /* Pods_CountryTrainerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryTrainerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		500B1804BA607D0E35837A8A /* Pods-CountryTrainerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7EF960315DF9C014816323FF /* Pods-CountryTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainer/Pods-CountryTrainer.release.xcconfig"; sourceTree = "<group>"; };
+		8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
+		8511FBF11DDF54E200C9911A /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		8573ED8F1DD4A6C800745624 /* spherical.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spherical.jpg; sourceTree = "<group>"; };
 		8573ED901DD4A6C800745624 /* sphericalBlurred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sphericalBlurred.png; sourceTree = "<group>"; };
 		8573ED921DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bamboo-wood-semigloss-albedo.png"; sourceTree = "<group>"; };
@@ -478,6 +482,7 @@
 				B5060C591D9329490093D29C /* SegmentedControlExtension.swift */,
 				B5060C5D1D932C5C0093D29C /* CollectionExtensions.swift */,
 				B5A45A9B1D967D0400F1791A /* ImageResizeable.swift */,
+				8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -747,6 +752,7 @@
 				B53A79D71D882180008C3D68 /* MainTableViewCell.swift */,
 				B5060C5B1D932B630093D29C /* CurvedLabel.swift */,
 				B5A45A9D1D96ADD700F1791A /* MenuTableViewCellDelegate.swift */,
+				8511FBF11DDF54E200C9911A /* GradientButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1217,6 +1223,7 @@
 			files = (
 				B557A27D1D6C42BD006C3A85 /* AnimationEngine.swift in Sources */,
 				B549C48E1D5C7DA5000409B3 /* MainVC.swift in Sources */,
+				8511FBF21DDF54E200C9911A /* GradientButton.swift in Sources */,
 				B58A007D1D84020B00B8BD7D /* MainWireframe.swift in Sources */,
 				B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */,
 				B5AD691C1D8BF09300F2331A /* PresentStartNewGame.swift in Sources */,
@@ -1242,6 +1249,7 @@
 				B5ACDE091D71841800C4CA72 /* AAPTransactionDirector.swift in Sources */,
 				B5060C9F1D93D3AA0093D29C /* CDCountriesTracker+CoreDataProperties.swift in Sources */,
 				B5060CA91D94857C0093D29C /* CoreDataService.swift in Sources */,
+				8511FBF01DDF538A00C9911A /* UIDeviceExtension.swift in Sources */,
 				B549C4941D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld in Sources */,
 				B549C4D91D65FA63000409B3 /* GameCell.swift in Sources */,
 				B5060CA11D93D3AA0093D29C /* CDCountriesForGame+CoreDataProperties.swift in Sources */,
