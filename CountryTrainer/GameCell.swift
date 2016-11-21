@@ -63,26 +63,28 @@ class GameCell: UITableViewCell {
     self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = game.subject == .flags ? false : true
     
     flagImage.image = cachedImage ?? UIImage(named: country.flag)
-    countryName.text = country.name
+    
+    if country.name.contains(" / Romania") {
+      countryName.text = game.subject == .flags ? country.name : country.name.replacingOccurrences(of: " / Romania", with: "")
+    } else if country.name.contains(" / Chad") {
+      countryName.text = game.subject == .flags ? country.name : country.name.replacingOccurrences(of: " / Chad", with: "")
+    } else {
+      countryName.text = country.name
+    }
+    
     capital.text = country.capital
     flagImage.animate()
     
-    if game.subject == .flags {
-      self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = true
-      self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = true
-    } else {
-      self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = true
-      self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = false
-    }
+    self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = true
+    self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = game.subject == .flags ? true : false
+
   }
   
   internal func changeCellStatus(selected: Bool) {
     
     //Called by GameVC willSelectRow
-    //Shows and hides the flag name and buttons
+    //Shows and hides the flag name, capital and buttons
     
-    if game.subject == .flags {
-      
       if selected == true {
         
         self.stackView.arrangedSubviews.last?.alpha = 0
@@ -92,8 +94,8 @@ class GameCell: UITableViewCell {
           self.stackView.arrangedSubviews[Subviews.buttons.hashValue].alpha = 1
         })
         
-        self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = true
-        self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = !selected
+        self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = game.subject == .flags ? true : !selected
+        self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden =  game.subject == .flags ? !selected : false
         self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = !selected
         
         let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
@@ -103,33 +105,10 @@ class GameCell: UITableViewCell {
         
       } else {
         
-        self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = !selected
+        self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = game.subject == .flags ? true : !selected
+        self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = game.subject == .flags ? !selected : false
         self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = !selected
       }
-      
-    } else if game.subject == .capitals {
-      
-      self.stackView.arrangedSubviews.last?.alpha = 0
-      
-      UIView.animate(withDuration: 0.5, animations: {
-        
-        self.stackView.arrangedSubviews[Subviews.buttons.hashValue].alpha = 1
-      })
-      
-      self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = !selected
-      self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = false
-      self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = !selected
-      
-      let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
-      
-      AnimationEngine.popView(view: correctButton, velocity: velocity)
-      AnimationEngine.popView(view: nopeButton, velocity: velocity)
-      
-    } else {
-      
-      self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = !selected
-      self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = !selected
-    }
   }
 
 }

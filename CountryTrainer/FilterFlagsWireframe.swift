@@ -73,13 +73,10 @@ class FilterFlagsWireframe: NSObject, UIViewControllerTransitioningDelegate {
   //MARK: TRANSITION DELEGATE
   
   internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    
     return PresentingAnimator()
-    
   }
   
   internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     return DismissingAnimator()
-    
   }
 }
