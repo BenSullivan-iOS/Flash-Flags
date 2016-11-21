@@ -44,7 +44,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     
     startNewGameVC = startNewGameViewController()
     startNewGameVC?.transitioningDelegate = self
-    startNewGameVC?.modalPresentationStyle = UIModalPresentationStyle.custom
+    startNewGameVC?.modalPresentationStyle = .custom
     startNewGameVC?.mainInteractor = mainInteractor
     mainInteractor?.startNewGameVCInterface = startNewGameVC
     

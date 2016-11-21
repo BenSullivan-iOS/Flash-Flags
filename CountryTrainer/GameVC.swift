@@ -49,6 +49,7 @@ class GameVC: UIViewController, GameCellDelegate {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    
     animateUIOnToScreen(delay: 0)
     gameInteractorInterface?.populateCache()
     

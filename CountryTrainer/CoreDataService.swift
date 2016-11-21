@@ -47,7 +47,7 @@ extension CoreDataService {
         print("Fetching games")
         
         for i in CDGames {
-          
+          dump(i)
           countryArray.removeAll()
           
           let arr = i.cdcountriesforgame?.allObjects

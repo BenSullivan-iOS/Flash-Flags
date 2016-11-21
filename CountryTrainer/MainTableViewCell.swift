@@ -83,8 +83,12 @@ class MainTableViewCell: UITableViewCell {
     if let days = Int(daysAgo.text!) {
       self.daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
     }
+    if game.subject == .flags {
+      flagsText.text = game.numberOfFlags == 1 ? "FLAG" : "FLAGS"
+    } else {
+      flagsText.text = game.numberOfFlags == 1 ? "CAPITAL" : "CAPITALS"
+    }
     
-    flagsText.text = game.numberOfFlags == 1 ? "FLAG" : "FLAGS"
     attemptsText.text = game.attempts == 1 ? "ATTEMPT" : "ATTEMPTS"
     animateCircleView(game: game)
   }
@@ -99,8 +103,8 @@ class MainTableViewCell: UITableViewCell {
   
   private func animateCircleView(game: Game) {
     
-    self.circleView?.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
-    self.circleView?.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
+//    self.circleView?.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
+    self.circleView?.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: false, friction: 400)
   }
   
   private func addButtonGestureRecogniser() {
@@ -111,7 +115,15 @@ class MainTableViewCell: UITableViewCell {
   
   private func addCircleView() {
     
-    circleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
-    self.addSubview(self.circleView!)
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      let newCircleView = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
+      DispatchQueue.main.async {
+        self.circleView = newCircleView
+        self.addSubview(self.circleView!)
+
+      }
+      
+    }
+    
   }
 }

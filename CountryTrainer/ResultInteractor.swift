@@ -34,11 +34,15 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     guard let countryArray = createCountries() else { print("json error"); return }
     
     _countries = countryArray
-    
+
+    let request: NSFetchRequest<NSFetchRequestResult>
+
     if #available(iOS 10.0, *) {
       
-      let request: NSFetchRequest<NSFetchRequestResult> = CDGame.fetchRequest()
-      
+      request = CDGame.fetchRequest()
+    } else {
+      request = NSFetchRequest(entityName: "CDGame")
+    }
       do {
         
         self.CDGames = try ad.managedObjectContext.fetch(request) as! [CDGame]
@@ -90,7 +94,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
         print(error)
         
       }
-    }
+    
   }
   
   private func saveNewGame(game: Game) {
@@ -102,6 +106,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     newGame.dateLastCompleted = Date() as NSDate?
     newGame.dateCreated = game.dateCreated as NSDate?
     newGame.customGameTitle = game.customGameTitle
+    newGame.subject = game.subject.rawValue
     
     for i in game.countries {
       
