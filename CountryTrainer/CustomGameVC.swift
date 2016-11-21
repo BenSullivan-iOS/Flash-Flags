@@ -165,7 +165,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       textfield.autocorrectionType = .default
     }
 
-    alert.addAction(UIAlertAction(title: "Start Game", style: .cancel, handler: { action in
+    alert.addAction(UIAlertAction(title: "", style: .default, handler: { action in
       
       for textfield in alert.textFields! {
         
@@ -184,7 +184,26 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       
     }))
     
-    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+    alert.addAction(UIAlertAction(title: "Start Capitals Game", style: .default, handler: { action in
+      
+      for textfield in alert.textFields! {
+        
+        self.game = Game(
+          countries: self.chosenCountries,
+          attempts: 0,
+          dateLastCompleted: nil,
+          highestPercentage: nil,
+          dateCreated: nil,
+          customGameTitle:
+          textfield.text,
+          subject: "capitals")
+        
+        self.customGameWireframe?.beginGame(game: self.game!)
+      }
+      
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
     present(alert, animated: true, completion: nil)
   }

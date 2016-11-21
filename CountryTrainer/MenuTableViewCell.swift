@@ -37,11 +37,7 @@ class MenuTableViewCell: UITableViewCell {
     switch title {
       
     case MenuItems.quickStart.rawValue:
-      mainInteractor?.getNewGameData(
-        numberOfFlags: 5,
-        continent: nil,
-        difficulty: Difficulty.allDifficulties.rawValue,
-        subject: .flags)
+      menuTableViewCellDelegate?.presentQuickStartAlert()
       
     case MenuItems.startNewGame.rawValue:
       mainWireframe?.presentStartNewGameVCFromMainVC()

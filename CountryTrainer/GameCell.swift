@@ -18,7 +18,13 @@ class GameCell: UITableViewCell {
   @IBOutlet weak var nopeButton: ResultButton!
   @IBOutlet weak var capital: UILabel!
   
+  fileprivate var game: Game!
+  
   weak internal var delegate: GameCellDelegate?
+  
+  enum Subviews {
+    case flag, country, capital, buttons
+  }
   
   
   //MARK: - CELL LIFECYCLE
@@ -26,12 +32,14 @@ class GameCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-//    stackView.arrangedSubviews.last?.isHidden = true
+    stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = true
   }
   
   override func prepareForReuse() {
-//    self.stackView.arrangedSubviews[1].isHidden = true
-//    self.stackView.arrangedSubviews.last?.isHidden = true
+    
+    self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = game.subject == .flags ? true : false
+    self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = true
+    
   }
   
   
@@ -50,12 +58,22 @@ class GameCell: UITableViewCell {
   
   internal func configureCell(_ country: Country, cachedImage: UIImage?, game: Game) {
     
-    self.stackView.arrangedSubviews[1].isHidden = game.subject == .flags ? false : true
+    self.game = game
+    
+    self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = game.subject == .flags ? false : true
     
     flagImage.image = cachedImage ?? UIImage(named: country.flag)
     countryName.text = country.name
     capital.text = country.capital
     flagImage.animate()
+    
+    if game.subject == .flags {
+      self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = true
+      self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = true
+    } else {
+      self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = true
+      self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = false
+    }
   }
   
   internal func changeCellStatus(selected: Bool) {
@@ -63,28 +81,54 @@ class GameCell: UITableViewCell {
     //Called by GameVC willSelectRow
     //Shows and hides the flag name and buttons
     
-    if selected == true {
+    if game.subject == .flags {
+      
+      if selected == true {
+        
+        self.stackView.arrangedSubviews.last?.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, animations: {
+          
+          self.stackView.arrangedSubviews[Subviews.buttons.hashValue].alpha = 1
+        })
+        
+        self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = true
+        self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = !selected
+        self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = !selected
+        
+        let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
+        
+        AnimationEngine.popView(view: correctButton, velocity: velocity)
+        AnimationEngine.popView(view: nopeButton, velocity: velocity)
+        
+      } else {
+        
+        self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = !selected
+        self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = !selected
+      }
+      
+    } else if game.subject == .capitals {
       
       self.stackView.arrangedSubviews.last?.alpha = 0
-
+      
       UIView.animate(withDuration: 0.5, animations: {
         
-        self.stackView.arrangedSubviews.last?.alpha = 1
+        self.stackView.arrangedSubviews[Subviews.buttons.hashValue].alpha = 1
       })
       
-      self.stackView.arrangedSubviews[2].isHidden = !selected
-      self.stackView.arrangedSubviews[1].isHidden = !selected
-      self.stackView.arrangedSubviews.last?.isHidden = !selected
+      self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = !selected
+      self.stackView.arrangedSubviews[Subviews.country.hashValue].isHidden = false
+      self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = !selected
       
       let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
-
+      
       AnimationEngine.popView(view: correctButton, velocity: velocity)
       AnimationEngine.popView(view: nopeButton, velocity: velocity)
-
-   } else {
       
-      self.stackView.arrangedSubviews[2].isHidden = !selected
-      self.stackView.arrangedSubviews.last?.isHidden = !selected
+    } else {
+      
+      self.stackView.arrangedSubviews[Subviews.capital.hashValue].isHidden = !selected
+      self.stackView.arrangedSubviews[Subviews.buttons.hashValue].isHidden = !selected
     }
   }
 

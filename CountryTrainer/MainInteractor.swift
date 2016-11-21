@@ -50,24 +50,9 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   
   internal func getNewGameData(numberOfFlags: Int, continent: String?, difficulty: String, subject: Subject) {
     
-    //Filters out countires based on the continent provided
-    var filteredCountries = _countries
+    var filteredCountries = subject == .flags ? _countries : _allCountries
     
-    if continent != nil && continent != Continent.all.rawValue {
-      
-      filteredCountries = _countries.filter { country -> Bool in
-        
-        return country.cont.rawValue == continent
-      }
-    }
-    
-    if difficulty != Difficulty.allDifficulties.rawValue {
-      
-      filteredCountries = filteredCountries.filter { country -> Bool in
-        
-        return country.difficulty.rawValue == difficulty
-      }
-    }
+    filteredCountries = filterFlags(continent: continent, difficulty: difficulty, countries: filteredCountries)
     
     //Display alert if no flags to display
     
@@ -99,7 +84,8 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
                     subject: subject.rawValue)
 
     mainVCInterface?.prepareGameData(game: game)
-
+    
+    print(filteredCountries.count)
 
   }
   
@@ -206,6 +192,29 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     //Populates exising games once countries are populated
     
     _games = fetch()!
+  }
+  
+  private func filterFlags(continent: String?, difficulty: String, countries: [Country]) -> [Country] {
+    
+    var countries = countries
+    
+    if continent != nil && continent != Continent.all.rawValue {
+      
+      countries = _countries.filter { country -> Bool in
+        
+        return country.cont.rawValue == continent
+      }
+    }
+    
+    if difficulty != Difficulty.allDifficulties.rawValue {
+      
+      countries = countries.filter { country -> Bool in
+        
+        return country.difficulty.rawValue == difficulty
+      }
+    }
+    
+    return countries
   }
   
 }

@@ -235,7 +235,6 @@ extension CoreDataService {
         
         print(error)
         
-        
       }
     }
   }

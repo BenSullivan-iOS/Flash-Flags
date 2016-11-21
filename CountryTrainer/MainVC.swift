@@ -123,6 +123,36 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     mainWireframe?.presentFilterFlagsInterface(withCountries: (mainInteractor?.countries)!, location: rect)
   }
   
+  func presentQuickStartAlert() {
+    
+    let alert = UIAlertController(title: "Select subject", message: nil, preferredStyle: .actionSheet)
+    
+    alert.addAction(UIAlertAction(title: "Flags", style: .default, handler: { action in
+      
+      self.mainInteractor?.getNewGameData(
+        numberOfFlags: 5,
+        continent: nil,
+        difficulty: Difficulty.allDifficulties.rawValue,
+        subject: .flags)
+      
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Capitals", style: .default, handler: { action in
+      
+      self.mainInteractor?.getNewGameData(
+        numberOfFlags: 5,
+        continent: nil,
+        difficulty: Difficulty.allDifficulties.rawValue,
+        subject: .capitals)
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    
+    present(alert, animated: true, completion: nil)
+    
+  }
+  
+  
   internal func presentHowToPlay() {
     mainWireframe?.presentHowToPlay()
   }
@@ -130,7 +160,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   internal func presentCustomGame() {
     mainWireframe?.presentCustomGame(withCountries: (mainInteractor?.allCountries)!)
   }
-
+  
   internal func reloadTableData() {
     tableView.reloadData()
   }

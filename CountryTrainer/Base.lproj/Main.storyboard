@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gBR-vk-lau">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gBR-vk-lau">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,6 +15,9 @@
         </array>
         <array key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-BoldItalic.ttf">
+            <string>Lato-BoldItalic</string>
         </array>
         <array key="Lato-Light.ttf">
             <string>Lato-Light</string>
@@ -346,35 +349,62 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="294"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hie-BB-Ri5" customClass="FlagBGView" customModule="Flash_Flags" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="359" height="278"/>
+                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hie-BB-Ri5" customClass="FlagBGView" customModule="Flash_Flags" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="398" height="278"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C8X-hm-G3G">
                                                     <rect key="frame" x="16" y="16" width="382" height="262"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-fH-Ocx" customClass="FlagImageView" customModule="Flash_Flags" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="167"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="162"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="Lwm-PK-tV4"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvV-Qs-eHB">
-                                                            <rect key="frame" x="0.0" y="167" width="382" height="30"/>
+                                                            <rect key="frame" x="0.0" y="162" width="382" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="Fg6-Ff-IyY"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capital" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfA-By-Xyc">
-                                                            <rect key="frame" x="0.0" y="197" width="382" height="30"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZn-gj-bW0">
+                                                            <rect key="frame" x="0.0" y="192" width="382" height="35"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5Q-1R-XpA">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
+                                                                    <color key="backgroundColor" red="1" green="0.9560025935040678" blue="0.66939970581889818" alpha="0.79914918664383561" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="Fsb-ec-0Nk"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <integer key="value" value="3"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capital" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfA-By-Xyc">
+                                                                    <rect key="frame" x="46" y="0.0" width="290" height="30"/>
+                                                                    <fontDescription key="fontDescription" name="Lato-BoldItalic" family="Lato" pointSize="18"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="6xk-VB-kJN"/>
+                                                                <constraint firstItem="sfA-By-Xyc" firstAttribute="top" secondItem="QZn-gj-bW0" secondAttribute="top" id="0TC-Ls-EFD"/>
+                                                                <constraint firstItem="sfA-By-Xyc" firstAttribute="centerX" secondItem="QZn-gj-bW0" secondAttribute="centerX" id="0yJ-Ps-jma"/>
+                                                                <constraint firstItem="T5Q-1R-XpA" firstAttribute="centerY" secondItem="QZn-gj-bW0" secondAttribute="centerY" constant="-2.5" id="B3p-ra-S17"/>
+                                                                <constraint firstAttribute="trailing" secondItem="sfA-By-Xyc" secondAttribute="trailing" constant="46" id="Q3d-PA-6i1"/>
+                                                                <constraint firstAttribute="bottom" secondItem="sfA-By-Xyc" secondAttribute="bottom" constant="5" id="SzU-U6-w6Z"/>
+                                                                <constraint firstItem="sfA-By-Xyc" firstAttribute="centerY" secondItem="QZn-gj-bW0" secondAttribute="centerY" constant="-2.5" id="VTe-e3-6Cx"/>
+                                                                <constraint firstItem="T5Q-1R-XpA" firstAttribute="centerX" secondItem="QZn-gj-bW0" secondAttribute="centerX" id="XpF-xi-7tB"/>
+                                                                <constraint firstItem="T5Q-1R-XpA" firstAttribute="leading" secondItem="QZn-gj-bW0" secondAttribute="leading" id="g0Q-Yy-FRM"/>
+                                                                <constraint firstAttribute="trailing" secondItem="T5Q-1R-XpA" secondAttribute="trailing" id="rLq-nn-VkA"/>
+                                                                <constraint firstAttribute="height" constant="35" id="rnd-PC-H6w"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        </view>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-5t-DGN">
                                                             <rect key="frame" x="0.0" y="227" width="382" height="35"/>
                                                             <subviews>
@@ -399,7 +429,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="35"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLa-nR-9UV" customClass="ResultButton" customModule="Flash_Flags" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="182.33333333333334" height="35"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="182" height="35"/>
                                                                             <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                                                             <state key="normal" title="😃 CORRECT  ">
@@ -410,7 +440,7 @@
                                                                             </connections>
                                                                         </button>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNH-a9-erk" customClass="ResultButton" customModule="Flash_Flags" customModuleProvider="target">
-                                                                            <rect key="frame" x="200.33333333333337" y="0.0" width="181.66666666666663" height="35"/>
+                                                                            <rect key="frame" x="200" y="0.0" width="182" height="35"/>
                                                                             <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                                                             <state key="normal" title="☹️ NOPE  ">
@@ -979,6 +1009,7 @@
                                             <segment title="Flags"/>
                                             <segment title="Capitals"/>
                                         </segments>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="segmentPressed:" destination="kew-h5-nux" eventType="valueChanged" id="mUx-an-knm"/>
                                         </connections>
