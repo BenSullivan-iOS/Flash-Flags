@@ -39,9 +39,16 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     super.init()
     
     loadSavedCountriesAndGames()
+    createDummyGames()
   }
   
-  
+  func createDummyGames() {
+    
+    let game = Game(countries: [countries[0]], attempts: 2, dateLastCompleted: Date(), highestPercentage: 50, dateCreated: Date(), customGameTitle: nil, subject: "flags")
+    for _ in 0...50 {
+      _games.append(game)
+    }
+  }
   //MARK: - INTERFACE FUNCTIONS
   
   internal func updateCountries(countries: [Country]) {

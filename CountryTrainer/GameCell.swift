@@ -47,11 +47,30 @@ class GameCell: UITableViewCell {
   
   @IBAction func answeredCorrectly(_ sender: UIButton) {
     delegate?.answered(country: countryName.text!, result: true)
+//    emit()
   }
   
   @IBAction func answeredIncorrectly(_ sender: UIButton) {
     delegate?.answered(country: countryName.text!, result: false)
   }
+  
+  let emitterLayer = CAEmitterLayer()
+  let emitterCell = CAEmitterCell()
+  
+//  func emit() {
+//    
+//    let containerView = UIView(frame: correctButton.frame)
+//    
+//    emitterCell.contents = #imageLiteral(resourceName: "snowflake-png-5.png").cgImage
+//    
+//    emitterCell.lifetime = 2
+//    emitterCell.birthRate = 30
+//    emitterCell.xAcceleration = 50
+//    emitterCell.yAcceleration = 100
+//    
+//    emitterLayer.emitterCells = [emitterCell]
+//    containerView.layer.addSublayer(emitterLayer)
+//  }
   
   
   //MARK: - INTERNAL FUNCTIONS

@@ -57,8 +57,12 @@ struct Tracker: GameTracker {
   
   mutating func updateTracker(_ country: String, result: Bool) {
     
-    _answers[country] = result
-    
+    if country == "Romania" {
+      _answers["Romania / Chad"] = result
+
+    } else {
+      _answers[country] = result
+    }
     if remainingCountries.count == 1 {
       
       gameDelegate?.gameCompleted()

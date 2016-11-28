@@ -36,6 +36,7 @@
 		8573EDC01DD4A6C800745624 /* sphere2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA91DD4A6C800745624 /* sphere2.scn */; };
 		8573EDC21DD4A6EE00745624 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8573EDC11DD4A6EE00745624 /* GameViewController.swift */; };
 		8592A4441DDC6551004249DF /* rustediron-streaks-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8592A4431DDC6551004249DF /* rustediron-streaks-albedo.png */; };
+		85C9F7301DE4913D007213CD /* snowflake-png-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C9F72F1DE4913D007213CD /* snowflake-png-5.png */; };
 		B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */; };
 		B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */; };
 		B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF61D91538600EF8CC2 /* GameProgressView.swift */; };
@@ -203,6 +204,7 @@
 		8573EDC11DD4A6EE00745624 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8592A4421DDC58E6004249DF /* CountryTrainer 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CountryTrainer 3.xcdatamodel"; sourceTree = "<group>"; };
 		8592A4431DDC6551004249DF /* rustediron-streaks-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-albedo.png"; sourceTree = "<group>"; };
+		85C9F72F1DE4913D007213CD /* snowflake-png-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snowflake-png-5.png"; sourceTree = "<group>"; };
 		8C8F8C9D0779CF3FF116FCA4 /* Pods-CountryTrainerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagBGView.swift; sourceTree = "<group>"; };
 		B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsNavBarView.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				B549C4D81D65FA63000409B3 /* GameCell.swift */,
+				85C9F72F1DE4913D007213CD /* snowflake-png-5.png */,
 				B503FBF61D91538600EF8CC2 /* GameProgressView.swift */,
 			);
 			name = View;
@@ -1074,6 +1077,7 @@
 				B549C4BE1D5C7E63000409B3 /* countries.json in Resources */,
 				8573EDBA1DD4A6C800745624 /* scuffed-plastic-albedo.png in Resources */,
 				8573EDAE1DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png in Resources */,
+				85C9F7301DE4913D007213CD /* snowflake-png-5.png in Resources */,
 				B53AAA6F1D8ABDD900ED644E /* Notes in Resources */,
 				B5AD694D1D8FDC4200F2331A /* Lato-Italic.ttf in Resources */,
 				8573EDB81DD4A6C800745624 /* rustediron-streaks-roughness.png in Resources */,

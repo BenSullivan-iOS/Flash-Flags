@@ -35,6 +35,14 @@ struct Game: GameType {
     self._dateCreated = dateCreated ?? Date()
     self._customGameTitle = customGameTitle
     self._subject = subject == "flags" ? Subject.flags : Subject.capitals
+    self._daysSinceLastCompletedString = String(_dateLastCompleted.daysBetweenDates())
+    self._attemptsString = String(attempts)
+    self._highestPercentageString = "\(highestPercentage)%"
+    self._numberOfFlagsString = "\(countries.count)"
+    self._daysAgoString = Int(_daysSinceLastCompletedString) == 1 ? "DAY AGO" : "DAYS AGO"
+    self._gameText = countries.count == 1 ? "FLAG" : "FLAGS"
+    self._attemptsText = attempts == 1 ? "ATTEMPT" : "ATTEMPTS"
+    
     setUid()
     setDelegate()
   }
@@ -52,27 +60,82 @@ struct Game: GameType {
   fileprivate var _resultFraction: String!
   fileprivate var _customGameTitle: String?
   fileprivate var _subject: Subject
-  
-  var tracker: Tracker 
+  fileprivate var _daysSinceLastCompletedString: String
+  fileprivate var _attemptsString: String
+  fileprivate var _highestPercentageString: String
+  fileprivate var _numberOfFlagsString: String
+  fileprivate var _daysAgoString: String
+  fileprivate var _gameText: String
+  fileprivate var _attemptsText: String
+
+  var tracker: Tracker
   
   var countries: [Country] {
     return _countries
   }
   
   var numberOfFlags: Int {
-    return countries.count
+    
+    get {
+      return countries.count
+    }
+    
+    set {
+      _numberOfFlagsString = String(newValue)
+      
+      if subject == .flags {
+        _gameText = newValue == 1 ? "FLAG" : "FLAGS"
+      } else {
+        _gameText = newValue == 1 ? "CAPITAL" : "CAPITALS"
+      }
+    }
+  }
+  
+  var numberOfFlagsString: String {
+    return _numberOfFlagsString
   }
   
   var dateLastCompleted: Date {
-    return _dateLastCompleted
+    
+    get {
+      return _dateLastCompleted
+    }
+    
+    set {
+      _daysSinceLastCompletedString = String(newValue.daysBetweenDates())
+    }
   }
   
   var attempts: Int {
-    return _attempts
+    get {
+      return _attempts
+    }
+    set {
+      _attemptsString = String(newValue)
+      _attemptsText = newValue == 1 ? "ATTEMPT" : "ATTEMPTS"
+    }
+  }
+  
+  var attemptsString: String {
+    return _attemptsString
+  }
+  
+  var attemptsText: String {
+    return _attemptsText
   }
   
   var highestPercentage: Int {
-    return _highestPercentage
+    
+    get {
+      return _highestPercentage
+    }
+    set {
+      _highestPercentageString = "\(newValue)%"
+    }
+  }
+  
+  var highestPercentageString: String {
+    return _highestPercentageString
   }
   
   var dateCreated: Date {
@@ -89,6 +152,15 @@ struct Game: GameType {
   
   var subject: Subject {
     return _subject
+  }
+  
+  var daysSinceLastCompletedString: String {
+    get {
+    return _daysSinceLastCompletedString
+    }
+    set {
+      _daysAgoString = Int(newValue) == 1 ? "DAY AGO" : "DAYS AGO"
+    }
   }
   
   var progress: String {
@@ -117,6 +189,16 @@ struct Game: GameType {
   var resultFraction: String {
     return _resultFraction
   }
+  
+  var daysAgoString: String {
+    return _daysAgoString
+  }
+  
+  var gameText: String {
+    return _gameText
+  }
+  
+  
   
   mutating func setUid() {
     let dateFormatter = DateFormatter()

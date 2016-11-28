@@ -178,7 +178,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterFlagsCell", for: indexPath) as! FilterFlagsCollectionViewCell
     
     let flagObjectKey = isRemainingCountry
-      ? remainingCountries[indexPath.row].flagSmall as! NSString
+      ? remainingCountries[indexPath.row].flagSmall as NSString
       : memorisedCountries [indexPath.row].flagSmall as! NSString
     
     let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil

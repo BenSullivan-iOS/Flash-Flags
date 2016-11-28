@@ -18,7 +18,6 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   internal var mainWireframe: MainWireframe?
   
-  
   //MARK: - INTERNAL FUNCTIONS
   
   internal func dismissResultVCToEndGame(game: Game) {

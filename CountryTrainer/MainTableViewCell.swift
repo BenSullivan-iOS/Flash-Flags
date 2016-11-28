@@ -39,7 +39,7 @@ class MainTableViewCell: UITableViewCell {
     super.awakeFromNib()
     
     addButtonGestureRecogniser()
-    addCircleView()
+//    addCircleView()
   }
   
   
@@ -56,41 +56,35 @@ class MainTableViewCell: UITableViewCell {
     
     self.game = game
     
-    self.attempts.text = String(game.attempts)
-    self.percentage.text = "\(game.highestPercentage)%"
-    self.daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
-    self.flags.text = String(game.numberOfFlags)
+    attempts.text = game.attemptsString
+    percentage.text = game.highestPercentageString
+    daysAgo.text = game.daysSinceLastCompletedString
+    flags.text = game.numberOfFlagsString
     
-    if let title = game.customGameTitle {
-      gameTitle.text = title
-      gameTitle.isHidden = false
-      gameTitleStack.isHidden = false
-
-      bgLabel.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 236/255, blue: 191/255, alpha: 1.0)
-      
-      topStackConstraint.constant = 2
-      bottomStackConstraint.constant = -4
-      
-    } else {
+    daysAgoText.text = game.daysAgoString
+    flagsText.text = game.gameText
+    attemptsText.text = game.attemptsText
+    
+//    if let title = game.customGameTitle {
+//      gameTitle.text = title
+////      gameTitle.isHidden = false
+////      gameTitleStack.isHidden = false
+//
+//      bgLabel.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 236/255, blue: 191/255, alpha: 1.0)
+//      
+////      topStackConstraint.constant = 2
+////      bottomStackConstraint.constant = -4
+//      
+//    } else {
       gameTitleStack.isHidden = true
       gameTitle.isHidden = true
       bgLabel.backgroundColor = .white
       topStackConstraint.constant = 5
       bottomStackConstraint.constant = -8
+//
+//    }
 
-    }
-    
-    if let days = Int(daysAgo.text!) {
-      self.daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
-    }
-    if game.subject == .flags {
-      flagsText.text = game.numberOfFlags == 1 ? "FLAG" : "FLAGS"
-    } else {
-      flagsText.text = game.numberOfFlags == 1 ? "CAPITAL" : "CAPITALS"
-    }
-    
-    attemptsText.text = game.attempts == 1 ? "ATTEMPT" : "ATTEMPTS"
-    animateCircleView(game: game)
+    //    animateCircleView(game: game)
   }
   
   internal func longPressDetected() {
