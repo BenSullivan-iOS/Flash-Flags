@@ -299,20 +299,21 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       material?.lightingModel = SCNMaterial.LightingModel.physicallyBased
       
       // Setup the material maps for your object
+      
       let materialFilePrefix = materialPrefixes[2]
       material?.diffuse.contents = #imageLiteral(resourceName: "bkflagMapWithCaps")
-      material?.roughness.contents = UIImage(named: "\(materialFilePrefix)-roughness.png")
-      material?.metalness.contents = UIImage(named: "\(materialFilePrefix)-metal.png")
+      material?.roughness.contents = #imageLiteral(resourceName: "rustediron-streaks-roughness")
+      material?.metalness.contents = #imageLiteral(resourceName: "rustediron-streaks-metal")
       
-      material?.normal.contents = UIImage(named: "\(materialFilePrefix)-normal.png")
+      material?.normal.contents = #imageLiteral(resourceName: "rustediron-streaks-normal")
       
       // Setup background - This will be the beautiful blurred background
       // that assist the user understand the 3D envirnoment
-      let bg = UIImage(named: "sphericalBlurred.png")
-      scene.background.contents = bg;
+      let bg = #imageLiteral(resourceName: "sphericalBlurred")
+      scene.background.contents = bg
       
       // Setup Image Based Lighting (IBL) map
-      let env = UIImage(named: "spherical.jpg")
+      let env = #imageLiteral(resourceName: "spherical")
       scene.lightingEnvironment.contents = env
       scene.lightingEnvironment.intensity = 2.0
       

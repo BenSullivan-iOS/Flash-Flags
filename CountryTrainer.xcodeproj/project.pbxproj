@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		09B3F076AB15327533479F18 /* Pods_CountryTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5835CBE86E5889831712297 /* Pods_CountryTrainer.framework */; };
 		420CCE0F7B029A4C3A385020 /* Pods_CountryTrainerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7010D886B92DEDDBB99C9F /* Pods_CountryTrainerTests.framework */; };
-		482520191E64B53400980CB3 /* SphereAssets in Resources */ = {isa = PBXBuildFile; fileRef = 482520181E64B53400980CB3 /* SphereAssets */; };
-		4825201C1E64B5C900980CB3 /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = 4825201B1E64B5C900980CB3 /* sphere.obj */; };
+		850588CF1E65A6CA00A6E2D3 /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = 850588CE1E65A6CA00A6E2D3 /* sphere.obj */; };
 		8511FBF01DDF538A00C9911A /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */; };
 		8511FBF21DDF54E200C9911A /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBF11DDF54E200C9911A /* GradientButton.swift */; };
 		8573EDC21DD4A6EE00745624 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8573EDC11DD4A6EE00745624 /* GameViewController.swift */; };
@@ -151,10 +150,9 @@
 /* Begin PBXFileReference section */
 		05C3B3BC7FCA909AD41062E6 /* Pods-CountryTrainerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerTests/Pods-CountryTrainerTests.release.xcconfig"; sourceTree = "<group>"; };
 		14150EA0EB58B5F45459EBDD /* Pods_CountryTrainerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryTrainerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		482520181E64B53400980CB3 /* SphereAssets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SphereAssets; path = CountryTrainer/SphereAssets; sourceTree = "<group>"; };
-		4825201B1E64B5C900980CB3 /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sphere.obj; path = CountryTrainer/SphereAssets/Objects/sphere.obj; sourceTree = "<group>"; };
 		500B1804BA607D0E35837A8A /* Pods-CountryTrainerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7EF960315DF9C014816323FF /* Pods-CountryTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainer/Pods-CountryTrainer.release.xcconfig"; sourceTree = "<group>"; };
+		850588CE1E65A6CA00A6E2D3 /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
 		8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		8511FBF11DDF54E200C9911A /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		8573EDC11DD4A6EE00745624 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -309,8 +307,7 @@
 		4825201A1E64B5A000980CB3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				482520181E64B53400980CB3 /* SphereAssets */,
-				4825201B1E64B5C900980CB3 /* sphere.obj */,
+				850588CE1E65A6CA00A6E2D3 /* sphere.obj */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -911,6 +908,7 @@
 				B5AD694E1D8FDC4200F2331A /* Lato-Light.ttf in Resources */,
 				B5AD69551D8FDC4200F2331A /* Lato-Thin.ttf in Resources */,
 				B5AD69501D8FDC4200F2331A /* Lato-Medium.ttf in Resources */,
+				850588CF1E65A6CA00A6E2D3 /* sphere.obj in Resources */,
 				B5AD694B1D8FDC4200F2331A /* Lato-Heavy.ttf in Resources */,
 				B549C4991D5C7DA5000409B3 /* LaunchScreen.storyboard in Resources */,
 				B5AD69521D8FDC4200F2331A /* Lato-Regular.ttf in Resources */,
@@ -921,11 +919,9 @@
 				B549C4CA1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */,
 				B549C4CE1D65B249000409B3 /* RemovedCountries in Resources */,
 				B5AD694F1D8FDC4200F2331A /* Lato-LightItalic.ttf in Resources */,
-				482520191E64B53400980CB3 /* SphereAssets in Resources */,
 				B5AD69541D8FDC4200F2331A /* Lato-SemiboldItalic.ttf in Resources */,
 				B5AD69511D8FDC4200F2331A /* Lato-MediumItalic.ttf in Resources */,
 				B5AD69481D8FDC4200F2331A /* Lato-BoldItalic.ttf in Resources */,
-				4825201C1E64B5C900980CB3 /* sphere.obj in Resources */,
 				B549C4961D5C7DA5000409B3 /* Assets.xcassets in Resources */,
 				B5AD69531D8FDC4200F2331A /* Lato-Semibold.ttf in Resources */,
 				B5AD694A1D8FDC4200F2331A /* Lato-HairlineItalic.ttf in Resources */,
