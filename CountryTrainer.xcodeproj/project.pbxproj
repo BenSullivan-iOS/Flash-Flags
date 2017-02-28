@@ -9,31 +9,11 @@
 /* Begin PBXBuildFile section */
 		09B3F076AB15327533479F18 /* Pods_CountryTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5835CBE86E5889831712297 /* Pods_CountryTrainer.framework */; };
 		420CCE0F7B029A4C3A385020 /* Pods_CountryTrainerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7010D886B92DEDDBB99C9F /* Pods_CountryTrainerTests.framework */; };
+		482520191E64B53400980CB3 /* SphereAssets in Resources */ = {isa = PBXBuildFile; fileRef = 482520181E64B53400980CB3 /* SphereAssets */; };
+		4825201C1E64B5C900980CB3 /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = 4825201B1E64B5C900980CB3 /* sphere.obj */; };
 		8511FBF01DDF538A00C9911A /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */; };
 		8511FBF21DDF54E200C9911A /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBF11DDF54E200C9911A /* GradientButton.swift */; };
-		8573EDAC1DD4A6C800745624 /* spherical.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED8F1DD4A6C800745624 /* spherical.jpg */; };
-		8573EDAD1DD4A6C800745624 /* sphericalBlurred.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED901DD4A6C800745624 /* sphericalBlurred.png */; };
-		8573EDAE1DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED921DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png */; };
-		8573EDAF1DD4A6C800745624 /* bamboo-wood-semigloss-metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED931DD4A6C800745624 /* bamboo-wood-semigloss-metal.png */; };
-		8573EDB01DD4A6C800745624 /* bamboo-wood-semigloss-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED941DD4A6C800745624 /* bamboo-wood-semigloss-normal.png */; };
-		8573EDB11DD4A6C800745624 /* bamboo-wood-semigloss-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED951DD4A6C800745624 /* bamboo-wood-semigloss-roughness.png */; };
-		8573EDB21DD4A6C800745624 /* oakfloor2-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED971DD4A6C800745624 /* oakfloor2-albedo.png */; };
-		8573EDB31DD4A6C800745624 /* oakfloor2-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED981DD4A6C800745624 /* oakfloor2-normal.png */; };
-		8573EDB41DD4A6C800745624 /* oakfloor2-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED991DD4A6C800745624 /* oakfloor2-roughness.png */; };
-		8573EDB51DD4A6C800745624 /* bkuprustediron-streaks-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9B1DD4A6C800745624 /* bkuprustediron-streaks-albedo.png */; };
-		8573EDB61DD4A6C800745624 /* rustediron-streaks-metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9C1DD4A6C800745624 /* rustediron-streaks-metal.png */; };
-		8573EDB71DD4A6C800745624 /* rustediron-streaks-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9D1DD4A6C800745624 /* rustediron-streaks-normal.png */; };
-		8573EDB81DD4A6C800745624 /* rustediron-streaks-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9E1DD4A6C800745624 /* rustediron-streaks-roughness.png */; };
-		8573EDB91DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573ED9F1DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png */; };
-		8573EDBA1DD4A6C800745624 /* scuffed-plastic-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA11DD4A6C800745624 /* scuffed-plastic-albedo.png */; };
-		8573EDBB1DD4A6C800745624 /* scuffed-plastic-metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA21DD4A6C800745624 /* scuffed-plastic-metal.png */; };
-		8573EDBC1DD4A6C800745624 /* scuffed-plastic-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA31DD4A6C800745624 /* scuffed-plastic-normal.png */; };
-		8573EDBD1DD4A6C800745624 /* scuffed-plastic-roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA41DD4A6C800745624 /* scuffed-plastic-roughness.png */; };
-		8573EDBE1DD4A6C800745624 /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA71DD4A6C800745624 /* sphere.obj */; };
-		8573EDBF1DD4A6C800745624 /* sphere.scn in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA81DD4A6C800745624 /* sphere.scn */; };
-		8573EDC01DD4A6C800745624 /* sphere2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 8573EDA91DD4A6C800745624 /* sphere2.scn */; };
 		8573EDC21DD4A6EE00745624 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8573EDC11DD4A6EE00745624 /* GameViewController.swift */; };
-		8592A4441DDC6551004249DF /* rustediron-streaks-albedo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8592A4431DDC6551004249DF /* rustediron-streaks-albedo.png */; };
 		B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */; };
 		B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */; };
 		B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF61D91538600EF8CC2 /* GameProgressView.swift */; };
@@ -171,34 +151,14 @@
 /* Begin PBXFileReference section */
 		05C3B3BC7FCA909AD41062E6 /* Pods-CountryTrainerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerTests/Pods-CountryTrainerTests.release.xcconfig"; sourceTree = "<group>"; };
 		14150EA0EB58B5F45459EBDD /* Pods_CountryTrainerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryTrainerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		482520181E64B53400980CB3 /* SphereAssets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SphereAssets; path = CountryTrainer/SphereAssets; sourceTree = "<group>"; };
+		4825201B1E64B5C900980CB3 /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sphere.obj; path = CountryTrainer/SphereAssets/Objects/sphere.obj; sourceTree = "<group>"; };
 		500B1804BA607D0E35837A8A /* Pods-CountryTrainerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7EF960315DF9C014816323FF /* Pods-CountryTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainer/Pods-CountryTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		8511FBF11DDF54E200C9911A /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
-		8573ED8F1DD4A6C800745624 /* spherical.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spherical.jpg; sourceTree = "<group>"; };
-		8573ED901DD4A6C800745624 /* sphericalBlurred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sphericalBlurred.png; sourceTree = "<group>"; };
-		8573ED921DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bamboo-wood-semigloss-albedo.png"; sourceTree = "<group>"; };
-		8573ED931DD4A6C800745624 /* bamboo-wood-semigloss-metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bamboo-wood-semigloss-metal.png"; sourceTree = "<group>"; };
-		8573ED941DD4A6C800745624 /* bamboo-wood-semigloss-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bamboo-wood-semigloss-normal.png"; sourceTree = "<group>"; };
-		8573ED951DD4A6C800745624 /* bamboo-wood-semigloss-roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bamboo-wood-semigloss-roughness.png"; sourceTree = "<group>"; };
-		8573ED971DD4A6C800745624 /* oakfloor2-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oakfloor2-albedo.png"; sourceTree = "<group>"; };
-		8573ED981DD4A6C800745624 /* oakfloor2-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oakfloor2-normal.png"; sourceTree = "<group>"; };
-		8573ED991DD4A6C800745624 /* oakfloor2-roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oakfloor2-roughness.png"; sourceTree = "<group>"; };
-		8573ED9B1DD4A6C800745624 /* bkuprustediron-streaks-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bkuprustediron-streaks-albedo.png"; sourceTree = "<group>"; };
-		8573ED9C1DD4A6C800745624 /* rustediron-streaks-metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-metal.png"; sourceTree = "<group>"; };
-		8573ED9D1DD4A6C800745624 /* rustediron-streaks-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-normal.png"; sourceTree = "<group>"; };
-		8573ED9E1DD4A6C800745624 /* rustediron-streaks-roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-roughness.png"; sourceTree = "<group>"; };
-		8573ED9F1DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bkup2rustediron-streaks-albedo.png"; sourceTree = "<group>"; };
-		8573EDA11DD4A6C800745624 /* scuffed-plastic-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scuffed-plastic-albedo.png"; sourceTree = "<group>"; };
-		8573EDA21DD4A6C800745624 /* scuffed-plastic-metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scuffed-plastic-metal.png"; sourceTree = "<group>"; };
-		8573EDA31DD4A6C800745624 /* scuffed-plastic-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scuffed-plastic-normal.png"; sourceTree = "<group>"; };
-		8573EDA41DD4A6C800745624 /* scuffed-plastic-roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scuffed-plastic-roughness.png"; sourceTree = "<group>"; };
-		8573EDA71DD4A6C800745624 /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
-		8573EDA81DD4A6C800745624 /* sphere.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = sphere.scn; sourceTree = "<group>"; };
-		8573EDA91DD4A6C800745624 /* sphere2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = sphere2.scn; sourceTree = "<group>"; };
 		8573EDC11DD4A6EE00745624 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8592A4421DDC58E6004249DF /* CountryTrainer 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CountryTrainer 3.xcdatamodel"; sourceTree = "<group>"; };
-		8592A4431DDC6551004249DF /* rustediron-streaks-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rustediron-streaks-albedo.png"; sourceTree = "<group>"; };
 		8C8F8C9D0779CF3FF116FCA4 /* Pods-CountryTrainerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagBGView.swift; sourceTree = "<group>"; };
 		B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterFlagsNavBarView.swift; sourceTree = "<group>"; };
@@ -346,6 +306,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4825201A1E64B5A000980CB3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				482520181E64B53400980CB3 /* SphereAssets */,
+				4825201B1E64B5C900980CB3 /* sphere.obj */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		6320ECC81A3D9E1EF6B15123 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,92 +326,6 @@
 				500B1804BA607D0E35837A8A /* Pods-CountryTrainerUITests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		8573ED911DD4A6C800745624 /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				8573ED8F1DD4A6C800745624 /* spherical.jpg */,
-				8573ED901DD4A6C800745624 /* sphericalBlurred.png */,
-			);
-			path = Environment;
-			sourceTree = "<group>";
-		};
-		8573ED961DD4A6C800745624 /* bamboo-wood-semigloss */ = {
-			isa = PBXGroup;
-			children = (
-				8573ED921DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png */,
-				8573ED931DD4A6C800745624 /* bamboo-wood-semigloss-metal.png */,
-				8573ED941DD4A6C800745624 /* bamboo-wood-semigloss-normal.png */,
-				8573ED951DD4A6C800745624 /* bamboo-wood-semigloss-roughness.png */,
-			);
-			path = "bamboo-wood-semigloss";
-			sourceTree = "<group>";
-		};
-		8573ED9A1DD4A6C800745624 /* oakfloor2 */ = {
-			isa = PBXGroup;
-			children = (
-				8573ED971DD4A6C800745624 /* oakfloor2-albedo.png */,
-				8573ED981DD4A6C800745624 /* oakfloor2-normal.png */,
-				8573ED991DD4A6C800745624 /* oakfloor2-roughness.png */,
-			);
-			path = oakfloor2;
-			sourceTree = "<group>";
-		};
-		8573EDA01DD4A6C800745624 /* rustediron-streaks */ = {
-			isa = PBXGroup;
-			children = (
-				8573ED9B1DD4A6C800745624 /* bkuprustediron-streaks-albedo.png */,
-				8573ED9C1DD4A6C800745624 /* rustediron-streaks-metal.png */,
-				8573ED9D1DD4A6C800745624 /* rustediron-streaks-normal.png */,
-				8573ED9E1DD4A6C800745624 /* rustediron-streaks-roughness.png */,
-				8573ED9F1DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png */,
-				8592A4431DDC6551004249DF /* rustediron-streaks-albedo.png */,
-			);
-			path = "rustediron-streaks";
-			sourceTree = "<group>";
-		};
-		8573EDA51DD4A6C800745624 /* scuffed-plastic */ = {
-			isa = PBXGroup;
-			children = (
-				8573EDA11DD4A6C800745624 /* scuffed-plastic-albedo.png */,
-				8573EDA21DD4A6C800745624 /* scuffed-plastic-metal.png */,
-				8573EDA31DD4A6C800745624 /* scuffed-plastic-normal.png */,
-				8573EDA41DD4A6C800745624 /* scuffed-plastic-roughness.png */,
-			);
-			path = "scuffed-plastic";
-			sourceTree = "<group>";
-		};
-		8573EDA61DD4A6C800745624 /* Materials */ = {
-			isa = PBXGroup;
-			children = (
-				8573ED961DD4A6C800745624 /* bamboo-wood-semigloss */,
-				8573ED9A1DD4A6C800745624 /* oakfloor2 */,
-				8573EDA01DD4A6C800745624 /* rustediron-streaks */,
-				8573EDA51DD4A6C800745624 /* scuffed-plastic */,
-			);
-			path = Materials;
-			sourceTree = "<group>";
-		};
-		8573EDAA1DD4A6C800745624 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				8573EDA71DD4A6C800745624 /* sphere.obj */,
-				8573EDA81DD4A6C800745624 /* sphere.scn */,
-				8573EDA91DD4A6C800745624 /* sphere2.scn */,
-			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
-		8573EDAB1DD4A6C800745624 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				8573ED911DD4A6C800745624 /* Environment */,
-				8573EDA61DD4A6C800745624 /* Materials */,
-				8573EDAA1DD4A6C800745624 /* Objects */,
-			);
-			name = Assets;
-			path = "../../../Downloads/PBROrbs-iOS10-SceneKit-master/PBROrbs/Assets";
 			sourceTree = "<group>";
 		};
 		B5060C5F1D93D0270093D29C /* Core Data */ = {
@@ -501,7 +384,7 @@
 			children = (
 				B53AAA6E1D8ABDD900ED644E /* Notes */,
 				8573EDC11DD4A6EE00745624 /* GameViewController.swift */,
-				8573EDAB1DD4A6C800745624 /* Assets */,
+				4825201A1E64B5A000980CB3 /* Assets */,
 				B549C4BC1D5C7E48000409B3 /* Resources */,
 				B549C48A1D5C7DA5000409B3 /* CountryTrainer */,
 				B549C4A21D5C7DA5000409B3 /* CountryTrainerTests */,
@@ -1026,53 +909,33 @@
 			files = (
 				B56111421D9D31C90000E103 /* HowToPlay.storyboard in Resources */,
 				B5AD694E1D8FDC4200F2331A /* Lato-Light.ttf in Resources */,
-				8573EDB61DD4A6C800745624 /* rustediron-streaks-metal.png in Resources */,
 				B5AD69551D8FDC4200F2331A /* Lato-Thin.ttf in Resources */,
-				8573EDBE1DD4A6C800745624 /* sphere.obj in Resources */,
 				B5AD69501D8FDC4200F2331A /* Lato-Medium.ttf in Resources */,
-				8573EDBD1DD4A6C800745624 /* scuffed-plastic-roughness.png in Resources */,
-				8573EDB01DD4A6C800745624 /* bamboo-wood-semigloss-normal.png in Resources */,
 				B5AD694B1D8FDC4200F2331A /* Lato-Heavy.ttf in Resources */,
-				8573EDB31DD4A6C800745624 /* oakfloor2-normal.png in Resources */,
-				8573EDB71DD4A6C800745624 /* rustediron-streaks-normal.png in Resources */,
 				B549C4991D5C7DA5000409B3 /* LaunchScreen.storyboard in Resources */,
 				B5AD69521D8FDC4200F2331A /* Lato-Regular.ttf in Resources */,
-				8573EDAC1DD4A6C800745624 /* spherical.jpg in Resources */,
-				8573EDBC1DD4A6C800745624 /* scuffed-plastic-normal.png in Resources */,
 				B5AD69471D8FDC4200F2331A /* Lato-Bold.ttf in Resources */,
-				8573EDB11DD4A6C800745624 /* bamboo-wood-semigloss-roughness.png in Resources */,
 				B5AD69561D8FDC4200F2331A /* Lato-ThinItalic.ttf in Resources */,
-				8573EDB51DD4A6C800745624 /* bkuprustediron-streaks-albedo.png in Resources */,
 				B5AD69491D8FDC4200F2331A /* Lato-Hairline.ttf in Resources */,
 				B5581AE21D9FDC45000A4CCB /* CustomGame.storyboard in Resources */,
-				8573EDBB1DD4A6C800745624 /* scuffed-plastic-metal.png in Resources */,
-				8573EDC01DD4A6C800745624 /* sphere2.scn in Resources */,
 				B549C4CA1D65A6C8000409B3 /* FlagAssets.xcassets in Resources */,
 				B549C4CE1D65B249000409B3 /* RemovedCountries in Resources */,
 				B5AD694F1D8FDC4200F2331A /* Lato-LightItalic.ttf in Resources */,
-				8573EDAD1DD4A6C800745624 /* sphericalBlurred.png in Resources */,
+				482520191E64B53400980CB3 /* SphereAssets in Resources */,
 				B5AD69541D8FDC4200F2331A /* Lato-SemiboldItalic.ttf in Resources */,
-				8573EDB41DD4A6C800745624 /* oakfloor2-roughness.png in Resources */,
 				B5AD69511D8FDC4200F2331A /* Lato-MediumItalic.ttf in Resources */,
-				8573EDB91DD4A6C800745624 /* bkup2rustediron-streaks-albedo.png in Resources */,
-				8573EDAF1DD4A6C800745624 /* bamboo-wood-semigloss-metal.png in Resources */,
 				B5AD69481D8FDC4200F2331A /* Lato-BoldItalic.ttf in Resources */,
+				4825201C1E64B5C900980CB3 /* sphere.obj in Resources */,
 				B549C4961D5C7DA5000409B3 /* Assets.xcassets in Resources */,
 				B5AD69531D8FDC4200F2331A /* Lato-Semibold.ttf in Resources */,
-				8573EDBF1DD4A6C800745624 /* sphere.scn in Resources */,
 				B5AD694A1D8FDC4200F2331A /* Lato-HairlineItalic.ttf in Resources */,
 				B5AD69451D8FDC4200F2331A /* Lato-Black.ttf in Resources */,
-				8573EDB21DD4A6C800745624 /* oakfloor2-albedo.png in Resources */,
 				B5AD694C1D8FDC4200F2331A /* Lato-HeavyItalic.ttf in Resources */,
 				B5AD69461D8FDC4200F2331A /* Lato-BlackItalic.ttf in Resources */,
 				B549C4BE1D5C7E63000409B3 /* countries.json in Resources */,
-				8573EDBA1DD4A6C800745624 /* scuffed-plastic-albedo.png in Resources */,
-				8573EDAE1DD4A6C800745624 /* bamboo-wood-semigloss-albedo.png in Resources */,
 				B53AAA6F1D8ABDD900ED644E /* Notes in Resources */,
 				B5AD694D1D8FDC4200F2331A /* Lato-Italic.ttf in Resources */,
-				8573EDB81DD4A6C800745624 /* rustediron-streaks-roughness.png in Resources */,
 				B549C4911D5C7DA5000409B3 /* Main.storyboard in Resources */,
-				8592A4441DDC6551004249DF /* rustediron-streaks-albedo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
