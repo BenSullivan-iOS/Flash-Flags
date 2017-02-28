@@ -42,13 +42,20 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     createDummyGames()
   }
   
+  var count = 0
+  
   func createDummyGames() {
     
-    let game = Game(countries: [countries[0]], attempts: 2, dateLastCompleted: Date(), highestPercentage: 50, dateCreated: Date(), customGameTitle: nil, subject: "flags")
-    for _ in 0...50 {
+    for _ in 0...300 {
+      
+      count += 1
+      
+      let game = Game(countries: [countries[1]], attempts: count, dateLastCompleted: Date(), highestPercentage: count, dateCreated: Date(), customGameTitle: nil, subject: "flags")
+      
       _games.append(game)
     }
   }
+  
   //MARK: - INTERFACE FUNCTIONS
   
   internal func updateCountries(countries: [Country]) {

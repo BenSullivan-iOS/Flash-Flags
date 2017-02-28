@@ -30,7 +30,7 @@ class MainTableViewCell: UITableViewCell {
   weak internal var mainVCInterface: MainVCInterface?
   
   fileprivate var circleView: CircleView?
-  fileprivate var game: Game?
+  internal var game: Game?
   
   
   //MARK: - CELL LIFECYCLE
@@ -55,7 +55,7 @@ class MainTableViewCell: UITableViewCell {
   internal func configureCell(game: Game, circleView: CircleView?) {
     
     self.game = game
-    
+
     attempts.text = game.attemptsString
     percentage.text = game.highestPercentageString
     daysAgo.text = game.daysSinceLastCompletedString
@@ -76,15 +76,15 @@ class MainTableViewCell: UITableViewCell {
 ////      bottomStackConstraint.constant = -4
 //      
 //    } else {
-      gameTitleStack.isHidden = true
-      gameTitle.isHidden = true
-      bgLabel.backgroundColor = .white
-      topStackConstraint.constant = 5
-      bottomStackConstraint.constant = -8
+//      gameTitleStack.isHidden = true
+//      gameTitle.isHidden = true
+//      bgLabel.backgroundColor = .white
+//      topStackConstraint.constant = 5
+//      bottomStackConstraint.constant = -8
 //
 //    }
 
-    //    animateCircleView(game: game)
+//        animateCircleView(game: game)
   }
   
   internal func longPressDetected() {
@@ -97,8 +97,8 @@ class MainTableViewCell: UITableViewCell {
   
   private func animateCircleView(game: Game) {
     
-//    self.circleView?.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
-    self.circleView?.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: false, friction: 400)
+    self.circleView?.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
+    self.circleView?.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
   }
   
   private func addButtonGestureRecogniser() {

@@ -11,7 +11,162 @@ import QuartzCore
 import SceneKit
 import pop
 
-class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, MainVCInterface, MenuTableViewCellDelegate {
+protocol Maskable {
+  func createMask(corners: UIRectCorner) -> CAShapeLayer
+}
+
+extension Maskable where Self : UILabel {
+  
+  func createMask(corners: UIRectCorner) -> CAShapeLayer {
+    print("CREATING MASK")
+    
+    var maskLayer = CAShapeLayer()
+    
+    let circlePath = UIBezierPath(roundedRect: bounds,
+                                  byRoundingCorners: corners,
+                                  cornerRadii: CGSize(width: 20, height:  20))
+    
+    maskLayer = CAShapeLayer()
+    maskLayer.path = circlePath.cgPath
+    maskLayer.fillColor = UIColor.white.cgColor
+    
+    backgroundColor = .clear
+    
+    return maskLayer
+  }
+}
+
+class TopRoundedLabel: UILabel, Maskable {
+  
+  static var maskLayer: CAShapeLayer? = nil
+  
+  override func layoutSublayers(of layer: CALayer) {
+    
+    let mask = createMask(corners: [.topLeft, .topRight])
+    //      print(mask)
+    //      dump(mask)
+    
+    
+    TopRoundedLabel.maskLayer = mask
+    layer.addSublayer(mask)
+    
+    mask.zPosition = 0
+    
+    for subview in layer.sublayers! {
+      subview.zPosition = 0
+      
+    }
+    for lay in layer.sublayers! {
+      
+      if lay.isKind(of: CAShapeLayer.self) {
+        lay.zPosition = 0
+      } else {
+        lay.zPosition = 1
+      }
+      
+    }
+
+  }
+}
+
+class BottomLeftRoundedLabel: UILabel, Maskable {
+  
+  static var maskLayer: CAShapeLayer? = nil
+  override func layoutSublayers(of layer: CALayer) {
+    
+    if let maskLayer = TopRoundedLabel.maskLayer {
+      
+      layer.addSublayer(createMask(corners: [.bottomLeft]))
+      
+    } else {
+      
+      layer.addSublayer(createMask(corners: [.bottomLeft]))
+      
+    }
+  }
+}
+
+class BottomRightRoundedLabel: UILabel, Maskable {
+  
+  static var maskLayer: CAShapeLayer? = nil
+  
+  override func layoutSublayers(of layer: CALayer) {
+    
+    if let maskLayer = TopRoundedLabel.maskLayer {
+      
+      layer.addSublayer(createMask(corners: [.bottomRight]))
+      
+    } else {
+      
+      layer.addSublayer(createMask(corners: [.bottomRight]))
+      
+    }
+    
+  }
+}
+
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, MainVCInterface, MenuTableViewCellDelegate, UITableViewDataSourcePrefetching {
+  
+  var prefetchedCells = Set<MainTableViewCell>()
+  
+  var topMask = CAShapeLayer()
+  var bottomMask = CAShapeLayer()
+  
+  func createMasks() {
+  
+    
+    
+  }
+  
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      for i in indexPaths {
+        if i.section == 0 {
+          return
+        }
+      }
+      
+      
+      
+      for i in indexPaths {
+        
+        for a in self.prefetchedCells {
+          if self.games[i.row] == a.game! {
+            return
+          }
+        }
+        
+        let isIndexValid = self.games.indices.contains(i.row)
+        
+        if isIndexValid {
+          
+          let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MainTableViewCell
+          DispatchQueue.main.async {
+            
+//            
+//            let circle = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
+            
+            cell.configureCell(game: self.games[i.row], circleView: nil)
+            
+            cell.mainWireframe = self.mainWireframe
+            cell.mainVCInterface = self
+            
+            
+            self.prefetchedCells.insert(cell)
+            
+          }
+          
+          
+          
+        }
+      }
+    }
+    
+  }
+  
+  //  @IBOutlet weak var tableView: UITableView!
   
   @IBOutlet weak var tableView: COBezierTableView!
   @IBOutlet weak var flagBg: UIImageView!
@@ -34,6 +189,14 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    createMasks()
+    
+    if #available(iOS 10.0, *) {
+      tableView.prefetchDataSource = self
+    } else {
+      // Fallback on earlier versions
+    }
+    
     switch UIDevice.current.modelName {
     case "iPod Touch 6", "iPhone 4", "iPhone 4s", "iPhone 5", "iPhone 5c":
 
@@ -42,8 +205,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     default:
       
       if #available(iOS 10.0, *) {
-        setupGlobe()
-        flagBg.alpha = 0
+//        setupGlobe()
+//        flagBg.alpha = 0
       } else {
         flagBg.alpha = 1
       }
@@ -53,6 +216,11 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     
     configureTablePath()
     setInitialTableRow()
+    
+    for i in games {
+      
+      print(i.numberOfFlags)
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -246,7 +414,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     
     if indexPath.section == 0 {
       
-      let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as! MenuTableViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
       
       cell.menuTableViewCellDelegate = self
       cell.configureCell(title: menuTitles[indexPath.row], indexPath: indexPath)
@@ -257,22 +425,17 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       
     } else if indexPath.section == 1 {
       
+      for i in prefetchedCells {
+        
+        if i.game! == games[indexPath.row] {
+          return i
+        }
+      }
+      
       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MainTableViewCell
       
-//      if let circle = circleViewCache.object(forKey: games[indexPath.row].uid) {
-//
-//        cell.configureCell(game: games[indexPath.row], circleView: circle)
-//
-//      } else {
-//        
-//       let circle = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
-//
-//        circleViewCache.setObject(circle, forKey: games[indexPath.row].uid)
-//        
-        cell.configureCell(game: games[indexPath.row], circleView: nil)
-//
-//      }
       
+//      cell.configureCell(game: games[indexPath.row], circleView: nil)
       cell.mainWireframe = mainWireframe
       cell.mainVCInterface = self
       
