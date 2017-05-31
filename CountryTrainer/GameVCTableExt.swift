@@ -107,8 +107,8 @@ extension GameVC: UITableViewDelegate, UITableViewDataSource, UITableViewDataSou
       
       DispatchQueue.main.async {
         
-        cell.changeCellStatus(selected: true)
         tableView.beginUpdates()
+        cell.changeCellStatus(selected: true)
         tableView.endUpdates()
       }
     }
