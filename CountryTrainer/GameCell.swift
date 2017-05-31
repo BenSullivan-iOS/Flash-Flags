@@ -64,22 +64,22 @@ class GameCell: UITableViewCell {
       
       self.stackView.arrangedSubviews.last?.alpha = 0
 
-      UIView.animate(withDuration: 0.5, animations: {
+      UIView.animate(withDuration: 0.5) {
         
         self.stackView.arrangedSubviews.last?.alpha = 1
-      })
+      }
       
-      self.stackView.arrangedSubviews[1].isHidden = !selected
+      self.stackView.arrangedSubviews.first?.isHidden = !selected
       self.stackView.arrangedSubviews.last?.isHidden = !selected
       
-//      let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
+      let velocity = NSValue(cgSize: CGSize(width: 1.0, height: 1.0))
 
-//      AnimationEngine.popView(view: correctButton, velocity: velocity)
-//      AnimationEngine.popView(view: nopeButton, velocity: velocity)
+      AnimationEngine.popView(view: correctButton, velocity: velocity)
+      AnimationEngine.popView(view: nopeButton, velocity: velocity)
 
    } else {
       
-//        self.stackView.arrangedSubviews[1].isHidden = !selected
+        self.stackView.arrangedSubviews.first?.isHidden = !selected
         self.stackView.arrangedSubviews.last?.isHidden = !selected
     }
   }
