@@ -11,23 +11,25 @@ import QuartzCore
 import SceneKit
 import pop
 
-class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, MainVCInterface, MenuTableViewCellDelegate {
+class MainVC: UIViewController, MainVCInterface, MenuTableViewCellDelegate {
   
   @IBOutlet weak var tableView: COBezierTableView!
   @IBOutlet weak var flagBg: UIImageView!
   @IBOutlet weak var splashBackground: UIImageView!
+  @IBOutlet weak var toggleMenu: UIButton!
+  @IBOutlet weak var tableViewTrailing: NSLayoutConstraint!
+  @IBOutlet weak var tableViewLeading: NSLayoutConstraint!
   
   internal var mainInteractor: MainInteractorInterface?
   internal var mainWireframe: MainWireframe?
   
+  fileprivate var scnView: SCNView?
+  fileprivate var menuTitles = MenuItems.all
   fileprivate var circleViewCache = NSCache<NSString, CircleView>()
-
+  
   fileprivate var games: [Game] {
     return mainInteractor?.games ?? [Game]()
   }
-  
-  fileprivate var menuTitles = MenuItems.all
-  
   
   //MARK: - VC LIFECYCLE
   
@@ -36,7 +38,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     
     switch UIDevice.current.modelName {
     case "iPod Touch 6", "iPhone 4", "iPhone 4s", "iPhone 5", "iPhone 5c":
-
+      
       flagBg.alpha = 1
       
     default:
@@ -49,21 +51,15 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       }
     }
     
-   
-    
     self.navigationController?.isNavigationBarHidden = true
     
     configureTablePath()
     setInitialTableRow()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    tableViewFrameOrigin = tableView.frame
-  }
-  
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-   
+    
     UIView.animate(withDuration: 0.5, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { animation in
       
       self.splashBackground.alpha = 0
@@ -75,45 +71,23 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     
   }
   
-  var indexPathForCustomGame: IndexPath?
-  
-  //Trying to save the index path of each cell, then use rectForIndexPath whenever one of the menu buttons are pressed
-  
   //MARK: - OUTLET ACTIONS
   
   @IBAction func newGameButtonPressed(_ sender: AnyObject) {
     mainInteractor?.getNewGameData(numberOfFlags: 5, continent: nil, difficulty: Difficulty.allDifficulties.rawValue)
   }
   
-  @IBOutlet weak var toggleMenu: UIButton!
-  
-  var tableViewFrameOrigin: CGRect!
-
-  @IBOutlet weak var tableViewTrailing: NSLayoutConstraint!
-  @IBOutlet weak var tableViewLeading: NSLayoutConstraint!
-  
   @IBAction func toggleMenuToShowGlobe(_ sender: Any) {
     
     UIView.animate(withDuration: 0.4, animations: {
-    
+      
       self.tableViewLeading.constant = self.tableViewLeading.constant == 0 ? 414 : 0
       self.tableViewTrailing.constant = self.tableViewTrailing.constant == 0 ? -414 : 0
       self.scnView?.allowsCameraControl = self.scnView?.allowsCameraControl == true ? false : true
-
+      
       self.view.layoutIfNeeded()
-
+      
     })
-    
-//    UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-//      
-//      let offScreenRect = CGRect(x: self.tableViewFrameOrigin.origin.x + 400, y: self.tableViewFrameOrigin.origin.y, width: self.tableViewFrameOrigin.width, height: self.tableViewFrameOrigin.height)
-//      self.tableView.frame = self.tableView.frame != self.tableViewFrameOrigin ? self.tableViewFrameOrigin : offScreenRect
-//    
-//    }) { action in
-//      
-//      
-//    }
-    
   }
   
   //MARK: - INTERFACE FUNCTIONS
@@ -132,7 +106,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
   internal func presentCustomGame() {
     mainWireframe?.presentCustomGame(withCountries: (mainInteractor?.allCountries)!)
   }
-
+  
   internal func reloadTableData() {
     tableView.reloadData()
   }
@@ -173,27 +147,29 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     UIView.BezierPoints.p3 = CGPoint(x: 25, y: 308)
     UIView.BezierPoints.p4 = CGPoint(x: 200, y: 568)
   }
-
+  
   private func setInitialTableRow() {
     
     //The table should always default to a position which displays some menu and some main cells
     
     let indexPath: IndexPath
-
+    
     if games.count > 3 {
-      
       indexPath = IndexPath(row: 1, section: 0)
-
     } else {
-      
       indexPath = IndexPath(row: 2, section: 2)
     }
     
     tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.top)
   }
   
-  
-  //MARK: - TABLE VIEW
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+}
+
+//MARK: - TABLE VIEW
+extension MainVC: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return 3
@@ -211,7 +187,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       
     default: return 0
     }
-
+    
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -231,20 +207,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
       
       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MainTableViewCell
       
-//      if let circle = circleViewCache.object(forKey: games[indexPath.row].uid) {
-//
-//        cell.configureCell(game: games[indexPath.row], circleView: circle)
-//
-//      } else {
-//        
-//       let circle = CircleView(frame: CGRect(x: 8, y: 17, width: 47, height: 47), lineWidth: 2.0)
-//
-//        circleViewCache.setObject(circle, forKey: games[indexPath.row].uid)
-//        
-        cell.configureCell(game: games[indexPath.row], circleView: nil)
-//
-//      }
-      
+      cell.configureCell(game: games[indexPath.row], circleView: nil)
       cell.mainWireframe = mainWireframe
       cell.mainVCInterface = self
       
@@ -256,82 +219,40 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Main
     return cell
     
   }
-  
-  override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .lightContent
-  }
-  
-  
-  
-  
-  
-  
-  
-  var scnView: SCNView?
+}
 
-  let materialPrefixes : [String] = [
-                                     "oakfloor2",
-                                     "scuffed-plastic",
-                                     "rustediron-streaks"];
+extension MainVC {
+  
   func setupGlobe() {
     
     if #available(iOS 10.0, *) {
       
-      // create a new scene
       let scene = SCNScene(named: "sphere.obj")!
-      
-      // select the sphere node - As we know we only loaded one object
-      // we select the first item on the children list
       let sphereNode = scene.rootNode.childNodes[0]
       
-      // create and add a camera to the scene
       let cameraNode = SCNNode()
       cameraNode.camera = SCNCamera()
       scene.rootNode.addChildNode(cameraNode)
-      
-      // place the camera
       cameraNode.position = SCNVector3(x: 0, y: 0, z: 10.5)
       
       let material = sphereNode.geometry?.firstMaterial
-      
-      // Declare that you intend to work in PBR shading mode
-      // Note that this requires iOS 10 and up
       material?.lightingModel = SCNMaterial.LightingModel.physicallyBased
       
-      // Setup the material maps for your object
-      
-      let materialFilePrefix = materialPrefixes[2]
       material?.diffuse.contents = #imageLiteral(resourceName: "bkflagMapWithCaps")
       material?.roughness.contents = #imageLiteral(resourceName: "rustediron-streaks-roughness")
       material?.metalness.contents = #imageLiteral(resourceName: "rustediron-streaks-metal")
-      
       material?.normal.contents = #imageLiteral(resourceName: "rustediron-streaks-normal")
       
-      // Setup background - This will be the beautiful blurred background
-      // that assist the user understand the 3D envirnoment
       let bg = #imageLiteral(resourceName: "sphericalBlurred")
       scene.background.contents = bg
       
-      // Setup Image Based Lighting (IBL) map
       let env = #imageLiteral(resourceName: "spherical")
       scene.lightingEnvironment.contents = env
       scene.lightingEnvironment.intensity = 2.0
       
-      
-      // retrieve the SCNView
       scnView = self.view as! SCNView?
-      
-      // set the scene to the view
       scnView?.scene = scene
-      
-      // allows the user to manipulate the camera
       scnView?.allowsCameraControl = false
-      
-      
-      /*
-       * The following was not a part of my blog post but are pretty easy to understand:
-       * To make the Orb cool, we'll add rotation animation to it
-       */
       
       sphereNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 1, z: 0, duration: 10)))
     }
