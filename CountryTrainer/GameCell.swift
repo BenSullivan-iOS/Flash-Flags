@@ -29,7 +29,7 @@ class GameCell: UITableViewCell {
   }
   
   override func prepareForReuse() {
-    self.stackView.arrangedSubviews[1].isHidden = true
+    self.stackView.arrangedSubviews.first?.isHidden = true
     self.stackView.arrangedSubviews.last?.isHidden = true
   }
   
@@ -63,10 +63,12 @@ class GameCell: UITableViewCell {
     if selected == true {
       
       self.stackView.arrangedSubviews.last?.alpha = 0
+      self.stackView.arrangedSubviews.first?.alpha = 0
 
       UIView.animate(withDuration: 0.5) {
         
         self.stackView.arrangedSubviews.last?.alpha = 1
+        self.stackView.arrangedSubviews.first?.alpha = 1
       }
       
       self.stackView.arrangedSubviews.first?.isHidden = !selected
