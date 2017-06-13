@@ -865,7 +865,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 2KVYSWMVXX;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B549C49E1D5C7DA5000409B3 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1341,8 +1341,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SulivanApplications.CountryTrainer;
 				PRODUCT_NAME = "Flash Flags";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "76ff6153-e405-4c9e-85ab-6f75eaa1402b";
+				PROVISIONING_PROFILE_SPECIFIER = June13FlashFlagsDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "CountryTrainer/CountryTrainer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1364,6 +1364,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SulivanApplications.CountryTrainer;
 				PRODUCT_NAME = "Flash Flags";
+				PROVISIONING_PROFILE = "76ff6153-e405-4c9e-85ab-6f75eaa1402b";
+				PROVISIONING_PROFILE_SPECIFIER = June13FlashFlagsDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "CountryTrainer/CountryTrainer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

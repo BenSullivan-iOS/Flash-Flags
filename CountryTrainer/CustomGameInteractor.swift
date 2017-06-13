@@ -69,7 +69,7 @@ class CustomGameInteractor: CustomGameInteractorInterface, DataService, CoreData
     
     for i in _remainingCountries.indices {
       
-      if _remainingCountries[i].name.contains(text) {
+      if _remainingCountries[i].name.lowercased().contains(text.lowercased()) {
         
         _filteredCountries.append(_remainingCountries[i])
       }
