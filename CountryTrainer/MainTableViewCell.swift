@@ -52,20 +52,13 @@ class MainTableViewCell: UITableViewCell {
   
   //MARK: - INTERFACE FUNCTIONS
   
-  internal func configureCell(game: Game, circleView: CircleView?) {
-    
-    self.game = game
-    
-    self.attempts.text = String(game.attempts)
-    self.percentage.text = "\(game.highestPercentage)%"
-    self.daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
-    self.flags.text = String(game.numberOfFlags)
+  fileprivate func setTitle(_ game: Game) {
     
     if let title = game.customGameTitle {
       gameTitle.text = title
       gameTitle.isHidden = false
       gameTitleStack.isHidden = false
-
+      
       bgLabel.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 236/255, blue: 191/255, alpha: 1.0)
       
       topStackConstraint.constant = 2
@@ -77,11 +70,23 @@ class MainTableViewCell: UITableViewCell {
       bgLabel.backgroundColor = .white
       topStackConstraint.constant = 5
       bottomStackConstraint.constant = -8
-
+      
     }
+  }
+  
+  internal func configureCell(game: Game, circleView: CircleView?) {
+    
+    self.game = game
+    
+    attempts.text = String(game.attempts)
+    percentage.text = "\(game.highestPercentage)%"
+    daysAgo.text = String(game.dateLastCompleted.daysBetweenDates())
+    flags.text = String(game.numberOfFlags)
+    
+    setTitle(game)
     
     if let days = Int(daysAgo.text!) {
-      self.daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
+      daysAgoText.text = days == 1 ? "DAY AGO" : "DAYS AGO"
     }
     
     flagsText.text = game.numberOfFlags == 1 ? "FLAG" : "FLAGS"
@@ -99,7 +104,7 @@ class MainTableViewCell: UITableViewCell {
   
   private func animateCircleView(game: Game) {
     
-    self.circleView?.setStrokeEnd(strokeEnd: 0, animated: false, friction: nil)
+    self.circleView?.setStrokeEnd(strokeEnd: 0, animated: false)
     self.circleView?.setStrokeEnd(strokeEnd: CGFloat(game.highestPercentage) / 100, animated: true, friction: 400)
   }
   

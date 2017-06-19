@@ -20,17 +20,9 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   internal var mainVCInterface: MainVCInterface?
   internal var startNewGameVCInterface: StartNewGameVCInterface?
   
-  internal var games: [Game] {
-    return _games
-  }
-  
-  internal var countries: [Country] {
-    return _countries
-  }
-  
-  internal var allCountries: [Country] {
-    return _allCountries
-  }
+  internal var games: [Game] { return _games }
+  internal var countries: [Country] { return _countries }
+  internal var allCountries: [Country] { return _allCountries }
   
   
   //MARK: - INITIALISER
@@ -53,24 +45,11 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     //Filters out countires based on the continent provided
     var filteredCountries = _countries
     
-    if continent != nil && continent != Continent.all.rawValue {
-      
-      filteredCountries = _countries.filter { country -> Bool in
-        
-        return country.cont.rawValue == continent
-      }
-    }
+    filterByContinent(continent, &filteredCountries)
     
-    if difficulty != Difficulty.allDifficulties.rawValue {
-      
-      filteredCountries = filteredCountries.filter { country -> Bool in
-        
-        return country.difficulty.rawValue == difficulty
-      }
-    }
+    filterByDifficulty(difficulty, &filteredCountries)
     
     //Display alert if no flags to display
-    
     if filteredCountries.count == 0 {
       startNewGameVCInterface?.displayAlert(title: "WOW!", message: "There are no more remaining flags in \(continent ?? "the list")")
       return
@@ -80,15 +59,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     
     var filteredArray = [Country]()
     
-    for i in 0...numberOfFlags - 1 {
-      
-      let isIndexAvailable = filteredCountries.indices.contains(i)
-      
-      if isIndexAvailable {
-        filteredArray.append(filteredCountries[i])
-      }
-      
-    }
+    populateFilteredCountriesArray(numberOfFlags, &filteredCountries, &filteredArray)
     
     let game = Game(countries: filteredArray,
                     attempts: 0,
@@ -98,8 +69,6 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
                     customGameTitle: nil)
 
     mainVCInterface?.prepareGameData(game: game)
-
-
   }
   
   internal func prepareContinentsForPicker() -> [String] {
@@ -172,22 +141,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     _allCountries = countryArray
     
     //If the core data store is empty, the function will return nil and store all flags to core data
-    if let remainingCountryNames = fetchRemainingCountries() {
-      
-      for i in countryArray.indices {
-        
-        for nameString in remainingCountryNames {
-          
-          if countryArray[i].name == nameString {
-            
-            _countries.append(countryArray[i])            
-          }
-        }
-        
-      }
-      
-    } else {
-      
+    
       let remainingCountryNames = fetchRemainingCountries()
       
       for i in countryArray.indices {
@@ -201,10 +155,42 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
         }
         
       }
-    }
+    
     //Populates exising games once countries are populated
     
-    _games = fetch()!
+    _games = fetchAllSavedGames()!
+  }
+  
+  fileprivate func filterByContinent(_ continent: String?, _ filteredCountries: inout [Country]) {
+    if continent != nil && continent != Continent.all.rawValue {
+      
+      filteredCountries = _countries.filter { country -> Bool in
+        
+        return country.cont.rawValue == continent
+      }
+    }
+  }
+  
+  fileprivate func filterByDifficulty(_ difficulty: String, _ filteredCountries: inout [Country]) {
+    if difficulty != Difficulty.allDifficulties.rawValue {
+      
+      filteredCountries = filteredCountries.filter { country -> Bool in
+        
+        return country.difficulty.rawValue == difficulty
+      }
+    }
+  }
+  
+  fileprivate func populateFilteredCountriesArray(_ numberOfFlags: Int, _ filteredCountries: inout [Country], _ filteredArray: inout [Country]) {
+    for i in 0...numberOfFlags - 1 {
+      
+      let isIndexAvailable = filteredCountries.indices.contains(i)
+      
+      if isIndexAvailable {
+        filteredArray.append(filteredCountries[i])
+      }
+      
+    }
   }
   
 }

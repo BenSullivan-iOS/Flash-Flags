@@ -62,7 +62,7 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
     newVC.gameInteractorInterface = gameInteractor
     newVC.resultInteractor = resultInteractor
     
-    viewController.navigationController!.present(newVC, animated: true, completion: nil)
+    viewController.navigationController!.present(newVC, animated: true)
   }
   
   

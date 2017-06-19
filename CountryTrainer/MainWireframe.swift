@@ -28,7 +28,6 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   }
   
   internal func presentFilterFlagsInterface(withCountries countries: [Country], location: CGRect) {
-    
     filterFlagsWireframe?.presentFilterFlagsInterfaceFromViewController(viewController: mainVC!, countries: countries, location: location)
   }
   
@@ -62,6 +61,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   internal func presentGameInterface(withGame game: Game) {
     //dismisses startNewGameVC
     mainVC?.dismiss(animated: true, completion: nil)
+    
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }
   
@@ -110,7 +110,6 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   //MARK: - TRANSITION DELEGATE
   
   internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    
     return PresentingAnimator()
     
   }

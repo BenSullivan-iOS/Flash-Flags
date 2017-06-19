@@ -16,5 +16,6 @@ enum Difficulty: String {
     allDifficulties.rawValue,
     easy.rawValue,
     medium.rawValue,
-    hard.rawValue]
+    hard.rawValue
+  ]
 }

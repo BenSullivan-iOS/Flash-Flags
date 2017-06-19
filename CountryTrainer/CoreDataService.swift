@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol CoreDataService: DataService {
-  func fetch() -> [Game]?
+  func fetchAllSavedGames() -> [Game]?
   func deleteGameFromCoreData(game: Game) -> Bool
   func fetchRemainingCountries() -> [String]?
   func saveRemainingCountriesToCoreData(remainingCountries: [Country])
@@ -19,7 +19,7 @@ protocol CoreDataService: DataService {
 
 extension CoreDataService {
   
-  func fetch() -> [Game]? {
+  func fetchAllSavedGames() -> [Game]? {
     
     guard let countryArray = createCountries() else { print("json error"); return nil }
     
@@ -96,52 +96,30 @@ extension CoreDataService {
     ad.saveContext()
     
     if #available(iOS 10.0, *) {
-      
       request = CDCountriesTracker.fetchRequest()
-      
-      do {
-        
-        cdCountriesTracker = try ad.managedObjectContext.fetch(request) as! [CDCountriesTracker]
-        
-        for i in cdCountriesTracker {
-          remainingCountries.append(i.remaining!)
-        }
-        
-        if cdCountriesTracker.isEmpty {
-          saveAllCountriesToCoreData()
-          
-          return nil
-        }
-        
-        return remainingCountries
-        
-      } catch {
-        return nil
-      }
-    } else if #available(iOS 9.3, *) {
-      
+    } else {
       request = NSFetchRequest(entityName: "CDCountriesTrackerEntity")
+    }
+    
+    do {
       
-      do {
+      cdCountriesTracker = try ad.managedObjectContext.fetch(request) as! [CDCountriesTracker]
+      
+      for i in cdCountriesTracker {
+        remainingCountries.append(i.remaining!)
+      }
+      
+      if cdCountriesTracker.isEmpty {
+        saveAllCountriesToCoreData()
         
-        cdCountriesTracker = try ad.managedObjectContext.fetch(request) as! [CDCountriesTracker]
-        
-        for i in cdCountriesTracker {
-          remainingCountries.append(i.remaining!)
-        }
-        
-        if cdCountriesTracker.isEmpty {
-          saveAllCountriesToCoreData()
-          return nil
-        }
-        
-        return remainingCountries
-        
-      } catch {
         return nil
       }
+      
+      return remainingCountries
+      
+    } catch {
+      return nil
     }
-    return nil
   }
   
   func saveAllCountriesToCoreData() {
@@ -215,7 +193,6 @@ extension CoreDataService {
             
           }
         }
-        
       }
       
       let game = Game(countries: countryArray,
