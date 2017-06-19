@@ -11,7 +11,6 @@ import UIKit
 @IBDesignable class TIFAttributedLabel: UILabel {
   
   @IBInspectable var fontSize: CGFloat = 13.0
-  
   @IBInspectable var fontFamily: String = "Lato-Regular"
   
   override func awakeFromNib() {

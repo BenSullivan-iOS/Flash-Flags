@@ -23,24 +23,12 @@ struct Country {
   fileprivate let _cont: Continent
   fileprivate let _difficulty: Difficulty
   
-  var name: String! {
-    return _name
-  }
-  var currency: String! {
-    return _currency
-  }
-  var flag: String! {
-    return _flag
-  }
-  var flagSmall : String {
-    return _flag + "-1"
-  }
-  var cont: Continent {
-    return _cont
-  }
-  var difficulty: Difficulty {
-    return _difficulty
-  }
+  var name: String! { return _name }
+  var currency: String! { return _currency }
+  var flag: String! { return _flag }
+  var flagSmall : String { return _flag + "-1" }
+  var cont: Continent { return _cont }
+  var difficulty: Difficulty { return _difficulty }
   
   init(name: String, currency: String, flag: String, continent: Continent, difficulty: Difficulty) {
     self._name = name

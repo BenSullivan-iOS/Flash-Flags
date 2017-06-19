@@ -111,7 +111,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     
-    return PresentStartNewGame()
+    return PresentingAnimator()
     
   }
   internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {

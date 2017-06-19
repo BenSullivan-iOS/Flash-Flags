@@ -61,7 +61,7 @@ class HowToPlayWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     
-    return PresentHowToPlay()
+    return PresentingAnimator()
     
   }
   internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
