@@ -28,7 +28,7 @@ class CircleView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func setStrokeEnd(strokeEnd: CGFloat, animated: Bool, friction: CGFloat?) {
+  func setStrokeEnd(strokeEnd: CGFloat, animated: Bool, friction: CGFloat? = nil) {
     if animated {
       self.animateToStrokeEnd(strokeEnd: strokeEnd, friction: friction ?? nil)
       return

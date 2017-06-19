@@ -28,7 +28,6 @@ class GradientButton: UIButton {
     let rect = layer.bounds
     
     gradientLayer?.frame = rect
-    
     gradientLayer?.colors = colors
     
     if layer.sublayers == nil {

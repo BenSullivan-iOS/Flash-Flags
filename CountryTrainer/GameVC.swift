@@ -95,7 +95,7 @@ class GameVC: UIViewController, GameCellDelegate {
 
     }))
     
-    present(alert, animated: true, completion: nil)
+    present(alert, animated: true)
   }
   
   internal func answered(country: String, result: Bool) {

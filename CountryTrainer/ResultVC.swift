@@ -113,22 +113,22 @@ class ResultVC: UIViewController {
       
       self.fractionLabel.alpha = 1
       
-      }) { finished in
+    }) { finished in
+      
+      UIView.animate(withDuration: 0.5, delay: 0.3, options: UIViewAnimationOptions.curveEaseInOut, animations: {
         
-        UIView.animate(withDuration: 0.5, delay: 0.3, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+        self.fractionLabel.alpha = 0
+        
+      }, completion: { done in
+        
+        UIView.animate(withDuration: 0.5, animations: {
           
-          self.fractionLabel.alpha = 0
-
-          }, completion: { done in
-            
-            UIView.animate(withDuration: 0.5, animations: {
-              
-              self.percentageLabel.alpha = 1
-              
-            }) { completed in
-              self.animationCompleted = true
-              }
-        })
+          self.percentageLabel.alpha = 1
+          
+        }) { completed in
+          self.animationCompleted = true
+        }
+      })
     }
   }
   
@@ -180,7 +180,6 @@ class ResultVC: UIViewController {
     
     self.view!.addSubview(self.circleView)
     self.view!.sendSubview(toBack: circleView)
-//    self.circleView!.sendSubview(toBack: view!)
   }
   
   private func dismiss(sender: AnyObject) {

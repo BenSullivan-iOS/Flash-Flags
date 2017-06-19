@@ -158,7 +158,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     
-    present(alert, animated: true, completion: nil)
+    present(alert, animated: true)
   }
   
   

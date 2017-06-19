@@ -21,6 +21,15 @@ extension Game {
 
 struct Game: GameType {
   
+  fileprivate var _countries: [Country]
+  fileprivate var _dateLastCompleted: Date
+  fileprivate var _attempts: Int
+  fileprivate var _highestPercentage: Int
+  fileprivate var _dateCreated: Date
+  fileprivate var _uid = NSString()
+  fileprivate var _resultFraction: String!
+  fileprivate var _customGameTitle: String?
+  
   init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?, customGameTitle: String?) {
     self._countries = countries
     self.tracker = Tracker(countries: countries)
@@ -37,47 +46,17 @@ struct Game: GameType {
     tracker.gameDelegate = self
   }
   
-  fileprivate var _countries: [Country]
-  fileprivate var _dateLastCompleted: Date
-  fileprivate var _attempts: Int
-  fileprivate var _highestPercentage: Int
-  fileprivate var _dateCreated: Date
-  fileprivate var _uid = NSString()
-  fileprivate var _resultFraction: String!
-  fileprivate var _customGameTitle: String?
-  
   var tracker: Tracker 
   
-  var countries: [Country] {
-    return _countries
-  }
+  var countries: [Country]     { return _countries }
+  var numberOfFlags: Int       { return countries.count }
+  var dateLastCompleted: Date  { return _dateLastCompleted }
+  var attempts: Int            { return _attempts }
+  var highestPercentage: Int   { return _highestPercentage }
+  var dateCreated: Date        { return _dateCreated }
+  var uid: NSString            { return _uid }
+  var customGameTitle: String? { return _customGameTitle }
   
-  var numberOfFlags: Int {
-    return countries.count
-  }
-  
-  var dateLastCompleted: Date {
-    return _dateLastCompleted
-  }
-  
-  var attempts: Int {
-    return _attempts
-  }
-  
-  var highestPercentage: Int {
-    return _highestPercentage
-  }
-  
-  var dateCreated: Date {
-    return _dateCreated
-  }
-  
-  var uid: NSString {
-    return _uid
-  }
-  var customGameTitle: String? {
-    return _customGameTitle
-  }
   var progress: String {
     
     var score = 0

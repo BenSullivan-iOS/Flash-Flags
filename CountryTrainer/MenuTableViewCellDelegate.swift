@@ -10,5 +10,4 @@ protocol MenuTableViewCellDelegate: class {
   func presentFilterFlags(indexPath: IndexPath)
   func presentHowToPlay()
   func presentCustomGame()
-
 }

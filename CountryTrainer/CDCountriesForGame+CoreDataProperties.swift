@@ -17,5 +17,4 @@ extension CDCountriesForGame {
 
     @NSManaged public var country: String?
     @NSManaged public var cdgame: CDGame?
-
 }

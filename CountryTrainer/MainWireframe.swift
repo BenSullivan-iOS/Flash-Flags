@@ -28,7 +28,6 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   }
   
   internal func presentFilterFlagsInterface(withCountries countries: [Country], location: CGRect) {
-    
     filterFlagsWireframe?.presentFilterFlagsInterfaceFromViewController(viewController: mainVC!, countries: countries, location: location)
   }
   
@@ -48,7 +47,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     startNewGameVC?.mainInteractor = mainInteractor
     mainInteractor?.startNewGameVCInterface = startNewGameVC
     
-    mainVC!.navigationController!.present(startNewGameVC!, animated: true, completion: nil)
+    mainVC!.navigationController!.present(startNewGameVC!, animated: true)
   }
   
   internal func gameCompleted(game: Game) {
@@ -61,7 +60,8 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   internal func presentGameInterface(withGame game: Game) {
     //dismisses startNewGameVC
-    mainVC?.dismiss(animated: true, completion: nil)
+    mainVC?.dismiss(animated: true)
+    
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }
   
@@ -110,8 +110,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   //MARK: - TRANSITION DELEGATE
   
   internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    
-    return PresentStartNewGame()
+    return PresentingAnimator()
     
   }
   internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {

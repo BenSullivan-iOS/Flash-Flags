@@ -29,8 +29,8 @@ class GameCell: UITableViewCell {
   }
   
   override func prepareForReuse() {
-    self.stackView.arrangedSubviews.first?.isHidden = true
-    self.stackView.arrangedSubviews.last?.isHidden = true
+    stackView.arrangedSubviews.first?.isHidden = true
+    stackView.arrangedSubviews.last?.isHidden = true
   }
   
   

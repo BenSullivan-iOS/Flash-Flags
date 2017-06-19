@@ -27,12 +27,12 @@ class HowToPlayWireframe: NSObject, UIViewControllerTransitioningDelegate {
     howToPlayVC?.modalPresentationStyle = UIModalPresentationStyle.custom
     howToPlayVC?.howToPlayWireframe = self
       
-    mainVC!.navigationController!.present(howToPlayVC!, animated: true, completion: nil)
+    mainVC!.navigationController!.present(howToPlayVC!, animated: true)
   }
   
   internal func dismissHowToPlayVC() {
     
-    howToPlayVC?.dismiss(animated: true, completion: nil)
+    howToPlayVC?.dismiss(animated: true)
   }
   
   
@@ -61,7 +61,7 @@ class HowToPlayWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     
-    return PresentHowToPlay()
+    return PresentingAnimator()
     
   }
   internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {

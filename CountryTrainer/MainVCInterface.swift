@@ -7,7 +7,6 @@
 //
 
 protocol MainVCInterface: class {
-  
   func prepareGameData(game: Game)
   func reloadTableData()
   func displayGameOptionsActionSheet(game: Game, title: String)

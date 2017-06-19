@@ -79,7 +79,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
       
       alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
       
-      present(alert, animated: true, completion: nil)
+      present(alert, animated: true)
       
     } else {
       displayAlert()
@@ -185,7 +185,7 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
 
-    present(alert, animated: true, completion: nil)
+    present(alert, animated: true)
   }
   
   private func animateUIOnToScreen() {
@@ -313,7 +313,6 @@ class CustomGameVC: UIViewController, UICollectionViewDelegate, UICollectionView
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     self.view.endEditing(true)
   }
-  
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent

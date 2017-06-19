@@ -58,7 +58,7 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Thanks! 😍", style: .default, handler: nil))
     
-    present(alert, animated: true, completion: nil)
+    present(alert, animated: true)
   }
   
   
@@ -98,7 +98,7 @@ class StartNewGameVC: UIViewController, StartNewGameVCInterface, UIGestureRecogn
       
       if !presentedView.bounds.contains(sender.location(in: presentedView)) {
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
       }
     }
   }

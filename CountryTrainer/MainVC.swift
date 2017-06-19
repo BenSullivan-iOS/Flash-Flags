@@ -125,7 +125,7 @@ class MainVC: UIViewController, MainVCInterface, MenuTableViewCellDelegate {
     
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     
-    present(alert, animated: true, completion: nil)
+    present(alert, animated: true)
     
   }
   

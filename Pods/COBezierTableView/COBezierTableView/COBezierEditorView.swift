@@ -90,13 +90,12 @@ class COBezierEditorView: UIView {
     
     //        for (var t : CGFloat = 0.0; t <= 1.00001; t += 0.05) {
     
-    var a = 1.00001
     var t: CGFloat = 0
     repeat {
       
       let point = bezierPointFor(t)
       let radius : CGFloat = 5.0
-      let endAngle : CGFloat = 2.0 * CGFloat(M_PI)
+      let endAngle : CGFloat = 2.0 * CGFloat(Double.pi)
       
       let pointPath = UIBezierPath(arcCenter: point, radius: radius, startAngle: 0, endAngle: endAngle, clockwise: true)
       pointPath.stroke()
