@@ -47,7 +47,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     startNewGameVC?.mainInteractor = mainInteractor
     mainInteractor?.startNewGameVCInterface = startNewGameVC
     
-    mainVC!.navigationController!.present(startNewGameVC!, animated: true, completion: nil)
+    mainVC!.navigationController!.present(startNewGameVC!, animated: true)
   }
   
   internal func gameCompleted(game: Game) {
@@ -60,7 +60,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   internal func presentGameInterface(withGame game: Game) {
     //dismisses startNewGameVC
-    mainVC?.dismiss(animated: true, completion: nil)
+    mainVC?.dismiss(animated: true)
     
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }

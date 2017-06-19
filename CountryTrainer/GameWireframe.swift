@@ -23,14 +23,14 @@ class GameWireframe: NSObject, UIViewControllerTransitioningDelegate {
   
   internal func dismissResultVCToEndGame(game: Game) {
     
-    presentedViewController?.dismiss(animated: true, completion: nil)
+    presentedViewController?.dismiss(animated: true)
     dismissGameInterface()
     mainWireframe?.gameCompleted(game: game)
   }
   
   internal func dismissResultVCToRetry() {
     
-    presentedViewController?.dismiss(animated: true, completion: nil)
+    presentedViewController?.dismiss(animated: true)
     
     gameVC?.retryGame()
   }

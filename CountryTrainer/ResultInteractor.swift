@@ -13,21 +13,12 @@ class ResultInteractor: ResultInteractorInterface, DataService {
   
   fileprivate var CDGames = [CDGame]()
   fileprivate var cdCountriesForGame = [CDCountriesForGame]()
-//  fileprivate var _games = [Game]()
   fileprivate var _countries = [Country]()
   
   
   //MARK: - INTERFACE FUNCTIONS
   
   internal func saveGameToCoreData(game: Game) {
-    
-    fetch(game: game)
-  }
-  
-  
-  //MARK: - PRIVATE FUNCTIONS
-
-  private func fetch(game: Game) {
     
     ad.saveContext()
     
@@ -45,7 +36,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
         
         if CDGames.isEmpty {
           saveNewGame(game: game)
-
+          
           return
         }
         
@@ -53,45 +44,15 @@ class ResultInteractor: ResultInteractorInterface, DataService {
           saveNewGame(game: game)
         }
         
-        //      let countriesRequest: NSFetchRequest<NSFetchRequestResult> = CDCountriesForGame.fetchRequest()
-
-        //        self.cdCountriesForGame = try ad.managedObjectContext.fetch(countriesRequest) as! [CDCountriesForGame]
-
-        //        var countryArray = [Country]()
-
-        
-//        for i in CDGames {
-        
-//          countryArray.removeAll()
-//          
-//          let arr = i.cdcountriesforgame?.allObjects
-//          
-//          for a in arr! where (arr?[0] as! CDCountriesForGame).cdgame == i {
-//            
-//            for i in _countries {
-//              
-//              if i.name == (a as! CDCountriesForGame).country! {
-//                countryArray.append(i)
-//              }
-//            }
-//            
-//          }
-          
-//          let game = Game(countries: countryArray,
-//                          attempts: Int(i.attempts),
-//                          dateLastCompleted: i.dateLastCompleted as Date?,
-//                          highestPercentage: Int(i.highestPercentage))
-//          
-//          _games.append(game)
-          
-//        }
-        
       } catch {
         print(error)
         
       }
     }
   }
+  
+  
+  //MARK: - PRIVATE FUNCTIONS
   
   private func saveNewGame(game: Game) {
     
