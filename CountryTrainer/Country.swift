@@ -16,10 +16,10 @@ extension Country {
 
 struct Country {
   
-  fileprivate(set) var name: String!
-  fileprivate(set) var currency: String!
-  fileprivate(set) var flag: String!
-  fileprivate(set) var flagSmall: String!
+  fileprivate(set) var name: String
+  fileprivate(set) var currency: String
+  fileprivate(set) var flag: String
+  fileprivate(set) var flagSmall: String
   fileprivate(set) var cont: Continent
   fileprivate(set) var difficulty: Difficulty
   

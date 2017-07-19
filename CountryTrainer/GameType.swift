@@ -8,8 +8,9 @@
 
 protocol GameType {
   
+  mutating func gameCompleted()
+  
   var countries: [Country] { get }
   var numberOfFlags: Int { get }
   var tracker: Tracker { get set }
-  mutating func gameCompleted()
 }

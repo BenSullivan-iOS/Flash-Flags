@@ -51,7 +51,7 @@ class GameInteractor: GameInteractorInterface, ImageResizeable {
             
             let imageStr = self.currentGame.countries[i].flagSmall
             
-            if let image = UIImage(named: imageStr!) ?? UIImage(named: self.currentGame.countries[i].flag) {
+            if let image = UIImage(named: imageStr) ?? UIImage(named: self.currentGame.countries[i].flag) {
               
               let smallImage = self.resizeImage(image: image, newWidth: 200)
               self.imageCache.setObject(smallImage, forKey: imageStr as! NSString)
@@ -78,10 +78,10 @@ class GameInteractor: GameInteractorInterface, ImageResizeable {
             
             let imageStr = self.currentGame.tracker.remainingCountries[i.row].flag
             
-            let image = UIImage(named: imageStr!)
+            let image = UIImage(named: imageStr)
             let smallImage = self.resizeImage(image: image!, newWidth: 500)
             
-            self.imageCache.setObject(smallImage, forKey: imageStr! as NSString)
+            self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
           }
         }
       }
