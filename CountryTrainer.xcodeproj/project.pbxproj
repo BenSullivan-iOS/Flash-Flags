@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		09B3F076AB15327533479F18 /* Pods_CountryTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5835CBE86E5889831712297 /* Pods_CountryTrainer.framework */; };
 		420CCE0F7B029A4C3A385020 /* Pods_CountryTrainerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7010D886B92DEDDBB99C9F /* Pods_CountryTrainerTests.framework */; };
+		487387021F1FAD54000949FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487387011F1FAD54000949FC /* Assets.xcassets */; };
 		850588CF1E65A6CA00A6E2D3 /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = 850588CE1E65A6CA00A6E2D3 /* sphere.obj */; };
 		8511FBF01DDF538A00C9911A /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */; };
 		8511FBF21DDF54E200C9911A /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBF11DDF54E200C9911A /* GradientButton.swift */; };
-		8573EDC21DD4A6EE00745624 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8573EDC11DD4A6EE00745624 /* GameViewController.swift */; };
 		B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */; };
 		B503FBF51D913AA100EF8CC2 /* FilterFlagsNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF41D913AA100EF8CC2 /* FilterFlagsNavBarView.swift */; };
 		B503FBF71D91538600EF8CC2 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FBF61D91538600EF8CC2 /* GameProgressView.swift */; };
@@ -28,7 +28,6 @@
 		B5060CA91D94857C0093D29C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5060CA81D94857C0093D29C /* CoreDataService.swift */; };
 		B53A79D81D882180008C3D68 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D71D882180008C3D68 /* MainTableViewCell.swift */; };
 		B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */; };
-		B53AAA6F1D8ABDD900ED644E /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = B53AAA6E1D8ABDD900ED644E /* Notes */; };
 		B53AAA741D8AD41500ED644E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53AAA731D8AD41500ED644E /* DateExtensions.swift */; };
 		B53AAA761D8AF39A00ED644E /* StartNewGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53AAA751D8AF39A00ED644E /* StartNewGameVC.swift */; };
 		B53BA2711D6DBDF3007A542E /* PresentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA2701D6DBDF3007A542E /* PresentResult.swift */; };
@@ -44,7 +43,6 @@
 		B549C48E1D5C7DA5000409B3 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C48D1D5C7DA5000409B3 /* MainVC.swift */; };
 		B549C4911D5C7DA5000409B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B549C48F1D5C7DA5000409B3 /* Main.storyboard */; };
 		B549C4941D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B549C4921D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld */; };
-		B549C4961D5C7DA5000409B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B549C4951D5C7DA5000409B3 /* Assets.xcassets */; };
 		B549C4991D5C7DA5000409B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B549C4971D5C7DA5000409B3 /* LaunchScreen.storyboard */; };
 		B549C4A41D5C7DA5000409B3 /* CountryTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4A31D5C7DA5000409B3 /* CountryTrainerTests.swift */; };
 		B549C4AF1D5C7DA5000409B3 /* CountryTrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549C4AE1D5C7DA5000409B3 /* CountryTrainerUITests.swift */; };
@@ -148,12 +146,12 @@
 /* Begin PBXFileReference section */
 		05C3B3BC7FCA909AD41062E6 /* Pods-CountryTrainerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerTests/Pods-CountryTrainerTests.release.xcconfig"; sourceTree = "<group>"; };
 		14150EA0EB58B5F45459EBDD /* Pods_CountryTrainerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryTrainerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		487387011F1FAD54000949FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		500B1804BA607D0E35837A8A /* Pods-CountryTrainerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7EF960315DF9C014816323FF /* Pods-CountryTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainer/Pods-CountryTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		850588CE1E65A6CA00A6E2D3 /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
 		8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		8511FBF11DDF54E200C9911A /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
-		8573EDC11DD4A6EE00745624 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8592A4421DDC58E6004249DF /* CountryTrainer 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CountryTrainer 3.xcdatamodel"; sourceTree = "<group>"; };
 		8C8F8C9D0779CF3FF116FCA4 /* Pods-CountryTrainerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B503FBF21D912F3500EF8CC2 /* FlagBGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagBGView.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 		B5060CA81D94857C0093D29C /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		B53A79D71D882180008C3D68 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		B53A79D91D885913008C3D68 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
-		B53AAA6E1D8ABDD900ED644E /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 		B53AAA731D8AD41500ED644E /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		B53AAA751D8AF39A00ED644E /* StartNewGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartNewGameVC.swift; sourceTree = "<group>"; };
 		B53BA2701D6DBDF3007A542E /* PresentResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentResult.swift; sourceTree = "<group>"; };
@@ -186,7 +183,6 @@
 		B549C48D1D5C7DA5000409B3 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		B549C4901D5C7DA5000409B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B549C4931D5C7DA5000409B3 /* CountryTrainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CountryTrainer.xcdatamodel; sourceTree = "<group>"; };
-		B549C4951D5C7DA5000409B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B549C4981D5C7DA5000409B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B549C49A1D5C7DA5000409B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B549C49F1D5C7DA5000409B3 /* CountryTrainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryTrainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				850588CE1E65A6CA00A6E2D3 /* sphere.obj */,
+				B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */,
+				487387011F1FAD54000949FC /* Assets.xcassets */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -376,8 +374,6 @@
 		B549C47F1D5C7DA5000409B3 = {
 			isa = PBXGroup;
 			children = (
-				B53AAA6E1D8ABDD900ED644E /* Notes */,
-				8573EDC11DD4A6EE00745624 /* GameViewController.swift */,
 				4825201A1E64B5A000980CB3 /* Assets */,
 				B549C4BC1D5C7E48000409B3 /* Resources */,
 				B549C48A1D5C7DA5000409B3 /* CountryTrainer */,
@@ -404,10 +400,6 @@
 			children = (
 				B58A00801D84049F00B8BD7D /* Common */,
 				B58A00821D8404B400B8BD7D /* Modules */,
-				B549C48B1D5C7DA5000409B3 /* AppDelegate.swift */,
-				B5ED08BA1D84142200A7A3D0 /* AppDependencies.swift */,
-				B549C4951D5C7DA5000409B3 /* Assets.xcassets */,
-				B549C4C91D65A6C8000409B3 /* FlagAssets.xcassets */,
 				B549C49A1D5C7DA5000409B3 /* Info.plist */,
 				B549C4921D5C7DA5000409B3 /* CountryTrainer.xcdatamodeld */,
 				B557A27F1D6C4463006C3A85 /* CountryTrainer-Bridging-Header.h */,
@@ -651,6 +643,8 @@
 				B53CFCA11D8702B500152EDD /* Wireframe */,
 				B58A00811D8404A400B8BD7D /* View */,
 				B549C4C01D620780000409B3 /* Entities */,
+				B549C48B1D5C7DA5000409B3 /* AppDelegate.swift */,
+				B5ED08BA1D84142200A7A3D0 /* AppDependencies.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -915,15 +909,14 @@
 				B5AD694F1D8FDC4200F2331A /* Lato-LightItalic.ttf in Resources */,
 				B5AD69541D8FDC4200F2331A /* Lato-SemiboldItalic.ttf in Resources */,
 				B5AD69511D8FDC4200F2331A /* Lato-MediumItalic.ttf in Resources */,
+				487387021F1FAD54000949FC /* Assets.xcassets in Resources */,
 				B5AD69481D8FDC4200F2331A /* Lato-BoldItalic.ttf in Resources */,
-				B549C4961D5C7DA5000409B3 /* Assets.xcassets in Resources */,
 				B5AD69531D8FDC4200F2331A /* Lato-Semibold.ttf in Resources */,
 				B5AD694A1D8FDC4200F2331A /* Lato-HairlineItalic.ttf in Resources */,
 				B5AD69451D8FDC4200F2331A /* Lato-Black.ttf in Resources */,
 				B5AD694C1D8FDC4200F2331A /* Lato-HeavyItalic.ttf in Resources */,
 				B5AD69461D8FDC4200F2331A /* Lato-BlackItalic.ttf in Resources */,
 				B549C4BE1D5C7E63000409B3 /* countries.json in Resources */,
-				B53AAA6F1D8ABDD900ED644E /* Notes in Resources */,
 				B5AD694D1D8FDC4200F2331A /* Lato-Italic.ttf in Resources */,
 				B549C4911D5C7DA5000409B3 /* Main.storyboard in Resources */,
 			);
@@ -1117,7 +1110,6 @@
 				B5060C5C1D932B630093D29C /* CurvedLabel.swift in Sources */,
 				B53AAA741D8AD41500ED644E /* DateExtensions.swift in Sources */,
 				B549C48C1D5C7DA5000409B3 /* AppDelegate.swift in Sources */,
-				8573EDC21DD4A6EE00745624 /* GameViewController.swift in Sources */,
 				B53A79DA1D885913008C3D68 /* MenuTableViewCell.swift in Sources */,
 				B5A45A9A1D96798800F1791A /* GameCellDelegate.swift in Sources */,
 				B5DBB2431DA26F4A0006302E /* CDGame+CoreDataClass.swift in Sources */,
