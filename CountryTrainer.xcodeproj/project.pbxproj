@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09B3F076AB15327533479F18 /* Pods_CountryTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5835CBE86E5889831712297 /* Pods_CountryTrainer.framework */; };
 		420CCE0F7B029A4C3A385020 /* Pods_CountryTrainerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7010D886B92DEDDBB99C9F /* Pods_CountryTrainerTests.framework */; };
+		483FF9BC1F20BA57001240EE /* ImageCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483FF9BB1F20BA57001240EE /* ImageCacheable.swift */; };
 		487387021F1FAD54000949FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487387011F1FAD54000949FC /* Assets.xcassets */; };
 		48F01DB61F1FBF2000B69B34 /* TrackerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F01DB51F1FBF2000B69B34 /* TrackerType.swift */; };
 		850588CF1E65A6CA00A6E2D3 /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = 850588CE1E65A6CA00A6E2D3 /* sphere.obj */; };
@@ -147,6 +148,7 @@
 /* Begin PBXFileReference section */
 		05C3B3BC7FCA909AD41062E6 /* Pods-CountryTrainerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerTests/Pods-CountryTrainerTests.release.xcconfig"; sourceTree = "<group>"; };
 		14150EA0EB58B5F45459EBDD /* Pods_CountryTrainerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryTrainerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		483FF9BB1F20BA57001240EE /* ImageCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheable.swift; sourceTree = "<group>"; };
 		487387011F1FAD54000949FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48F01DB51F1FBF2000B69B34 /* TrackerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerType.swift; sourceTree = "<group>"; };
 		500B1804BA607D0E35837A8A /* Pods-CountryTrainerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				B5060C5D1D932C5C0093D29C /* CollectionExtensions.swift */,
 				B5A45A9B1D967D0400F1791A /* ImageResizeable.swift */,
 				8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */,
+				483FF9BB1F20BA57001240EE /* ImageCacheable.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				B5AD69231D8C35DE00F2331A /* FilterFlagsWireframe.swift in Sources */,
 				B564E2241D9ED64800E84EC7 /* CustomGameVCInterface.swift in Sources */,
 				B564E21E1D9ED3BB00E84EC7 /* CustomGameInteractor.swift in Sources */,
+				483FF9BC1F20BA57001240EE /* ImageCacheable.swift in Sources */,
 				B5DBB2441DA26F4A0006302E /* CDGame+CoreDataProperties.swift in Sources */,
 				48F01DB61F1FBF2000B69B34 /* TrackerType.swift in Sources */,
 				B5AD692F1D8EC7B800F2331A /* FilterFlagsInteractorInterface.swift in Sources */,

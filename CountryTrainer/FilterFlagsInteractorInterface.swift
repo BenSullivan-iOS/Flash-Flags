@@ -17,8 +17,8 @@ protocol FilterFlagsInteractorInterface {
   func removeFlag(country: Country) -> IndexPath?
   func resetAllFlags() -> Bool
 
-  func populateCurrentCoutntriesCache(isRemainingCountry: Bool)
-  func populateCacheFromPrefetch(isRemainingCountry: Bool, indexPaths: [IndexPath])
+  func populateCurrentCountriesCache(isRemainingCountry: FilterSelection)
+  func populateCacheFromPrefetch(indexPaths: [IndexPath])
 
   func setCountries(countryArray: [Country])
   func saveToCoreData(remainingCountries: [Country])

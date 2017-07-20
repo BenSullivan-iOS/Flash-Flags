@@ -30,28 +30,12 @@ struct Game: GameType {
   fileprivate(set) var resultFraction: String!
   fileprivate(set) var customGameTitle: String?
   
-  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?, customGameTitle: String?) {
-    self.countries = countries
-    self.tracker = Tracker(countries: countries)
-    self.attempts = attempts
-    self.highestPercentage = highestPercentage ?? 0
-    self.dateLastCompleted = dateLastCompleted ?? Date()
-    self.dateCreated = dateCreated ?? Date()
-    self.customGameTitle = customGameTitle
-    setUid()
-    setDelegate()
-  }
-  
-  mutating func setDelegate() {
-    tracker.gameDelegate = self
-  }
-  
   var tracker: Tracker
   
   var numberOfFlags: Int {
     return countries.count
   }
-
+  
   var progress: String {
     
     var score = 0
@@ -73,6 +57,22 @@ struct Game: GameType {
     }
     
     return Int(correct / totalFlags * 100)
+  }
+  
+  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?, customGameTitle: String?) {
+    self.countries = countries
+    self.tracker = Tracker(countries: countries)
+    self.attempts = attempts
+    self.highestPercentage = highestPercentage ?? 0
+    self.dateLastCompleted = dateLastCompleted ?? Date()
+    self.dateCreated = dateCreated ?? Date()
+    self.customGameTitle = customGameTitle
+    setUid()
+    setDelegate()
+  }
+  
+  mutating func setDelegate() {
+    tracker.gameDelegate = self
   }
   
   mutating func setUid() {

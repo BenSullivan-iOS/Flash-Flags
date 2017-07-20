@@ -69,7 +69,7 @@ class MainWireframe: NSObject, UIViewControllerTransitioningDelegate {
     gameWireframe?.presentGameInterfaceFromViewController(viewController: mainVC!, withGame: game)
   }
 
-  internal func presentMainVCInterfaceFromWindow(window: UIWindow) {
+  internal func presentMainVCInterfaceFrom(window: UIWindow) {
     
     let viewController = mainVCFromStoryboard()
 

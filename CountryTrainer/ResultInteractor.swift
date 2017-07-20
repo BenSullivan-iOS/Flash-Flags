@@ -13,8 +13,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
   
   fileprivate var CDGames = [CDGame]()
   fileprivate var cdCountriesForGame = [CDCountriesForGame]()
-  fileprivate var _countries = [Country]()
-  
+  fileprivate(set) var countries = [Country]()
   
   //MARK: - INTERFACE FUNCTIONS
   
@@ -24,7 +23,7 @@ class ResultInteractor: ResultInteractorInterface, DataService {
     
     guard let countryArray = createCountries() else { print("json error"); return }
     
-    _countries = countryArray
+    countries = countryArray
     
     if #available(iOS 10.0, *) {
       

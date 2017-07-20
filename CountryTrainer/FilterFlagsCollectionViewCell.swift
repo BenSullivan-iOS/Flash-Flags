@@ -38,11 +38,11 @@ class FilterFlagsCollectionViewCell: UICollectionViewCell, ImageResizeable {
   
   //MARK: - INTERNTAL FUNCTIONS
   
-  internal func configureView(country: Country, isRemainingCountry: Bool, cachedImage: UIImage?) {
+  internal func configureView(country: Country, isRemainingCountry: FilterSelection, cachedImage: UIImage?) {
     
     flagImage.image = cachedImage ?? UIImage(named: country.flagSmall)
     
-    addRemoveImage.image = isRemainingCountry ? #imageLiteral(resourceName: "filterFlagDeletebutton") : #imageLiteral(resourceName: "filterFlagAddButton")
+    addRemoveImage.image = isRemainingCountry == .remaining ? #imageLiteral(resourceName: "filterFlagDeletebutton") : #imageLiteral(resourceName: "filterFlagAddButton")
     
     self.country = country
     countryName.text = country.name
