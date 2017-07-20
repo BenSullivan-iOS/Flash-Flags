@@ -12,7 +12,7 @@ enum FilterSelection {
   case remaining, completed
 }
 
-class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, FilterFlagTableViewCellDelegate {
+class FilterFlagsVC: UIViewController, FilterFlagTableViewCellDelegate {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -163,13 +163,13 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     present(alert, animated: true)
   }
   
-  
-  //MARK: - COLLECTION VIEW DELEGATE
-  
-  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-    
-    filterFlagsInteractor?.populateCacheFromPrefetch(indexPaths: indexPaths)
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
+  
+}
+
+extension FilterFlagsVC: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return currentCountries.count
@@ -191,8 +191,13 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     return cell
   }
   
-  override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .lightContent
+}
+
+extension FilterFlagsVC: UICollectionViewDataSourcePrefetching {
+  
+  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    
+    filterFlagsInteractor?.populateCacheFromPrefetch(indexPaths: indexPaths)
   }
   
 }
