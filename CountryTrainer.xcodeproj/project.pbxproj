@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		09B3F076AB15327533479F18 /* Pods_CountryTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5835CBE86E5889831712297 /* Pods_CountryTrainer.framework */; };
 		420CCE0F7B029A4C3A385020 /* Pods_CountryTrainerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7010D886B92DEDDBB99C9F /* Pods_CountryTrainerTests.framework */; };
+		483FF9BC1F20BA57001240EE /* ImageCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483FF9BB1F20BA57001240EE /* ImageCacheable.swift */; };
 		487387021F1FAD54000949FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487387011F1FAD54000949FC /* Assets.xcassets */; };
+		48F01DB61F1FBF2000B69B34 /* TrackerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F01DB51F1FBF2000B69B34 /* TrackerType.swift */; };
 		850588CF1E65A6CA00A6E2D3 /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = 850588CE1E65A6CA00A6E2D3 /* sphere.obj */; };
 		8511FBF01DDF538A00C9911A /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */; };
 		8511FBF21DDF54E200C9911A /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511FBF11DDF54E200C9911A /* GradientButton.swift */; };
@@ -60,7 +62,7 @@
 		B557A27D1D6C42BD006C3A85 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557A27C1D6C42BD006C3A85 /* AnimationEngine.swift */; };
 		B5581AE21D9FDC45000A4CCB /* CustomGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5581AE01D9FDC45000A4CCB /* CustomGame.storyboard */; };
 		B5581AE41D9FE043000A4CCB /* CustomGameChosenFlagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5581AE31D9FE043000A4CCB /* CustomGameChosenFlagsCell.swift */; };
-		B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B471D6855040023DC7A /* GameTracker.swift */; };
+		B55A6B481D6855040023DC7A /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B471D6855040023DC7A /* Tracker.swift */; };
 		B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 		B55A6B4C1D6874470023DC7A /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6B4A1D6874470023DC7A /* FlagImageView.swift */; };
 		B56111421D9D31C90000E103 /* HowToPlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56111401D9D31C90000E103 /* HowToPlay.storyboard */; };
@@ -146,7 +148,9 @@
 /* Begin PBXFileReference section */
 		05C3B3BC7FCA909AD41062E6 /* Pods-CountryTrainerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerTests/Pods-CountryTrainerTests.release.xcconfig"; sourceTree = "<group>"; };
 		14150EA0EB58B5F45459EBDD /* Pods_CountryTrainerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryTrainerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		483FF9BB1F20BA57001240EE /* ImageCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheable.swift; sourceTree = "<group>"; };
 		487387011F1FAD54000949FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48F01DB51F1FBF2000B69B34 /* TrackerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerType.swift; sourceTree = "<group>"; };
 		500B1804BA607D0E35837A8A /* Pods-CountryTrainerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainerUITests/Pods-CountryTrainerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7EF960315DF9C014816323FF /* Pods-CountryTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryTrainer/Pods-CountryTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		850588CE1E65A6CA00A6E2D3 /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
@@ -205,7 +209,7 @@
 		B557A27F1D6C4463006C3A85 /* CountryTrainer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CountryTrainer-Bridging-Header.h"; sourceTree = "<group>"; };
 		B5581AE11D9FDC45000A4CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomGame.storyboard; sourceTree = "<group>"; };
 		B5581AE31D9FE043000A4CCB /* CustomGameChosenFlagsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameChosenFlagsCell.swift; sourceTree = "<group>"; };
-		B55A6B471D6855040023DC7A /* GameTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTracker.swift; sourceTree = "<group>"; };
+		B55A6B471D6855040023DC7A /* Tracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		B55A6B4A1D6874470023DC7A /* FlagImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagImageView.swift; sourceTree = "<group>"; };
 		B56111411D9D31C90000E103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HowToPlay.storyboard; sourceTree = "<group>"; };
 		B564E2191D9ED39B00E84EC7 /* CustomGameWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGameWireframe.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 				B5060C5D1D932C5C0093D29C /* CollectionExtensions.swift */,
 				B5A45A9B1D967D0400F1791A /* ImageResizeable.swift */,
 				8511FBEF1DDF538A00C9911A /* UIDeviceExtension.swift */,
+				483FF9BB1F20BA57001240EE /* ImageCacheable.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -464,7 +469,8 @@
 			children = (
 				B549C4DD1D660E94000409B3 /* Game.swift */,
 				B549C4E01D66306D000409B3 /* GameType.swift */,
-				B55A6B471D6855040023DC7A /* GameTracker.swift */,
+				B55A6B471D6855040023DC7A /* Tracker.swift */,
+				48F01DB51F1FBF2000B69B34 /* TrackerType.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1120,7 +1126,7 @@
 				B5BB5CAA1D6D95A8008CABC4 /* ResultVC.swift in Sources */,
 				B503FBF31D912F3600EF8CC2 /* FlagBGView.swift in Sources */,
 				B549C4C71D659F13000409B3 /* Country.swift in Sources */,
-				B55A6B481D6855040023DC7A /* GameTracker.swift in Sources */,
+				B55A6B481D6855040023DC7A /* Tracker.swift in Sources */,
 				B55A6B4B1D6874470023DC7A /* FlagImageView.swift in Sources */,
 				B5A45A9C1D967D0400F1791A /* ImageResizeable.swift in Sources */,
 				B53CFC9A1D86A8E300152EDD /* GameWireframe.swift in Sources */,
@@ -1133,7 +1139,9 @@
 				B5AD69231D8C35DE00F2331A /* FilterFlagsWireframe.swift in Sources */,
 				B564E2241D9ED64800E84EC7 /* CustomGameVCInterface.swift in Sources */,
 				B564E21E1D9ED3BB00E84EC7 /* CustomGameInteractor.swift in Sources */,
+				483FF9BC1F20BA57001240EE /* ImageCacheable.swift in Sources */,
 				B5DBB2441DA26F4A0006302E /* CDGame+CoreDataProperties.swift in Sources */,
+				48F01DB61F1FBF2000B69B34 /* TrackerType.swift in Sources */,
 				B5AD692F1D8EC7B800F2331A /* FilterFlagsInteractorInterface.swift in Sources */,
 				B5AD691E1D8C07BC00F2331A /* MenuItems.swift in Sources */,
 				B549C4C31D6207CD000409B3 /* DataService.swift in Sources */,

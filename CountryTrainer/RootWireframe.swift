@@ -11,14 +11,13 @@ import UIKit
 class RootWireframe: NSObject {
   
   func showRootViewController(viewController: UIViewController, inWindow: UIWindow) {
-    
-    let navigationController = navigationControllerFromWindow(window: inWindow)
-    navigationController.viewControllers = [viewController]
-    navigationController.navigationBar.barStyle = .black
+    let NVC = navigationControllerFromWindow(window: inWindow)
+    NVC.viewControllers = [viewController]
+    NVC.navigationBar.barStyle = .black
   }
   
   func navigationControllerFromWindow(window: UIWindow) -> UINavigationController {
-    let navigationController = window.rootViewController as! UINavigationController
-    return navigationController
+    let NVC = window.rootViewController as! UINavigationController
+    return NVC
   }
 }

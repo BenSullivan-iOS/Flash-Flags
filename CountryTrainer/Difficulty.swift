@@ -7,6 +7,7 @@
 //
 
 enum Difficulty: String {
+  
   case allDifficulties = "All Difficulties"
   case easy = "Easy"
   case medium = "Medium"

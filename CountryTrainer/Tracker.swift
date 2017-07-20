@@ -6,58 +6,37 @@
 //  Copyright © 2016 Ben Sullivan. All rights reserved.
 //
 
-protocol GameTracker {
+struct Tracker: TrackerType {
   
-  var remainingCells: [String : Bool] { get }
-  var remainingCountries: [Country] { get }
-  var answers: [String : Bool] { get }
-  init(countries: [Country])
-
-}
-
-struct Tracker: GameTracker {
-  
-  fileprivate var _remainingCountries = [Country]()
-  fileprivate var _remainingCells = [String : Bool]()
-  fileprivate var _answers = [String : Bool]()
+  fileprivate(set) var remainingCountries = [Country]()
+  fileprivate(set) var remainingCells = [String : Bool]()
+  fileprivate(set) var answers = [String : Bool]()
   
   internal var gameDelegate: GameType?
   
-  internal var answers: [String : Bool] {
-    return _answers
-  }
-
-  internal var remainingCountries: [Country] {
-    return _remainingCountries
-  }
-  
-  internal var remainingCells: [String : Bool] {
-    return _remainingCells
-  }
-  
   init(countries: [Country]) {
     
-    _remainingCountries = countries
+    remainingCountries = countries
     
     remainingCountries.forEach {
       
-      _answers[$0.name] = false
+      answers[$0.name] = false
     }
     
-    _remainingCells = _answers
+    remainingCells = answers
   }
   
   private mutating func removeRemainingCountry(at index: Int) {
-    _remainingCountries.remove(at: index)
+    remainingCountries.remove(at: index)
   }
   
   private mutating func removeRemainingCell(country: String) {
-    _remainingCells.removeValue(forKey: country)
+    remainingCells.removeValue(forKey: country)
   }
   
   mutating func updateTracker(_ country: String, result: Bool) {
     
-    _answers[country] = result
+    answers[country] = result
     
     if remainingCountries.count == 1 {
       
@@ -80,6 +59,6 @@ struct Tracker: GameTracker {
   }
   
   mutating func shuffleCountries() {
-    _remainingCountries.shuffle()
+    remainingCountries.shuffle()
   }
 }

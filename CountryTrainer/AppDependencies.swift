@@ -16,9 +16,9 @@ class AppDependencies {
     configureDependencies()
   }
   
-  internal func installRootViewControllerIntoWindow(window: UIWindow) {
+  internal func installRootVC(window: UIWindow) {
     
-    mainWireframe.presentMainVCInterfaceFromWindow(window: window)
+    mainWireframe.presentMainVCInterfaceFrom(window: window)
   }
   
   private func configureDependencies() {

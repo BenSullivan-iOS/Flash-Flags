@@ -8,7 +8,11 @@
 
 import UIKit
 
-class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, FilterFlagTableViewCellDelegate {
+enum FilterSelection {
+  case remaining, completed
+}
+
+class FilterFlagsVC: UIViewController, FilterFlagTableViewCellDelegate {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -17,8 +21,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var resetButton: UIButton!
   
-  //True = Viewing remaining countries. False = Viewing memorised countries
-  fileprivate var isRemainingCountry = true
+  var listSelection = FilterSelection.remaining
   
   var filterFlagsWireframe: FilterFlagsWireframe?
   var filterFlagsInteractor: FilterFlagsInteractorInterface?
@@ -60,7 +63,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    filterFlagsInteractor?.populateCurrentCoutntriesCache(isRemainingCountry: isRemainingCountry)
+    filterFlagsInteractor?.populateCurrentCountriesCache(isRemainingCountry: listSelection)
   }
   
   
@@ -81,11 +84,11 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     switch sender.selectedSegmentIndex {
       
     case 0:
-      isRemainingCountry = true
+      listSelection = .remaining
       filterFlagsInteractor?.setCountries(countryArray: remainingCountries)
       
     case 1:
-      isRemainingCountry = false
+      listSelection = .completed
       filterFlagsInteractor?.setCountries(countryArray: memorisedCountries)
       
     default: break
@@ -98,7 +101,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   
  internal func removeFlagButtonPressed(country: Country) {
     
-    if isRemainingCountry {
+    if listSelection == .remaining {
       if let rowToDelete = filterFlagsInteractor?.removeFlag(country: country) {
         collectionView.deleteItems(at: [rowToDelete])
       }
@@ -135,8 +138,7 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     segmentedControl.selectedSegmentIndex = 0
     numberOfMemorisedFlags.text = "0"
     progressBar.progress = 0
-    isRemainingCountry = true
-//    filterFlagsInteractor?.setCountries(countryArray: self.remainingCountries)
+    listSelection = .remaining
     
     collectionView.reloadData()
     
@@ -161,13 +163,13 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     present(alert, animated: true)
   }
   
-  
-  //MARK: - COLLECTION VIEW DELEGATE
-  
-  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-    
-    filterFlagsInteractor?.populateCacheFromPrefetch(isRemainingCountry: isRemainingCountry, indexPaths: indexPaths)
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
+  
+}
+
+extension FilterFlagsVC: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return currentCountries.count
@@ -177,20 +179,25 @@ class FilterFlagsVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterFlagsCell", for: indexPath) as! FilterFlagsCollectionViewCell
     
-    let flagObjectKey = isRemainingCountry
+    let flagObjectKey = listSelection == .remaining
       ? remainingCountries[indexPath.row].flagSmall as! NSString
       : memorisedCountries [indexPath.row].flagSmall as! NSString
     
     let cachedImage: UIImage? = imageCache.object(forKey: flagObjectKey) ?? nil
     cell.filterFlagDelegate = self
     
-    cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: isRemainingCountry, cachedImage: cachedImage)
+    cell.configureView(country: currentCountries[indexPath.row], isRemainingCountry: listSelection, cachedImage: cachedImage)
     
     return cell
   }
   
-  override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .lightContent
+}
+
+extension FilterFlagsVC: UICollectionViewDataSourcePrefetching {
+  
+  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    
+    filterFlagsInteractor?.populateCacheFromPrefetch(indexPaths: indexPaths)
   }
   
 }

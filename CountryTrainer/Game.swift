@@ -12,7 +12,7 @@ extension Game {
   
   static func ==(lhs: Game, rhs: Game) -> Bool {
     
-    if lhs._dateCreated == rhs._dateCreated {
+    if lhs.dateCreated == rhs.dateCreated {
       return true
     }
     return false
@@ -21,41 +21,20 @@ extension Game {
 
 struct Game: GameType {
   
-  fileprivate var _countries: [Country]
-  fileprivate var _dateLastCompleted: Date
-  fileprivate var _attempts: Int
-  fileprivate var _highestPercentage: Int
-  fileprivate var _dateCreated: Date
-  fileprivate var _uid = NSString()
-  fileprivate var _resultFraction: String!
-  fileprivate var _customGameTitle: String?
+  fileprivate(set) var countries: [Country]
+  fileprivate(set) var dateLastCompleted: Date
+  fileprivate(set) var attempts: Int
+  fileprivate(set) var highestPercentage: Int
+  fileprivate(set) var dateCreated: Date
+  fileprivate(set) var uid = NSString()
+  fileprivate(set) var resultFraction: String!
+  fileprivate(set) var customGameTitle: String?
   
-  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?, customGameTitle: String?) {
-    self._countries = countries
-    self.tracker = Tracker(countries: countries)
-    self._attempts = attempts
-    self._highestPercentage = highestPercentage ?? 0
-    self._dateLastCompleted = dateLastCompleted ?? Date()
-    self._dateCreated = dateCreated ?? Date()
-    self._customGameTitle = customGameTitle
-    setUid()
-    setDelegate()
+  var tracker: Tracker
+  
+  var numberOfFlags: Int {
+    return countries.count
   }
-  
-  mutating func setDelegate() {
-    tracker.gameDelegate = self
-  }
-  
-  var tracker: Tracker 
-  
-  var countries: [Country]     { return _countries }
-  var numberOfFlags: Int       { return countries.count }
-  var dateLastCompleted: Date  { return _dateLastCompleted }
-  var attempts: Int            { return _attempts }
-  var highestPercentage: Int   { return _highestPercentage }
-  var dateCreated: Date        { return _dateCreated }
-  var uid: NSString            { return _uid }
-  var customGameTitle: String? { return _customGameTitle }
   
   var progress: String {
     
@@ -65,13 +44,13 @@ struct Game: GameType {
       score += 1
     }
     
-    return "\(score)/\(_countries.count)"
+    return "\(score)/\(countries.count)"
   }
   
   var resultPercentage: Int {
     
     var correct = 0.0
-    let totalFlags = Double(_countries.count)
+    let totalFlags = Double(countries.count)
     
     for i in self.tracker.answers where i.value == true {
       correct += 1
@@ -80,36 +59,48 @@ struct Game: GameType {
     return Int(correct / totalFlags * 100)
   }
   
-  var resultFraction: String {
-    return _resultFraction
+  init(countries: [Country], attempts: Int, dateLastCompleted: Date?, highestPercentage: Int?, dateCreated: Date?, customGameTitle: String?) {
+    self.countries = countries
+    self.tracker = Tracker(countries: countries)
+    self.attempts = attempts
+    self.highestPercentage = highestPercentage ?? 0
+    self.dateLastCompleted = dateLastCompleted ?? Date()
+    self.dateCreated = dateCreated ?? Date()
+    self.customGameTitle = customGameTitle
+    setUid()
+    setDelegate()
+  }
+  
+  mutating func setDelegate() {
+    tracker.gameDelegate = self
   }
   
   mutating func setUid() {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "M/d/yy, H:mm"
-    _uid = dateFormatter.string(from: _dateCreated) as NSString
+    uid = dateFormatter.string(from: dateCreated) as NSString
   }
   
   mutating func gameRetried() {
-    _dateLastCompleted = Date()
+    dateLastCompleted = Date()
   }
   
   mutating func gameCompleted() {
     
     var correct = 0
-    let totalFlags = _countries.count
+    let totalFlags = countries.count
     
     for i in self.tracker.answers where i.value == true {
       correct += 1
     }
     
-    _resultFraction = "\(correct)/\(totalFlags)"
+    resultFraction = "\(correct)/\(totalFlags)"
     
-    _attempts += 1
-    _dateLastCompleted = Date()
+    attempts += 1
+    dateLastCompleted = Date()
     
-    if _highestPercentage < resultPercentage {
-      _highestPercentage = resultPercentage
+    if highestPercentage < resultPercentage {
+      highestPercentage = resultPercentage
     }
     
     tracker = Tracker(countries: countries)

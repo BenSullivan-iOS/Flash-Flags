@@ -11,19 +11,12 @@ import CoreData
 
 class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataService {
   
-  fileprivate var numberOfFlagsSelected = Int()
-  fileprivate var chosenOnes = [Country]()
-  fileprivate var _countries = [Country]()
-  fileprivate var _allCountries = [Country]()
-  fileprivate var _games = [Game]()
+  fileprivate(set) var countries = [Country]()
+  fileprivate(set) var allCountries = [Country]()
+  fileprivate(set) var games = [Game]()
   
   internal var mainVCInterface: MainVCInterface?
   internal var startNewGameVCInterface: StartNewGameVCInterface?
-  
-  internal var games: [Game] { return _games }
-  internal var countries: [Country] { return _countries }
-  internal var allCountries: [Country] { return _allCountries }
-  
   
   //MARK: - INITIALISER
   
@@ -37,13 +30,13 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
   //MARK: - INTERFACE FUNCTIONS
   
   internal func updateCountries(countries: [Country]) {
-    _countries = countries
+    self.countries = countries
   }
   
   internal func getNewGameData(numberOfFlags: Int, continent: String?, difficulty: String) {
     
     //Filters out countires based on the continent provided
-    var filteredCountries = _countries
+    var filteredCountries = countries
     
     filterByContinent(continent, &filteredCountries)
     
@@ -96,16 +89,16 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     
     //If game already exists then replace in array, else append
     
-    for i in _games.indices {
+    for i in games.indices {
       
-      if _games[i] == game {
+      if games[i] == game {
         
-        _games[i] = game
+        games[i] = game
         return
       }
     }
     
-    _games.append(game)
+    games.append(game)
     
   }
   
@@ -114,9 +107,9 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     if deleteGameFromCoreData(game: game) {
       print("Delete success")
       
-      for i in _games.indices {
-        if _games[i].dateCreated == game.dateCreated {
-          _games.remove(at: i)
+      for i in games.indices {
+        if games[i].dateCreated == game.dateCreated {
+          games.remove(at: i)
           mainVCInterface?.reloadTableData()
           break
           
@@ -138,7 +131,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     guard let countryArray = createCountries() else { print("json error"); return }
     
     //Store all countries for use in Custom Game module
-    _allCountries = countryArray
+    allCountries = countryArray
     
     //If the core data store is empty, the function will return nil and store all flags to core data
     
@@ -150,7 +143,7 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
           
           if countryArray[i].name == nameString {
             
-            _countries.append(countryArray[i])
+            countries.append(countryArray[i])
           }
         }
         
@@ -158,13 +151,13 @@ class MainInteractor: NSObject, MainInteractorInterface, DataService, CoreDataSe
     
     //Populates exising games once countries are populated
     
-    _games = fetchAllSavedGames()!
+    games = fetchAllSavedGames()!
   }
   
   fileprivate func filterByContinent(_ continent: String?, _ filteredCountries: inout [Country]) {
     if continent != nil && continent != Continent.all.rawValue {
       
-      filteredCountries = _countries.filter { country -> Bool in
+      filteredCountries = countries.filter { country -> Bool in
         
         return country.cont.rawValue == continent
       }

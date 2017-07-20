@@ -8,38 +8,22 @@
 
 import UIKit
 
-class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDataService, ImageResizeable {
+class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDataService {
   
   fileprivate var didUpdateCountries = false
-  fileprivate var _imageCache = NSCache<NSString, UIImage>()
-  fileprivate var _countries = [Country]()
+  fileprivate(set) var imageCache = NSCache<NSString, UIImage>()
+  fileprivate(set) var countries = [Country]()
   
-  fileprivate var _remainingCountries = [Country]() {
+  fileprivate(set) var remainingCountries = [Country]() {
     didSet {
       didUpdateCountries = true
     }
   }
   
-  fileprivate var _memorisedCountries = [Country]() {
+  fileprivate(set) var memorisedCountries = [Country]() {
     didSet {
       didUpdateCountries = true
     }
-  }
-  
-  var imageCache: NSCache<NSString, UIImage> {
-    return _imageCache
-  }
-  
-  var remainingCountries: [Country] {
-    return _remainingCountries
-  }
-  
-  var memorisedCountries: [Country] {
-    return _memorisedCountries
-  }
-  
-  var countries: [Country] {
-    return _countries
   }
   
   
@@ -47,7 +31,7 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
   
   init(countries: [Country]) {
     setCountries(countryArray: countries)
-    _remainingCountries = countries
+    remainingCountries = countries
     setMemorisedCountries()
   }
   
@@ -55,7 +39,7 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
   //MARK: - INTERFACE FUNCTIONS
   
   internal func setCountries(countryArray: [Country]) {
-    _countries = countryArray
+    countries = countryArray
   }
   
   internal func saveToCoreData(remainingCountries: [Country]) {
@@ -65,13 +49,13 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
   
   internal func addFlag(country: Country) -> IndexPath? {
     
-    for i in _memorisedCountries.indices {
+    for i in memorisedCountries.indices {
       
-      if _memorisedCountries[i] == country {
+      if memorisedCountries[i] == country {
         didUpdateCountries = true
-        _countries.remove(at: i)
-        _remainingCountries.insert(country, at: 0)
-        _memorisedCountries.remove(at: i)
+        countries.remove(at: i)
+        remainingCountries.insert(country, at: 0)
+        memorisedCountries.remove(at: i)
         
         let indexPath = IndexPath(row: i, section: 0)
         
@@ -84,14 +68,14 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
   
   internal func removeFlag(country: Country) -> IndexPath? {
     
-    for i in _countries.indices {
+    for i in countries.indices {
       
-      if _countries[i] == country {
+      if countries[i] == country {
         
         didUpdateCountries = true
-        _countries.remove(at: i)
-        _remainingCountries.remove(at: i)
-        _memorisedCountries.insert(country, at: 0)
+        countries.remove(at: i)
+        remainingCountries.remove(at: i)
+        memorisedCountries.insert(country, at: 0)
         
         let indexPath = IndexPath(row: i, section: 0)
         
@@ -105,9 +89,9 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     
     guard let countryArray = createCountries() else { print("json error"); return false }
     
-    _countries.removeAll()
-    _memorisedCountries.removeAll()
-    _remainingCountries.removeAll()
+    countries.removeAll()
+    memorisedCountries.removeAll()
+    remainingCountries.removeAll()
     
     saveRemainingCountriesToCoreData(remainingCountries: countryArray)
     
@@ -119,100 +103,17 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
           
           if countryArray[i].name == nameString {
             
-            _countries.append(countryArray[i])
+            countries.append(countryArray[i])
           }
         }
       }
     }
     
     setCountries(countryArray: countries)
-    _remainingCountries = countries
+    remainingCountries = countries
     setMemorisedCountries()
     
     return true
-  }
-  
-  internal func populateCurrentCoutntriesCache(isRemainingCountry: Bool) {
-    
-    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-      
-      for i in self.countries.indices {
-        
-        if self.didUpdateCountries {
-          self.didUpdateCountries = false
-          self.populateCurrentCoutntriesCache(isRemainingCountry: isRemainingCountry)
-          return
-        }
-        
-        let isIndexValid = self._countries.indices.contains(i)
-        
-        if isIndexValid {
-          
-          let flag = self._countries[i].flag as! NSString
-          
-          if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
-            
-            var image = UIImage()
-            var imageStr = String()
-            
-            if isRemainingCountry {
-              
-              imageStr = self._countries[i].flagSmall
-              
-              image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i].flag)!
-              
-            } else {
-              
-              imageStr = self._countries[i].flagSmall
-              
-              image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i].flag)!
-            }
-            
-            let smallImage = self.resizeImage(image: image, newWidth: 200)
-            self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
-          }
-        }
-      }
-    }
-  }
-  
-  internal func populateCacheFromPrefetch(isRemainingCountry: Bool, indexPaths: [IndexPath]) {
-    
-    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-      
-      for i in indexPaths {
-        
-        let isIndexValid = self._countries.indices.contains(i.row)
-        
-        if isIndexValid {
-          
-          
-          let flag = self._countries[i.row].flag as! NSString
-          
-          if self.imageCache.object(forKey: "\(flag)-1" as NSString) == nil && self.imageCache.object(forKey: flag) == nil {
-            
-            var image = UIImage()
-            var imageStr = String()
-            
-            if isRemainingCountry {
-              
-              imageStr = self._countries[i.row].flagSmall
-              
-              image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i.row].flag)!
-              
-            } else {
-              
-              imageStr = self._countries[i.row].flagSmall
-              
-              image = UIImage(named: imageStr) ?? UIImage(named: self._countries[i.row].flag)!
-            }
-            
-            let smallImage = self.resizeImage(image: image, newWidth: 200)
-            self.imageCache.setObject(smallImage, forKey: imageStr as NSString)
-          }
-        }
-      }
-    }
   }
   
   
@@ -222,9 +123,9 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
     
     guard let allCountries = createCountries() else { print("json error"); return }
     
-    _memorisedCountries = allCountries.filter { c -> Bool in
+    memorisedCountries = allCountries.filter { c -> Bool in
       
-      for i in _remainingCountries {
+      for i in remainingCountries {
         if c == i {
           return false
         }
@@ -232,5 +133,37 @@ class FilterFlagsInteractor: FilterFlagsInteractorInterface, DataService, CoreDa
       return true
     }
   }
+}
+
+extension FilterFlagsInteractor: ImageCacheable {
   
+  internal func populateCurrentCountriesCache(isRemainingCountry: FilterSelection) {
+    
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      for i in self.countries.indices {
+        
+        if self.didUpdateCountries {
+          self.didUpdateCountries = false
+          self.populateCurrentCountriesCache(isRemainingCountry: isRemainingCountry)
+          return
+        }
+        
+        if self.countries.indices.contains(i) {
+          self.cacheImage(i, width: CGFloat(200), size: .small)
+        }
+      }
+    }
+  }
+  
+  internal func populateCacheFromPrefetch(indexPaths: [IndexPath]) {
+    
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      
+      for indexPath in indexPaths where self.countries.indices.contains(indexPath.row) {
+        
+        self.cacheImage(indexPath.row, width: CGFloat(200), size: .small)
+      }
+    }
+  }
 }
